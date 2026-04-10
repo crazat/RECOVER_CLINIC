@@ -845,6 +845,41 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .treatments::before,.reviews::before,.contact::before{content:'';position:absolute;top:0;left:0;right:0;
   height:clamp(40px,5vw,80px);background:linear-gradient(to bottom,rgba(30,74,45,.06),transparent);pointer-events:none}
 
+/* ═══ 10TH PASS — FINAL ORCHESTRATION ═══ */
+
+/* Page load — luxury curtain fade */
+body{animation:pageIn .6s .05s var(--ease-out) both}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+
+/* Section descriptions — delayed entrance within parent reveal */
+.rv .desc{opacity:0;transition:opacity .8s .3s var(--ease-out)}
+.rv.vis .desc{opacity:1}
+
+/* Precision features — staggered fade-in */
+.pf{opacity:0}
+.rv.vis .pf{animation:pfFadeIn .7s var(--ease-out) forwards}
+.rv.vis .pf:nth-child(2){animation-delay:.1s}
+.rv.vis .pf:nth-child(3){animation-delay:.2s}
+@keyframes pfFadeIn{to{opacity:1}}
+
+/* Doctor credentials — cascading entrance */
+.doctor-cred{opacity:0}
+.rv.vis .doctor-cred{animation:credFadeIn .5s var(--ease-out) forwards}
+.rv.vis .doctor-cred:nth-child(1){animation-delay:.05s}
+.rv.vis .doctor-cred:nth-child(2){animation-delay:.1s}
+.rv.vis .doctor-cred:nth-child(3){animation-delay:.15s}
+.rv.vis .doctor-cred:nth-child(4){animation-delay:.2s}
+.rv.vis .doctor-cred:nth-child(5){animation-delay:.25s}
+.rv.vis .doctor-cred:nth-child(6){animation-delay:.3s}
+@keyframes credFadeIn{to{opacity:.75}}
+
+/* Typography — OpenType kerning & ligatures for display fonts */
+.hero-brand,.val-en,.philo-mark,.stat-num,.treat-name,.doctor-name{font-feature-settings:'kern' 1,'liga' 1}
+
+/* Nav CTA — subtle attention glow (3 pulses, then stops) */
+@keyframes ctaGlow{0%,100%{box-shadow:none}50%{box-shadow:0 0 16px rgba(196,162,101,.1)}}
+.nav-cta{animation:ctaGlow 3.5s 4s ease-in-out 3}
+
 /* ═══ 9TH PASS — CINEMATIC DETAILS ═══ */
 
 /* Doctor photo — cinematic curtain reveal (top-down) */

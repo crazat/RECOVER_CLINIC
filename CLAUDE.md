@@ -58,26 +58,31 @@
 - 네비 활성 섹션 추적 (IntersectionObserver)
 - 리뷰 드래그 스크롤 + 페이드 엣지 + 힌트 텍스트
 
-## 디자인 시스템 (9차 패스 완료)
+## 디자인 시스템 (10차 패스 완료)
 ### 애니메이션 & 인터랙션
+- 페이지 로드: body opacity fade-in (럭셔리 커튼 오프닝)
 - 히어로: blur 입장, 브랜드 scale reveal, eyebrow letter-spacing 입장, 7요소 패럴랙스 scroll-out
-- 의사: 사진 clip-path 커튼 리빌, 프레임 shimmer, 이름 text-shadow 호버
+- 의사: 사진 clip-path 커튼 리빌, 프레임 shimmer, 이름 text-shadow 호버, 자격사항 6개 캐스케이드 입장
 - 새살침 카드: 3D perspective tilt (마우스 추적, ±2도), 링 회전, 아이콘 글로우, 코너 악센트
 - Values: 카드 상단 골드라인 sweep, 코너 보타니컬, 넘버 패럴랙스
 - Stats: 카운터 easeOutQuart, 완료 시 골드 flash, 숫자 scale 입장
 - Process: dot scroll-fill, 아이콘 배경 원형, 골드 커넥터 라인
 - Compare: 항목별 stagger 입장 (좌→우 교차), VS 원형 배지, PREMIUM 배지 shimmer
+- Precision: 3개 기능 아이템 stagger fade-in, 듀얼 스캔 라인
 - Philosophy: 마크/인용/설명/라인 4단계 stagger reveal, 앰비언트 orb 2개
 - Reviews: 별점 골드 글로우, 아바타 골드 링, 따옴표 breathing float, 상단 골드 sweep
 - FAQ: 골드라인 sweep on open, 답변 indent, CSS counter 넘버링
 - Consult: 인풋 포커스 글로우, 제출 확인 체크 애니메이션
 - Contact: 지도 pulse ring, 핀 호버 리프트, 연락처 호버 indent
-- 섹션: 그래디언트 전환 (values→philo, precision→stats), 다크→라이트 top gradient
+- 섹션: desc 지연 입장 (.3s), 그래디언트 전환, 다크→라이트 top gradient
 - 엠블럼 구분자: 글로우 + 라인 scaleX sweep + 아이콘 스크롤 scale
 - 푸터: 링크 골드 언더라인 sweep, 그래디언트 배경
+- 네비: 활성 섹션 추적, CTA 골드 글로우 3회 pulse
 - 전역: 버튼 radial highlight, focus-visible 골드 아웃라인, text-wrap:balance
+### 타이포그래피
+- 디스플레이 서체에 OpenType `kern`/`liga` 활성화
 ### CSS 구성
-- 총 9차 패스 블록 (`/* ═══ NTH PASS ═══ */` 패턴)
+- 총 10차 패스 블록 (`/* ═══ NTH PASS ═══ */` 패턴)
 - `/* Print */` 블록 직전에 각 패스 CSS 삽입 (일관된 삽입 지점)
 
 ## 네비게이션
