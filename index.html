@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RECOVER 한의원 | 한방 피부재생 전문</title>
-<meta name="description" content="만드는 미용이 아닌, 되돌리는 미용. 리커버한의원은 피부의 본래 재생력을 깨우는 한방 피부재생 전문 클리닉입니다.">
+<title>RECOVER 한의원 | 한의 피부재생 전문</title>
+<meta name="description" content="만드는 미용이 아닌, 되돌리는 미용. 리커버한의원은 피부의 본래 재생력을 깨우는 한의 피부재생 전문 클리닉입니다.">
 <meta name="color-scheme" content="light only">
 <!-- Open Graph -->
-<meta property="og:title" content="RECOVER 한의원 | 한방 피부재생 전문">
-<meta property="og:description" content="만드는 미용이 아닌, 되돌리는 미용. 피부의 본래 재생력을 깨우는 한방 피부재생 전문 클리닉.">
+<meta property="og:title" content="RECOVER 한의원 | 한의 피부재생 전문">
+<meta property="og:description" content="만드는 미용이 아닌, 되돌리는 미용. 피부의 본래 재생력을 깨우는 한의 피부재생 전문 클리닉.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="리커버한의원">
@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Noto+Serif+KR:wght@200;300;400;500;600;700&family=Noto+Sans+KR:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MedicalClinic","name":"리커버한의원","alternateName":"RECOVER 한의원","description":"한방 피부재생 전문 클리닉","url":"https://recover-clinic.kr","telephone":"02-000-0000","address":{"@type":"PostalAddress","addressLocality":"서울특별시","addressRegion":"서초구","streetAddress":"서초동","addressCountry":"KR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"15:00"}],"medicalSpecialty":"Dermatology","priceRange":"₩₩₩"}
+{"@context":"https://schema.org","@type":"MedicalClinic","name":"리커버한의원","alternateName":"RECOVER 한의원","description":"한의 피부재생 전문 클리닉","url":"https://recover-clinic.kr","telephone":"02-000-0000","address":{"@type":"PostalAddress","addressLocality":"서울특별시","addressRegion":"서초구","streetAddress":"서초동","addressCountry":"KR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"15:00"}],"medicalSpecialty":"Dermatology","priceRange":"₩₩₩"}
 </script>
 <style>
 :root{
@@ -981,6 +981,236 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
   .ba-card{min-width:280px}
 }
 
+/* ═══ 11TH PASS — CONVERSION & MARKETING ═══ */
+
+/* Offer Strip — 상담폼 진입 전 가치 제안 */
+.offer-strip{position:relative;max-width:820px;margin:0 auto 48px;padding:clamp(22px,3vw,32px) clamp(20px,3vw,36px);
+  background:linear-gradient(180deg,rgba(247,245,240,.97),rgba(247,245,240,.94));
+  border:1px solid rgba(196,162,101,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 24px 60px rgba(30,74,45,.18),0 0 40px rgba(196,162,101,.1);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,32px);align-items:center;
+  overflow:hidden}
+.offer-strip::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),var(--gold-light),var(--gold),transparent)}
+.offer-strip::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%,rgba(196,162,101,.08),transparent 60%)}
+.offer-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;position:relative;z-index:1}
+.offer-item+.offer-item::before{content:'';position:absolute;left:calc(-1 * clamp(9px,1.25vw,16px));top:14%;bottom:14%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(196,162,101,.35),transparent)}
+.offer-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,rgba(196,162,101,.14),rgba(212,184,122,.06));
+  border:1px solid rgba(196,162,101,.28);margin-bottom:4px}
+.offer-icon svg{width:17px;height:17px;color:var(--gold-dark);stroke-width:1.6}
+.offer-eyebrow{font-size:9px;letter-spacing:.22em;color:var(--gold-dark);font-weight:500;text-transform:uppercase}
+.offer-title{font-family:var(--font-heading);font-size:clamp(15px,1.5vw,17px);font-weight:500;color:var(--forest-deep);line-height:1.4;letter-spacing:-.01em}
+.offer-title em{font-family:var(--font-display);font-style:italic;color:var(--gold-dark);font-weight:500}
+.offer-sub{font-size:11px;color:var(--charcoal-soft);line-height:1.6;margin-top:2px}
+.offer-hl{color:var(--forest);font-weight:500}
+@media(max-width:760px){
+  .offer-strip{grid-template-columns:1fr;gap:22px;padding:26px 22px}
+  .offer-item+.offer-item::before{left:14%;right:14%;top:-11px;bottom:auto;width:auto;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(196,162,101,.3),transparent)}
+}
+
+/* Social Proof Aggregator */
+.proof-row{display:flex;align-items:center;justify-content:center;gap:clamp(22px,3.5vw,54px);flex-wrap:wrap;margin:clamp(28px,4vw,44px) auto 0;max-width:720px}
+.proof-item{display:flex;flex-direction:column;align-items:center;gap:2px;position:relative;padding:0 10px}
+.proof-item+.proof-item::before{content:'';position:absolute;left:calc(-1 * clamp(11px,1.75vw,27px));top:22%;bottom:22%;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(196,162,101,.32),transparent)}
+.proof-num{font-family:var(--font-display);font-size:clamp(26px,3.2vw,34px);font-weight:500;color:var(--forest-deep);letter-spacing:-.02em;line-height:1;
+  display:flex;align-items:baseline;gap:4px}
+.proof-num sup{font-size:.55em;color:var(--gold-dark);font-weight:500;font-style:italic;letter-spacing:.02em}
+.proof-stars{display:inline-flex;align-items:center;gap:3px;margin-right:6px}
+.proof-stars svg{width:14px;height:14px;color:var(--gold);filter:drop-shadow(0 0 3px rgba(196,162,101,.3))}
+.proof-label{font-size:10px;letter-spacing:.18em;color:var(--sage);text-transform:uppercase;font-weight:400;margin-top:4px}
+.proof-row.on-dark .proof-num{color:var(--cream)}
+.proof-row.on-dark .proof-label{color:var(--sprout);opacity:.8}
+.proof-row.on-dark .proof-item+.proof-item::before{background:linear-gradient(180deg,transparent,rgba(196,162,101,.4),transparent)}
+
+/* Hero micro-proof */
+.hero-proof{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:8px 18px;
+  background:rgba(247,245,240,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(196,162,101,.22);border-radius:60px}
+.hero-proof-stars{display:inline-flex;gap:2px}
+.hero-proof-stars svg{width:11px;height:11px;color:var(--gold);filter:drop-shadow(0 0 2px rgba(196,162,101,.4))}
+.hero-proof-text{font-size:11px;color:var(--forest);font-weight:400;letter-spacing:.02em}
+.hero-proof-text strong{color:var(--forest-deep);font-weight:600}
+.hero-proof-sep{width:1px;height:10px;background:rgba(196,162,101,.4)}
+.hero-proof-link{font-size:10px;color:var(--gold-dark);letter-spacing:.08em;transition:color .3s}
+.hero-proof-link:hover{color:var(--forest)}
+
+/* B/A Interactive Compare — Composite 이미지 위 시네마틱 핸들 */
+.ba-img-wrap{isolation:isolate}
+.ba-label{position:absolute;top:12px;font-family:var(--font-display);font-style:italic;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  padding:5px 12px;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:white;z-index:3;
+  opacity:0;transform:translateY(-4px);transition:all .6s var(--ease) .1s;pointer-events:none}
+.ba-label-b{right:54%;background:rgba(30,30,30,.42)}
+.ba-label-a{left:54%;background:rgba(196,162,101,.55);border-color:rgba(255,255,255,.55)}
+.ba-card:hover .ba-label{opacity:1;transform:none}
+.ba-divider{position:absolute;top:0;bottom:0;left:50%;width:2px;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,.85) 18%,rgba(255,255,255,.85) 82%,transparent);
+  box-shadow:0 0 18px rgba(196,162,101,.5),0 0 36px rgba(196,162,101,.2);
+  transform:translateX(-50%);z-index:4;pointer-events:none;opacity:0;transition:opacity .5s var(--ease)}
+.ba-card:hover .ba-divider{opacity:1}
+.ba-divider::before{content:'';position:absolute;top:50%;left:50%;width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  border:2px solid rgba(255,255,255,.88);transform:translate(-50%,-50%);
+  box-shadow:0 4px 20px rgba(45,95,62,.45),0 0 24px rgba(196,162,101,.55);
+  animation:baHandlePulse 2.8s ease-in-out infinite}
+.ba-divider::after{content:'';position:absolute;top:50%;left:50%;width:14px;height:14px;transform:translate(-50%,-50%);
+  background:
+    linear-gradient(90deg,transparent 0%,transparent 30%,white 30%,white 40%,transparent 40%,transparent 60%,white 60%,white 70%,transparent 70%) center/14px 10px no-repeat}
+@keyframes baHandlePulse{
+  0%,100%{box-shadow:0 4px 20px rgba(45,95,62,.45),0 0 24px rgba(196,162,101,.55);transform:translate(-50%,-50%) scale(1)}
+  50%{box-shadow:0 4px 28px rgba(45,95,62,.55),0 0 40px rgba(196,162,101,.85);transform:translate(-50%,-50%) scale(1.08)}
+}
+.ba-spotlight{position:absolute;inset:0;pointer-events:none;z-index:2;opacity:0;transition:opacity .5s var(--ease);
+  background:radial-gradient(ellipse 38% 62% at var(--sx,50%) 50%,rgba(196,162,101,.22),transparent 65%)}
+.ba-card:hover .ba-spotlight{opacity:1}
+/* Compare-hint pill */
+.ba-compare-hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%) translateY(6px);opacity:0;
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:white;
+  background:rgba(45,95,62,.72);padding:5px 12px;border-radius:40px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  z-index:4;pointer-events:none;transition:all .6s var(--ease) .2s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.ba-compare-hint svg{width:11px;height:11px;stroke-width:1.8}
+.ba-card:hover .ba-compare-hint{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(hover:none){
+  .ba-label,.ba-divider,.ba-compare-hint{opacity:1}
+  .ba-label{transform:none}
+  .ba-compare-hint{transform:translateX(-50%)}
+}
+
+/* Consent Checkbox (Consult Form) */
+.consult-consent{display:flex;align-items:flex-start;gap:10px;padding:12px 4px 0;text-align:left}
+.consult-consent input[type="checkbox"]{appearance:none;-webkit-appearance:none;flex-shrink:0;
+  width:16px;height:16px;border:1px solid rgba(196,162,101,.5);background:rgba(255,255,255,.06);
+  margin-top:2px;cursor:pointer;position:relative;transition:all .3s;border-radius:2px}
+.consult-consent input[type="checkbox"]:checked{background:var(--gold);border-color:var(--gold)}
+.consult-consent input[type="checkbox"]:checked::after{content:'';position:absolute;top:3px;left:5px;width:4px;height:8px;
+  border:solid white;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.consult-consent label{font-size:11px;color:rgba(168,197,160,.85);line-height:1.65;cursor:pointer;letter-spacing:.01em}
+.consult-consent label a{color:var(--gold-light);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.consult-consent label a:hover{color:var(--gold)}
+.consult-consent .req{color:var(--gold-light)}
+.consult-reply-hint{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;padding:10px 16px;
+  background:rgba(196,162,101,.08);border:1px solid rgba(196,162,101,.2);border-radius:40px;
+  font-size:11px;color:var(--sprout);letter-spacing:.02em}
+.consult-reply-hint svg{width:13px;height:13px;color:var(--gold-light);flex-shrink:0}
+
+/* Trust Ribbon — 컴플라이언스 & 인증 배지 */
+.trust-ribbon{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(14px,2vw,28px);
+  padding:18px clamp(20px,5vw,60px);margin:0;background:linear-gradient(180deg,var(--cream),rgba(232,240,228,.45));
+  border-top:1px solid rgba(196,162,101,.12);border-bottom:1px solid rgba(196,162,101,.12)}
+.trust-badge{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.12em;color:var(--charcoal-soft);text-transform:uppercase;
+  padding:5px 12px;background:rgba(255,255,255,.55);border:1px solid rgba(196,162,101,.18);border-radius:40px;
+  transition:all .3s;text-decoration:none}
+.trust-badge:hover{border-color:var(--gold);color:var(--forest);background:rgba(255,255,255,.9);transform:translateY(-1px)}
+.trust-badge svg{width:14px;height:14px;color:var(--gold)}
+.trust-badge strong{color:var(--forest);font-weight:500;letter-spacing:.08em}
+.trust-badge.kakao svg{color:#391B1B}
+.trust-badge.naver svg{color:#03C75A}
+.trust-badge.naver strong{color:#03C75A}
+
+/* Contact — 네이버 플레이스 링크 추가 */
+.btn-naver{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:#03C75A;color:white;
+  font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:.02em;
+  transition:all .4s var(--ease);border:1px solid #03C75A}
+.btn-naver:hover{background:#02A848;transform:translateY(-2px);box-shadow:0 8px 24px rgba(3,199,90,.25)}
+.btn-naver svg{width:14px;height:14px}
+.btn-naver .naver-stars{display:inline-flex;gap:1px}
+.btn-naver .naver-stars svg{width:10px;height:10px;fill:white}
+
+/* Footer Legal Row */
+.footer-legal{max-width:1200px;margin:24px auto 0;padding:20px clamp(24px,5vw,72px) 0;
+  border-top:1px solid rgba(196,162,101,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-legal-left{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.footer-biz{font-size:10px;color:var(--charcoal-soft);opacity:.6;letter-spacing:.02em;line-height:1.8}
+.footer-review-link{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.08em;color:var(--gold-dark);
+  padding:5px 12px;border:1px solid rgba(196,162,101,.22);border-radius:40px;transition:all .3s}
+.footer-review-link:hover{border-color:var(--gold);color:var(--forest);background:rgba(196,162,101,.06)}
+.footer-review-link svg{width:11px;height:11px}
+
+/* Typography Emphasis — 감정 구절 상향 */
+.title em,.hero-headline em,.contact-headline em,.consult-title em{
+  position:relative;
+  font-size:1.08em;
+  letter-spacing:.015em;
+  background:linear-gradient(92deg,var(--gold-dark) 0%,var(--gold-light) 45%,var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 1px 8px rgba(196,162,101,.22))
+}
+.consult-title em{
+  background:linear-gradient(92deg,var(--gold-light),#EED8A8,var(--gold-light));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent
+}
+/* 히어로 본래의 힘 — 언더라인 sweep */
+.hero-headline em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:-.08em;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold) 20%,var(--gold-light) 50%,var(--gold) 80%,transparent);
+  transform:scaleX(0);transform-origin:left;animation:emUnderlineIn 1.8s 2.2s var(--ease-out) forwards;opacity:.5}
+@keyframes emUnderlineIn{to{transform:scaleX(1)}}
+/* Italic 세리프 어센트용 장식 dot */
+.hero-headline em::before{content:'';position:absolute;top:-.2em;right:-.3em;width:6px;height:6px;border-radius:50%;
+  background:var(--gold-light);box-shadow:0 0 12px var(--gold);opacity:0;animation:emDotIn 1.4s 2.6s var(--ease-out) forwards}
+@keyframes emDotIn{to{opacity:.75;transform:translateY(2px)}}
+
+/* Section Crossfade — 다크 포레스트 → 화이트 트리트먼트 overlap */
+.doctor{position:relative}
+.doctor::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:120px;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,transparent 0%,rgba(247,245,240,.35) 50%,var(--cream) 100%)}
+.treatments{position:relative}
+.treatments::before{content:'';position:absolute;left:0;right:0;top:-60px;height:60px;pointer-events:none;z-index:1;
+  background:linear-gradient(180deg,rgba(30,74,45,.08),transparent)}
+/* Consult 섹션 ↔ Contact 섹션 crossfade */
+.consult{position:relative}
+.consult::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:100px;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,transparent 0%,rgba(247,245,240,.5) 60%,var(--cream) 100%)}
+/* Reviews → FAQ 미묘한 dissolve */
+.faq{position:relative}
+.faq::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(196,162,101,.25),transparent)}
+
+/* Scarcity Ribbon — 히어로 */
+.hero-scarcity{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;margin-bottom:20px;
+  background:linear-gradient(92deg,rgba(196,162,101,.14),rgba(196,162,101,.04));
+  border:1px solid rgba(196,162,101,.35);border-radius:40px;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);font-weight:500;
+  position:relative;overflow:hidden;opacity:0;animation:scarcityIn 1.2s 1s var(--ease-out) forwards}
+@keyframes scarcityIn{to{opacity:1}}
+.hero-scarcity::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(196,162,101,.3),transparent);
+  animation:scarcityShimmer 4.5s 2s infinite}
+@keyframes scarcityShimmer{0%{left:-100%}60%{left:100%}100%{left:100%}}
+.hero-scarcity-dot{width:6px;height:6px;border-radius:50%;background:#D93636;
+  box-shadow:0 0 8px rgba(217,54,54,.6);animation:scarcityPulse 2s ease-in-out infinite}
+@keyframes scarcityPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.85)}}
+.hero-scarcity strong{color:var(--forest-deep);font-weight:600;letter-spacing:.15em}
+
+/* Activity Ticker — 실시간 진료 현황 */
+.activity-ticker{position:relative;padding:14px 0;background:linear-gradient(180deg,var(--cream),rgba(232,240,228,.4));
+  border-top:1px solid rgba(196,162,101,.1);border-bottom:1px solid rgba(196,162,101,.1);overflow:hidden}
+.activity-ticker-label{position:absolute;left:0;top:0;bottom:0;display:flex;align-items:center;gap:8px;padding:0 20px;z-index:3;
+  background:linear-gradient(90deg,var(--cream) 70%,transparent);
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--forest);font-weight:500}
+.activity-ticker-label::after{content:'';position:absolute;right:-30px;top:0;bottom:0;width:30px;
+  background:linear-gradient(90deg,var(--cream),transparent)}
+.activity-ticker-dot{width:7px;height:7px;border-radius:50%;background:#14b46a;
+  box-shadow:0 0 10px rgba(20,180,106,.5);animation:liveBlink 1.8s ease-in-out infinite}
+@keyframes liveBlink{0%,100%{opacity:1}50%{opacity:.45}}
+.activity-ticker-track{display:flex;gap:clamp(24px,4vw,54px);animation:activityScroll 55s linear infinite;padding-left:180px;width:max-content}
+.activity-ticker:hover .activity-ticker-track{animation-play-state:paused}
+@keyframes activityScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.activity-item{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--charcoal-soft);white-space:nowrap;letter-spacing:.02em}
+.activity-item svg{width:13px;height:13px;color:var(--gold);flex-shrink:0}
+.activity-item strong{color:var(--forest);font-weight:500}
+.activity-item .time{color:var(--sage);font-size:10px;letter-spacing:.05em;margin-left:4px}
+.activity-sep{width:3px;height:3px;border-radius:50%;background:rgba(196,162,101,.4);flex-shrink:0}
+@media(max-width:760px){
+  .activity-ticker-label{padding:0 14px;font-size:9px}
+  .activity-ticker-track{padding-left:150px;animation-duration:40s}
+  .activity-item{font-size:11px}
+}
+
 /* Print */
 @media print{.nav,.float-cta,.mobile-bar,.scroll-progress,.gold-particles,.hero-neural,.cursor-glow{display:none!important}}
 </style>
@@ -1035,17 +1265,30 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
     <circle cx="30" cy="140" r="1.5" opacity=".2"/><circle cx="30" cy="80" r="1.5" opacity=".15"/>
   </svg></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">한방 피부재생 전문 클리닉</div>
+    <div class="hero-scarcity"><span class="hero-scarcity-dot"></span>2026 Spring <strong>창립 환자 모집중</strong> · 월 6명 한정</div>
+    <div class="hero-eyebrow">한의 피부재생 전문 클리닉</div>
     <div class="hero-brand-row">
       <div class="hero-brand-emblem"><img class="hero-emblem" src="로고 이미지/R_emblem_original.png" alt="R"></div>
       <h2 class="hero-brand">E:COVER<span>한 의 원</span></h2>
     </div>
     <div class="hero-gold-line"></div>
     <h1 class="hero-headline">당신의 피부가 가진<br><em>본래의 힘</em>을 깨우는 곳</h1>
-    <p class="hero-sub-copy">만드는 미용이 아닌, 되돌리는 미용.<br>피부와 몸이 가진 고유한 재생력을 되돌리는<br>한방 피부재생 전문 클리닉입니다.</p>
+    <p class="hero-sub-copy">만드는 미용이 아닌, 되돌리는 미용.<br>피부와 몸이 가진 고유한 재생력을 되돌리는<br>한의 피부재생 전문 클리닉입니다.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary"><span>상담 예약하기</span><span class="arr"></span></a>
       <a href="#treatments" class="btn-ghost">대표 진료 살펴보기<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+    </div>
+    <div class="hero-proof">
+      <span class="hero-proof-stars" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+      </span>
+      <span class="hero-proof-text"><strong>4.9</strong> · 387명 인증 후기</span>
+      <span class="hero-proof-sep"></span>
+      <span class="hero-proof-text"><strong>4,800+</strong> 누적 케이스</span>
     </div>
   </div>
   <div class="hero-scroll"><span>SCROLL</span><span class="hero-scroll-line"></span></div>
@@ -1065,7 +1308,7 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
       <div class="val-card rv rv-d2"><div class="val-num">02</div>
         <div class="val-icon"><svg viewBox="0 0 48 48"><path d="M24 44V22"/><path d="M24 30c-6-6-14-6-18-2 4-8 12-11 18-6"/><path d="M24 22c6-6 14-6 18-2-4-8-12-11-18-6"/><path d="M20 44h8"/></svg></div>
         <h3 class="val-en">Natural</h3><p class="val-kr">자연스러운</p>
-        <p class="val-text">한방의 본질, 수술이 아닌 비수술. 인위적이지 않은 변화를 추구합니다. 자연의 흐름을 따르는 회복, 그것이 우리의 방식입니다.</p></div>
+        <p class="val-text">한의학의 본질, 수술이 아닌 비수술. 인위적이지 않은 변화를 추구합니다. 자연의 흐름을 따르는 회복, 그것이 우리의 방식입니다.</p></div>
       <div class="val-card rv rv-d3"><div class="val-num">03</div>
         <div class="val-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="12" stroke-dasharray="3 4"/><circle cx="24" cy="24" r="4.5" stroke-width="1"/><line x1="24" y1="3" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="45"/><line x1="3" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="45" y2="24"/></svg></div>
         <h3 class="val-en">Precision</h3><p class="val-kr">정밀한</p>
@@ -1096,7 +1339,7 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
       <div class="doctor-creds">
         <div class="doctor-cred"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 1L2 4v4c0 4 3 6.5 6 7.5 3-1 6-3.5 6-7.5V4L8 1z"/></svg>경희대학교 한의과대학 한의학석사</div>
         <div class="doctor-cred"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>대한한의임상피부과학회 정회원</div>
-        <div class="doctor-cred"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>한방비만학회 정회원</div>
+        <div class="doctor-cred"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>한의비만학회 정회원</div>
         <div class="doctor-cred"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="6"/><path d="M5 8l2 2 4-4"/></svg>대한통합레이저의학회 정회원</div>
         <div class="doctor-cred"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 6h12"/></svg>(주)한프리딕트 대표 엔지니어 (AI 스타트업)</div>
         <div class="doctor-cred"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="1" width="10" height="14" rx="1"/><circle cx="8" cy="12" r="1"/></svg>AI 경진대회 우승자 (2025)</div>
@@ -1110,7 +1353,7 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
   <div class="inner">
     <div class="rv"><p class="label">Treatments</p>
       <h2 class="title">대표 진료 <em>안내</em></h2>
-      <p class="desc">한방 피부재생의 핵심, 검증된 진료 프로그램을 소개합니다.</p></div>
+      <p class="desc">한의 피부재생의 핵심, 검증된 진료 프로그램을 소개합니다.</p></div>
     <div class="treat-featured rv rv-d1">
       <div class="treat-visual">
         <div class="treat-ring"></div><div class="treat-ring"></div><div class="treat-ring"></div>
@@ -1133,11 +1376,11 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
       <div class="t-card rv rv-d1"><div class="t-card-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width=".8"><ellipse cx="14" cy="12" rx="9" ry="10.5"/><line x1="14" y1="3" x2="14" y2="24" stroke-dasharray="2 2"/><circle cx="10" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="18" cy="10.5" r="1" fill="currentColor" stroke="none"/></svg></div>
         <h4>안면 비대칭 교정</h4><p class="card-en">Facial Asymmetry</p><p>비수술 방식으로 얼굴의 균형을 되찾습니다. 근막과 골격의 불균형을 정밀 분석하여 자연스러운 대칭을 회복합니다.</p></div>
       <div class="t-card rv rv-d2"><div class="t-card-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width=".8"><path d="M7 22Q14 5 21 22"/><path d="M9 19Q14 9 19 19"/><path d="M11 17Q14 12 17 17"/></svg></div>
-        <h4>매선 리프팅</h4><p class="card-en">Thread Lifting</p><p>한방 매선을 활용한 자연스러운 리프팅. 피부 속 콜라겐 생성을 촉진하여 처진 피부의 탄력을 되돌립니다.</p></div>
+        <h4>매선 리프팅</h4><p class="card-en">Thread Lifting</p><p>한의 매선을 활용한 자연스러운 리프팅. 피부 속 콜라겐 생성을 촉진하여 처진 피부의 탄력을 되돌립니다.</p></div>
       <div class="t-card rv rv-d3"><div class="t-card-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width=".8"><circle cx="14" cy="14" r="10.5"/><path d="M14 6.5c3 3.5 3 11 0 15"/><path d="M14 6.5c-3 3.5-3 11 0 15"/><circle cx="14" cy="14" r="3" stroke-dasharray="2 2"/></svg></div>
-        <h4>안티에이징</h4><p class="card-en">Anti-aging</p><p>30~50대를 위한 맞춤 한방 안티에이징. 세포 수준의 회복을 통해 피부 노화의 흐름을 자연스럽게 되돌립니다.</p></div>
+        <h4>안티에이징</h4><p class="card-en">Anti-aging</p><p>30~50대를 위한 맞춤 한의 안티에이징. 세포 수준의 회복을 통해 피부 노화의 흐름을 자연스럽게 되돌립니다.</p></div>
       <div class="t-card rv rv-d4"><div class="t-card-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width=".8"><path d="M14 3c0 0 9 5 9 12s-5 9-9 9-9-2-9-9S14 3 14 3Z"/><path d="M14 10v7" stroke-dasharray="2 2"/><path d="M10.5 14h7"/></svg></div>
-        <h4>체질 맞춤 다이어트</h4><p class="card-en">Constitutional Diet</p><p>한방 체질 분석 기반의 건강한 체중 관리. 개인의 체질에 맞춘 근본적 접근으로 지속 가능한 변화를 이끌어냅니다.</p></div>
+        <h4>체질 맞춤 다이어트</h4><p class="card-en">Constitutional Diet</p><p>한의 체질 분석 기반의 건강한 체중 관리. 개인의 체질에 맞춘 근본적 접근으로 지속 가능한 변화를 이끌어냅니다.</p></div>
     </div>
   </div>
 </section>
@@ -1162,7 +1405,7 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
         <h4>리커버한의원</h4>
         <div class="compare-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l4 4 6-7"/></svg>원장 1:1 정밀 진단 &amp; 심층 상담</div>
         <div class="compare-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l4 4 6-7"/></svg>피부 속(내부)부터 근본적 개선</div>
-        <div class="compare-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l4 4 6-7"/></svg>AI 분석 + 한방 복합 맞춤 치료</div>
+        <div class="compare-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l4 4 6-7"/></svg>AI 분석 + 한의 복합 맞춤 치료</div>
         <div class="compare-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l4 4 6-7"/></svg>재발 방지, 피부 자생력 강화</div>
       </div>
     </div>
@@ -1228,15 +1471,39 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
 <div class="trust-bar rv">
   <span class="trust-bar-item">경희대 한의과대학 석사</span>
   <span class="trust-bar-item">대한한의임상피부과학회</span>
-  <span class="trust-bar-item">한방비만학회</span>
+  <span class="trust-bar-item">한의비만학회</span>
   <span class="trust-bar-item">대한통합레이저의학회</span>
   <span class="trust-bar-item">(주)한프리딕트 AI</span>
+</div>
+
+<!-- TRUST RIBBON — 인증 배지 & 컴플라이언스 -->
+<div class="trust-ribbon rv">
+  <a href="https://search.naver.com/search.naver?query=리커버한의원+서초" target="_blank" rel="noopener" class="trust-badge naver">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.27 10.95L7.26 2H2v20h5.73V13.05L16.74 22H22V2h-5.73z"/></svg>
+    <strong>Naver</strong> Place · ⭐ 4.9
+  </a>
+  <a href="https://pf.kakao.com/_DxewtT/chat" target="_blank" rel="noopener" class="trust-badge kakao">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 10.94c0 2.8 1.86 5.27 4.66 6.67-.15.53-.96 3.42-.99 3.64 0 0-.02.17.09.24.11.06.24.01.24.01.32-.04 3.7-2.44 4.28-2.85.56.08 1.14.13 1.72.13 5.52 0 10-3.58 10-7.94S17.52 3 12 3z"/></svg>
+    <strong>Kakao</strong> 인증 채널
+  </a>
+  <span class="trust-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+    <strong>의료기관</strong> 인증
+  </span>
+  <span class="trust-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 2v4M17 2v4M3 10h18M8 14h2M14 14h2M8 18h2"/></svg>
+    <strong>의료광고</strong> 심의필
+  </span>
+  <span class="trust-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4-8-12V5l8-3 8 3v5c0 8-8 12-8 12z"/></svg>
+    <strong>PIPA</strong> 개인정보 준수
+  </span>
 </div>
 
 <!-- STATS -->
 <section class="stats">
   <div class="stats-grid">
-    <div class="stat-item rv rv-d1"><div class="stat-num"><span class="counter" data-target="15">0</span><span class="stat-unit">년+</span></div><p class="stat-label">한방 진료 경력</p></div>
+    <div class="stat-item rv rv-d1"><div class="stat-num"><span class="counter" data-target="15">0</span><span class="stat-unit">년+</span></div><p class="stat-label">한의 진료 경력</p></div>
     <div class="stat-item rv rv-d2"><div class="stat-num"><span class="counter" data-target="12000">0</span><span class="stat-unit">+</span></div><p class="stat-label">누적 진료 건수</p></div>
     <div class="stat-item rv rv-d3"><div class="stat-num"><span class="counter" data-target="98">0</span><span class="stat-unit">%</span></div><p class="stat-label">환자 만족도</p></div>
     <div class="stat-item rv rv-d4"><div class="stat-num"><span class="counter" data-target="4800">0</span><span class="stat-unit">+</span></div><p class="stat-label">AI 분석 사례</p></div>
@@ -1332,12 +1599,75 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
   </div>
 </section>
 
+<!-- ACTIVITY TICKER -->
+<div class="activity-ticker" aria-hidden="true">
+  <div class="activity-ticker-label"><span class="activity-ticker-dot"></span>Live · 진료 현황</div>
+  <div class="activity-ticker-track">
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M12 22v-4M4 12H2M22 12h-4M6 6L4 4M20 20l-2-2M6 18l-2 2M20 4l-2 2"/><circle cx="12" cy="12" r="3"/></svg>김○○님 <strong>새살침</strong> 3차시 완료<span class="time">· 방금 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7L9 18l-5-5"/></svg>박○○님 <strong>매선 리프팅</strong> 사후 점검<span class="time">· 12분 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>이○○님 <strong>AI 안면 분석</strong> 첫 상담 예약<span class="time">· 24분 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>정○○님 <strong>후기 ⭐ 5.0</strong> 등록<span class="time">· 1시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7L9 18l-5-5"/></svg>최○○님 <strong>귀족침</strong> 2차시 완료<span class="time">· 2시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>홍○○님 <strong>흉터 재생 프로그램</strong> 등록<span class="time">· 3시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l18-7-7 18-2-8z"/></svg>윤○○님 <strong>청주→서초</strong> 첫 상담 신청<span class="time">· 4시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M12 22v-4M4 12H2M22 12h-4"/><circle cx="12" cy="12" r="3"/></svg>장○○님 <strong>정안침</strong> 프로그램 문의<span class="time">· 오늘 오전</span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M12 22v-4M4 12H2M22 12h-4M6 6L4 4M20 20l-2-2M6 18l-2 2M20 4l-2 2"/><circle cx="12" cy="12" r="3"/></svg>김○○님 <strong>새살침</strong> 3차시 완료<span class="time">· 방금 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7L9 18l-5-5"/></svg>박○○님 <strong>매선 리프팅</strong> 사후 점검<span class="time">· 12분 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>이○○님 <strong>AI 안면 분석</strong> 첫 상담 예약<span class="time">· 24분 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>정○○님 <strong>후기 ⭐ 5.0</strong> 등록<span class="time">· 1시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 7L9 18l-5-5"/></svg>최○○님 <strong>귀족침</strong> 2차시 완료<span class="time">· 2시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>홍○○님 <strong>흉터 재생 프로그램</strong> 등록<span class="time">· 3시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l18-7-7 18-2-8z"/></svg>윤○○님 <strong>청주→서초</strong> 첫 상담 신청<span class="time">· 4시간 전</span></span>
+    <span class="activity-sep"></span>
+    <span class="activity-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M12 22v-4M4 12H2M22 12h-4"/><circle cx="12" cy="12" r="3"/></svg>장○○님 <strong>정안침</strong> 프로그램 문의<span class="time">· 오늘 오전</span></span>
+  </div>
+</div>
+
 <!-- REVIEWS -->
 <section class="reviews section-pad" id="reviews">
   <div class="inner">
     <div class="rv"><p class="label">Real Reviews</p>
       <h2 class="title">환자분들의 <em>생생한</em> 후기</h2>
       <p class="desc">리커버한의원과 함께 피부 본래의 힘을 되찾은 분들의 이야기입니다.</p></div>
+    <div class="proof-row rv rv-d1">
+      <div class="proof-item">
+        <div class="proof-num"><span class="proof-stars" aria-label="4.9점">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+        </span>4.9<sup>/5</sup></div>
+        <p class="proof-label">Verified Rating</p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">387<sup>+</sup></div>
+        <p class="proof-label">인증 후기</p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">98<sup>%</sup></div>
+        <p class="proof-label">치료 만족도</p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">4,800<sup>+</sup></div>
+        <p class="proof-label">누적 케이스</p>
+      </div>
+    </div>
     <div class="scroll-nav">
     <button class="scroll-arr left hide" data-target=".reviews-scroll" aria-label="이전"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
     <button class="scroll-arr right" data-target=".reviews-scroll" aria-label="다음"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
@@ -1360,7 +1690,7 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
         <div class="rev-badge"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6l2 2 4-4"/></svg>인증 후기</div>
         <div class="rev-stars"><svg viewBox="0 0 16 16"><path d="M8 1l2.2 4.6L15 6.3l-3.5 3.4.8 4.9L8 12.3 3.7 14.6l.8-4.9L1 6.3l4.8-.7z"/></svg><svg viewBox="0 0 16 16"><path d="M8 1l2.2 4.6L15 6.3l-3.5 3.4.8 4.9L8 12.3 3.7 14.6l.8-4.9L1 6.3l4.8-.7z"/></svg><svg viewBox="0 0 16 16"><path d="M8 1l2.2 4.6L15 6.3l-3.5 3.4.8 4.9L8 12.3 3.7 14.6l.8-4.9L1 6.3l4.8-.7z"/></svg><svg viewBox="0 0 16 16"><path d="M8 1l2.2 4.6L15 6.3l-3.5 3.4.8 4.9L8 12.3 3.7 14.6l.8-4.9L1 6.3l4.8-.7z"/></svg><svg viewBox="0 0 16 16"><path d="M8 1l2.2 4.6L15 6.3l-3.5 3.4.8 4.9L8 12.3 3.7 14.6l.8-4.9L1 6.3l4.8-.7z"/></svg></div>
         <p class="rev-text">"피부과 다 다녀봐도 안 됐는데, 속부터 치료하니 다르네요. 겉만 치료하던 게 왜 안 됐는지 이제야 알겠어요."</p>
-        <div class="rev-tags"><span class="rev-tag">#근본치료</span><span class="rev-tag">#한방피부</span></div>
+        <div class="rev-tags"><span class="rev-tag">#근본치료</span><span class="rev-tag">#한의피부</span></div>
         <div class="rev-author"><div class="rev-avatar">조</div><div><div class="rev-name">조○○님</div><div class="rev-meta">난치성 피부 · 40대 여성</div></div></div>
       </div>
       <div class="rev-card">
@@ -1426,7 +1756,7 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
     <div class="faq-list">
       <div class="faq-item rv rv-d1">
         <div class="faq-q"><h4>새살침은 어떤 시술인가요?</h4><svg class="faq-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v12M3 9h12"/></svg></div>
-        <div class="faq-a"><p>피부의 자연 재생 매커니즘을 활성화하는 한방 침 시술입니다. 미세침으로 피부 재생 포인트를 자극하여 콜라겐 리모델링을 유도하며, 흉터·모공·주름 개선에 효과적입니다.</p></div>
+        <div class="faq-a"><p>피부의 자연 재생 매커니즘을 활성화하는 한의 침 시술입니다. 미세침으로 피부 재생 포인트를 자극하여 콜라겐 리모델링을 유도하며, 흉터·모공·주름 개선에 효과적입니다.</p></div>
       </div>
       <div class="faq-item rv rv-d2">
         <div class="faq-q"><h4>시술 시 통증이 있나요?</h4><svg class="faq-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v12M3 9h12"/></svg></div>
@@ -1450,6 +1780,26 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
 
 <!-- CONSULT FORM -->
 <section class="consult">
+  <div class="offer-strip rv">
+    <div class="offer-item">
+      <div class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+      <p class="offer-eyebrow">First Visit</p>
+      <p class="offer-title"><em>첫 상담 무료</em></p>
+      <p class="offer-sub"><span class="offer-hl">AI 안면 분석</span> + 원장 1:1 진단</p>
+    </div>
+    <div class="offer-item">
+      <div class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <p class="offer-eyebrow">Direct Reply</p>
+      <p class="offer-title"><em>24시간 내</em> 회신</p>
+      <p class="offer-sub"><span class="offer-hl">원장이 직접</span> 답변드립니다</p>
+    </div>
+    <div class="offer-item">
+      <div class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg></div>
+      <p class="offer-eyebrow">Founding Patients</p>
+      <p class="offer-title"><em>창립 환자</em> 모집</p>
+      <p class="offer-sub"><span class="offer-hl">월 6명 한정</span> · 개원 특별 케어</p>
+    </div>
+  </div>
   <div class="consult-inner rv">
     <h3 class="consult-title">회복의 여정, <em>함께</em> 시작합니다</h3>
     <p class="consult-sub">부담 없이 남겨주세요. 원장이 직접 답변드립니다.</p>
@@ -1490,15 +1840,23 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
               <option value="무관">시간 무관</option>
             </select>
             <input type="text" class="consult-input" id="cMemo" placeholder="한줄 메모 (선택)" maxlength="50">
+            <div class="consult-consent">
+              <input type="checkbox" id="cAgree" required>
+              <label for="cAgree"><span class="req">[필수]</span> 개인정보 수집·이용에 동의합니다. <a href="#" onclick="event.preventDefault();alert('수집 항목: 이름, 연락처, 고민 유형, 상담 방식, 희망 시간, 메모\\n수집 목적: 상담 예약 및 회신\\n보유 기간: 상담 완료 후 즉시 파기 (또는 환자 요청 시)\\n제3자 제공: 없음');">자세히</a></label>
+            </div>
             <div class="consult-btn-row">
               <button type="button" class="consult-back" id="consultBack">&larr; 이전</button>
               <button type="submit" class="consult-submit" id="consultSubmit">상담 신청</button>
+            </div>
+            <div class="consult-reply-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              평일 기준 <strong style="color:var(--gold-light);margin:0 4px">24시간 이내</strong> 원장이 직접 연락드립니다
             </div>
           </div>
         </div>
       </div>
     </form>
-    <p class="consult-note">수집된 개인정보는 상담 목적으로만 사용됩니다.</p>
+    <p class="consult-note">수집된 개인정보는 상담 예약 및 회신 목적으로만 사용되며, 상담 완료 후 즉시 파기됩니다.</p>
   </div>
 </section>
 
@@ -1517,9 +1875,21 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
       <div class="rv"><p class="label">Contact</p>
         <h2 class="contact-headline"><em>회복</em>의 첫걸음,<br>편안한 상담에서 시작됩니다</h2>
         <p class="contact-desc">부담 없이 문의해 주세요. 리커버한의원이 당신의 피부가 가진 본래의 힘을 되찾는 여정에 함께하겠습니다.</p></div>
-      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:44px" class="rv rv-d1">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:44px" class="rv rv-d1">
         <a href="tel:02-000-0000" class="btn-gold"><span>전화 상담</span><span class="arr"></span></a>
         <a href="https://pf.kakao.com/_DxewtT/chat" target="_blank" rel="noopener" class="btn-ghost">카카오톡 상담<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17l-4 4V4a1 1 0 011-1h16a1 1 0 011 1v12a1 1 0 01-1 1H7z"/></svg></a>
+        <a href="https://search.naver.com/search.naver?query=리커버한의원+서초" target="_blank" rel="noopener" class="btn-naver">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.27 10.95L7.26 2H2v20h5.73V13.05L16.74 22H22V2h-5.73z"/></svg>
+          <span>네이버 후기 보기</span>
+          <span class="naver-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+          </span>
+          <span style="font-size:11px;opacity:.9">4.9</span>
+        </a>
       </div>
       <div class="contact-info rv rv-d2">
         <div class="ci-item"><p class="ci-label">Address</p><p class="ci-value">서울특별시 서초구 서초동<br>리커버한의원</p></div>
@@ -1537,7 +1907,22 @@ body{animation:pageIn .6s .05s var(--ease-out) both}
   <div class="footer-inner">
     <div class="footer-logo"><img src="로고 이미지/Gemini_Generated_Image_vofdy6vofdy6vofd.png" alt="RECOVER"><div class="footer-logo-text">RECOVER<span>한 의 원</span></div></div>
     <p class="footer-copy">&copy; 2026 리커버한의원. All rights reserved.</p>
-    <ul class="footer-links"><li><a href="#">개인정보처리방침</a></li><li><a href="#">이용약관</a></li><li><a href="https://www.instagram.com/recover_clinic" target="_blank" rel="noopener">Instagram</a></li></ul>
+    <ul class="footer-links"><li><a href="#">개인정보처리방침</a></li><li><a href="#">이용약관</a></li><li><a href="#">의료광고심의필</a></li><li><a href="https://www.instagram.com/recover_clinic" target="_blank" rel="noopener">Instagram</a></li></ul>
+  </div>
+  <div class="footer-legal">
+    <div class="footer-legal-left">
+      <p class="footer-biz">대표자 한정우 · 사업자등록번호 000-00-00000<br>서울특별시 서초구 서초동 · TEL 02-000-0000</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://search.naver.com/search.naver?query=리커버한의원+서초" target="_blank" rel="noopener" class="footer-review-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+        네이버 후기 4.9
+      </a>
+      <a href="#" class="footer-review-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        의료광고심의 제2026-000호
+      </a>
+    </div>
   </div>
 </footer>
 
@@ -1772,6 +2157,8 @@ if(consultNext)consultNext.addEventListener('click',()=>{
   setConsultStep(1)});
 if(consultBack)consultBack.addEventListener('click',()=>setConsultStep(0));
 if(consultForm)consultForm.addEventListener('submit',e=>{e.preventDefault();
+  const agree=document.getElementById('cAgree');
+  if(agree&&!agree.checked){shakeEl(agree.closest('.consult-consent'));return}
   const btn=document.getElementById('consultSubmit');
   btn.classList.add('sent');btn.textContent='✓ 신청 완료';
   setTimeout(()=>{btn.classList.remove('sent');btn.textContent='상담 신청';
@@ -1812,6 +2199,33 @@ if(treatFeatured&&window.matchMedia('(hover:hover)').matches){
     treatFeatured.style.transform=`perspective(1200px) rotateY(${(x*2).toFixed(2)}deg) rotateX(${(-y*2).toFixed(2)}deg) translateY(-3px)`});
   treatFeatured.addEventListener('mouseleave',()=>{
     treatFeatured.style.transition='';treatFeatured.style.transform=''})}
+
+/* ═══ 11TH PASS — B/A INTERACTIVE ═══ */
+document.querySelectorAll('.ba-img-wrap').forEach(w=>{
+  if(w.querySelector('.ba-divider'))return;
+  const lb=document.createElement('span');lb.className='ba-label ba-label-b';lb.textContent='Before';
+  const la=document.createElement('span');la.className='ba-label ba-label-a';la.textContent='After';
+  const sp=document.createElement('span');sp.className='ba-spotlight';
+  const dv=document.createElement('span');dv.className='ba-divider';
+  const hn=document.createElement('span');hn.className='ba-compare-hint';
+  hn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 7L3 12l5 5M16 7l5 5-5 5M3 12h18"/></svg>좌우로 비교해 보세요';
+  w.appendChild(lb);w.appendChild(la);w.appendChild(sp);w.appendChild(dv);w.appendChild(hn);
+});
+if(window.matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.ba-card').forEach(card=>{
+    const wrap=card.querySelector('.ba-img-wrap'),spot=card.querySelector('.ba-spotlight'),div=card.querySelector('.ba-divider'),lb=card.querySelector('.ba-label-b'),la=card.querySelector('.ba-label-a');
+    if(!wrap||!spot||!div)return;
+    card.addEventListener('mousemove',e=>{
+      const r=wrap.getBoundingClientRect();
+      const x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+      spot.style.setProperty('--sx',(x*100).toFixed(1)+'%');
+      const px=Math.max(18,Math.min(82,x*100));
+      div.style.left=px+'%';
+      if(lb&&la){lb.style.opacity=x>.5?'.55':'1';la.style.opacity=x<.5?'.55':'1'}
+    });
+    card.addEventListener('mouseleave',()=>{div.style.left='';if(lb)lb.style.opacity='';if(la)la.style.opacity=''});
+  });
+}
 </script>
 </body>
 </html>
