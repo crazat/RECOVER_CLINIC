@@ -1,2 +1,4 @@
 *.docx
 로고후보/
+.firebase/
+firebase-debug.log

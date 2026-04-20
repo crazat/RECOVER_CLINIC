@@ -164,5 +164,19 @@ python -m http.server 8094 --bind 0.0.0.0
 # http://localhost:8094/index.html
 ```
 
+## 배포 (Firebase Hosting)
+- 플랫폼: **Firebase Hosting** (Google Cloud Spark 무료 플랜)
+- Google 계정: `crazat8911@gmail.com`
+- 프로젝트 ID: `recover-clinic-kr`
+- Firebase 콘솔: https://console.firebase.google.com/project/recover-clinic-kr/overview
+- 배포 URL (기본): https://recover-clinic-kr.web.app · https://recover-clinic-kr.firebaseapp.com
+- 커스텀 도메인: **recover-clinic.kr** (가비아 등록, 한정우 명의)
+- 설정 파일: `firebase.json` (public=`.`, CLAUDE.md/scraps/_check/screenshots/original.html/memory 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr)
+- 가비아 DNS 레코드 (recover-clinic.kr 루트):
+  - A @ → `199.36.158.100` (TTL 1800)
+  - TXT @ → `hosting-site=recover-clinic-kr` (TTL 600)
+- 배포 명령: `firebase deploy --only hosting` (로컬에 `firebase-tools` 설치 필요, `crazat8911` 계정 로그인 상태)
+- SSL 인증서: Firebase가 자동 발급·갱신 (커스텀 도메인 DNS 검증 완료 후)
+
 ## 콘텐츠 언어
 모든 콘텐츠는 한국어 (Korean).
