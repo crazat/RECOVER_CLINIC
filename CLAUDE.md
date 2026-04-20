@@ -6,12 +6,13 @@
 
 ## 기술 스택
 - 단일 HTML 파일 (`index.html`) — 순수 CSS + Vanilla JS (프레임워크 없음)
-- Google Fonts CDN: Playfair Display, Noto Serif KR, Noto Sans KR
+- Google Fonts CDN: **Fraunces**(디스플레이 주서체), Playfair Display, Noto Serif KR, Noto Sans KR
 - Canvas 기반 골드 뉴런 네트워크 애니메이션
 - IntersectionObserver 스크롤 reveal + 카운터 애니메이션
-- JS Canvas API를 이용한 PNG 로고 배경 제거 (`removeLogoBg` 함수)
-- JSON-LD 구조화 데이터 (MedicalClinic schema)
+- JS Canvas API를 이용한 PNG 로고 배경 제거 (`removeLogoBg` 함수) — 네비/푸터 로고에만 적용, 히어로 엠블럼은 사전 처리본(PNG)을 직접 사용
+- JSON-LD 구조화 데이터 (MedicalClinic schema + `aggregateRating` 4.9★/387 + 샘플 `review` 3건)
 - Open Graph 메타태그 (카카오/SNS 공유 최적화)
+- **디자인 배리언트 시스템** (`data-variant` on `<html>`): heritage(기본) / clinical / botanical 세 가지 테마 + 라디우스(sharp/soft/round) + 밀도(comfy/compact/spacious) 노브, localStorage 영속
 
 ## 브랜드
 - 브랜딩: RE:COVER (R 엠블럼 + E:COVER 텍스트, 히어로 드롭캡 스타일)
@@ -23,27 +24,42 @@
 ## 로고 이미지
 - 네비/푸터 로고: `로고 이미지/Gemini_Generated_Image_txxt28txxt28txxt.png` (보타니컬 세리프 워드마크)
 - R 엠블럼: `로고 이미지/Gemini_Generated_Image_vofdy6vofdy6vofd.png` (섹션 구분자, 푸터)
-- 히어로 R 엠블럼: `로고 이미지/R_emblem_original.png` (Python PIL 전처리: 65.5% 높이 크롭 + 배경 제거 + 자동 트림)
+- 히어로 R 엠블럼: `로고 이미지/R_emblem_original.png` (Python PIL 전처리: 65.5% 높이 크롭 + 배경 제거 + 자동 트림, JS 배경 제거 불필요)
+- 히어로 엠블럼 대안: `로고 이미지/R_emblem_forest.png`(포레스트 톤 사전 처리본, 현재 미사용 — 스왑 대기)
 - 파비콘: `로고 이미지/favicon_R_64.png` (64x64), `로고 이미지/favicon_R_180.png` (180x180 Apple Touch)
-- 로고 PNG 배경 제거: JS Canvas 픽셀 조작 (R>218, G>208, B>198 → alpha=0)
+- 로고 PNG 배경 제거: JS Canvas 픽셀 조작 (R>218, G>208, B>198 → alpha=0) — 네비/푸터 워드마크에만 적용
 
 ## 페이지 섹션 구조
 1. Hero — RE:COVER 브랜드, CTA, Canvas 뉴런 네트워크, 보타니컬 브랜치/바인
 2. Values — 핵심가치 3개 (Recover, Natural, Precision)
-3. Emblem Divider — R 엠블럼 구분자 (2개소)
-4. Doctor — 원장 소개 (한정우 원장, 다크그린 배경, clip-path 커튼 리빌), 영문 서명(Dr. Han Jung-woo)
-5. Treatments — 새살침(시그니처, 3D tilt) + 4개 시술 카드
-6. Compare — "왜 리커버인가" 비교 테이블 (일반 클리닉 vs 리커버)
-7. Process — 4단계 진료 프로세스 (골드 커넥터 + dot fill)
-8. Precision — AI 안면 분석, 듀얼 스캔 라인, 데이터 기반 진단
-9. Trust Bar — 학회/대학 자격 텍스트 바 (경희대, 4개 학회, 한프리딕트)
-10. Stats — 숫자 카운터 (15년+, 12000+, 98%, 4800+, scale 입장 + 골드 flash)
-11. Before/After Gallery — 12개 실제 치료 사례 (드래그+휠 스크롤 + 좌우 화살표)
-12. Reviews — 환자 후기 10개 (실제 데이터, 드래그+휠 스크롤 + 좌우 화살표)
-13. FAQ — 아코디언 5개 Q&A (CSS counter, 골드라인 sweep)
-14. Consult Form — 2스텝 상담 신청 (이름/연락처/고민유형 → 상담방식/시간대/메모, shake 검증)
-15. Contact — 연락처, 진료시간, 지도 플레이스홀더 (pulse ring)
-16. Footer — 골드 언더라인 sweep, 그래디언트 배경
+3. **Founder's Letter** — "할머니의 거친 손" 브랜드 기원 스토리 + 철학 인용구
+4. **Breathe-1** — 보타니컬 SVG 호흡 스페이서
+5. Doctor — 원장 소개 (한정우 원장, 다크그린 배경, clip-path 커튼 리빌), 영문 서명(Dr. Han Jung-woo)
+6. **Case Study** — 원장 해설 3건 실제 케이스 (단계별 임상 판단 12개 결정 지점)
+7. **AI Self Diagnosis** — 4문항 인터랙티브 피부 자가 진단 → 개인 맞춤 회복 경로
+8. **Failed-Elsewhere** — "72% 타 병원 실패 후 오심" 안심 메시지 섹션
+9. **Science** — 한의 피부재생 메커니즘 3기둥 교육 섹션
+10. **Breathe-2** — 보타니컬 SVG 호흡 스페이서
+11. Treatments — 새살침(시그니처, 3D tilt) + 4개 시술 카드 + **가격 투명성 토글 패널** (데스크톱 아코디언 / 모바일 바텀시트)
+12. Compare — "왜 리커버인가" 비교 테이블 (일반 클리닉 vs 리커버)
+13. Process — 4단계 진료 프로세스 (골드 커넥터 + dot fill)
+14. **Recovery Timeline** — 시술 후 90일 회복 여정 인터랙티브 타임라인 (클릭 가능 칩 + 일자별 패널)
+15. **Time Essay** — "왜 6개월인가, 더 빨리는 왜 안 되는가" 에세이 섹션
+16. Precision — AI 안면 분석, 듀얼 스캔 라인, 데이터 기반 진단
+17. Trust Bar — 학회/대학 자격 텍스트 바 (경희대, 4개 학회, 한프리딕트)
+18. Stats — 숫자 카운터 (15년+, 12000+, 98%, 4800+, scale 입장 + 골드 flash)
+19. Before/After Gallery — 12개 실제 치료 사례 (드래그+휠 스크롤 + 좌우 화살표)
+20. **Atmosphere** — 감각 우선 포지셔닝 ("향 먼저") 공간/분위기 섹션
+21. Reviews — 환자 후기 10개 (실제 데이터, 드래그+휠 스크롤 + 좌우 화살표)
+22. **Letter** — 환자 서신 형식 에세이 후기
+23. FAQ — 아코디언 5개 Q&A (CSS counter, 골드라인 sweep)
+24. Consult Form — 2스텝 상담 신청 (이름/연락처/고민유형 → 상담방식/시간대/메모, shake 검증) + **Live Slots**(실시간 예약 가능 시간 그리드, 긴급 배지 펄스)
+25. **Breathe-3** — 보타니컬 SVG 호흡 스페이서
+26. Contact — 연락처, 진료시간, 지도 플레이스홀더 (pulse ring)
+27. **Visit Checklist** — 내원 전 준비 체크리스트 4항목 + 따뜻한 마무리 서명
+28. **Closing** — 폐막 섹션
+29. Footer — 골드 언더라인 sweep, 그래디언트 배경
+30. Emblem Divider — R 엠블럼 구분자 (섹션 간 배치)
 
 ## Before/After 갤러리 이미지
 규림한의원(동일 원장) 실적에서 피부 관련 12개 사례를 가져옴:
@@ -75,8 +91,22 @@
 - 네비 활성 섹션 추적 (IntersectionObserver)
 - 리뷰/BA 갤러리 드래그 스크롤 + 마우스 휠→가로 스크롤 변환 + 좌우 화살표 내비게이션
 - 2스텝 상담 폼 (슬라이드 전환 + 프로그레스 도트 + 유효성 shake 피드백)
+- **Tweaks Panel** (우측 하단 플로팅) — 3개 컬러 배리언트 스와치 + 라디우스/밀도 노브, localStorage 영속 (`data-variant`/`data-radius`/`data-density` on `<html>`)
+- **Price Transparency** — 시술 카드 내 인라인 `.price-toggle` 아코디언 (데스크톱) / 모바일 바텀시트 오버레이 (`openPriceSheet`/`closePriceSheet`)
+- **Live Slots** — 실시간 예약 가능 시간 그리드 (일/시간/태그/긴급 상태, 펄스 애니메이션)
+- **Recovery Timeline** — 클릭 가능 타임라인 칩 + 일자별 상세 패널 fade-in (`updateChip()`, `setIdx()`, width% 채움)
+- **Case Study 인터랙션** — 원장 해설 케이스 3건, 12개 단계별 결정 지점 마커
+- **AI Self Diagnosis** — 4문항 선택형 자가 진단 플로우 → 개인 맞춤 경로 제시
+- **Sticky Context Chip** — 컨텍스트 인지 예약 프롬프트 (스크롤 위치 기반 CTA)
+- **Ceremony Scroll Fix** — 페이지 로드 시 `data-ceremony` 속성으로 4.3s 조율된 타이밍 연출
+- **Paper Grain Overlay** — 보타니컬 배리언트에서 42px/56px 방사형 그래디언트 질감
 
-## 디자인 시스템 (10차 패스 + 미적/신뢰 고도화)
+## 디자인 시스템 (배리언트 시스템 + 피처 기반 CSS)
+### 배리언트 (`data-variant` on `<html>`)
+- **heritage** (기본): Forest × Gold, 세리프 한방 럭셔리
+- **clinical**: Ivory/Graphite/Sage, 미니멀 에디토리얼 (`#1f2a24`, `#8b7b55`)
+- **botanical**: Deeper Forest × Warm Clay, 스파 오가닉 + 페이퍼 그레인 질감 (`#2a4f3a`, `#b8733e`, `#12321f`)
+- 추가 노브: `data-radius` (sharp/soft/round) · `data-density` (comfy/compact/spacious) · `--pad-scale` 토큰
 ### 애니메이션 & 인터랙션
 - 페이지 로드: body opacity fade-in (럭셔리 커튼 오프닝)
 - 히어로: blur 입장, 브랜드 scale reveal, eyebrow letter-spacing 입장, 7요소 패럴랙스 scroll-out, `본래의 힘` Playfair Italic 강조
@@ -100,11 +130,13 @@
 - 네비: 활성 섹션 추적, CTA 골드 글로우 3회 pulse
 - 전역: 버튼 radial highlight, focus-visible 골드 아웃라인, text-wrap:balance
 ### 타이포그래피
+- `--font-display`: **Fraunces**(1순위) → Noto Serif KR → Georgia (opsz/ital 축 활용)
 - 디스플레이 서체에 OpenType `kern`/`liga` 활성화
 - 히어로/상담폼 제목에 Playfair Display Italic 강조 (em 태그)
 ### CSS 구성
-- 총 10차 패스 블록 (`/* ═══ NTH PASS ═══ */` 패턴)
-- `/* Print */` 블록 직전에 각 패스 CSS 삽입 (일관된 삽입 지점)
+- **피처 기반 블록 구성** (`/* ═══ FEATURE ═══ */` 패턴) — 과거 "N차 패스" 누적 방식에서 재구성
+- 주요 블록: Tweaks Panel, NAV, HERO, BUTTONS, UTILITIES, VALUES, PHILOSOPHY, TREATMENTS, PRICE TRANSPARENCY, PRICE BOTTOM SHEET, LIVE SLOTS, RECOVERY TIMELINE, DOCTOR CASE STUDY, SCIENCE, FAILED-ELSEWHERE, AI SELF DIAGNOSIS, STICKY CONTEXT CHIP, PROCESS, PRECISION 등
+- `/* Print */` 블록을 파일 말미 배치로 유지
 
 ## 네비게이션
 대표 진료 | 원장 소개 | 치료 후기 | 자주 묻는 질문 | 상담 예약(CTA)
