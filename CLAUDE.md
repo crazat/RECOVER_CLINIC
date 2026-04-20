@@ -165,18 +165,21 @@ python -m http.server 8094 --bind 0.0.0.0
 ```
 
 ## 배포 (Firebase Hosting)
+- 상태: **라이브** — https://recover-clinic.kr/ (HTTPS, SSL 발급 완료, 2026-04-20 서비스 개시)
 - 플랫폼: **Firebase Hosting** (Google Cloud Spark 무료 플랜)
 - Google 계정: `crazat8911@gmail.com`
 - 프로젝트 ID: `recover-clinic-kr`
 - Firebase 콘솔: https://console.firebase.google.com/project/recover-clinic-kr/overview
 - 배포 URL (기본): https://recover-clinic-kr.web.app · https://recover-clinic-kr.firebaseapp.com
-- 커스텀 도메인: **recover-clinic.kr** (가비아 등록, 한정우 명의)
+- 커스텀 도메인: **recover-clinic.kr** (가비아 등록, 한정우 명의, HTTP→HTTPS 자동 리다이렉트)
 - 설정 파일: `firebase.json` (public=`.`, CLAUDE.md/scraps/_check/screenshots/original.html/memory 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr)
 - 가비아 DNS 레코드 (recover-clinic.kr 루트):
   - A @ → `199.36.158.100` (TTL 1800)
   - TXT @ → `hosting-site=recover-clinic-kr` (TTL 600)
 - 배포 명령: `firebase deploy --only hosting` (로컬에 `firebase-tools` 설치 필요, `crazat8911` 계정 로그인 상태)
-- SSL 인증서: Firebase가 자동 발급·갱신 (커스텀 도메인 DNS 검증 완료 후)
+- SSL 인증서: Firebase가 자동 발급·갱신
+- 엣지: Fastly/Varnish (한국 ICN POP, `Cache-Control: max-age=3600`)
+- **엣지 캐시 무효화 팁**: 도메인 최초 연결 직후 "Site Not Found" 응답이 엣지에 캐시될 수 있음 — `firebase deploy --only hosting` 재실행으로 무효화 (실제로 이 사이트 배포 중 발생)
 
 ## 콘텐츠 언어
 모든 콘텐츠는 한국어 (Korean).
