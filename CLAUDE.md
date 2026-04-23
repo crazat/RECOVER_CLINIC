@@ -35,7 +35,7 @@
 3. **Founder's Letter** — "할머니의 거친 손" 브랜드 기원 스토리 + 철학 인용구
 4. **Breathe-1** — 보타니컬 SVG 호흡 스페이서
 5. Doctor — 원장 소개 (한정우 원장, 다크그린 배경, clip-path 커튼 리빌), 영문 서명(Dr. Han Jung-woo)
-6. **Case Study** — 원장 해설 3건 실제 케이스 (단계별 임상 판단 12개 결정 지점)
+6. **Case Study** — 원장 해설 3건 실제 케이스 (단계별 임상 판단 12개 결정 지점 + **AI 스캔 시각화 카드** 3건: 얼굴 히트맵 SVG + Before/After 4지표 정량 점수)
 7. **AI Self Diagnosis** — 4문항 인터랙티브 피부 자가 진단 → 개인 맞춤 회복 경로
 8. **Failed-Elsewhere** — "72% 타 병원 실패 후 오심" 안심 메시지 섹션
 9. **Science** — 한의 피부재생 메커니즘 3기둥 교육 섹션
@@ -96,6 +96,8 @@
 - **Live Slots** — 실시간 예약 가능 시간 그리드 (일/시간/태그/긴급 상태, 펄스 애니메이션)
 - **Recovery Timeline** — 클릭 가능 타임라인 칩 + 일자별 상세 패널 fade-in (`updateChip()`, `setIdx()`, width% 채움)
 - **Case Study 인터랙션** — 원장 해설 케이스 3건, 12개 단계별 결정 지점 마커
+- **AI 스캔 시각화** (`.cs-ai-scan`) — Case Study 3건에 Before/After 얼굴 히트맵 SVG + 4지표 점수 바(장벽/색소/염증/결점 등 케이스별 맞춤) + HPREDICT SCAN v2.4 워터마크. 한프리딕트 엔진 크레딧 강조
+- **Firestore 상담 수집** — Firebase Firestore `consultations` 컬렉션에 폼 데이터 저장. Web SDK modular v10.12.5 CDN import, `window.__submitConsult()` helper로 submit handler에서 호출. 보안 규칙: create only, read/update/delete 전면 금지, 필드 타입·사이즈 validation
 - **AI Self Diagnosis** — 4문항 선택형 자가 진단 플로우 → 개인 맞춤 경로 제시
 - **Sticky Context Chip** — 컨텍스트 인지 예약 프롬프트 (스크롤 위치 기반 CTA)
 - **Ceremony Scroll Fix** — 페이지 로드 시 `data-ceremony` 속성으로 4.3s 조율된 타이밍 연출
@@ -173,11 +175,14 @@ python -m http.server 8094 --bind 0.0.0.0
 - Firebase 콘솔: https://console.firebase.google.com/project/recover-clinic-kr/overview
 - 배포 URL (기본): https://recover-clinic-kr.web.app · https://recover-clinic-kr.firebaseapp.com
 - 커스텀 도메인: **recover-clinic.kr** (가비아 등록, 한정우 명의, HTTP→HTTPS 자동 리다이렉트)
-- 설정 파일: `firebase.json` (public=`.`, CLAUDE.md/scraps/_check/screenshots/original.html/memory 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr)
+- 설정 파일: `firebase.json` (hosting + firestore 섹션, public=`.`, CLAUDE.md/scraps/_check/screenshots/original.html/memory/firestore.rules/firestore.indexes.json 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr), `firestore.rules`(consultations create-only + field validation), `firestore.indexes.json`(현재 인덱스 불필요)
+- Firebase Web App: `1:541834096590:web:84f3046b32b4f342bbc59f` (RECOVER Clinic Web)
+- Firestore: **Standard 버전**, Location `asia-northeast3` (Seoul), DB ID `(default)`
+- 상담 데이터 조회: https://console.firebase.google.com/project/recover-clinic-kr/firestore/data/~2Fconsultations — 원장이 콘솔에서 직접 열람 (웹에서는 read 불가)
 - 가비아 DNS 레코드 (recover-clinic.kr 루트):
   - A @ → `199.36.158.100` (TTL 1800)
   - TXT @ → `hosting-site=recover-clinic-kr` (TTL 600)
-- 배포 명령: `firebase deploy --only hosting` (로컬에 `firebase-tools` 설치 필요, `crazat8911` 계정 로그인 상태)
+- 배포 명령: `firebase deploy --only hosting` (호스팅만) · `firebase deploy --only firestore,hosting` (규칙까지) · 로컬에 `firebase-tools` 설치 필요, `crazat8911` 계정 로그인 상태
 - SSL 인증서: Firebase가 자동 발급·갱신
 - 엣지: Fastly/Varnish (한국 ICN POP, `Cache-Control: max-age=3600`)
 - **엣지 캐시 무효화 팁**: 도메인 최초 연결 직후 "Site Not Found" 응답이 엣지에 캐시될 수 있음 — `firebase deploy --only hosting` 재실행으로 무효화 (실제로 이 사이트 배포 중 발생)

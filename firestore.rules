@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /consultations/{docId} {
+      allow read, update, delete: if false;
+      allow create: if isValidConsult(request.resource.data);
+    }
+
+    function isValidConsult(data) {
+      return data.keys().hasOnly(['name', 'phone', 'concern', 'method', 'timeslot', 'memo', 'createdAt', 'userAgent', 'referrer'])
+        && data.keys().hasAll(['name', 'phone', 'createdAt'])
+        && data.name is string && data.name.size() >= 1 && data.name.size() <= 50
+        && data.phone is string && data.phone.size() >= 7 && data.phone.size() <= 20
+        && (!('concern' in data) || (data.concern is string && data.concern.size() <= 50))
+        && (!('method' in data) || (data.method is string && data.method.size() <= 30))
+        && (!('timeslot' in data) || (data.timeslot is string && data.timeslot.size() <= 30))
+        && (!('memo' in data) || (data.memo is string && data.memo.size() <= 500))
+        && (!('userAgent' in data) || (data.userAgent is string && data.userAgent.size() <= 300))
+        && (!('referrer' in data) || (data.referrer is string && data.referrer.size() <= 300))
+        && data.createdAt is timestamp;
+    }
+  }
+}
