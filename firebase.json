@@ -18,6 +18,7 @@
       "scraps/**",
       "_check/**",
       "screenshots/**",
+      "uploads/**",
       "original.html",
       "memory/**"
     ],

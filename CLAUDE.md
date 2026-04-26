@@ -2,64 +2,72 @@
 
 ## 프로젝트 개요
 강남구 역삼동 부일타워(선릉역 7번 출구 도보 1분) 소재 한의 피부재생 전문 클리닉 "리커버한의원"의 프리미엄 홈페이지.
-"자연 재생 × 럭셔리" 컨셉의 단일 HTML 파일 기반 프로덕션 사이트. 개원 전 상태.
+"자연 재생 × 럭셔리" 컨셉의 단일 HTML 파일 기반 프로덕션 사이트. **20대~50대 남성·여성 균형 타겟** — 감성형(Gentle) / 데이터형(Focused) 듀얼 페르소나로 전 연령·성별 결정자 모두에 대응.
 
 ## 기술 스택
-- 단일 HTML 파일 (`index.html`) — 순수 CSS + Vanilla JS (프레임워크 없음)
-- Google Fonts CDN: **Fraunces**(디스플레이 주서체), Playfair Display, Noto Serif KR, Noto Sans KR
+- 단일 HTML 파일 (`index.html`, 약 8,500 라인) — 순수 CSS + Vanilla JS (프레임워크 없음)
+- Google Fonts CDN: **Fraunces**(디스플레이 주서체), Playfair Display, Noto Serif KR, Noto Sans KR, **IBM Plex Mono**(데이터/측정 라벨용 모노스페이스)
 - Canvas 기반 골드 뉴런 네트워크 애니메이션
 - IntersectionObserver 스크롤 reveal + 카운터 애니메이션
 - JS Canvas API를 이용한 PNG 로고 배경 제거 (`removeLogoBg` 함수) — 네비/푸터 로고에만 적용, 히어로 엠블럼은 사전 처리본(PNG)을 직접 사용
 - JSON-LD 구조화 데이터 (MedicalClinic schema + `aggregateRating` 4.9★/387 + 샘플 `review` 3건)
 - Open Graph 메타태그 (카카오/SNS 공유 최적화)
 - **디자인 배리언트 시스템** (`data-variant` on `<html>`): heritage(기본) / clinical / botanical 세 가지 테마 + 라디우스(sharp/soft/round) + 밀도(comfy/compact/spacious) 노브, localStorage 영속
+- **페르소나 시스템** (`data-persona` on `<html>`): gentle(섬세한 회복, 기본) / focused(집중적 개선, 데이터 드리븐) — 히어로 헤드라인·CTA·서브카피·악센트 색상 동적 스왑 (`data-gentle`/`data-focused`/`data-gentle-label`/`data-focused-label` 속성)
 
 ## 브랜드
 - 브랜딩: RE:COVER (R 엠블럼 + E:COVER 텍스트, 히어로 드롭캡 스타일)
 - 엠블럼 텍스트 색상: `#254d35` (엠블럼 내 녹색과 일치)
 - Forest `#2D5F3E`, Sage `#4A8C5E`, Sprout `#A8C5A0`, Mist `#E8F0E4`, Cream `#F7F5F0`
 - Gold `#C4A265`, Gold Light `#D4B87A`, Gold Dark `#A88B4A`
-- Charcoal `#1A1A1A`
+- Charcoal `#1A1A1A`, Charcoal Soft `#3D3D3D`, Charcoal Mid `#5A5A5A` (데이터/메타 라벨)
+- Focused 페르소나 악센트: Graphite `#3a4a50` (남성·실용주의 톤, 골드 채도 -25% 시프트)
 
 ## 로고 이미지
-- 네비/푸터 로고: `로고 이미지/Gemini_Generated_Image_txxt28txxt28txxt.png` (보타니컬 세리프 워드마크)
-- R 엠블럼: `로고 이미지/Gemini_Generated_Image_vofdy6vofdy6vofd.png` (섹션 구분자, 푸터)
-- 히어로 R 엠블럼: `로고 이미지/R_emblem_original.png` (Python PIL 전처리: 65.5% 높이 크롭 + 배경 제거 + 자동 트림, JS 배경 제거 불필요)
-- 히어로 엠블럼 대안: `로고 이미지/R_emblem_forest.png`(포레스트 톤 사전 처리본, 현재 미사용 — 스왑 대기)
-- 파비콘: `로고 이미지/favicon_R_64.png` (64x64), `로고 이미지/favicon_R_180.png` (180x180 Apple Touch)
+- 폴더 경로: **`logo/`** (구 `로고 이미지/`에서 영문 디렉토리로 이전 — Firebase Hosting URL 안정성 확보)
+- 네비/푸터 로고: `logo/Gemini_Generated_Image_txxt28txxt28txxt.png` (보타니컬 세리프 워드마크)
+- R 엠블럼: `logo/Gemini_Generated_Image_vofdy6vofdy6vofd.png` (섹션 구분자, 푸터)
+- 히어로 R 엠블럼: `logo/R_emblem_original.png` (Python PIL 전처리: 65.5% 높이 크롭 + 배경 제거 + 자동 트림, JS 배경 제거 불필요)
+- 파비콘: `logo/favicon_R_64.png` (64x64), `logo/favicon_R_180.png` (180x180 Apple Touch)
+- 원장 사진: `logo/profile.webp` / `logo/profile.gif`
 - 로고 PNG 배경 제거: JS Canvas 픽셀 조작 (R>218, G>208, B>198 → alpha=0) — 네비/푸터 워드마크에만 적용
 
 ## 페이지 섹션 구조
-1. Hero — RE:COVER 브랜드, CTA, Canvas 뉴런 네트워크, 보타니컬 브랜치/바인
-2. Values — 핵심가치 3개 (Recover, Natural, Precision)
-3. **Founder's Letter** — "할머니의 거친 손" 브랜드 기원 스토리 + 철학 인용구
-4. **Breathe-1** — 보타니컬 SVG 호흡 스페이서
+> P1-5 다이어트 패스에서 Breathe-1·Breathe-3 섹션을 제거하고 Founder's Letter를 Doctor·Case Study 후반부로 재배치하여, 결정자가 0.5스크롤 안에 결과·가격·시간을 확인 가능하도록 재구성.
+
+1. Hero — RE:COVER 브랜드, **페르소나 토글**(Gentle/Focused 듀얼 모드), CTA, Canvas 뉴런 네트워크, **Hero Data Strip**(4칩 측정·자격 시그널: 학회 6곳·HAN PREDICT·임상례 12,000+·측정 정밀도 ±2.3%), Trust Stars(4.9/387)
+2. **Guarantee Strip** — 4항목 리스크 해소 배너(상담 무료·당일 콜백 가능·위치 확인·프로토콜 투명성)
+3. **Result Slice (At a Glance)** — 0.5스크롤 결정 패널: 결과 4카드(20대 여대생/30대 남직장인/40대 여교사/50대 여주부, **남/여/전체 토글 필터**) + 가격 3카드(A 60만~/B 90만~/C 220만~) + 시간 3배지(40~60분·당일 복귀·평균 12주) + **Data Pickup Zone**(5지표 모노스페이스 데이터 카드)
+4. Values — 핵심가치 3개 (Recover, Natural, Precision)
 5. Doctor — 원장 소개 (한정우 원장, 다크그린 배경, clip-path 커튼 리빌), 영문 서명(Dr. Han Jung-woo)
-6. **Case Study** — 원장 해설 3건 실제 케이스 (단계별 임상 판단 12개 결정 지점 + **AI 스캔 시각화 카드** 3건: 얼굴 히트맵 SVG + Before/After 4지표 정량 점수)
-7. **AI Self Diagnosis** — 4문항 인터랙티브 피부 자가 진단 → 개인 맞춤 회복 경로
-8. **Failed-Elsewhere** — "72% 타 병원 실패 후 오심" 안심 메시지 섹션
-9. **Science** — 한의 피부재생 메커니즘 3기둥 교육 섹션
-10. **Breathe-2** — 보타니컬 SVG 호흡 스페이서
-11. Treatments — 새살침(시그니처, 3D tilt) + 4개 시술 카드 + **가격 투명성 토글 패널** (데스크톱 아코디언 / 모바일 바텀시트)
-12. Compare — "왜 리커버인가" 비교 테이블 (일반 클리닉 vs 리커버)
-13. Process — 4단계 진료 프로세스 (골드 커넥터 + dot fill)
-14. **Recovery Timeline** — 시술 후 90일 회복 여정 인터랙티브 타임라인 (클릭 가능 칩 + 일자별 패널)
-15. **Time Essay** — "왜 6개월인가, 더 빨리는 왜 안 되는가" 에세이 섹션
-16. Precision — AI 안면 분석, 듀얼 스캔 라인, 데이터 기반 진단
-17. Trust Bar — 학회/대학 자격 텍스트 바 (경희대, 4개 학회, 한프리딕트)
-18. Stats — 숫자 카운터 (15년+, 12000+, 98%, 4800+, scale 입장 + 골드 flash)
-19. Before/After Gallery — 12개 실제 치료 사례 (드래그+휠 스크롤 + 좌우 화살표)
-20. **Atmosphere** — 감각 우선 포지셔닝 ("향 먼저") 공간/분위기 섹션
-21. Reviews — 환자 후기 10개 (여성 7 · 남성 3 균형, 드래그+휠 스크롤 + 좌우 화살표)
-22. **Letter** — 환자 서신 형식 에세이 후기
-23. FAQ — 아코디언 5개 Q&A (CSS counter, 골드라인 sweep)
-24. Consult Form — 2스텝 상담 신청 (이름/연락처/고민유형 → 상담방식/시간대/메모, shake 검증) + **Live Slots**(실시간 예약 가능 시간 그리드, 긴급 배지 펄스)
-25. **Breathe-3** — 보타니컬 SVG 호흡 스페이서
-26. Contact — 연락처, 진료시간, 지도 플레이스홀더 (pulse ring)
-27. **Visit Checklist** — 내원 전 준비 체크리스트 4항목 + 따뜻한 마무리 서명
-28. **Closing** — 폐막 섹션
-29. Footer — 골드 언더라인 sweep, 그래디언트 배경
-30. Emblem Divider — R 엠블럼 구분자 (섹션 간 배치)
+6. **BA Preview** — Doctor 신뢰 전이 직후 시각적 결과 미리보기 (연령 라벨 케이스)
+7. **Case Study** — 원장 해설 3건 실제 케이스 (42F·27M·51F 명시적 연령·성별 라벨, 단계별 임상 판단 12개 결정 지점 + **AI 스캔 시각화 카드** 3건: 얼굴 히트맵 SVG + Before/After 4지표 정량 점수)
+8. **Founder's Letter** — "할머니의 거친 손" 브랜드 기원 스토리 + 철학 인용구 (Doctor·Case 다음 매거진 스프레드 후반부 배치)
+9. **AI Self Diagnosis** — 4문항 인터랙티브 피부 자가 진단 → 개인 맞춤 회복 경로
+10. **Failed-Elsewhere** — "72% 타 병원 실패 후 오심" 안심 메시지 섹션
+11. **Science** — 한의 피부재생 메커니즘 3기둥 교육 섹션
+12. **Breathe-2** — 유일한 호흡 스페이서 (Science → Treatments 사이, 다크 톤, "서두르지 않는 회복이 가장 빠른 길입니다")
+13. Treatments — 새살침(시그니처, 3D tilt) + 4개 시술 카드 + **가격 투명성 토글 패널** (데스크톱 아코디언 / 모바일 바텀시트)
+14. Compare — "왜 리커버인가" 비교 테이블 (일반 클리닉 vs 리커버)
+15. **Needle Vitrine** — 새살침 전시실: SVG 기반 침 샤프트·허브·그립 3D 시각화, 기술·정밀 포지셔닝 (남성·실용주의 페르소나 어필)
+16. Process — 4단계 진료 프로세스 (골드 커넥터 + dot fill)
+17. **Recovery Timeline** — 시술 후 90일 회복 여정 인터랙티브 타임라인 (클릭 가능 칩 + 일자별 패널)
+18. **Time Essay** — "왜 6개월인가, 더 빨리는 왜 안 되는가" 에세이 섹션 + **Essay Expand**(접기/펼치기 토글)
+19. Precision — AI 안면 분석, 듀얼 스캔 라인, 데이터 기반 진단
+20. Trust Bar — 학회/대학 자격 텍스트 바 (경희대, 4개 학회, 한프리딕트)
+21. Stats — Field Notes / Recover Specimen Index 컨텍스트 + 숫자 카운터 (n=12,000±280 표본, scale 입장 + 골드 flash)
+22. Before/After Gallery — 12개 실제 치료 사례 (드래그+휠 스크롤 + 좌우 화살표 + **인터랙티브 BA 슬라이더** 핸들 + **Cinema Feature**(50대 V라인 리프팅 풀스크린 슬라이더))
+23. **Atmosphere** — 감각 우선 포지셔닝 ("향 먼저") 공간/분위기 섹션
+24. **Live Proof Strip** — 실시간 진료 데이터 펄스 배너 (lpDot 스케일 펄스 + lpRing 확장 링)
+25. Reviews — 환자 후기 10개 (여성 7 · 남성 3 균형, 드래그+휠 스크롤 + 좌우 화살표)
+26. **Letter** — 환자 서신 형식 에세이 후기
+27. FAQ — 아코디언 5개 Q&A (CSS counter, 골드라인 sweep)
+28. Consult Form — **3스텝** 상담 신청 (고민 → 연락처 → 일정, 슬라이드 전환 + 프로그레스 도트 + shake 검증) + **Live Slots**(실시간 예약 가능 시간 그리드, 긴급 배지 펄스)
+29. Contact — 연락처, 진료시간, 지도 플레이스홀더 (pulse ring)
+30. **Visit Checklist** — 내원 전 준비 체크리스트 4항목 + 따뜻한 마무리 서명
+31. **Closing** — 폐막 섹션
+32. Footer — 골드 언더라인 sweep, 그래디언트 배경 (봉투 뒷면 모티브)
+33. Emblem Divider — R 엠블럼 구분자 (섹션 간 배치)
 
 ## Before/After 갤러리 이미지
 규림한의원(동일 원장) 실적에서 피부 관련 12개 사례를 가져옴:
@@ -85,22 +93,31 @@
 - 반응형 (1024px, 768px 브레이크포인트)
 - 모바일 햄버거 메뉴 (clip-path 전환 + li stagger)
 - 플로팅 CTA (데스크톱: 전화/카톡/위로 3버튼)
-- 모바일 하단 고정 바 (전화/카톡/네이버톡/간편예약 4버튼, 골드 악센트)
+- 모바일 하단 고정 바 — **2+1 redesign**: primary 예약 CTA + secondary 전화/카톡 (구 4버튼에서 단순화)
 - FAQ 아코디언 토글 (골드라인 + CSS counter 번호)
 - 스크롤 시 플로팅 CTA 표시/숨기기
 - 네비 활성 섹션 추적 (IntersectionObserver)
 - 리뷰/BA 갤러리 드래그 스크롤 + 마우스 휠→가로 스크롤 변환 + 좌우 화살표 내비게이션
-- 2스텝 상담 폼 (슬라이드 전환 + 프로그레스 도트 + 유효성 shake 피드백)
+- **3스텝 상담 폼** (고민 → 연락처 → 일정, 슬라이드 전환 + 프로그레스 도트 + shake 검증)
+- **Persona Toggle** — 히어로 듀얼 모드 스위치(Gentle/Focused). `data-persona` 속성으로 `<html>` 토글, `data-gentle`/`data-focused`/`data-gentle-label`/`data-focused-label` 속성으로 헤드라인·CTA·서브카피 동적 스왑. Focused 모드는 그래파이트 #3a4a50 헤드라인 + 채도 -25% 골드 + "15분 퀵 진단" CTA로 남성·실용주의 결정자 어필
+- **Hero Data Strip** — 4칩 측정·자격 시그널 그리드 (학회/알고리듬/임상례/측정정밀도) — 모노스페이스 숫자, 남성 환자에게 "내 언어"를 첫 화면에서 제공하는 의도
+- **Result Slice + Gender Filter** — 0.5스크롤 결정 패널, 4결과 카드(여3·남1, 20s~50s) + 남/여/전체 토글(`.rs-rt[data-rs-filter]`로 `.rs-hidden` 부여) + 3가격 카드 + 3시간 배지
+- **Data Pickup Zone** — 5지표 모노스페이스 측정 카드 (회복기간·만족도·재방문율·1회시간·다운타임), `[ END · MEASURED ]` 종료 마커
+- **Guarantee Strip** — 4항목 리스크 해소 배너 (cream→ivory 그래디언트, 호버 시 chevron 등장)
+- **BA Slider** — Before/After 인터랙티브 슬라이더 (드래그·클릭·키보드 화살표/Home 키 + 자동 사인파 티저, `.ba-interacted`/`.cinema-touched` 상태 영속). 갤러리 70+ 카드 + Cinema Feature(`#ba-cinema-feat` 풀스크린 50대 V라인 리프팅 케이스)
+- **Needle Vitrine** — 새살침 SVG 전시실 (샤프트·허브·그립 그래디언트 + 3D 효과)
+- **Live Proof Strip** — 실시간 진료 데이터 펄스 배너 (`lpDot` 스케일 0.85↔1.15 + `lpRing` 확장 링 0.6→2.4 페이드)
 - **Tweaks Panel** (우측 하단 플로팅) — 3개 컬러 배리언트 스와치 + 라디우스/밀도 노브, localStorage 영속 (`data-variant`/`data-radius`/`data-density` on `<html>`)
 - **Price Transparency** — 시술 카드 내 인라인 `.price-toggle` 아코디언 (데스크톱) / 모바일 바텀시트 오버레이 (`openPriceSheet`/`closePriceSheet`)
 - **Live Slots** — 실시간 예약 가능 시간 그리드 (일/시간/태그/긴급 상태, 펄스 애니메이션)
 - **Recovery Timeline** — 클릭 가능 타임라인 칩 + 일자별 상세 패널 fade-in (`updateChip()`, `setIdx()`, width% 채움)
-- **Case Study 인터랙션** — 원장 해설 케이스 3건, 12개 단계별 결정 지점 마커
+- **Case Study 인터랙션** — 원장 해설 케이스 3건(42F·27M·51F), 12개 단계별 결정 지점 마커
 - **AI 스캔 시각화** (`.cs-ai-scan`) — Case Study 3건에 Before/After 얼굴 히트맵 SVG + 4지표 점수 바(장벽/색소/염증/결점 등 케이스별 맞춤) + HPREDICT SCAN v2.4 워터마크. 한프리딕트 엔진 크레딧 강조
 - **Firestore 상담 수집** — Firebase Firestore `consultations` 컬렉션에 폼 데이터 저장. Web SDK modular v10.12.5 CDN import, `window.__submitConsult()` helper로 submit handler에서 호출. 보안 규칙: create only, read/update/delete 전면 금지, 필드 타입·사이즈 validation
 - **AI Self Diagnosis** — 4문항 선택형 자가 진단 플로우 → 개인 맞춤 경로 제시
 - **Sticky Context Chip** — 컨텍스트 인지 예약 프롬프트 (스크롤 위치 기반 CTA)
 - **Ceremony Scroll Fix** — 페이지 로드 시 `data-ceremony` 속성으로 4.3s 조율된 타이밍 연출
+- **Signature Upgrades** — 추가 시그니처 레이어: B9 Film Grain Overlay(필름 그레인), B12 Chapter Rail(좌측 챕터 인디케이터), B13 Quiet Mode Toggle(애니메이션 음소거), UP-5 Season Badge(시즌 배지), Essay Expand(접기/펼치기 에세이)
 - **Paper Grain Overlay** — 보타니컬 배리언트에서 42px/56px 방사형 그래디언트 질감
 
 ## 디자인 시스템 (배리언트 시스템 + 피처 기반 CSS)
@@ -109,6 +126,10 @@
 - **clinical**: Ivory/Graphite/Sage, 미니멀 에디토리얼 (`#1f2a24`, `#8b7b55`)
 - **botanical**: Deeper Forest × Warm Clay, 스파 오가닉 + 페이퍼 그레인 질감 (`#2a4f3a`, `#b8733e`, `#12321f`)
 - 추가 노브: `data-radius` (sharp/soft/round) · `data-density` (comfy/compact/spacious) · `--pad-scale` 토큰
+### 페르소나 (`data-persona` on `<html>`)
+- **gentle** (기본): 골드 × 포레스트, Fraunces 이탤릭 강조, "본래의 힘" 감성 메시징 — 여성·전 연령·감성형 결정자 타겟
+- **focused**: 그래파이트 `#3a4a50` 헤드라인 + 채도 -25% 골드 + 모노스페이스 라벨 강조, "정밀 분석·빠른 회복" 데이터 메시징, "15분 퀵 진단" CTA — 남성·20~50대 실용주의·임원층 타겟
+- 페르소나 토글 버튼은 히어로 상단에 위치, localStorage 미영속 (세션 단위)
 ### 애니메이션 & 인터랙션
 - 페이지 로드: body opacity fade-in (럭셔리 커튼 오프닝)
 - 히어로: blur 입장, 브랜드 scale reveal, eyebrow letter-spacing 입장, 7요소 패럴랙스 scroll-out, `본래의 힘` Playfair Italic 강조
@@ -133,11 +154,14 @@
 - 전역: 버튼 radial highlight, focus-visible 골드 아웃라인, text-wrap:balance
 ### 타이포그래피
 - `--font-display`: **Fraunces**(1순위) → Noto Serif KR → Georgia (opsz/ital 축 활용)
+- `--font-mono`: **IBM Plex Mono** → SF Mono → Consolas — 데이터/측정 라벨용, `font-feature-settings: "tnum","zero","ss01"` (Tabular Numbers + Slashed Zero)
+- 본문 font-weight 380(구 300에서 상향, 가독성 개선) + `text-rendering: optimizeLegibility`
 - 디스플레이 서체에 OpenType `kern`/`liga` 활성화
 - 히어로/상담폼 제목에 Playfair Display Italic 강조 (em 태그)
+- "Bio-Tech Naturalism" 톤: 감성 카피(Fraunces/Noto Serif KR) + 정량 라벨(IBM Plex Mono)을 분리한 "Measured Poet" 미학
 ### CSS 구성
 - **피처 기반 블록 구성** (`/* ═══ FEATURE ═══ */` 패턴) — 과거 "N차 패스" 누적 방식에서 재구성
-- 주요 블록: Tweaks Panel, NAV, HERO, BUTTONS, UTILITIES, VALUES, PHILOSOPHY, TREATMENTS, PRICE TRANSPARENCY, PRICE BOTTOM SHEET, LIVE SLOTS, RECOVERY TIMELINE, DOCTOR CASE STUDY, SCIENCE, FAILED-ELSEWHERE, AI SELF DIAGNOSIS, STICKY CONTEXT CHIP, PROCESS, PRECISION 등
+- 주요 블록: PERSONA TOGGLE, HERO DATA STRIP, RESULT SLICE, DATA PICKUP ZONE, LIVE PROOF STRIP, GUARANTEE STRIP, BA SLIDER, NEEDLE VITRINE, CHAPTER RAIL, FILM GRAIN, QUIET MODE, ESSAY EXPAND, Tweaks Panel, NAV, HERO, BUTTONS, UTILITIES, VALUES, PHILOSOPHY, TREATMENTS, PRICE TRANSPARENCY, PRICE BOTTOM SHEET, LIVE SLOTS, RECOVERY TIMELINE, DOCTOR CASE STUDY, SCIENCE, FAILED-ELSEWHERE, AI SELF DIAGNOSIS, STICKY CONTEXT CHIP, PROCESS, PRECISION 등
 - `/* Print */` 블록을 파일 말미 배치로 유지
 
 ## 네비게이션
@@ -146,10 +170,11 @@
 ## 콘텐츠 상태
 - 원장명: 한정우 (실제 — 규림한의원 청주점 대표원장)
 - 원장 프로필: 경희대 한의과대학 한의학석사, (주)한프리딕트 대표 엔지니어
-- 원장 이미지: `로고 이미지/profile.webp` / `profile.gif` (규림한의원에서 가져옴)
+- 원장 이미지: `logo/profile.webp` / `logo/profile.gif` (규림한의원에서 가져옴)
 - 전화번호: 02-000-0000 (플레이스홀더)
 - 주소: 서울특별시 강남구 역삼동 부일타워 5층 (선릉역 7번 출구 도보 1분)
 - 지역 표기 원칙: **브랜드/지점명/검색 쿼리는 "강남"** (예: `RECOVER · 강남`, 네이버 `리커버한의원+강남`) / **역·주소·교통 안내는 "선릉역/역삼동"** 유지
+- **타겟 페르소나**: 20~50대 남성·여성 균형 — Result Slice의 4결과 카드(20대 여대생/30대 남직장인/40대 여교사/50대 여주부) + Case Study(42F·27M·51F) + Reviews(여7·남3) + 페르소나 토글(Gentle/Focused)로 전 연령·성별 결정자 모두 흡수
 - 환자 후기 10개 (여성 7 · 남성 3 성별 균형, 규림한의원 피부 관련 실제 후기 + 성별 재균형 각색)
 - B/A 갤러리 12개 (규림한의원 동일 원장 실제 시술 사례)
 - 카카오톡: https://pf.kakao.com/_DxewtT/chat (규림한의원 채널 임시 연결)
@@ -175,7 +200,7 @@ python -m http.server 8094 --bind 0.0.0.0
 - Firebase 콘솔: https://console.firebase.google.com/project/recover-clinic-kr/overview
 - 배포 URL (기본): https://recover-clinic-kr.web.app · https://recover-clinic-kr.firebaseapp.com
 - 커스텀 도메인: **recover-clinic.kr** (가비아 등록, 한정우 명의, HTTP→HTTPS 자동 리다이렉트)
-- 설정 파일: `firebase.json` (hosting + firestore 섹션, public=`.`, CLAUDE.md/scraps/_check/screenshots/original.html/memory/firestore.rules/firestore.indexes.json 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr), `firestore.rules`(consultations create-only + field validation), `firestore.indexes.json`(현재 인덱스 불필요)
+- 설정 파일: `firebase.json` (hosting + firestore 섹션, public=`.`, CLAUDE.md/scraps/_check/screenshots/uploads/original.html/memory/firestore.rules/firestore.indexes.json 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr), `firestore.rules`(consultations create-only + field validation), `firestore.indexes.json`(현재 인덱스 불필요)
 - Firebase Web App: `1:541834096590:web:84f3046b32b4f342bbc59f` (RECOVER Clinic Web)
 - Firestore: **Standard 버전**, Location `asia-northeast3` (Seoul), DB ID `(default)`
 - 상담 데이터 조회: https://console.firebase.google.com/project/recover-clinic-kr/firestore/data/~2Fconsultations — 원장이 콘솔에서 직접 열람 (웹에서는 read 불가)
