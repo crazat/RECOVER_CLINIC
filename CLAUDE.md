@@ -64,6 +64,10 @@
 - 시장 대비 문장: **시술보다 먼저 회복의 조건을 봅니다**
 - 캠페인 문장: **강남에서 피부를 더 하기 전에, 회복의 조건부터**
 - 운영 언어: **Read / Restore / Record**
+- 브랜드 아키텍처: **Founder-Originated Method Brand** — 한정우 원장은 브랜드의 최종 상품이 아니라, 리커버 회복 기준을 설계한 **Founder & Method Architect**로 표현한다.
+- `RECOVER METHOD`는 한정우 원장의 흉터 관찰 경험과 RECOVER AI 분석 체계를 반복 가능한 상담·기록·시술 기준으로 바꾼 브랜드 시스템이다.
+- 홈페이지/상담/콘텐츠에서는 `원장 직접` 반복보다 **리커버 기준 / RECOVER METHOD / RECOVER NOTE / 기준 상담** 언어를 우선한다.
+- 초기 신뢰는 원장이 만들되, 장기 브랜드 자산은 **리커버 방식**이 가져가게 한다.
 - 엠블럼 텍스트 색상: `#254d35` (엠블럼 내 녹색과 일치)
 - Forest `#2D5F3E`, Sage `#4A8C5E`, Sprout `#A8C5A0`, Mist `#E8F0E4`, Cream `#F7F5F0`
 - Gold `#C4A265`, Gold Light `#D4B87A`, Gold Dark `#A88B4A`
@@ -80,16 +84,16 @@
 - 로고 PNG 배경 제거: JS Canvas 픽셀 조작 (R>218, G>208, B>198 → alpha=0) — 네비/푸터 워드마크에만 적용
 
 ## 페이지 섹션 구조
-> P1-5 다이어트 패스에서 Breathe-1·Breathe-3 섹션을 제거하고 Founder's Letter를 Doctor·Case Study 후반부로 재배치하여, 결정자가 0.5스크롤 안에 결과·가격·시간을 확인 가능하도록 재구성.
+> P1-5 다이어트 패스에서 Breathe-1·Breathe-3 섹션을 제거하고 Origin Note를 Method Architect·Case Study 후반부로 재배치하여, 결정자가 0.5스크롤 안에 결과·가격·시간을 확인 가능하도록 재구성.
 
 1. Hero — RE:COVER 브랜드, **페르소나 토글**(Gentle/Focused 듀얼 모드), CTA, Canvas 뉴런 네트워크, **Hero Data Strip**(RECOVER BASELINE · RECOVER AI · RECOVER ANATOMY · RECORD 중심의 4칩 브랜드 시스템)
 2. **Guarantee Strip** — 4항목 리스크 해소 배너(기준 상담·상담 전 안내·위치 확인·프로토콜 투명성)
 3. **Result Slice (At a Glance)** — 0.5스크롤 결정 패널: 결과 4카드(20대 여대생/30대 남직장인/40대 여교사/50대 여주부, **남/여/전체 토글 필터**) + 가격 3카드(A 60만~/B 90만~/C 220만~) + 시간 3배지(40~60분·당일 복귀·평균 12주) + **Data Pickup Zone**(5지표 모노스페이스 데이터 카드)
 4. Values — 핵심가치 3개 (Recover, Natural, Precision)
-5. Doctor — 원장 소개 (한정우 원장, 다크그린 배경, clip-path 커튼 리빌), 영문 서명(Dr. Han Jung-woo)
-6. **Recovery Records Preview** — Doctor 신뢰 전이 직후 회복 기록 미리보기 (연령 라벨 케이스)
-7. **Case Study** — 원장 해설 3건 실제 케이스 (42F·27M·51F 명시적 연령·성별 라벨, 단계별 임상 판단 12개 결정 지점 + **RECOVER ANATOMY 시각화 카드** 3건: 얼굴 히트맵 SVG + Before/After 4지표 정량 점수)
-8. **Founder's Letter** — "할머니의 거친 손" 브랜드 기원 스토리 + 철학 인용구 (Doctor·Case 다음 매거진 스프레드 후반부 배치)
+5. Method Architect — 한정우 원장을 리커버 회복 기준의 설계자로 소개 (다크그린 배경, clip-path 커튼 리빌), 영문 서명(Founder & Method Architect)
+6. **Recovery Records Preview** — Method Architect 신뢰 전이 직후 회복 기록 미리보기 (연령 라벨 케이스)
+7. **Case Study** — RECOVER NOTE 방식 해설 3건 실제 케이스 (42F·27M·51F 명시적 연령·성별 라벨, 단계별 임상 판단 12개 결정 지점 + **RECOVER ANATOMY 시각화 카드** 3건: 얼굴 히트맵 SVG + Before/After 4지표 정량 점수)
+8. **Origin Note** — "할머니의 거친 손" 브랜드 기원 스토리 + 철학 인용구 (Method Architect·Case 다음 매거진 스프레드 후반부 배치)
 9. **RECOVER BASELINE** — 4문항 인터랙티브 피부 체크 → 첫 회복 기준 정리
 10. **Failed-Elsewhere** — "72% 타 병원 실패 후 오심" 안심 메시지 섹션
 11. **Science** — 의학적 피부재생 메커니즘 3기둥 교육 섹션
@@ -212,12 +216,13 @@
 - `/* Print */` 블록을 파일 말미 배치로 유지
 
 ## 네비게이션
-리커버 방식 | 흉터 회복 | 회복 기록 | 원장·기술 | BASELINE 상담(CTA)
+리커버 방식 | 흉터 회복 | 회복 기록 | 메소드·기술 | BASELINE 상담(CTA)
 
 ## 콘텐츠 상태
 - 원장명: 한정우 (실제 — 규림한의원 청주점 대표원장)
-- 원장 프로필: 경희대학교 대학원 석사, RECOVER AI 분석 엔진 설계, HAN PREDICT 운영
+- 원장 프로필: 경희대학교 대학원 석사, RECOVER AI 분석 엔진 설계, HAN PREDICT 운영, 리커버 회복 기준 설계자(Founder & Method Architect)
 - 원장 이미지: `logo/profile.webp` / `logo/profile.gif` (규림한의원에서 가져옴)
+- 확장 원칙: 고객이 "한정우 원장에게만 받아야 한다"가 아니라 "리커버 기준으로 상담받고 싶다"고 기억하도록, 개인 서사는 Origin Note와 Method Architect 맥락으로 제한하고 브랜드 중심 언어는 RECOVER METHOD로 통일한다.
 - 전화번호: 02-000-0000 (플레이스홀더)
 - 주소: 서울특별시 강남구 역삼동 부일타워 5층 (선릉역 7번 출구 도보 1분)
 - 지역 표기 원칙: **브랜드/지점명/검색 쿼리는 "강남"** (예: `RECOVER · 강남`, 네이버 `리커버한의원+강남`) / **역·주소·교통 안내는 "선릉역/역삼동"** 유지
