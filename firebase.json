@@ -40,6 +40,13 @@
         ]
       }
     ],
+    "rewrites": [
+      { "source": "/method", "destination": "/index.html" },
+      { "source": "/scar", "destination": "/index.html" },
+      { "source": "/records", "destination": "/index.html" },
+      { "source": "/technology", "destination": "/index.html" },
+      { "source": "/consult", "destination": "/index.html" }
+    ],
     "cleanUrls": true
   }
 }

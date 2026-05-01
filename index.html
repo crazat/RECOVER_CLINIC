@@ -22,6 +22,23 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MedicalClinic","name":"리커버한의원 강남","alternateName":"RECOVER GANGNAM","description":"AI 피부 분석과 의학적 피부재생 관점으로 피부 아래의 원리와 회복 조건을 읽고 필요한 회복의 순서를 설계하는 브랜드","url":"https://recover-clinic.kr","telephone":"02-000-0000","address":{"@type":"PostalAddress","addressLocality":"서울특별시","addressRegion":"강남구","streetAddress":"역삼동 부일타워 5층 (선릉역 7번 출구)","addressCountry":"KR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"15:00"}],"medicalSpecialty":"Dermatology","priceRange":"₩₩₩"}
 </script>
+<script>
+(function(){
+  const file=(location.pathname.split('/').pop()||'index.html').replace(/\.html$/,'')||'index';
+  const pageMap={index:'home','':'home',method:'method',scar:'scar',records:'records',technology:'technology',consult:'consult'};
+  const page=pageMap[file]||'home';
+  document.documentElement.setAttribute('data-recover-page',page);
+  const titles={
+    home:'리커버 강남 | 의학적 피부재생 브랜드',
+    method:'리커버 방식 | 리커버 강남',
+    scar:'흉터 회복 | 리커버 강남',
+    records:'회복 기록 | 리커버 강남',
+    technology:'메소드·기술 | 리커버 강남',
+    consult:'BASELINE 상담 | 리커버 강남'
+  };
+  if(titles[page])document.title=titles[page];
+})();
+</script>
 <style>
 :root{
   --forest:#2D5F3E;--forest-deep:#1E4A2D;--sage:#4A8C5E;--sprout:#A8C5A0;
@@ -159,6 +176,16 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 
+/* Page split: keep one design system, expose only the sections each top-nav page needs. */
+html[data-recover-page="home"] section:not(#hero):not(.guarantee-strip):not(#result-slice):not(#values):not(#doctor):not(#ba-preview):not(#case-study):not(#consult):not(#contact):not(#visit):not(#closing){display:none!important}
+html[data-recover-page="method"] section:not(#values):not(#case-study):not(#founder):not(#diagnose):not(#failed):not(#science):not(#time-essay):not(#precision):not(#doctor):not(#faq):not(#consult):not(#contact):not(#visit):not(#closing){display:none!important}
+html[data-recover-page="scar"] section:not(#result-slice):not(#ba-preview):not(#treatments):not(.compare):not(#needle-vitrine):not(#process):not(#timeline):not(#failed):not(#science):not(#faq):not(#consult):not(#contact):not(#visit):not(#closing){display:none!important}
+html[data-recover-page="records"] section:not(#ba-preview):not(#gallery):not(.stats):not(#atmosphere):not(.live-proof):not(#reviews):not(#letter):not(#faq):not(#consult):not(#contact):not(#visit):not(#closing){display:none!important}
+html[data-recover-page="technology"] section:not(#doctor):not(#case-study):not(#diagnose):not(#science):not(#precision):not(#needle-vitrine):not(#time-essay):not(#faq):not(#consult):not(#contact):not(#visit):not(#closing){display:none!important}
+html[data-recover-page="consult"] section:not(#consult):not(#contact):not(#visit):not(#faq):not(#closing){display:none!important}
+html[data-recover-page] .chapter-rail{display:none!important}
+html[data-recover-page]:not([data-recover-page="home"]) .nav{background:rgba(247,245,240,.92);backdrop-filter:blur(28px) saturate(1.4);-webkit-backdrop-filter:blur(28px) saturate(1.4);box-shadow:0 1px 0 rgba(196,162,101,.08)}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--cream)}
@@ -266,7 +293,7 @@ html[data-persona="focused"] .pt-btn.active{background:linear-gradient(135deg,#1
 @keyframes breatheLine{0%,100%{opacity:.3;width:72px}50%{opacity:1;width:90px}}
 @keyframes breatheDot{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:.7;transform:scale(1.2)}}
 
-.hero-headline{font-family:var(--font-heading);font-size:clamp(28px,3.8vw,48px);font-weight:200;color:var(--charcoal);line-height:1.55;margin-bottom:22px;max-width:560px;opacity:0;animation:fadeUp 1s .72s var(--ease-out) forwards}
+.hero-headline{font-family:var(--font-heading);font-size:clamp(28px,3.8vw,48px);font-weight:200;color:var(--charcoal);line-height:1.55;margin-bottom:22px;max-width:680px;opacity:0;animation:fadeUp 1s .72s var(--ease-out) forwards}
 .hero-sub-copy{font-size:clamp(14px,1.1vw,16px);color:var(--charcoal-soft);max-width:420px;line-height:2.1;margin-bottom:48px;opacity:0;animation:fadeUp 1s .88s var(--ease-out) forwards}
 .hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s 1.05s var(--ease-out) forwards}
 .hero-cta-sub{margin:14px 0 0;font-size:12px;letter-spacing:.08em;color:var(--charcoal-soft);opacity:0;animation:fadeUp 1s 1.2s var(--ease-out) forwards;font-weight:300}
@@ -2123,7 +2150,7 @@ html[data-variant="clinical"] .dd-tag{border-top-style:solid}
   .compare-grid{grid-template-columns:1fr;gap:0}
   .compare-vs{padding:12px 0}
 }
-@media(max-width:1040px){
+@media(max-width:860px){
   .nav-links{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(247,245,240,.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:0 clamp(24px,5vw,72px);gap:0;border-bottom:1px solid transparent;clip-path:inset(0 0 100% 0);transition:clip-path .45s var(--ease),padding .45s var(--ease),gap .45s var(--ease),border-color .45s,visibility 0s .45s;pointer-events:none;visibility:hidden}.nav-toggle{display:flex}
   .nav-links.open{clip-path:inset(0 0 0% 0);padding:28px clamp(24px,5vw,72px);gap:18px;pointer-events:auto;visibility:visible;border-bottom-color:rgba(196,162,101,.06);transition:clip-path .45s var(--ease),padding .45s var(--ease),gap .45s var(--ease),border-color .45s,visibility 0s 0s}
   .hero{min-height:92vh;padding:110px 24px 60px}.hero-scroll{display:none}
@@ -3761,13 +3788,13 @@ html[data-nav-mode="visible"] .nav{transform:translateY(0)}
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo"><img src="logo/Gemini_Generated_Image_txxt28txxt28txxt.png" alt="RECOVER 강남"></a>
+  <a href="/" class="nav-logo"><img src="logo/Gemini_Generated_Image_txxt28txxt28txxt.png" alt="RECOVER 강남"></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#values">리커버 방식</a></li>
-    <li><a href="#treatments">흉터 회복</a></li>
-    <li><a href="#gallery">회복 기록</a></li>
-    <li><a href="#doctor">메소드·기술</a></li>
-    <li><a href="#consult" class="nav-cta"><span>BASELINE 상담</span></a></li>
+    <li><a href="/method">리커버 방식</a></li>
+    <li><a href="/scar">흉터 회복</a></li>
+    <li><a href="/records">회복 기록</a></li>
+    <li><a href="/technology">메소드·기술</a></li>
+    <li><a href="/consult" class="nav-cta"><span>BASELINE 상담</span></a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="메뉴"><span></span><span></span><span></span></button>
 </nav>
@@ -6982,7 +7009,7 @@ const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.tar
 document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
 /* Smooth anchors */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+scrollY-90,behavior:'smooth'})})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const href=this.getAttribute('href');if(!href||href==='#')return;e.preventDefault();const t=document.querySelector(href);if(t)window.scrollTo({top:t.getBoundingClientRect().top+scrollY-90,behavior:'smooth'})})});
 
 /* Counters - refined easing */
 const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,tgt=+el.dataset.target;const dur=2200;const start=performance.now();
@@ -7056,10 +7083,18 @@ if(window.matchMedia('(hover:hover)').matches){
 
 /* Active nav section tracking */
 const navSections=document.querySelectorAll('section[id]');
-const navAnchors=document.querySelectorAll('.nav-links a:not(.nav-cta)');
-const secObserver=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;
-  navAnchors.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}})},{threshold:.25,rootMargin:'-90px 0px -50% 0px'});
-navSections.forEach(s=>secObserver.observe(s));
+const navAnchors=document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)');
+if(navAnchors.length){
+  const secObserver=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;
+    navAnchors.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}})},{threshold:.25,rootMargin:'-90px 0px -50% 0px'});
+  navSections.forEach(s=>secObserver.observe(s));
+}
+const pageHref={method:'/method',scar:'/scar',records:'/records',technology:'/technology',consult:'/consult'};
+const currentPage=document.documentElement.getAttribute('data-recover-page')||'home';
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  const href=(a.getAttribute('href')||'').split('#')[0];
+  if(pageHref[currentPage])a.classList.toggle('active',href===pageHref[currentPage]);
+});
 
 /* Shift+휠로만 가로 스크롤 변환 (일반 세로 휠은 페이지 스크롤 통과) */
 document.querySelectorAll('.ba-grid,.reviews-scroll').forEach(el=>{
@@ -7648,7 +7683,7 @@ function closePriceSheet(){
         bestScore=visible;best=s;
       }
     });
-    
+
     // hero, contact 영역에서는 숨김 (이미 CTA가 있음)
     const scrollY=window.scrollY;
     const contactEl=document.getElementById('contact');
@@ -8466,23 +8501,9 @@ if(window.matchMedia('(hover:hover)').matches){
     }, {passive:true});
   }
 
-  /* ─── B14: Nav hide-until-scroll (past hero) ─── */
-  const navEl = document.getElementById('nav');
-  let lastY = 0;
+  /* ─── B14: Nav visibility ─── */
   function updateNavMode(){
-    const y = window.scrollY;
-    const heroH = window.innerHeight * .85;
-    if(y < heroH){
-      doc.setAttribute('data-nav-mode', 'hidden-hero');
-    } else {
-      // Show when scrolled past hero, hide when scrolling down fast past a threshold
-      if(y > lastY + 6 && y > heroH + 200){
-        doc.setAttribute('data-nav-mode', 'hidden-hero');
-      } else if(y < lastY - 4 || y < heroH + 200){
-        doc.setAttribute('data-nav-mode', 'visible');
-      }
-    }
-    lastY = y;
+    doc.setAttribute('data-nav-mode', 'visible');
   }
   updateNavMode();
   window.addEventListener('scroll', updateNavMode, {passive:true});
