@@ -3,14 +3,14 @@
 ## 프로젝트 개요
 이 프로젝트는 단순히 홈페이지를 꾸미거나 랜딩페이지를 제작하는 프로젝트가 아니다.
 
-**RECOVER 강남의 브랜드 부서(Brand Department)로서, 한의 피부재생 시장에서 세계 최고 수준의 브랜딩을 설계하고 실행하는 프로젝트다.**
+**RECOVER 강남의 브랜드 부서(Brand Department)로서, 의학적 피부재생 시장에서 세계 최고 수준의 브랜딩을 설계하고 실행하는 프로젝트다.**
 모든 의사결정은 "예쁜 화면"이 아니라 "강남 미용 시장 안에서 리커버 강남이 어떤 카테고리를 만들고, 어떤 언어를 소유하며, 어떤 고객 경험으로 기억될 것인가"를 기준으로 판단한다.
 
-강남구 역삼동 부일타워(선릉역 7번 출구 도보 1분) 소재 한의 피부재생 브랜드 "리커버 강남 / 리커버한의원"의 브랜드 전략, 홈페이지, 콘텐츠, 상담 경험, 채널 운영을 통합 관리한다.
+강남구 역삼동 부일타워(선릉역 7번 출구 도보 1분) 소재 의학적 피부재생 브랜드 "리커버 강남 / 리커버한의원"의 브랜드 전략, 홈페이지, 콘텐츠, 상담 경험, 채널 운영을 통합 관리한다.
 
 핵심 브랜드 정의:
 
-> 리커버 강남은 피부가 돌아오는 조건을 설계하는 한의 피부재생 브랜드입니다.
+> 리커버 강남은 AI 피부 분석과 의학적 피부재생 관점으로 피부 아래의 원리와 회복 조건을 읽고, 필요한 회복의 순서를 설계하는 브랜드입니다.
 
 핵심 시장 창출 문장:
 
@@ -21,6 +21,14 @@
 - **Read** — 피부의 결, 흔적, 균형, 생활 리듬을 먼저 읽는다.
 - **Restore** — 더 많이 자극하기보다 피부가 회복될 환경을 정돈한다.
 - **Record** — 변화를 기록하고 다음 회복의 순서를 조정한다.
+
+공개 브랜드 언어 원칙:
+
+- 홈페이지, 광고성 카피, 네이버 플레이스, 블로그, 인스타그램, 상담 랜딩 문구에서는 **"한의학" / "한의 피부재생"을 전면 언어로 쓰지 않는다.**
+- 고객-facing 문구는 **의학 / 의학적 피부재생 / 의학적 회복 설계 / 피부 회복 설계**를 우선 사용한다.
+- `한의원`, 학위명, 학회명, 법적 기관명처럼 사실 확인이 필요한 고유명사만 예외적으로 그대로 표기한다.
+- AI는 버리지 않는다. **RECOVER AI**는 내부 기술적 해자이며, 공개 문구에서는 "AI가 만든 영상"이 아니라 **피부 신호를 읽는 분석 체계**로 말한다.
+- 흉터 콘텐츠는 **RECOVER ANATOMY** 관점으로, "AI 해부학 영상"이 아니라 **피부 아래 구조를 보이게 설명하는 해부학적 시각화**로 표현한다.
 
 따라서 이 저장소의 모든 작업은 다음 역할을 수행해야 한다.
 
@@ -43,15 +51,15 @@
 - Canvas 기반 골드 뉴런 네트워크 애니메이션
 - IntersectionObserver 스크롤 reveal + 카운터 애니메이션
 - JS Canvas API를 이용한 PNG 로고 배경 제거 (`removeLogoBg` 함수) — 네비/푸터 로고에만 적용, 히어로 엠블럼은 사전 처리본(PNG)을 직접 사용
-- JSON-LD 구조화 데이터 (MedicalClinic schema + `aggregateRating` 4.9★/387 + 샘플 `review` 3건)
+- JSON-LD 구조화 데이터 (MedicalClinic schema 중심, 검증되지 않은 평점·리뷰 수치 사용 금지)
 - Open Graph 메타태그 (카카오/SNS 공유 최적화)
 - **디자인 배리언트 시스템** (`data-variant` on `<html>`): heritage(기본) / clinical / botanical 세 가지 테마 + 라디우스(sharp/soft/round) + 밀도(comfy/compact/spacious) 노브, localStorage 영속
 - **페르소나 시스템** (`data-persona` on `<html>`): gentle(섬세한 회복, 기본) / focused(집중적 개선, 데이터 드리븐) — 히어로 헤드라인·CTA·서브카피·악센트 색상 동적 스왑 (`data-gentle`/`data-focused`/`data-gentle-label`/`data-focused-label` 속성)
 
 ## 브랜드
 - 브랜딩: 리커버 강남 / RECOVER GANGNAM (R 엠블럼 + E:COVER 텍스트, 히어로 드롭캡 스타일)
-- 카테고리 언어: **Skin Recovery Design** / 피부 회복 설계
-- 대표 문장: **피부가 돌아오는 조건을 설계합니다**
+- 카테고리 언어: **Skin Recovery Design** / 의학적 피부 회복 설계
+- 대표 문장: **피부 아래의 원리까지 읽고 회복의 순서를 설계합니다**
 - 시장 대비 문장: **시술보다 먼저 회복의 조건을 봅니다**
 - 캠페인 문장: **강남에서 피부를 더 하기 전에, 회복의 조건부터**
 - 운영 언어: **Read / Restore / Record**
@@ -73,17 +81,17 @@
 ## 페이지 섹션 구조
 > P1-5 다이어트 패스에서 Breathe-1·Breathe-3 섹션을 제거하고 Founder's Letter를 Doctor·Case Study 후반부로 재배치하여, 결정자가 0.5스크롤 안에 결과·가격·시간을 확인 가능하도록 재구성.
 
-1. Hero — RE:COVER 브랜드, **페르소나 토글**(Gentle/Focused 듀얼 모드), CTA, Canvas 뉴런 네트워크, **Hero Data Strip**(4칩 측정·자격 시그널: 학회 6곳·HAN PREDICT·임상례 12,000+·측정 정밀도 ±2.3%), Trust Stars(4.9/387)
-2. **Guarantee Strip** — 4항목 리스크 해소 배너(상담 무료·당일 콜백 가능·위치 확인·프로토콜 투명성)
+1. Hero — RE:COVER 브랜드, **페르소나 토글**(Gentle/Focused 듀얼 모드), CTA, Canvas 뉴런 네트워크, **Hero Data Strip**(RECOVER BASELINE · RECOVER AI · RECOVER ANATOMY · RECORD 중심의 4칩 브랜드 시스템)
+2. **Guarantee Strip** — 4항목 리스크 해소 배너(기준 상담·상담 전 안내·위치 확인·프로토콜 투명성)
 3. **Result Slice (At a Glance)** — 0.5스크롤 결정 패널: 결과 4카드(20대 여대생/30대 남직장인/40대 여교사/50대 여주부, **남/여/전체 토글 필터**) + 가격 3카드(A 60만~/B 90만~/C 220만~) + 시간 3배지(40~60분·당일 복귀·평균 12주) + **Data Pickup Zone**(5지표 모노스페이스 데이터 카드)
 4. Values — 핵심가치 3개 (Recover, Natural, Precision)
 5. Doctor — 원장 소개 (한정우 원장, 다크그린 배경, clip-path 커튼 리빌), 영문 서명(Dr. Han Jung-woo)
-6. **BA Preview** — Doctor 신뢰 전이 직후 시각적 결과 미리보기 (연령 라벨 케이스)
-7. **Case Study** — 원장 해설 3건 실제 케이스 (42F·27M·51F 명시적 연령·성별 라벨, 단계별 임상 판단 12개 결정 지점 + **AI 스캔 시각화 카드** 3건: 얼굴 히트맵 SVG + Before/After 4지표 정량 점수)
+6. **Recovery Records Preview** — Doctor 신뢰 전이 직후 회복 기록 미리보기 (연령 라벨 케이스)
+7. **Case Study** — 원장 해설 3건 실제 케이스 (42F·27M·51F 명시적 연령·성별 라벨, 단계별 임상 판단 12개 결정 지점 + **RECOVER ANATOMY 시각화 카드** 3건: 얼굴 히트맵 SVG + Before/After 4지표 정량 점수)
 8. **Founder's Letter** — "할머니의 거친 손" 브랜드 기원 스토리 + 철학 인용구 (Doctor·Case 다음 매거진 스프레드 후반부 배치)
-9. **AI Self Diagnosis** — 4문항 인터랙티브 피부 자가 진단 → 개인 맞춤 회복 경로
+9. **RECOVER BASELINE** — 4문항 인터랙티브 피부 체크 → 첫 회복 기준 정리
 10. **Failed-Elsewhere** — "72% 타 병원 실패 후 오심" 안심 메시지 섹션
-11. **Science** — 한의 피부재생 메커니즘 3기둥 교육 섹션
+11. **Science** — 의학적 피부재생 메커니즘 3기둥 교육 섹션
 12. **Breathe-2** — 유일한 호흡 스페이서 (Science → Treatments 사이, 다크 톤, "서두르지 않는 회복이 가장 빠른 길입니다")
 13. Treatments — 새살침(시그니처, 3D tilt) + 4개 시술 카드 + **가격 투명성 토글 패널** (데스크톱 아코디언 / 모바일 바텀시트)
 14. Compare — "왜 리커버인가" 비교 테이블 (일반 클리닉 vs 리커버)
@@ -91,13 +99,13 @@
 16. Process — 4단계 진료 프로세스 (골드 커넥터 + dot fill)
 17. **Recovery Timeline** — 시술 후 90일 회복 여정 인터랙티브 타임라인 (클릭 가능 칩 + 일자별 패널)
 18. **Time Essay** — "왜 6개월인가, 더 빨리는 왜 안 되는가" 에세이 섹션 + **Essay Expand**(접기/펼치기 토글)
-19. Precision — AI 안면 분석, 듀얼 스캔 라인, 데이터 기반 진단
-20. Trust Bar — 학회/대학 자격 텍스트 바 (경희대, 4개 학회, 한프리딕트)
+19. Precision — RECOVER AI 피부 신호 분석, 듀얼 스캔 라인, 기록 기반 기준 설계
+20. Trust Bar — 학회/대학 자격 텍스트 바 (경희대, 4개 학회, RECOVER AI)
 21. Stats — Field Notes / Recover Specimen Index 컨텍스트 + 숫자 카운터 (n=12,000±280 표본, scale 입장 + 골드 flash)
 22. Before/After Gallery — 12개 실제 치료 사례 (드래그+휠 스크롤 + 좌우 화살표 + **인터랙티브 BA 슬라이더** 핸들 + **Cinema Feature**(50대 V라인 리프팅 풀스크린 슬라이더))
 23. **Atmosphere** — 감각 우선 포지셔닝 ("향 먼저") 공간/분위기 섹션
-24. **Live Proof Strip** — 실시간 진료 데이터 펄스 배너 (lpDot 스케일 펄스 + lpRing 확장 링)
-25. Reviews — 환자 후기 10개 (여성 7 · 남성 3 균형, 드래그+휠 스크롤 + 좌우 화살표)
+24. **Recover System Strip** — Location / First / Analyze / Scar 중심의 브랜드 시스템 배너
+25. Recovery Stories — 회복 이야기 10개 (여성 7 · 남성 3 균형, 드래그+휠 스크롤 + 좌우 화살표)
 26. **Letter** — 환자 서신 형식 에세이 후기
 27. FAQ — 아코디언 5개 Q&A (CSS counter, 골드라인 sweep)
 28. Consult Form — **3스텝** 상담 신청 (고민 → 연락처 → 일정, 슬라이드 전환 + 프로그레스 도트 + shake 검증) + **Live Slots**(실시간 예약 가능 시간 그리드, 긴급 배지 펄스)
@@ -144,15 +152,15 @@
 - **Guarantee Strip** — 4항목 리스크 해소 배너 (cream→ivory 그래디언트, 호버 시 chevron 등장)
 - **BA Slider** — Before/After 인터랙티브 슬라이더 (드래그·클릭·키보드 화살표/Home 키 + 자동 사인파 티저, `.ba-interacted`/`.cinema-touched` 상태 영속). 갤러리 70+ 카드 + Cinema Feature(`#ba-cinema-feat` 풀스크린 50대 V라인 리프팅 케이스)
 - **Needle Vitrine** — 새살침 SVG 전시실 (샤프트·허브·그립 그래디언트 + 3D 효과)
-- **Live Proof Strip** — 실시간 진료 데이터 펄스 배너 (`lpDot` 스케일 0.85↔1.15 + `lpRing` 확장 링 0.6→2.4 페이드)
+- **Recover System Strip** — Location / First / Analyze / Scar 중심의 브랜드 시스템 배너
 - **Tweaks Panel** (우측 하단 플로팅) — 3개 컬러 배리언트 스와치 + 라디우스/밀도 노브, localStorage 영속 (`data-variant`/`data-radius`/`data-density` on `<html>`)
 - **Price Transparency** — 시술 카드 내 인라인 `.price-toggle` 아코디언 (데스크톱) / 모바일 바텀시트 오버레이 (`openPriceSheet`/`closePriceSheet`)
 - **Live Slots** — 실시간 예약 가능 시간 그리드 (일/시간/태그/긴급 상태, 펄스 애니메이션)
 - **Recovery Timeline** — 클릭 가능 타임라인 칩 + 일자별 상세 패널 fade-in (`updateChip()`, `setIdx()`, width% 채움)
 - **Case Study 인터랙션** — 원장 해설 케이스 3건(42F·27M·51F), 12개 단계별 결정 지점 마커
-- **AI 스캔 시각화** (`.cs-ai-scan`) — Case Study 3건에 Before/After 얼굴 히트맵 SVG + 4지표 점수 바(장벽/색소/염증/결점 등 케이스별 맞춤) + HPREDICT SCAN v2.4 워터마크. 한프리딕트 엔진 크레딧 강조
+- **RECOVER ANATOMY 시각화** (`.cs-ai-scan`) — Case Study 3건에 Before/After 얼굴 히트맵 SVG + 4지표 점수 바(장벽/색소/염증/결점 등 케이스별 맞춤) + RECOVER AI / RECOVER RECORD 기준 표기
 - **Firestore 상담 수집** — Firebase Firestore `consultations` 컬렉션에 폼 데이터 저장. Web SDK modular v10.12.5 CDN import, `window.__submitConsult()` helper로 submit handler에서 호출. 보안 규칙: create only, read/update/delete 전면 금지, 필드 타입·사이즈 validation
-- **AI Self Diagnosis** — 4문항 선택형 자가 진단 플로우 → 개인 맞춤 경로 제시
+- **RECOVER BASELINE** — 4문항 선택형 피부 체크 플로우 → 첫 회복 기준 제시
 - **Sticky Context Chip** — 컨텍스트 인지 예약 프롬프트 (스크롤 위치 기반 CTA)
 - **Ceremony Scroll Fix** — 페이지 로드 시 `data-ceremony` 속성으로 4.3s 조율된 타이밍 연출
 - **Signature Upgrades** — 추가 시그니처 레이어: B9 Film Grain Overlay(필름 그레인), B12 Chapter Rail(좌측 챕터 인디케이터), B13 Quiet Mode Toggle(애니메이션 음소거), UP-5 Season Badge(시즌 배지), Essay Expand(접기/펼치기 에세이)
@@ -207,7 +215,7 @@
 
 ## 콘텐츠 상태
 - 원장명: 한정우 (실제 — 규림한의원 청주점 대표원장)
-- 원장 프로필: 경희대 한의과대학 한의학석사, (주)한프리딕트 대표 엔지니어
+- 원장 프로필: 경희대학교 대학원 석사, RECOVER AI 분석 엔진 설계
 - 원장 이미지: `logo/profile.webp` / `logo/profile.gif` (규림한의원에서 가져옴)
 - 전화번호: 02-000-0000 (플레이스홀더)
 - 주소: 서울특별시 강남구 역삼동 부일타워 5층 (선릉역 7번 출구 도보 1분)
@@ -238,7 +246,7 @@ python -m http.server 8094 --bind 0.0.0.0
 - Firebase 콘솔: https://console.firebase.google.com/project/recover-clinic-kr/overview
 - 배포 URL (기본): https://recover-clinic-kr.web.app · https://recover-clinic-kr.firebaseapp.com
 - 커스텀 도메인: **recover-clinic.kr** (가비아 등록, 한정우 명의, HTTP→HTTPS 자동 리다이렉트)
-- 설정 파일: `firebase.json` (hosting + firestore 섹션, public=`.`, CLAUDE.md/scraps/_check/screenshots/uploads/original.html/memory/firestore.rules/firestore.indexes.json 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr), `firestore.rules`(consultations create-only + field validation), `firestore.indexes.json`(현재 인덱스 불필요)
+- 설정 파일: `firebase.json` (hosting + firestore 섹션, public=`.`, CLAUDE.md/README.md/전략 문서/docx/구 `로고 이미지/` 폴더/scraps/_check/screenshots/uploads/original.html/memory/firestore.rules/firestore.indexes.json 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr), `firestore.rules`(consultations create-only + field validation), `firestore.indexes.json`(현재 인덱스 불필요)
 - Firebase Web App: `1:541834096590:web:84f3046b32b4f342bbc59f` (RECOVER Clinic Web)
 - Firestore: **Standard 버전**, Location `asia-northeast3` (Seoul), DB ID `(default)`
 - 상담 데이터 조회: https://console.firebase.google.com/project/recover-clinic-kr/firestore/data/~2Fconsultations — 원장이 콘솔에서 직접 열람 (웹에서는 read 불가)
