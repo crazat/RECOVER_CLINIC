@@ -1,0 +1,638 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import RRRFlow from '../components/RRRFlow.astro';
+import StatsCharts from '../components/StatsCharts.astro';
+---
+<MainLayout
+  title="리커버한의원 강남 | 회복 조건을 보는 한의학 기반 피부 회복 설계"
+  description="리커버한의원 강남은 한의학 기반 피부 회복 설계 브랜드입니다. AI 피부 분석으로 피부의 결, 흔적, 생활 리듬을 읽고 회복의 조건과 순서를 정리합니다. 선릉역 7번 출구 앞 5층, 2026.08.17 강남 개원."
+  active="home"
+  chapterCategory="회복 조건"
+>
+<section class="hero" id="hero">
+  <div class="bg-botanical"></div>
+  <canvas class="hero-neural" id="neuralCanvas"></canvas>
+  <div class="gold-particles"><span class="gp"></span><span class="gp"></span><span class="gp"></span><span class="gp"></span><span class="gp"></span><span class="gp"></span></div>
+  <div class="hero-branch"><svg viewBox="0 0 200 300" fill="none" stroke="#C4A265" stroke-width=".6">
+    <path d="M100 300C100 280 100 240 98 200C96 160 104 130 108 100C112 70 120 45 125 25C128 15 126 5 122 0" opacity=".4"/>
+    <path d="M108 100C120 90 136 88 155 92" opacity=".3"/>
+    <ellipse cx="155" cy="92" rx="22" ry="30" transform="rotate(-5,155,92)" opacity=".18"/>
+    <path d="M145 88C150 80 158 76 165 74" opacity=".12"/>
+    <path d="M100 160C82 148 60 145 38 150" opacity=".3"/>
+    <ellipse cx="38" cy="150" rx="24" ry="32" transform="rotate(8,38,150)" opacity=".18"/>
+    <path d="M48 146C42 138 34 134 26 136" opacity=".12"/>
+    <path d="M100 200C115 190 132 185 150 188" opacity=".25"/>
+    <ellipse cx="150" cy="188" rx="18" ry="25" transform="rotate(-8,150,188)" opacity=".15"/>
+    <path d="M98 240C82 232 62 230 42 236" opacity=".2"/>
+    <ellipse cx="42" cy="236" rx="16" ry="22" transform="rotate(5,42,236)" opacity=".12"/>
+    <ellipse cx="122" cy="25" rx="20" ry="28" transform="rotate(-12,122,25)" opacity=".2"/>
+    <ellipse cx="132" cy="18" rx="14" ry="20" transform="rotate(-25,132,18)" opacity=".12"/>
+    <circle cx="108" cy="100" r="2" opacity=".2"/><circle cx="100" cy="160" r="2" opacity=".18"/>
+    <circle cx="100" cy="200" r="1.8" opacity=".15"/><circle cx="98" cy="240" r="1.5" opacity=".12"/>
+    <path d="M155 92L155 72" stroke-width=".3" opacity=".1"/><path d="M38 150L38 130" stroke-width=".3" opacity=".1"/>
+  </svg></div>
+  <div class="hero-vine-right"><svg viewBox="0 0 60 200" fill="none" stroke="#C4A265" stroke-width=".5">
+    <path d="M30 200C30 180 30 160 28 140C26 120 32 100 30 80C28 60 34 40 30 20C28 10 30 2 30 0" opacity=".35"/>
+    <path d="M28 155C20 150 12 153 6 158" opacity=".25"/><ellipse cx="6" cy="158" rx="10" ry="14" transform="rotate(15,6,158)" opacity=".12"/>
+    <path d="M32 110C40 105 48 108 54 104" opacity=".25"/><ellipse cx="54" cy="104" rx="10" ry="14" transform="rotate(-10,54,104)" opacity=".12"/>
+    <path d="M28 70C18 68 12 72 8 78" opacity=".2"/><ellipse cx="8" cy="78" rx="8" ry="12" transform="rotate(20,8,78)" opacity=".1"/>
+    <path d="M32 40C40 36 48 38 54 34" opacity=".15"/><ellipse cx="54" cy="34" rx="7" ry="10" transform="rotate(-15,54,34)" opacity=".08"/>
+    <circle cx="30" cy="140" r="1.5" opacity=".2"/><circle cx="30" cy="80" r="1.5" opacity=".15"/>
+  </svg></div>
+  <div class="hero-content">
+    <!-- S3: Hero breathing seed — signature moment -->
+    <div class="hero-seed" aria-hidden="true">
+      <span class="hero-seed-halo"></span>
+      <span class="hero-seed-halo hero-seed-halo--2"></span>
+      <span class="hero-seed-core"></span>
+    </div>
+    <div class="hero-eyebrow"><span class="seed-dot seed-dot--ring" aria-hidden="true" style="margin-right:10px"></span>RECOVER GANGNAM · SKIN RECOVERY DESIGN</div>
+    <!-- PERSONA TOGGLE -->
+    <div class="persona-toggle" role="tablist" aria-label="접근 방식 선택">
+      <button class="pt-btn active" data-persona="gentle" role="tab" aria-selected="true">
+        <span class="pt-dot" aria-hidden="true"></span>
+        <span class="pt-k">섬세한 회복</span>
+        <span class="pt-sub">Gentle</span>
+      </button>
+      <button class="pt-btn" data-persona="focused" role="tab" aria-selected="false">
+        <span class="pt-dot" aria-hidden="true"></span>
+        <span class="pt-k">집중적 개선</span>
+        <span class="pt-sub">Focused</span>
+      </button>
+    </div>
+    <div class="hero-brand-row">
+      <div class="hero-brand-emblem"><img class="hero-emblem" src="/logo/R_emblem_original.png" alt="R"></div>
+      <h2 class="hero-brand">E:COVER<span>한 의 원</span></h2>
+    </div>
+    <div class="hero-gold-line"></div>
+    <h1 class="hero-headline" data-gentle="피부 아래의 원리까지 읽고<br><em>회복의 조건</em>을 봅니다" data-focused="흉터의 표면보다<br><em>회복이 멈춘 이유</em>를 봅니다">피부 아래의 원리까지 읽고<br><em>회복의 조건</em>을 봅니다</h1>
+    <p class="hero-sub-copy" data-gentle="리커버한의원 강남은 AI 피부 분석과 한의학 기반 회복 관점으로<br>피부의 결, 흔적, 생활 리듬을 읽고<br>회복의 조건과 순서를 정리합니다." data-focused="패인 흉터와 자국을 피부 아래 구조까지 살펴<br>필요한 자극, 회복 간격, 기록의 기준을<br>차분하게 정리합니다.">리커버한의원 강남은 AI 피부 분석과 한의학 기반 회복 관점으로<br>피부의 결, 흔적, 생활 리듬을 읽고<br>회복의 조건과 순서를 정리합니다.</p>
+    <div class="hero-actions">
+      <a href="#consult" class="btn-primary" data-gentle-label="BASELINE 상담 시작" data-focused-label="흉터 회복 기준 상담"><span>BASELINE 상담 시작</span><span class="arr"></span></a>
+      <a href="#values" class="btn-ghost" data-gentle-label="리커버 방식 보기" data-focused-label="회복 기준 보기">리커버 방식 보기<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+    </div>
+    <p class="hero-cta-sub">선릉역 7번 출구 앞 5층 · <strong>2026.08.17 강남 개원</strong> · 프리오픈 상담 진행 중</p>
+
+    <!-- HERO DATA STRIP — 4칩 측정·자격 시그널 (Phase 1-C) -->
+    <div class="hero-data-strip" aria-label="진료 데이터 요약">
+      <div class="hd-chip">
+        <svg class="hd-chip-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M2 8l3 3 5-6M9 12l3-3"/></svg>
+        <span class="hd-chip-lbl">첫 상담</span>
+        <span class="hd-chip-val"><span class="num">BASELINE</span></span>
+        <span class="hd-chip-sub">회복 조건을 먼저 정리</span>
+      </div>
+      <div class="hd-chip">
+        <svg class="hd-chip-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 6h12M5 9h2M5 11h4"/></svg>
+        <span class="hd-chip-lbl">분석</span>
+        <span class="hd-chip-val"><span class="num">RECOVER&nbsp;AI</span></span>
+        <span class="hd-chip-sub">피부 신호와 변화 기록</span>
+      </div>
+      <div class="hd-chip">
+        <svg class="hd-chip-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M3 13L13 3M3 3l10 10"/><circle cx="8" cy="8" r="6.5" stroke-dasharray="2 1.5"/></svg>
+        <span class="hd-chip-lbl">흉터</span>
+        <span class="hd-chip-val"><span class="num">ANATOMY</span></span>
+        <span class="hd-chip-sub">피부 아래 구조 시각화</span>
+      </div>
+      <div class="hd-chip">
+        <svg class="hd-chip-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M2 14L6 9l3 2 5-7"/><path d="M11 4h3v3"/></svg>
+        <span class="hd-chip-lbl">설계</span>
+        <span class="hd-chip-val"><span class="num">RECORD</span></span>
+        <span class="hd-chip-sub">다음 회복 순서 조정</span>
+      </div>
+    </div>
+
+    <div class="hero-trust">
+      <div class="ht-item">
+        <span class="ht-stars" aria-hidden="true">BASELINE</span>
+        <span class="ht-val"><strong>첫 기준</strong></span>
+        <span class="ht-k">상담 후 정리</span>
+      </div>
+      <span class="ht-sep" aria-hidden="true"></span>
+      <div class="ht-item">
+        <span class="ht-dot" aria-hidden="true"></span>
+        <span class="ht-val"><strong>프리오픈</strong></span>
+        <span class="ht-k">상담 우선 안내</span>
+      </div>
+      <span class="ht-sep" aria-hidden="true"></span>
+      <div class="ht-item">
+        <svg class="ht-ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 14s-5-4-5-8a5 5 0 0110 0c0 4-5 8-5 8z"/><circle cx="8" cy="6" r="1.7"/></svg>
+        <span class="ht-val"><strong>선릉역</strong></span>
+        <span class="ht-k">7번 출구 도보 1분</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>SCROLL</span><span class="hero-scroll-line"></span></div>
+</section>
+
+<!-- ━━━ HERO ANATOMY FILM — 새살침 시술 영상 (Phase H) ━━━ -->
+<section class="hero-film" aria-label="새살침 시술 해부학 영상">
+  <div class="hero-film-inner">
+    <div class="hero-film-cap">
+      <span class="hero-film-eye">RECOVER ANATOMY · Visual Field</span>
+      <h2 class="hero-film-title">섬유 유착을 끊고,<br/><em>콜라겐을 다시 짜다</em></h2>
+      <p class="hero-film-sub">새살침이 진피의 섬유 유착을 풀어 <strong style="color:var(--gold-light);font-weight:500">차오를 공간</strong>을 만들고, 그 자리에서 콜라겐이 재구성되는 환경을 정돈합니다. 표피의 자극이 아니라 진피 안 <strong style="color:var(--gold-light);font-weight:500">구조의 변화</strong>입니다.</p>
+      <div class="hero-film-meta">
+        <span><strong>FILM</strong> · 새살침 시술 시퀀스</span>
+        <span class="vsep">·</span>
+        <span><strong>DEPTH</strong> · 진피 0.8 – 1.5 mm</span>
+        <span class="vsep">·</span>
+        <span><strong>STAGE</strong> · in-clinic observation</span>
+      </div>
+    </div>
+    <div class="hero-film-stage">
+      <video class="hero-film-video"
+             src="/video/saesalchim_graded.mp4"
+             autoplay muted loop playsinline
+             preload="metadata"
+             poster="/logo/R_emblem_original.png"
+             aria-label="새살침 시술 영상 — 무음 자동 재생, 임상 효능 미주장"></video>
+      <div class="hero-film-overlay" aria-hidden="true">
+        <div class="hero-film-corner tl"></div>
+        <div class="hero-film-corner tr"></div>
+        <div class="hero-film-corner bl"></div>
+        <div class="hero-film-corner br"></div>
+      </div>
+      <div class="hero-film-stamp">
+        <span class="hero-film-stamp-dot"></span>
+        <span class="hero-film-stamp-txt">RECOVER · ANATOMY · LIVE</span>
+      </div>
+      <div class="hero-film-counter">REEL 01 / 04</div>
+    </div>
+  </div>
+  <p class="hero-film-disclaimer">* 본 영상은 실제 시술 영상이며 임상 효능을 보장하지 않습니다. 회복 속도와 결과는 개인의 피부 상태에 따라 달라집니다.</p>
+</section>
+
+<!-- GUARANTEE STRIP — 리스크 해소 배너 -->
+<section class="guarantee-strip" aria-label="상담 안내">
+  <div class="gs-inner">
+    <div class="gs-item">
+      <svg class="gs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="gs-body"><strong>RECOVER BASELINE</strong><span>첫 상담에서 회복 기준을 정리합니다</span></div>
+    </div>
+    <span class="gs-sep" aria-hidden="true"></span>
+    <div class="gs-item">
+      <svg class="gs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12a9 9 0 0118 0"/><path d="M3 12a9 9 0 0018 0"/><path d="M3 12h4M17 12h4"/></svg>
+      <div class="gs-body"><strong>선릉역 7번 출구 앞</strong><span>5층에서 시작하는 리커버 강남</span></div>
+    </div>
+    <span class="gs-sep" aria-hidden="true"></span>
+    <div class="gs-item">
+      <svg class="gs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+      <div class="gs-body"><strong>흉터 원리 설명</strong><span>피부 아래 구조를 보이게 설명합니다</span></div>
+    </div>
+    <span class="gs-sep" aria-hidden="true"></span>
+    <a class="gs-item gs-link" href="#treatments">
+      <svg class="gs-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 9h18M7 13h3M7 16h5"/></svg>
+      <div class="gs-body"><strong>상담 후 기준 정리 <span class="gs-chev">→</span></strong><span>할 것과 미룰 것을 함께 구분합니다</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+   RESULT SLICE — 히어로 직후 "결과·돈·시간" 픽업존
+   20대·실용주의 남성·임원층이 0.5스크롤에서 답을 얻고
+   감성 서사로 진입할 결정 기준을 갖게 함
+   ═══════════════════════════════════════════════════════════ -->
+<section class="result-slice" id="result-slice" aria-label="시술 결과 · 가격 · 시간 미리보기" data-screen-label="01b Result Slice">
+  <div class="rs-inner">
+    <header class="rs-head rv">
+      <p class="rs-eyebrow"><span class="rs-eyebrow-line"></span>At a Glance<span class="rs-eyebrow-line"></span></p>
+      <h2 class="rs-title">회복을 정하기 전<br/><em>세 가지를 먼저 봅니다</em></h2>
+      <p class="rs-sub">피부 신호 · 아래 구조 · 회복 순서. 결과보다 먼저, 필요한 기준을 정리합니다.</p>
+    </header>
+
+    <!-- 결과 4장 (성별 균형: 여3 남1 + 토글로 남성 우선 모드) -->
+    <div class="rs-results rv rv-d1">
+      <div class="rs-results-head">
+        <span class="rs-mini-label"><span class="rs-mini-dot"></span>최근 진료 사례</span>
+        <div class="rs-results-toggle" role="tablist" aria-label="결과 필터">
+          <button class="rs-rt active" data-rs-filter="all" role="tab" aria-selected="true">전체</button>
+          <button class="rs-rt" data-rs-filter="male" role="tab" aria-selected="false">남성</button>
+          <button class="rs-rt" data-rs-filter="female" role="tab" aria-selected="false">여성</button>
+        </div>
+      </div>
+      <div class="rs-results-grid">
+        <a href="#gallery" class="rs-rcard" data-rs-gender="female" data-rs-age="20">
+          <div class="rs-rimg"><img src="/assets/ba_skin_new_1.webp" alt="만성 여드름·붉은기 8주 호전" loading="lazy"></div>
+          <div class="rs-rmeta">
+            <span class="rs-rtag">여드름·붉은기</span>
+            <span class="rs-rdur">8주</span>
+          </div>
+          <p class="rs-rprofile">20대 여성 · 대학생</p>
+        </a>
+        <a href="#gallery" class="rs-rcard" data-rs-gender="male" data-rs-age="30">
+          <div class="rs-rimg"><img src="/assets/ba_10.webp" alt="박스형 흉터 12주 개선" loading="lazy"></div>
+          <div class="rs-rmeta">
+            <span class="rs-rtag">흉터·자국</span>
+            <span class="rs-rdur">12주</span>
+          </div>
+          <p class="rs-rprofile">30대 남성 · 직장인</p>
+        </a>
+        <a href="#gallery" class="rs-rcard" data-rs-gender="female" data-rs-age="40">
+          <div class="rs-rimg"><img src="/assets/ba_skin_wrinkle_k.webp" alt="팔자주름 16주 개선" loading="lazy"></div>
+          <div class="rs-rmeta">
+            <span class="rs-rtag">주름·탄력</span>
+            <span class="rs-rdur">16주</span>
+          </div>
+          <p class="rs-rprofile">40대 여성 · 교사</p>
+        </a>
+        <a href="#gallery" class="rs-rcard" data-rs-gender="female" data-rs-age="50">
+          <div class="rs-rimg"><img src="/assets/ba_skin_lifting_k.webp" alt="턱선 리프팅 12주" loading="lazy"></div>
+          <div class="rs-rmeta">
+            <span class="rs-rtag">리프팅</span>
+            <span class="rs-rdur">12주</span>
+          </div>
+          <p class="rs-rprofile">50대 여성 · 주부</p>
+        </a>
+      </div>
+      <a href="#gallery" class="rs-results-more">전체 12개 사례 자세히 보기 <span aria-hidden="true">→</span></a>
+    </div>
+
+    <!-- 가격 레인지 3카드 -->
+    <div class="rs-prices rv rv-d2">
+      <span class="rs-mini-label"><span class="rs-mini-dot"></span>가격 · 기간 가이드</span>
+      <div class="rs-prices-grid">
+        <a href="#treatments" class="rs-pcard">
+          <div class="rs-pcard-head">
+            <span class="rs-pcard-num">A</span>
+            <span class="rs-pcard-cat">여드름 자국 · 모공 · 표면 결</span>
+          </div>
+          <div class="rs-pcard-price">
+            <span class="rs-pcard-from">From</span>
+            <strong>15만원~</strong>
+            <span class="rs-pcard-unit">/ 회차당</span>
+          </div>
+          <div class="rs-pcard-meta">
+            <span><span class="rs-pcard-meta-k">권장 기간</span><span class="rs-pcard-meta-v">8~12주</span></span>
+            <span><span class="rs-pcard-meta-k">방문 간격</span><span class="rs-pcard-meta-v">주 1~2회</span></span>
+            <span><span class="rs-pcard-meta-k">다운타임</span><span class="rs-pcard-meta-v">없음</span></span>
+          </div>
+          <span class="rs-pcard-link">상세 보기 →</span>
+        </a>
+        <a href="#treatments" class="rs-pcard rs-pcard--feat">
+          <div class="rs-pcard-head">
+            <span class="rs-pcard-num">B</span>
+            <span class="rs-pcard-cat">패인 흉터 · 심부 흉터 회복</span>
+          </div>
+          <div class="rs-pcard-price">
+            <span class="rs-pcard-from">From</span>
+            <strong>30만원~</strong>
+            <span class="rs-pcard-unit">/ 회차당</span>
+          </div>
+          <div class="rs-pcard-meta">
+            <span><span class="rs-pcard-meta-k">권장 기간</span><span class="rs-pcard-meta-v">12~16주</span></span>
+            <span><span class="rs-pcard-meta-k">방문 간격</span><span class="rs-pcard-meta-v">주 1회</span></span>
+            <span><span class="rs-pcard-meta-k">다운타임</span><span class="rs-pcard-meta-v">반나절</span></span>
+          </div>
+          <span class="rs-pcard-link">상세 보기 →</span>
+        </a>
+        <a href="#treatments" class="rs-pcard">
+          <div class="rs-pcard-head">
+            <span class="rs-pcard-num">C</span>
+            <span class="rs-pcard-cat">탄력 · 리프팅 · 주름</span>
+          </div>
+          <div class="rs-pcard-price">
+            <span class="rs-pcard-from">From</span>
+            <strong>25만원~</strong>
+            <span class="rs-pcard-unit">/ 회차당</span>
+          </div>
+          <div class="rs-pcard-meta">
+            <span><span class="rs-pcard-meta-k">권장 기간</span><span class="rs-pcard-meta-v">12~24주</span></span>
+            <span><span class="rs-pcard-meta-k">방문 간격</span><span class="rs-pcard-meta-v">2~3주</span></span>
+            <span><span class="rs-pcard-meta-k">다운타임</span><span class="rs-pcard-meta-v">3~5일</span></span>
+          </div>
+          <span class="rs-pcard-link">상세 보기 →</span>
+        </a>
+      </div>
+      <p class="rs-prices-note">* 실제 비용과 회복 기간은 RECOVER BASELINE 상담 후 개인별 상태에 따라 안내됩니다.</p>
+    </div>
+
+    <!-- 시간 배지 3개 (점심시간·다운타임·재방문) -->
+    <div class="rs-time rv rv-d3">
+      <div class="rs-tcard">
+        <svg class="rs-tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div>
+          <strong>40~60분</strong>
+          <span>1회 시술 시간 · 점심시간 가능</span>
+        </div>
+      </div>
+      <div class="rs-tcard">
+        <svg class="rs-tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+        <div>
+          <strong>당일 일상 복귀</strong>
+          <span>대부분 시술 다운타임 없음</span>
+        </div>
+      </div>
+      <div class="rs-tcard">
+        <svg class="rs-tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12a9 9 0 0117-3"/><path d="M21 12a9 9 0 01-17 3"/><path d="M17 9h4V5"/><path d="M7 15H3v4"/></svg>
+        <div>
+          <strong>주 1회 · 평균 12주</strong>
+          <span>야간·주말 진료 가능</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ P2-1 · 3분 안에 알 수 있는 것 — DATA PICKUP ZONE ═══
+         결정에 필요한 5개 정량 시그널을 측정 카드 형식으로 묶음.
+         Result Slice 끝부분 = 결정자가 빠르게 훑는 마지막 지점. -->
+    <div class="data-pickup rv rv-d3" aria-label="3분 안에 알 수 있는 핵심 데이터">
+      <div class="dp-head">
+        <span class="dp-eyebrow"><span class="dp-coord">[02·SUMMARY]</span> 3 minutes · 상담 기준</span>
+        <span class="dp-meta-line">RECOVER BASELINE · Read / Restore / Record</span>
+      </div>
+      <div class="dp-grid">
+        <div class="dp-cell">
+          <span class="dp-k">상담 산출물</span>
+          <span class="dp-v"><span class="dp-num">4</span><span class="dp-u">가지</span></span>
+          <span class="dp-trend">Condition Map · Sequence · Record</span>
+        </div>
+        <div class="dp-cell">
+          <span class="dp-k">흉터 이해</span>
+          <span class="dp-v"><span class="dp-num">구조</span></span>
+          <span class="dp-trend">섬유 유착 · 당기는 힘 · 회복 반응</span>
+        </div>
+        <div class="dp-cell">
+          <span class="dp-k">첫 판단</span>
+          <span class="dp-v"><span class="dp-num">Do</span><span class="dp-u">/Don't</span></span>
+          <span class="dp-trend">지금 할 것과 미룰 것 구분</span>
+        </div>
+        <div class="dp-cell">
+          <span class="dp-k">첫 상담 시간</span>
+          <span class="dp-v"><span class="dp-num">40–60</span><span class="dp-u">분</span></span>
+          <span class="dp-trend">분석·문진·상담 기준 정리</span>
+        </div>
+        <div class="dp-cell">
+          <span class="dp-k">다음 기록</span>
+          <span class="dp-v"><span class="dp-num">Record</span></span>
+          <span class="dp-trend">다음 회복 판단의 기준</span>
+        </div>
+      </div>
+      <p class="dp-foot">* 첫 상담은 시술 결정을 서두르기보다, 피부 상태와 회복 순서를 이해하기 위한 기준 정리 과정입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values section-pad" id="values">
+  <div class="inner">
+    <div class="rv"><p class="label">Recovery Method</p>
+      <h2 class="title">시술보다 먼저,<br><em>회복의 조건</em>을 봅니다</h2>
+      <p class="desc">Read, Restore, Record. 리커버는 피부를 바꾸기 전에 왜 무너졌는지, 무엇부터 회복해야 하는지, 어떤 순서가 필요한지를 정리합니다.</p></div>
+    <div class="values-grid">
+      <div class="val-card rv rv-d1"><div class="val-num">01</div>
+        <div class="val-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" stroke-dasharray="4 5"/><path d="M24 8c0 10 0 16 0 16s-4 6-8 9"/><path d="M24 24c4-4 10-6 14-5"/><circle cx="24" cy="24" r="4" stroke-width="1"/></svg></div>
+        <h3 class="val-en">Read</h3><p class="val-kr">읽다</p>
+        <p class="val-text">AI 분석과 문진으로 피부의 결, 붉음, 흉터, 생활 리듬을 읽습니다. 회복은 관찰에서 시작됩니다.</p></div>
+      <div class="val-card rv rv-d2"><div class="val-num">02</div>
+        <div class="val-icon"><svg viewBox="0 0 48 48"><path d="M24 44V22"/><path d="M24 30c-6-6-14-6-18-2 4-8 12-11 18-6"/><path d="M24 22c6-6 14-6 18-2-4-8-12-11-18-6"/><path d="M20 44h8"/></svg></div>
+        <h3 class="val-en">Restore</h3><p class="val-kr">조건을 맞추다</p>
+        <p class="val-text">더 많이 자극하기보다 회복될 환경을 먼저 정돈합니다. 필요한 자극과 간격만 차분히 제안합니다.</p></div>
+      <div class="val-card rv rv-d3"><div class="val-num">03</div>
+        <div class="val-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="12" stroke-dasharray="3 4"/><circle cx="24" cy="24" r="4.5" stroke-width="1"/><line x1="24" y1="3" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="45"/><line x1="3" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="45" y2="24"/></svg></div>
+        <h3 class="val-en">Record</h3><p class="val-kr">기록하다</p>
+        <p class="val-text">상담과 변화 기록을 남기고 다음 회복의 순서를 조정합니다. 한 번의 반응보다 지속 가능한 흐름을 봅니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BREATHE 1 — 제거됨 (P1-5 다이어트) -->
+
+<!-- DOCTOR -->
+<section class="stats">
+  <div class="inner">
+    <div class="stats-eyebrow rv">
+      <p class="stats-eyebrow-line">FIELD NOTES · <em>Recover Record</em></p>
+      <p class="stats-eyebrow-sub">첫 상담에서 남기는 기준 — 분석, 해석, 순서, 기록이 하나의 회복 흐름으로 정리됩니다</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item rv rv-d1"><div class="stat-num"><span class="counter" data-target="4">0</span><span class="stat-unit">가지</span></div><p class="stat-label">상담 산출물<span class="stat-meta">Condition Map · Do/Don't · Sequence · Record</span></p></div>
+      <div class="stat-item rv rv-d2"><div class="stat-num"><span class="counter" data-target="3">0</span><span class="stat-unit">단계</span></div><p class="stat-label">회복 설계 방식<span class="stat-meta">Read · Restore · Record</span></p></div>
+      <div class="stat-item rv rv-d3"><div class="stat-num"><span class="counter" data-target="1">0</span><span class="stat-unit">:1</span></div><p class="stat-label">기준 상담<span class="stat-meta">AI 분석 이후 회복 기준으로 해석합니다</span></p></div>
+      <div class="stat-item rv rv-d4"><div class="stat-num"><span class="counter" data-target="5">0</span><span class="stat-unit">층</span></div><p class="stat-label">리커버 강남<span class="stat-meta">선릉역 7번 출구 앞 프리오픈</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Recovery operating loop visualization (Phase F #5) -->
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+  <RRRFlow />
+</div>
+
+<!-- BEFORE/AFTER GALLERY -->
+<section class="atmos" id="atmosphere">
+  <div class="atmos-head rv">
+    <div class="founder-eyebrow"><span>In the Clinic</span></div>
+    <h2 class="atmos-title">회복은 <em>공간의 호흡</em>에서 시작됩니다</h2>
+    <p class="atmos-sub">리커버한의원 강남은 회복의 호흡을 우선하는 진료를 지향합니다.<br/>그 방향은 공간에서부터 시작됩니다.</p>
+    <p class="atmos-placeholder-note">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1"/><circle cx="6" cy="7" r="1.2"/><path d="M2 11l4-3 3 2 5-4"/></svg>
+      <span>현재 이미지는 일러스트 플레이스홀더입니다. <strong>개원 직전 실 공간 사진으로 교체될 예정</strong>이며, 각 프레임에는 감각별 상징 장면(향·정적·촉감·차·빛·시간)이 배치됩니다.</span>
+    </p>
+    <aside class="essay-tldr essay-tldr--atmos" aria-label="30초 요약">
+      <div class="essay-tldr-label"><span class="essay-tldr-icon">☾</span>공간 · 30초 요약</div>
+      <ul class="essay-tldr-list essay-tldr-list--grid">
+        <li><strong>香 향</strong> · 편백과 진피, 아침마다 새로 우리는 다시 한 잔</li>
+        <li><strong>靜 정적</strong> · 소리를 낮춘 대기실, 음악 대신 공간의 숨</li>
+        <li><strong>觸 촉감</strong> · 린넨 가운과 데워둔 돌, 체온을 올리는 손</li>
+        <li><strong>茶 차</strong> · 체질에 맞춘 따뜻한 다시 한 잔으로 시작</li>
+        <li><strong>光 빛</strong> · 2700K 간접광, 거울 앞에서도 편안한 톤</li>
+        <li><strong>時 시간</strong> · 진료 45분 · 예약제 원칙으로 대기 시간을 최소화</li>
+      </ul>
+    </aside>
+  </div>
+  <div class="atmos-grid rv">
+    <div class="atmos-cell atmos-cell-tall">
+      <div class="atmos-cell-placeholder">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#2D5F3E" stroke-width=".8">
+          <path d="M30 10 C20 22 20 38 30 50 C40 38 40 22 30 10 Z"/>
+          <path d="M30 18 L30 48" opacity=".4"/>
+          <path d="M22 28 Q30 32 38 28" opacity=".4"/>
+          <path d="M22 36 Q30 40 38 36" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="atmos-cell-info">
+        <span class="atmos-cell-sense">香 · Scent</span>
+        <p class="atmos-cell-word">편백과 진피,<br/>아침마다 새로 우리는 다시의 향</p>
+      </div>
+    </div>
+    <div class="atmos-cell">
+      <div class="atmos-cell-placeholder">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#2D5F3E" stroke-width=".8">
+          <circle cx="30" cy="30" r="18" opacity=".3"/>
+          <circle cx="30" cy="30" r="10" opacity=".5"/>
+          <circle cx="30" cy="30" r="2" fill="#C4A265" stroke="none"/>
+        </svg>
+      </div>
+      <div class="atmos-cell-info">
+        <span class="atmos-cell-sense">聲 · Silence</span>
+        <p class="atmos-cell-word">말하지 않아도<br/>들리는 정적</p>
+      </div>
+    </div>
+    <div class="atmos-cell">
+      <div class="atmos-cell-placeholder">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#2D5F3E" stroke-width=".8">
+          <rect x="10" y="20" width="40" height="24" rx="2" opacity=".4"/>
+          <path d="M10 28 L50 28" opacity=".3"/>
+          <path d="M18 20 L18 44" opacity=".2"/>
+          <path d="M42 20 L42 44" opacity=".2"/>
+        </svg>
+      </div>
+      <div class="atmos-cell-info">
+        <span class="atmos-cell-sense">觸 · Touch</span>
+        <p class="atmos-cell-word">표백하지 않은 린넨,<br/>손에 닿는 편백 벤치</p>
+      </div>
+    </div>
+    <div class="atmos-cell">
+      <div class="atmos-cell-placeholder">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#2D5F3E" stroke-width=".8">
+          <path d="M20 20 Q30 15 40 20 L40 36 Q30 42 20 36 Z" opacity=".4"/>
+          <path d="M22 22 L22 34" opacity=".3"/>
+          <path d="M38 22 L38 34" opacity=".3"/>
+          <path d="M25 44 Q30 50 35 44" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="atmos-cell-info">
+        <span class="atmos-cell-sense">味 · Taste</span>
+        <p class="atmos-cell-word">진료 전,<br/>달이지 않은 감초차 한 잔</p>
+      </div>
+    </div>
+    <div class="atmos-cell">
+      <div class="atmos-cell-placeholder">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#2D5F3E" stroke-width=".8">
+          <path d="M15 15 L45 15 L45 45 L15 45 Z" opacity=".3"/>
+          <path d="M15 15 L45 45" opacity=".2"/>
+          <circle cx="42" cy="18" r="4" fill="#C4A265" fill-opacity=".3" stroke="none"/>
+        </svg>
+      </div>
+      <div class="atmos-cell-info">
+        <span class="atmos-cell-sense">視 · Light</span>
+        <p class="atmos-cell-word">오후 세시,<br/>창으로 스며드는 자연광</p>
+      </div>
+    </div>
+    <div class="atmos-cell atmos-cell-tall">
+      <div class="atmos-cell-placeholder">
+        <svg viewBox="0 0 60 60" fill="none" stroke="#2D5F3E" stroke-width=".8">
+          <path d="M30 8 Q22 28 30 52" opacity=".5"/>
+          <ellipse cx="24" cy="20" rx="5" ry="2" transform="rotate(-20 24 20)" opacity=".4"/>
+          <ellipse cx="36" cy="32" rx="5" ry="2" transform="rotate(20 36 32)" opacity=".4"/>
+          <ellipse cx="24" cy="42" rx="5" ry="2" transform="rotate(-20 24 42)" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="atmos-cell-info">
+        <span class="atmos-cell-sense">時 · Moment</span>
+        <p class="atmos-cell-word">진료와 진료 사이,<br/>당신만을 위해 비워둔 15분</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ P2-2 · RECOVER SYSTEM STRIP — 회복 기준 요약 ═══ -->
+<section class="live-proof" aria-label="리커버 회복 기준 요약">
+  <div class="lp-inner">
+    <span class="lp-pulse" aria-hidden="true"><span class="lp-pulse-dot"></span><span class="lp-pulse-ring"></span></span>
+    <div class="lp-strip">
+      <div class="lp-item">
+        <span class="lp-k">Location</span>
+        <span class="lp-v"><span class="lp-num">5F</span><span class="lp-u">선릉역 7번 출구 앞</span></span>
+      </div>
+      <span class="lp-sep">·</span>
+      <div class="lp-item">
+        <span class="lp-k">First</span>
+        <span class="lp-v"><span class="lp-num">BASELINE</span><span class="lp-u">첫 회복 기준</span></span>
+      </div>
+      <span class="lp-sep">·</span>
+      <div class="lp-item">
+        <span class="lp-k">Analyze</span>
+        <span class="lp-v"><span class="lp-num">RECOVER AI</span><span class="lp-u">피부 신호 분석</span></span>
+      </div>
+      <span class="lp-sep">·</span>
+      <div class="lp-item">
+        <span class="lp-k">Scar</span>
+        <span class="lp-v"><span class="lp-num">ANATOMY</span><span class="lp-u">흉터 구조 설명</span></span>
+      </div>
+      <span class="lp-sep">·</span>
+      <div class="lp-item lp-item--note">
+        <span class="lp-note">첫 상담은 시술보다 기준을 먼저 남깁니다</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recovery distribution charts (Phase F #6) -->
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+  <StatsCharts />
+</div>
+
+<!-- REVIEWS -->
+<section class="contact section-pad" id="contact">
+  <div class="bg-botanical"></div>
+  <div class="contact-vine"><svg viewBox="0 0 120 200" fill="none" stroke="#C4A265" stroke-width=".5">
+    <path d="M60 200C60 180 58 160 62 140C66 120 56 100 60 80C64 60 58 40 60 20C60 10 60 0 60 0" opacity=".4"/>
+    <path d="M62 150C72 145 82 148 90 144" opacity=".3"/><ellipse cx="90" cy="144" rx="14" ry="20" transform="rotate(-10,90,144)" opacity=".15"/>
+    <path d="M58 100C48 96 38 100 30 96" opacity=".25"/><ellipse cx="30" cy="96" rx="12" ry="18" transform="rotate(12,30,96)" opacity=".12"/>
+    <path d="M62 60C70 55 78 58 86 54" opacity=".2"/><ellipse cx="86" cy="54" rx="10" ry="14" transform="rotate(-8,86,54)" opacity=".1"/>
+    <circle cx="60" cy="140" r="1.5" opacity=".18"/><circle cx="60" cy="80" r="1.5" opacity=".12"/>
+  </svg></div>
+  <div class="inner contact-inner">
+    <div>
+      <div class="rv"><p class="label">Contact</p>
+        <h2 class="contact-headline"><em>회복의 기준</em>을<br>남기는 첫 상담</h2>
+        <p class="contact-desc">첫 상담은 시술을 정하는 시간이 아니라 피부가 회복될 조건을 정리하는 시간입니다. 리커버 강남은 피부 신호, 흉터 구조, 생활 리듬을 함께 보고 필요한 순서를 제안합니다.</p></div>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:44px" class="rv rv-d1">
+        <a href="tel:02-000-0000" class="btn-gold"><span>전화 상담</span><span class="arr"></span></a>
+        <a href="https://pf.kakao.com/_DxewtT/chat" target="_blank" rel="noopener" class="btn-ghost">카카오톡 상담<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17l-4 4V4a1 1 0 011-1h16a1 1 0 011 1v12a1 1 0 01-1 1H7z"/></svg></a>
+        <a href="https://search.naver.com/search.naver?query=리커버한의원+강남" target="_blank" rel="noopener" class="btn-naver">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.27 10.95L7.26 2H2v20h5.73V13.05L16.74 22H22V2h-5.73z"/></svg>
+          <span>네이버 후기 보기</span>
+          <span class="naver-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg>
+          </span>
+          <span style="font-size:11px;opacity:.9">4.9</span>
+        </a>
+      </div>
+
+      <!-- LIVE SLOTS -->
+      <div class="slots rv rv-d2">
+        <div class="slots-head">
+          <div class="slots-title"><span class="slots-live">LIVE</span><span>이번 주 <em>예약 가능</em> 시간</span></div>
+          <span class="slots-updated" id="slotsUpdated">방금 업데이트됨</span>
+        </div>
+        <div class="slots-grid" id="slotsGrid">
+          <!-- 동적 생성 -->
+        </div>
+        <div class="slots-foot">
+          <span class="slots-note">* 실시간 예약 현황입니다. 변동 가능하며, 확정은 예약 확인 후 안내드립니다.</span>
+          <a href="https://pf.kakao.com/_DxewtT/chat" target="_blank" rel="noopener" class="slots-all">전체 시간 문의</a>
+        </div>
+      </div>
+
+      <div class="contact-info rv rv-d2">
+        <div class="ci-item"><p class="ci-label">Phone</p><p class="ci-value">02-000-0000</p></div>
+        <div class="ci-item"><p class="ci-label">Online</p><p class="ci-value">recover-clinic.kr<br>@recover_clinic</p></div>
+        <div class="ci-item"><p class="ci-label">Hours · 핵심</p><p class="ci-value">월–금 10:00 – 19:00<br>토 10:00 – 15:00</p></div>
+        <div class="ci-item"><p class="ci-label">Location</p><p class="ci-value">아래 약도 참조 ↓<br><span style="opacity:.6;font-size:12px">선릉역 7번 출구 · 도보 1분</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT GUIDE — 차 한 잔의 시간, 그 전에 -->
+<section class="closing" id="closing">
+  <div class="closing-inner rv">
+    <div class="closing-emblem" aria-hidden="true">
+      <svg viewBox="0 0 52 52" fill="none" stroke="#D4B87A" stroke-width="1.2" stroke-linecap="round">
+        <circle cx="26" cy="26" r="22" opacity=".4"/>
+        <path d="M26 8 Q18 26 26 44 Q34 26 26 8 Z" opacity=".8"/>
+        <circle cx="26" cy="26" r="3" fill="#D4B87A" stroke="none"/>
+      </svg>
+    </div>
+    <p class="closing-line1">피부는 결국,<br/><em>시간이 만듭니다.</em></p>
+    <p class="closing-line2">그 시간, 함께 드리겠습니다.</p>
+  </div>
+</section>
+
+<!-- FOOTER — 봉투 뒷면 (B15) -->
+</MainLayout>

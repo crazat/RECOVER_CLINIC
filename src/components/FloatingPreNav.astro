@@ -1,0 +1,35 @@
+---
+// FloatingPreNav — 글로벌 floating UI (Phase H — opening ceremony 제거)
+---
+<!-- Opening ceremony 제거 (사용자 요청 — 페이지 전환 시 회전 애니메이션 비활성) -->
+<script is:inline>document.documentElement.setAttribute('data-ceremony','done');</script>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- B9: Film grain overlay -->
+<div class="film-grain" aria-hidden="true"></div>
+
+<!-- B13: Quiet mode toggle -->
+<button type="button" class="quiet-toggle" id="quietToggle" aria-label="Quiet 모드 전환" title="모션 끄기">
+  <svg class="qt-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/><path d="M8 12h8"/></svg>
+  <svg class="qt-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+</button>
+
+<!-- UP-5: Season badge -->
+<div class="season-badge" id="seasonBadge" aria-hidden="true" title="계절 무드">
+  <span class="sb-gl">❀</span>
+  <span class="sb-txt"><span class="sb-ko">봄</span><span class="sb-en">Spring</span></span>
+</div>
+
+<!-- B12: Chapter rail -->
+<nav class="chapter-rail" id="chapterRail" aria-label="섹션 네비게이션">
+  <a class="chapter-pip" href="#hero" data-chapter="hero"><span class="chapter-pip-label"><span class="chapter-pip-num">01</span>Opening</span></a>
+  <a class="chapter-pip" href="#values" data-chapter="values"><span class="chapter-pip-label"><span class="chapter-pip-num">02</span>Method</span></a>
+  <a class="chapter-pip" href="#treatments" data-chapter="treatments"><span class="chapter-pip-label"><span class="chapter-pip-num">03</span>Scar</span></a>
+  <a class="chapter-pip" href="#gallery" data-chapter="gallery"><span class="chapter-pip-label"><span class="chapter-pip-num">04</span>Records</span></a>
+  <a class="chapter-pip" href="#doctor" data-chapter="doctor"><span class="chapter-pip-label"><span class="chapter-pip-num">05</span>System</span></a>
+  <a class="chapter-pip" href="#precision" data-chapter="precision"><span class="chapter-pip-label"><span class="chapter-pip-num">06</span>AI</span></a>
+  <a class="chapter-pip" href="#reviews" data-chapter="reviews"><span class="chapter-pip-label"><span class="chapter-pip-num">07</span>Stories</span></a>
+  <a class="chapter-pip" href="#contact" data-chapter="contact"><span class="chapter-pip-label"><span class="chapter-pip-num">08</span>Visit</span></a>
+</nav>

@@ -1,0 +1,99 @@
+---
+// MainLayout — 메인 사이트 5페이지 공통 (/, /scar, /record, /method, /baseline)
+// RESEARCH 페이지는 별도 layout 없이 자체 인라인 스타일 사용
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import FloatingPreNav from '../components/FloatingPreNav.astro';
+import FloatingPostFooter from '../components/FloatingPostFooter.astro';
+import VolumeBar from '../components/VolumeBar.astro';
+import ChapterBanner from '../components/ChapterBanner.astro';
+
+const {
+  title = '리커버한의원 강남 | 회복 조건을 보는 한의학 기반 피부 회복 설계',
+  description = '리커버한의원 강남은 한의학 기반 피부 회복 설계 브랜드입니다. AI 피부 분석으로 피부의 결, 흔적, 생활 리듬을 읽고 회복의 조건과 순서를 정리합니다. 선릉역 7번 출구 앞 5층.',
+  active = '',
+  ogTitle,
+  ogDescription,
+  chapter,             // 'I' | 'II' | 'III' | 'IV' | 'V' — 표시 시 chapter banner 자동 노출
+  chapterTitle,        // 한국어 페이지 제목 (chapter banner)
+  chapterTitleEn,      // 영문 italic 보조 제목
+  chapterEyebrow,      // 제 N 장 · Chapter N
+  chapterCategory,     // VolumeBar category
+} = Astro.props;
+
+const finalOgTitle = ogTitle || title;
+const finalOgDescription = ogDescription || '피부 아래의 원리까지 읽고 회복의 조건을 봅니다. 리커버한의원 강남, 선릉역 7번 출구 앞 5층.';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "리커버한의원 강남",
+  "alternateName": "RECOVER GANGNAM",
+  "description": "리커버한의원 강남은 한의학 기반 피부 회복 설계 브랜드입니다. AI 피부 분석으로 피부의 결, 흔적, 생활 리듬을 읽고 회복의 조건과 순서를 정리합니다.",
+  "url": "https://recover-clinic.kr",
+  "telephone": "02-000-0000",
+  "foundingDate": "2026-08-17",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "서울특별시",
+    "addressRegion": "강남구",
+    "streetAddress": "역삼동 부일타워 5층 (선릉역 7번 출구)",
+    "addressCountry": "KR"
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"15:00"}
+  ],
+  "medicalSpecialty": ["Acupuncture","TraditionalKoreanMedicine"],
+  "priceRange": "₩₩₩",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "HAN PREDICT, Inc.",
+    "url": "https://hanpredict.com",
+    "description": "AI healthcare platform developing RECOVER AI Station Kit and clinical analytics systems."
+  }
+};
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="color-scheme" content="light only">
+<meta property="og:title" content={finalOgTitle}>
+<meta property="og:description" content={finalOgDescription}>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="리커버한의원 강남">
+<meta property="og:url" content={canonicalUrl}>
+<link rel="canonical" href={canonicalUrl}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="naver-site-verification" content="">
+<link rel="icon" type="image/png" sizes="64x64" href="/logo/favicon_R_64.png">
+<link rel="apple-touch-icon" href="/logo/favicon_R_180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Noto+Serif+KR:wght@200;300;400;500;600;700&family=Noto+Sans+KR:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+</head>
+<body>
+<FloatingPreNav />
+<Nav active={active} />
+<VolumeBar category={chapterCategory || '회복 조건'} />
+{chapter && (
+  <ChapterBanner
+    chapter={chapter}
+    titleKo={chapterTitle}
+    titleEn={chapterTitleEn}
+    eyebrow={chapterEyebrow}
+  />
+)}
+<main><slot /></main>
+<Footer />
+<FloatingPostFooter />
+</body>
+</html>

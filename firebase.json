@@ -4,31 +4,27 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": ".",
+    "public": "dist",
     "ignore": [
       "firebase.json",
-      ".firebaserc",
-      "firestore.rules",
-      "firestore.indexes.json",
-      ".git/**",
       "**/.*",
-      "**/node_modules/**",
-      "CLAUDE.md",
-      "README.md",
-      "recover_gangnam_brand_strategy.md",
-      "recover_brand_identity.docx",
-      "*.docx",
-      "로고 이미지/**",
-      "scraps/**",
-      "_check/**",
-      "screenshots/**",
-      "uploads/**",
-      "original.html",
-      "memory/**"
+      "**/node_modules/**"
     ],
     "headers": [
       {
         "source": "**/*.@(png|webp|gif|jpg|jpeg|ico|svg)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "**/*.@(mp4|webm)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
         "headers": [
           { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
         ]
@@ -40,6 +36,7 @@
         ]
       }
     ],
-    "cleanUrls": true
+    "cleanUrls": true,
+    "trailingSlash": true
   }
 }

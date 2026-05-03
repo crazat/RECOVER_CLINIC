@@ -1,0 +1,28 @@
+---
+// Nav (Phase I rev2) — RESEARCH를 메뉴 끝 우측으로 이동 (로고와 분리)
+const { active = '' } = Astro.props;
+---
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo" aria-label="리커버한의원 강남 홈"><img src="/logo/Gemini_Generated_Image_txxt28txxt28txxt.png" alt="RECOVER 강남"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" class:list={[{ active: active === 'home' }]}>리커버 방식</a></li>
+    <li><a href="/method/" class:list={[{ active: active === 'method' }]}>메소드·기술</a></li>
+    <li><a href="/scar/" class:list={[{ active: active === 'scar' }]}>흉터 회복</a></li>
+    <li><a href="/record/" class:list={[{ active: active === 'record' }]}>회복 기록</a></li>
+    <li class="nav-divider" aria-hidden="true"></li>
+    <li><a href="/research/" class={`nav-research-link${active === 'research' ? ' active' : ''}`} aria-label="RESEARCH — 자매 R&D Lab Genesis_Medicine">
+      <span class="nrl-name">RESEARCH</span>
+      <span class="nrl-arrow" aria-hidden="true">↗</span>
+      <span class="nrl-sub">Genesis_Medicine Lab</span>
+    </a></li>
+    <li><a href="/baseline/" class={`nav-cta${active === 'baseline' ? ' active' : ''}`}><span>BASELINE 상담</span></a></li>
+  </ul>
+  <a href="/baseline/" class="nav-mobile-cta" aria-label="BASELINE 상담 신청">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l4 4 6-7"/></svg>
+    <span>BASELINE 상담</span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+    <span></span><span></span><span></span>
+    <span class="nav-toggle-label">메뉴</span>
+  </button>
+</nav>

@@ -1,0 +1,101 @@
+---
+// CompareDiagram — 일반 클리닉 vs 리커버 시각 비교 다이어그램
+const items = [
+  { genericLabel: '증상 → 시술 즉시 매칭', recoverLabel: 'AI 분석 + 의학 관점 · 회복 기준 상담', icon: '01' },
+  { genericLabel: '단일 시술 반복', recoverLabel: '필요한 자극·회복 간격 설계', icon: '02' },
+  { genericLabel: '결과 사진 중심', recoverLabel: 'RECOVER RECORD 기록 누적', icon: '03' },
+  { genericLabel: '재발 시 같은 시술', recoverLabel: '회복 신호 다시 읽고 다음 순서 조정', icon: '04' },
+];
+---
+<figure class="comp-diag" aria-label="일반 클리닉 vs 리커버 회복 흐름 비교">
+  <div class="comp-diag-cap">
+    <span class="comp-diag-eye">Comparative Workflow · Figure</span>
+    <h3 class="comp-diag-title">두 흐름이<br/>다른 곳에서 <em>나뉩니다</em></h3>
+    <p class="comp-diag-sub">같은 시술명을 써도, 회복을 "결과"로 보느냐 "기록"으로 보느냐에 따라 흐름은 완전히 달라집니다.</p>
+  </div>
+
+  <div class="comp-diag-cols">
+    <!-- LEFT: Generic clinic flow (linear) -->
+    <div class="comp-diag-col comp-diag-col--generic">
+      <div class="comp-diag-col-head">
+        <span class="comp-diag-col-tag">일반 클리닉 흐름</span>
+        <p class="comp-diag-col-name">Linear · 직선형</p>
+      </div>
+      <svg class="comp-diag-svg" viewBox="0 0 240 360" xmlns="http://www.w3.org/2000/svg">
+        <g font-family="Noto Serif KR" font-size="11" fill="#5A5A5A">
+          {items.map((it, i) => {
+            const y = 40 + i * 80;
+            return (
+              <g>
+                <rect x="40" y={y - 18} width="160" height="36" fill="#FBFAF6" stroke="#7a3a3a" stroke-width=".7" opacity=".88"/>
+                <text x="120" y={y + 4} text-anchor="middle" font-size="10.5" fill="#3D3D3D">{it.genericLabel}</text>
+                {i < items.length - 1 && (
+                  <g stroke="#7a3a3a" stroke-width=".7" fill="none" opacity=".6">
+                    <line x1="120" y1={y + 18} x2="120" y2={y + 62}/>
+                    <polygon points={`117,${y + 58} 120,${y + 64} 123,${y + 58}`} fill="#7a3a3a"/>
+                  </g>
+                )}
+              </g>
+            );
+          })}
+        </g>
+        <text x="120" y="350" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#7a3a3a" letter-spacing=".18em">END · 다시 시술</text>
+      </svg>
+    </div>
+
+    <!-- RIGHT: Recover loop -->
+    <div class="comp-diag-col comp-diag-col--recover">
+      <div class="comp-diag-col-head">
+        <span class="comp-diag-col-tag">리커버 회복 흐름</span>
+        <p class="comp-diag-col-name">Loop · 닫힌 루프</p>
+      </div>
+      <svg class="comp-diag-svg" viewBox="0 0 240 360" xmlns="http://www.w3.org/2000/svg">
+        <g font-family="Noto Serif KR" font-size="11">
+          {items.map((it, i) => {
+            const y = 40 + i * 80;
+            return (
+              <g>
+                <rect x="40" y={y - 18} width="160" height="36" fill="white" stroke="#2D5F3E" stroke-width="1" opacity=".95"/>
+                <text x="120" y={y + 4} text-anchor="middle" font-size="10.5" fill="#1A1A1A">{it.recoverLabel}</text>
+                {i < items.length - 1 && (
+                  <g stroke="#2D5F3E" stroke-width="1" fill="none">
+                    <line x1="120" y1={y + 18} x2="120" y2={y + 62}/>
+                    <polygon points={`117,${y + 58} 120,${y + 64} 123,${y + 58}`} fill="#2D5F3E"/>
+                  </g>
+                )}
+              </g>
+            );
+          })}
+          <!-- Loop back arc -->
+          <path d="M40 360 Q12 200 40 40" stroke="#C4A265" stroke-width="1.4" fill="none" stroke-dasharray="4 3"/>
+          <polygon points="38,46 44,38 44,52" fill="#C4A265"/>
+        </g>
+        <text x="120" y="352" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#A88B4A" letter-spacing=".18em">LOOP · 다시 읽음</text>
+      </svg>
+    </div>
+  </div>
+
+  <p class="comp-diag-foot">FIG. 7 · Workflow comparison · 결과 추구 vs 회복 기록</p>
+</figure>
+
+<style>
+.comp-diag{margin:48px 0;padding:40px clamp(20px,4vw,56px);background:white;border:1px solid rgba(26,26,26,.16);position:relative;box-shadow:0 1px 0 rgba(196,162,101,.16),0 16px 48px rgba(45,95,62,.05)}
+.comp-diag::before{content:'';position:absolute;top:0;left:0;width:120px;height:2px;background:#A88B4A}
+.comp-diag-cap{margin-bottom:32px;max-width:720px}
+.comp-diag-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.32em;color:#A88B4A;text-transform:uppercase;font-weight:500;display:inline-block;margin-bottom:12px}
+.comp-diag-title{font-family:'Fraunces','Noto Serif KR',Georgia,serif;font-size:clamp(22px,3vw,30px);font-weight:300;color:#1A1A1A;line-height:1.28;letter-spacing:-.008em;margin-bottom:10px}
+.comp-diag-title em{font-style:italic;color:#2D5F3E;font-weight:500}
+.comp-diag-sub{font-family:'Noto Serif KR',Georgia,serif;font-size:14.5px;line-height:1.75;color:#3D3D3D;font-weight:300}
+.comp-diag-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+@media(max-width:768px){.comp-diag-cols{grid-template-columns:1fr}}
+.comp-diag-col{background:#FBFAF6;border:1px solid rgba(196,162,101,.22);padding:24px}
+.comp-diag-col--generic{border-left:3px solid #7a3a3a}
+.comp-diag-col--recover{border-left:3px solid #2D5F3E;background:linear-gradient(180deg,#FBFAF6 0%,white 100%)}
+.comp-diag-col-head{margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(196,162,101,.16)}
+.comp-diag-col-tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#A88B4A;text-transform:uppercase;font-weight:500}
+.comp-diag-col-name{font-family:'Fraunces','Noto Serif KR',serif;font-size:18px;font-weight:500;color:#1A1A1A;margin-top:4px;letter-spacing:-.005em}
+.comp-diag-col--generic .comp-diag-col-name{color:#7a3a3a}
+.comp-diag-col--recover .comp-diag-col-name{color:#2D5F3E}
+.comp-diag-svg{width:100%;height:auto;display:block;margin:8px auto 0}
+.comp-diag-foot{margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.18em;color:#5A5A5A;text-transform:uppercase;text-align:center;padding-top:18px;border-top:1px solid rgba(196,162,101,.16)}
+</style>

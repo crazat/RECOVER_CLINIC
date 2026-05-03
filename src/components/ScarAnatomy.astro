@@ -1,0 +1,296 @@
+---
+// ScarAnatomy — 패인 흉터 단면도 (V자 함몰 강조 + 깊이감 + 음영)
+// Before / After 2-panel + 깊이 측정선 + 새살침 작용
+---
+<figure class="scar-anat" aria-label="흉터 단면 해부학적 시각화">
+  <div class="scar-anat-cap">
+    <span class="scar-anat-eye">RECOVER ANATOMY · Cross-Section Figure</span>
+    <h3 class="scar-anat-title">패인 흉터의 표면 아래에서<br/><em>당기는 힘</em>을 봅니다</h3>
+    <p class="scar-anat-sub">패인 흉터는 단순한 표면의 함몰이 아니라, 진피 안 섬유 유착이 표피를 약 0.5–2.0 mm 아래로 잡아당기는 구조의 문제입니다. 새살침은 이 유착을 끊어 차오를 공간을 만듭니다.</p>
+  </div>
+
+  <div class="scar-anat-grid">
+    <!-- BEFORE — 깊은 V자 함몰 + 그라디언트 음영 -->
+    <div class="scar-anat-panel">
+      <div class="scar-anat-stamp">Before · 흉터 형성</div>
+      <svg class="scar-anat-svg" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" role="img">
+        <defs>
+          <!-- depression shadow gradient -->
+          <linearGradient id="depShadow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3D3D3D" stop-opacity="0"/>
+            <stop offset="40%" stop-color="#3D3D3D" stop-opacity=".18"/>
+            <stop offset="100%" stop-color="#1A1A1A" stop-opacity=".55"/>
+          </linearGradient>
+          <!-- skin surface gradient -->
+          <linearGradient id="skinSurf" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FBFAF6"/>
+            <stop offset="100%" stop-color="#F1EDE3"/>
+          </linearGradient>
+          <!-- dermis hatch -->
+          <pattern id="dermisHatch_a" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(35)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#A88B4A" stroke-width=".55" opacity=".48"/>
+          </pattern>
+          <!-- adhesion (cross-hatch dense) -->
+          <pattern id="adh_a" patternUnits="userSpaceOnUse" width="3" height="3" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="#7a3a3a" stroke-width=".75" opacity=".82"/>
+          </pattern>
+          <pattern id="adh_b" patternUnits="userSpaceOnUse" width="3" height="3" patternTransform="rotate(-45)">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="#7a3a3a" stroke-width=".5" opacity=".55"/>
+          </pattern>
+          <!-- subtle paper grain -->
+          <radialGradient id="grain_a" cx=".5" cy=".5" r=".6">
+            <stop offset="0%" stop-color="#FBFAF6"/>
+            <stop offset="100%" stop-color="#F0EBDE"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Background paper -->
+        <rect x="0" y="0" width="420" height="360" fill="url(#grain_a)"/>
+
+        <!-- ───── Surface profile (very deep V-notch + boxcar combo) ───── -->
+        <!-- Outer skin surface contour : flat → V-dip(icepick) → flat → U-dip(rolling) → flat -->
+        <path
+          d="M0 80 L80 80 Q90 80 96 86 L130 152 Q134 158 138 152 L160 96 Q166 80 178 80 L240 80 Q258 80 268 96 Q280 116 295 132 Q310 148 325 132 Q340 116 350 96 Q358 80 372 80 L420 80 L420 360 L0 360 Z"
+          fill="url(#skinSurf)"
+          stroke="#1A1A1A"
+          stroke-width="1.6"
+          stroke-linejoin="round"/>
+
+        <!-- Depression shadow inside the depressions -->
+        <path
+          d="M80 80 Q90 80 96 86 L130 152 Q134 158 138 152 L160 96 Q166 80 178 80 Z"
+          fill="url(#depShadow)"
+          opacity=".88"/>
+        <path
+          d="M240 80 Q258 80 268 96 Q280 116 295 132 Q310 148 325 132 Q340 116 350 96 Q358 80 372 80 Z"
+          fill="url(#depShadow)"
+          opacity=".68"/>
+
+        <!-- Epidermis layer (beneath the surface, follows the depressions) -->
+        <path
+          d="M0 80 L80 80 Q90 80 96 86 L130 152 Q134 158 138 152 L160 96 Q166 80 178 80 L240 80 Q258 80 268 96 Q280 116 295 132 Q310 148 325 132 Q340 116 350 96 Q358 80 372 80 L420 80 L420 110 L0 110 Z"
+          fill="#F1EDE3"
+          opacity=".66"/>
+
+        <!-- Dermis fill -->
+        <rect x="0" y="110" width="420" height="170" fill="url(#dermisHatch_a)"/>
+
+        <!-- ───── Fibrotic adhesion under the depressions (the "pulling" force) ───── -->
+        <!-- icepick adhesion (deep, narrow, pulls hardest) -->
+        <ellipse cx="134" cy="200" rx="22" ry="68" fill="url(#adh_a)"/>
+        <ellipse cx="134" cy="200" rx="22" ry="68" fill="url(#adh_b)"/>
+        <ellipse cx="134" cy="200" rx="22" ry="68" fill="none" stroke="#7a3a3a" stroke-width="1.2"/>
+
+        <!-- rolling adhesion (wider, shallower) -->
+        <ellipse cx="295" cy="195" rx="44" ry="58" fill="url(#adh_a)" opacity=".88"/>
+        <ellipse cx="295" cy="195" rx="44" ry="58" fill="url(#adh_b)"/>
+        <ellipse cx="295" cy="195" rx="44" ry="58" fill="none" stroke="#7a3a3a" stroke-width="1.1"/>
+
+        <!-- Pull-force arrows (tension lines drawing skin downward) -->
+        <g stroke="#7a3a3a" stroke-width="1.3" fill="#7a3a3a" opacity=".88">
+          <!-- icepick tension -->
+          <line x1="134" y1="158" x2="134" y2="138" stroke-dasharray="2 1.5"/>
+          <polygon points="131,142 134,134 137,142"/>
+          <line x1="116" y1="190" x2="100" y2="190" stroke-dasharray="2 1.5"/>
+          <polygon points="104,187 96,190 104,193"/>
+          <line x1="152" y1="190" x2="168" y2="190" stroke-dasharray="2 1.5"/>
+          <polygon points="164,187 172,190 164,193"/>
+          <!-- rolling tension -->
+          <line x1="295" y1="138" x2="295" y2="118" stroke-dasharray="2 1.5"/>
+          <polygon points="292,122 295,114 298,122"/>
+        </g>
+
+        <!-- ───── Disorganized collagen around scars ───── -->
+        <g stroke="#A88B4A" stroke-width=".55" fill="none" opacity=".5">
+          <path d="M20 220 Q60 215 100 220"/>
+          <path d="M20 240 Q60 235 100 240"/>
+          <path d="M180 220 Q210 215 240 220"/>
+          <path d="M340 220 Q380 215 400 220"/>
+          <path d="M340 240 Q380 235 400 240"/>
+        </g>
+
+        <!-- ───── Depth measurement ruler (right side) ───── -->
+        <g stroke="#A88B4A" stroke-width=".6" font-family="IBM Plex Mono" font-size="8.5" fill="#5A5A5A" letter-spacing=".04em">
+          <line x1="396" y1="80" x2="396" y2="280"/>
+          <line x1="392" y1="80" x2="400" y2="80"/>
+          <line x1="392" y1="110" x2="400" y2="110"/>
+          <line x1="392" y1="155" x2="400" y2="155" stroke="#7a3a3a" stroke-width="1"/>
+          <line x1="392" y1="200" x2="400" y2="200"/>
+          <line x1="392" y1="280" x2="400" y2="280"/>
+          <text x="404" y="84">0</text>
+          <text x="404" y="114">0.3</text>
+          <text x="404" y="159" fill="#7a3a3a" font-weight="500">1.5 mm ←</text>
+          <text x="404" y="204">2.0</text>
+          <text x="404" y="284">8.0</text>
+        </g>
+
+        <!-- ───── Labels ───── -->
+        <!-- icepick label -->
+        <line x1="134" y1="155" x2="40" y2="60" stroke="#7a3a3a" stroke-width=".55"/>
+        <rect x="14" y="36" width="100" height="32" fill="white" stroke="#7a3a3a" stroke-width=".55"/>
+        <text x="64" y="50" text-anchor="middle" font-family="Noto Serif KR" font-size="11" font-weight="500" fill="#7a3a3a">아이스픽 흉터</text>
+        <text x="64" y="62" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#5A5A5A" letter-spacing=".04em">~1.5 mm</text>
+
+        <!-- rolling label -->
+        <line x1="295" y1="135" x2="380" y2="50" stroke="#7a3a3a" stroke-width=".55"/>
+        <rect x="304" y="26" width="100" height="32" fill="white" stroke="#7a3a3a" stroke-width=".55"/>
+        <text x="354" y="40" text-anchor="middle" font-family="Noto Serif KR" font-size="11" font-weight="500" fill="#7a3a3a">롤링 흉터</text>
+        <text x="354" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#5A5A5A" letter-spacing=".04em">~0.8 mm</text>
+
+        <!-- adhesion label -->
+        <text x="134" y="296" text-anchor="middle" font-family="Noto Serif KR" font-size="10.5" font-style="italic" font-weight="500" fill="#7a3a3a">섬유 유착이 표피를 끌어내림</text>
+
+        <!-- bottom layer label -->
+        <text x="210" y="345" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#5A5A5A" letter-spacing=".22em">DERMIS · 진피층 (회복의 무대)</text>
+      </svg>
+    </div>
+
+    <!-- AFTER — 패임 차오름 + 콜라겐 재구성 + 새살침 흔적 -->
+    <div class="scar-anat-panel">
+      <div class="scar-anat-stamp scar-anat-stamp--after">After · 회복 환경 조성</div>
+      <svg class="scar-anat-svg" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg" role="img">
+        <defs>
+          <linearGradient id="skinSurfB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FBFAF6"/>
+            <stop offset="100%" stop-color="#F1EDE3"/>
+          </linearGradient>
+          <pattern id="dermisHatch_b" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(35)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#A88B4A" stroke-width=".55" opacity=".48"/>
+          </pattern>
+          <radialGradient id="recoveryGlow_b" cx=".5" cy=".5" r=".5">
+            <stop offset="0%" stop-color="#A8C5A0" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#A8C5A0" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="grain_b" cx=".5" cy=".5" r=".6">
+            <stop offset="0%" stop-color="#FBFAF6"/>
+            <stop offset="100%" stop-color="#F0EBDE"/>
+          </radialGradient>
+        </defs>
+
+        <rect x="0" y="0" width="420" height="360" fill="url(#grain_b)"/>
+
+        <!-- Surface profile : mostly flat, slight residual dimple -->
+        <path
+          d="M0 80 L120 80 Q132 80 138 86 L138 96 Q138 102 144 102 Q150 102 150 96 L150 86 Q156 80 168 80 L260 80 Q280 80 290 90 Q300 100 305 102 Q310 100 320 90 Q330 80 350 80 L420 80 L420 360 L0 360 Z"
+          fill="url(#skinSurfB)"
+          stroke="#1A1A1A"
+          stroke-width="1.6"
+          stroke-linejoin="round"/>
+
+        <!-- Epidermis -->
+        <path
+          d="M0 80 L120 80 Q132 80 138 86 L138 96 Q138 102 144 102 Q150 102 150 96 L150 86 Q156 80 168 80 L260 80 Q280 80 290 90 Q300 100 305 102 Q310 100 320 90 Q330 80 350 80 L420 80 L420 110 L0 110 Z"
+          fill="#F1EDE3"
+          opacity=".66"/>
+
+        <!-- Dermis -->
+        <rect x="0" y="110" width="420" height="170" fill="url(#dermisHatch_b)"/>
+
+        <!-- Recovery glow zones (where scars used to be) -->
+        <ellipse cx="144" cy="200" rx="34" ry="80" fill="url(#recoveryGlow_b)"/>
+        <ellipse cx="295" cy="195" rx="56" ry="72" fill="url(#recoveryGlow_b)"/>
+
+        <!-- Re-organized collagen network (parallel waves) -->
+        <g stroke="#2D5F3E" stroke-width=".75" fill="none" opacity=".75">
+          <path d="M110 140 Q135 136 160 140 T210 140"/>
+          <path d="M110 156 Q135 152 160 156 T210 156"/>
+          <path d="M110 172 Q135 168 160 172 T210 172"/>
+          <path d="M110 188 Q135 184 160 188 T210 188"/>
+          <path d="M110 204 Q135 200 160 204 T210 204"/>
+          <path d="M110 220 Q135 216 160 220 T210 220"/>
+          <path d="M250 140 Q280 136 310 140 T370 140"/>
+          <path d="M250 156 Q280 152 310 156 T370 156"/>
+          <path d="M250 172 Q280 168 310 172 T370 172"/>
+          <path d="M250 188 Q280 184 310 188 T370 188"/>
+          <path d="M250 204 Q280 200 310 204 T370 204"/>
+          <path d="M250 220 Q280 216 310 220 T370 220"/>
+        </g>
+
+        <!-- Needle insertion sites (gold dots — fading microtraces) -->
+        <g fill="#C4A265" opacity=".88">
+          <circle cx="124" cy="120" r="1.7"/>
+          <circle cx="144" cy="116" r="1.7"/>
+          <circle cx="164" cy="120" r="1.7"/>
+          <circle cx="134" cy="148" r="1.7"/>
+          <circle cx="154" cy="148" r="1.7"/>
+          <circle cx="144" cy="180" r="1.9"/>
+          <circle cx="270" cy="118" r="1.7"/>
+          <circle cx="295" cy="114" r="1.7"/>
+          <circle cx="320" cy="118" r="1.7"/>
+          <circle cx="278" cy="146" r="1.7"/>
+          <circle cx="295" cy="142" r="1.7"/>
+          <circle cx="312" cy="146" r="1.7"/>
+          <circle cx="295" cy="178" r="1.9"/>
+        </g>
+
+        <!-- Depth ruler -->
+        <g stroke="#A88B4A" stroke-width=".6" font-family="IBM Plex Mono" font-size="8.5" fill="#5A5A5A" letter-spacing=".04em">
+          <line x1="396" y1="80" x2="396" y2="280"/>
+          <line x1="392" y1="80" x2="400" y2="80"/>
+          <line x1="392" y1="110" x2="400" y2="110"/>
+          <line x1="392" y1="170" x2="400" y2="170" stroke="#2D5F3E" stroke-width="1"/>
+          <line x1="392" y1="200" x2="400" y2="200"/>
+          <line x1="392" y1="280" x2="400" y2="280"/>
+          <text x="404" y="84">0</text>
+          <text x="404" y="114">0.3</text>
+          <text x="404" y="174" fill="#2D5F3E" font-weight="500">1.0 mm ←</text>
+          <text x="404" y="204">2.0</text>
+          <text x="404" y="284">8.0</text>
+        </g>
+
+        <!-- Labels -->
+        <line x1="144" y1="190" x2="60" y2="50" stroke="#2D5F3E" stroke-width=".55"/>
+        <rect x="14" y="26" width="106" height="32" fill="white" stroke="#2D5F3E" stroke-width=".55"/>
+        <text x="67" y="40" text-anchor="middle" font-family="Noto Serif KR" font-size="11" font-weight="500" fill="#2D5F3E">콜라겐 재구성</text>
+        <text x="67" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#5A5A5A" letter-spacing=".04em">평행 재배열</text>
+
+        <line x1="320" y1="118" x2="396" y2="50" stroke="#A88B4A" stroke-width=".55"/>
+        <rect x="298" y="26" width="106" height="32" fill="white" stroke="#A88B4A" stroke-width=".55"/>
+        <text x="351" y="40" text-anchor="middle" font-family="Noto Serif KR" font-size="11" font-weight="500" fill="#A88B4A">새살침 자입점</text>
+        <text x="351" y="52" text-anchor="middle" font-family="IBM Plex Mono" font-size="8.5" fill="#5A5A5A" letter-spacing=".04em">유착 해소</text>
+
+        <text x="210" y="345" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#5A5A5A" letter-spacing=".22em">DERMIS · 회복의 무대 (콜라겐 재배열)</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 함정 강조 라인 -->
+  <div class="scar-anat-keypoint">
+    <div class="scar-anat-keypoint-mark">!</div>
+    <p>패인 흉터의 핵심은 표피의 음영이 아니라 <strong>진피 안 섬유 유착</strong>입니다. 표면을 매끄럽게 채우는 것이 아니라, 아래에서 끌어당기는 힘을 풀어주어야 합니다.</p>
+  </div>
+
+  <!-- 실제 시술 영상 -->
+  <div class="viz-video-card">
+    <video src="/video/saesalchim_anatomy.mp4" autoplay muted loop playsinline preload="metadata" poster="/logo/R_emblem_original.png" aria-label="새살침 시술 — 무음 자동 재생"></video>
+    <span class="vc-corner tl"></span>
+    <span class="vc-corner tr"></span>
+    <span class="vc-corner bl"></span>
+    <span class="vc-corner br"></span>
+    <span class="vc-tag">RECOVER · ANATOMY · LIVE</span>
+    <span class="vc-counter">REEL 02 / 04</span>
+  </div>
+
+  <p class="scar-anat-foot">FIG. 2 · 흉터 단면 해부학 시각화 + 시술 영상 — RECOVER ANATOMY · 임상 효능 미주장</p>
+</figure>
+
+<style>
+.scar-anat{margin:48px 0;padding:40px clamp(20px,4vw,56px);background:white;border:1px solid rgba(26,26,26,.16);position:relative;box-shadow:0 1px 0 rgba(196,162,101,.16),0 16px 48px rgba(45,95,62,.05)}
+.scar-anat::before{content:'';position:absolute;top:0;left:0;width:120px;height:2px;background:#A88B4A}
+.scar-anat-cap{margin-bottom:32px;max-width:720px}
+.scar-anat-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.32em;color:#A88B4A;text-transform:uppercase;font-weight:500;display:inline-block;margin-bottom:12px}
+.scar-anat-title{font-family:'Fraunces','Noto Serif KR',Georgia,serif;font-size:clamp(22px,3vw,32px);font-weight:300;color:#1A1A1A;line-height:1.22;letter-spacing:-.012em;margin-bottom:12px}
+.scar-anat-title em{font-style:italic;color:#7a3a3a;font-weight:500}
+.scar-anat-sub{font-family:'Noto Serif KR',Georgia,serif;font-size:14.5px;line-height:1.78;color:#3D3D3D;font-weight:300}
+.scar-anat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+@media(max-width:760px){.scar-anat-grid{grid-template-columns:1fr}}
+.scar-anat-panel{background:linear-gradient(180deg,#FBFAF6 0%,#F7F5F0 100%);padding:18px;border:1px solid rgba(196,162,101,.22);position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 6px 18px rgba(21,20,15,.04)}
+.scar-anat-stamp{position:absolute;top:14px;left:14px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#7a3a3a;background:rgba(122,58,58,.08);border:1px solid rgba(122,58,58,.22);padding:5px 12px;text-transform:uppercase;font-weight:500;z-index:2}
+.scar-anat-stamp--after{color:#2D5F3E;background:rgba(45,95,62,.06);border-color:rgba(45,95,62,.22)}
+.scar-anat-svg{width:100%;height:auto;display:block;margin:38px auto 0}
+.scar-anat-keypoint{margin-top:32px;padding:20px 24px;background:linear-gradient(90deg,rgba(122,58,58,.05) 0%,rgba(196,162,101,.03) 100%);border-left:3px solid #7a3a3a;display:flex;gap:16px;align-items:flex-start}
+.scar-anat-keypoint-mark{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:#7a3a3a;color:white;font-family:'Fraunces',serif;font-size:18px;font-weight:500;display:flex;align-items:center;justify-content:center;font-style:italic}
+.scar-anat-keypoint p{font-family:'Noto Serif KR',serif;font-size:14.5px;line-height:1.75;color:#1A1A1A;font-weight:400}
+.scar-anat-keypoint strong{color:#7a3a3a;font-weight:500}
+.scar-anat-foot{margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.18em;color:#5A5A5A;text-transform:uppercase;text-align:center;padding-top:18px;border-top:1px solid rgba(196,162,101,.16)}
+</style>

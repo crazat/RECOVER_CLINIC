@@ -1,0 +1,76 @@
+---
+// TargetMap — 14 단백질 타겟을 6개 disease vertical로 묶어 시각화 (RESEARCH에서 메인 사이트로 이식)
+const colorMap: Record<string, string> = {
+  forest: '#2D5F3E',
+  gold: '#A88B4A',
+  sage: '#4A8C5E',
+  sprout: '#6b8d62',
+};
+const targetGroups = [
+  { disease: '흉터 재생', en: 'Scar', color: 'forest', x: 60, y: 80, targets: ['TGF-β1', 'MMP-1', 'COL1A1', 'CTGF', 'LOX'] },
+  { disease: '색소', en: 'Pigment', color: 'gold', x: 280, y: 80, targets: ['TYR', 'MITF', 'TYRP1', 'DCT'] },
+  { disease: '안드로겐성 탈모', en: 'Alopecia', color: 'sage', x: 500, y: 80, targets: ['SRD5A2', 'AR'] },
+  { disease: '여드름·광노화', en: 'Acne / Aging', color: 'sprout', x: 720, y: 80, targets: ['SREBP1', 'PTGS2', 'SIRT1'] },
+];
+---
+<figure class="target-map" aria-label="리커버가 보는 14개 단백질 타겟 맵">
+  <div class="target-map-cap">
+    <span class="target-map-eye">14 Target Map · Figure</span>
+    <h3 class="target-map-title">리커버는 14개의 회복 신호를<br/><em>분자 단위</em>로 봅니다</h3>
+    <p class="target-map-sub">표면 증상이 아니라 진피 안 14개 단백질의 작동을 봅니다. 자매 R&amp;D Lab(Genesis_Medicine)에서 in silico 단계로 연구합니다.</p>
+  </div>
+
+  <svg class="target-map-svg" viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img">
+    <!-- Skin layer (top decorative) -->
+    <line x1="40" y1="32" x2="840" y2="32" stroke="#1A1A1A" stroke-width="1"/>
+    <text x="48" y="22" font-family="IBM Plex Mono" font-size="9.5" fill="#A88B4A" letter-spacing=".22em">SKIN · 4-LAYER MODEL</text>
+    <text x="832" y="22" text-anchor="end" font-family="IBM Plex Mono" font-size="9.5" fill="#A88B4A" letter-spacing=".22em">14 PROTEIN TARGETS</text>
+
+    {targetGroups.map((g) => {
+      const c = colorMap[g.color];
+      return (
+        <g>
+          <!-- group circle -->
+          <circle cx={g.x + 60} cy={g.y + 100} r="92" fill="white" stroke={c} stroke-width="1.4" opacity=".94"/>
+          <circle cx={g.x + 60} cy={g.y + 100} r="78" fill="none" stroke={c} stroke-width=".4" stroke-dasharray="2 2" opacity=".5"/>
+
+          <!-- disease label -->
+          <text x={g.x + 60} y={g.y + 60} text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" font-weight="500" letter-spacing=".22em" fill={c}>{g.en.toUpperCase()}</text>
+          <text x={g.x + 60} y={g.y + 80} text-anchor="middle" font-family="Fraunces" font-size="15" font-style="italic" font-weight="500" fill={c}>{g.disease}</text>
+
+          <!-- target nodes -->
+          {g.targets.map((t, ti) => {
+            const angle = (ti / g.targets.length) * Math.PI * 2 + Math.PI / 2;
+            const r = 52;
+            const tx = g.x + 60 + Math.cos(angle) * r;
+            const ty = g.y + 132 + Math.sin(angle) * r * 0.6;
+            return (
+              <g>
+                <circle cx={tx} cy={ty} r="14" fill={c} opacity=".12"/>
+                <circle cx={tx} cy={ty} r="14" fill="none" stroke={c} stroke-width=".7"/>
+                <text x={tx} y={ty + 3} text-anchor="middle" font-family="IBM Plex Mono" font-size="8" font-weight="500" fill={c}>{t}</text>
+              </g>
+            );
+          })}
+
+          <!-- count badge -->
+          <text x={g.x + 60} y={g.y + 240} text-anchor="middle" font-family="Fraunces" font-size="22" font-weight="300" font-style="italic" fill={c}>{g.targets.length}<tspan font-size="11" font-style="normal" letter-spacing=".18em" font-family="IBM Plex Mono">개</tspan></text>
+        </g>
+      );
+    })}
+  </svg>
+
+  <p class="target-map-foot">FIG. 8 · 14 protein targets across 6 skin-disease verticals · in silico (자매 Genesis_Medicine Lab)</p>
+</figure>
+
+<style>
+.target-map{margin:48px 0;padding:40px clamp(20px,4vw,56px);background:linear-gradient(180deg,white 0%,#FBFAF6 100%);border:1px solid rgba(26,26,26,.16);position:relative;box-shadow:0 1px 0 rgba(196,162,101,.16),0 16px 48px rgba(45,95,62,.05)}
+.target-map::before{content:'';position:absolute;top:0;left:0;width:120px;height:2px;background:#A88B4A}
+.target-map-cap{margin-bottom:24px;max-width:720px}
+.target-map-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.32em;color:#A88B4A;text-transform:uppercase;font-weight:500;display:inline-block;margin-bottom:12px}
+.target-map-title{font-family:'Fraunces','Noto Serif KR',Georgia,serif;font-size:clamp(22px,3vw,30px);font-weight:300;color:#1A1A1A;line-height:1.28;letter-spacing:-.008em;margin-bottom:10px}
+.target-map-title em{font-style:italic;color:#2D5F3E;font-weight:500}
+.target-map-sub{font-family:'Noto Serif KR',Georgia,serif;font-size:14.5px;line-height:1.75;color:#3D3D3D;font-weight:300}
+.target-map-svg{width:100%;max-width:960px;height:auto;display:block;margin:8px auto 0}
+.target-map-foot{margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.18em;color:#5A5A5A;text-transform:uppercase;text-align:center;padding-top:18px;border-top:1px solid rgba(196,162,101,.16)}
+</style>

@@ -1,0 +1,794 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+<MainLayout
+  title="BASELINE 상담 | 리커버한의원 강남 — 첫 상담 신청"
+  description="리커버한의원 강남의 첫 상담은 시술을 정하는 시간이 아니라, 피부가 회복될 조건을 함께 읽는 시간입니다. RECOVER BASELINE 4문항 · 3스텝 상담 신청 · FAQ · 내원 전 체크리스트."
+  ogTitle="BASELINE 상담 신청 | 리커버한의원 강남"
+  ogDescription="시술을 정하기 전에, 피부가 돌아올 조건을 먼저 읽습니다. 선릉역 7번 출구 앞 5층."
+  active="baseline"
+  chapter="V"
+  chapterEyebrow="제 5 장 · Chapter V"
+  chapterTitle="시술을 정하기 전에,<br><em>회복의 조건</em>을 먼저"
+  chapterTitleEn="Baseline Consultation · 첫 상담 신청"
+  chapterCategory="첫 상담"
+>
+<section class="diagnose section-pad" id="diagnose">
+  <div class="inner">
+    <div class="dg-wrap">
+      <!-- Left: intro -->
+      <div class="dg-intro rv">
+        <p class="dg-eyebrow">RECOVER BASELINE</p>
+        <h2 class="dg-title">4가지 질문으로<br>내 피부의 <em>회복 경로</em>를 찾습니다</h2>
+        <p class="dg-desc">강한 시술부터 시작할 필요는 없습니다. 몇 가지 질문으로 지금 피부가 먼저 회복해야 할 조건과 상담에서 확인할 기준을 정리해드립니다.</p>
+
+        <div class="dg-features">
+          <div class="dg-feat">
+            <span class="dg-feat-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="6" cy="6" r="4"/><path d="M6 4v2.5l1.5 1"/></svg></span>
+            <div><strong>60초 소요</strong>질문은 4개, 평균 50~70초 내에 완료됩니다.</div>
+          </div>
+          <div class="dg-feat">
+            <span class="dg-feat-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 1v10M1 6h10"/></svg></span>
+            <div><strong>회원가입 없음</strong>이메일이나 전화번호 입력 없이 바로 결과 확인.</div>
+          </div>
+          <div class="dg-feat">
+            <span class="dg-feat-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="8" height="6" rx="1"/><path d="M4 4V2.5a2 2 0 014 0V4"/></svg></span>
+            <div><strong>상담 전 가이드</strong>내원 전 방향을 정리하는 체크입니다.</div>
+          </div>
+        </div>
+
+        <div class="dg-privacy"><strong>Privacy</strong>입력하신 답변은 브라우저에만 저장되며, 서버로 전송·보관되지 않습니다.</div>
+      </div>
+
+      <!-- Right: quiz card -->
+      <div class="dg-card rv rv-d1" id="dgCard">
+        <!-- Progress -->
+        <div class="dg-progress">
+          <div class="dg-progress-track"><div class="dg-progress-fill" id="dgProgress"></div></div>
+          <span class="dg-progress-text" id="dgProgressText">Q1 · of 4</span>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="dg-step active" data-step="1">
+          <p class="dg-q-num">Question 01 · 주된 고민</p>
+          <h3 class="dg-q">가장 먼저 개선하고 싶은 <em>한 가지</em>는?</h3>
+          <p class="dg-q-help">지금 거울을 볼 때 제일 먼저 눈에 들어오는 것을 선택해주세요.</p>
+          <div class="dg-options">
+            <button class="dg-opt" data-q="1" data-v="scar"><p class="dg-opt-label">Concern A</p><p class="dg-opt-text">흉터 · 여드름 자국</p><p class="dg-opt-hint">패인 자국, 붉은 자국, 색소 침착</p></button>
+            <button class="dg-opt" data-q="1" data-v="sensitive"><p class="dg-opt-label">Concern B</p><p class="dg-opt-text">민감 · 홍조 · 트러블</p><p class="dg-opt-hint">자주 붉어지고 따끔한 피부</p></button>
+            <button class="dg-opt" data-q="1" data-v="aging"><p class="dg-opt-label">Concern C</p><p class="dg-opt-text">탄력 · 잔주름</p><p class="dg-opt-hint">처짐, 볼륨 감소, 건조함</p></button>
+            <button class="dg-opt" data-q="1" data-v="dullness"><p class="dg-opt-label">Concern D</p><p class="dg-opt-text">칙칙함 · 기미 · 잡티</p><p class="dg-opt-hint">전체적인 톤 다운, 기미</p></button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="dg-step" data-step="2">
+          <p class="dg-q-num">Question 02 · 이전 경험</p>
+          <h3 class="dg-q">지난 12개월 간 받으신 <em>시술 경험</em>은?</h3>
+          <p class="dg-q-help">시술 이력은 현재 상태를 판단하는 중요한 단서입니다.</p>
+          <div class="dg-options">
+            <button class="dg-opt" data-q="2" data-v="none"><p class="dg-opt-label">History A</p><p class="dg-opt-text">거의 없음</p><p class="dg-opt-hint">관리나 시술 받은 적 없음</p></button>
+            <button class="dg-opt" data-q="2" data-v="light"><p class="dg-opt-label">History B</p><p class="dg-opt-text">가벼운 관리</p><p class="dg-opt-hint">에스테틱, 순한 필링 정도</p></button>
+            <button class="dg-opt" data-q="2" data-v="laser"><p class="dg-opt-label">History C</p><p class="dg-opt-text">레이저 · 박피 경험</p><p class="dg-opt-hint">색소 레이저, 프락셔널 등</p></button>
+            <button class="dg-opt" data-q="2" data-v="heavy"><p class="dg-opt-label">History D</p><p class="dg-opt-text">복합 시술 반복</p><p class="dg-opt-hint">여러 시술을 반복적으로 받음</p></button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="dg-step" data-step="3">
+          <p class="dg-q-num">Question 03 · 현재 상태</p>
+          <h3 class="dg-q">최근 한 달, 피부 <em>컨디션</em>은?</h3>
+          <p class="dg-q-help">아침에 일어났을 때와 세안 직후의 느낌을 기준으로 선택해주세요.</p>
+          <div class="dg-options">
+            <button class="dg-opt" data-q="3" data-v="stable"><p class="dg-opt-label">Condition A</p><p class="dg-opt-text">대체로 안정적</p><p class="dg-opt-hint">큰 변동 없이 편안한 상태</p></button>
+            <button class="dg-opt" data-q="3" data-v="fluctuate"><p class="dg-opt-label">Condition B</p><p class="dg-opt-text">컨디션 기복이 큼</p><p class="dg-opt-hint">좋았다 나빴다를 반복</p></button>
+            <button class="dg-opt" data-q="3" data-v="reactive"><p class="dg-opt-label">Condition C</p><p class="dg-opt-text">작은 자극에도 반응</p><p class="dg-opt-hint">화장품 바꾸면 바로 트러블</p></button>
+            <button class="dg-opt" data-q="3" data-v="tired"><p class="dg-opt-label">Condition D</p><p class="dg-opt-text">푸석하고 지침</p><p class="dg-opt-hint">수분감 없고 화장이 안 먹음</p></button>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="dg-step" data-step="4">
+          <p class="dg-q-num">Question 04 · 선호 방향</p>
+          <h3 class="dg-q">어떤 방식의 <em>접근</em>을 선호하세요?</h3>
+          <p class="dg-q-help">정답은 없습니다. 개인 성향에 맞는 프로토콜을 제안하기 위한 질문입니다.</p>
+          <div class="dg-options single-col">
+            <button class="dg-opt" data-q="4" data-v="gentle"><p class="dg-opt-label">Approach A · 부드럽게</p><p class="dg-opt-text">시간이 걸리더라도 자극 없이 천천히 가고 싶어요</p><p class="dg-opt-hint">→ 한약·침 중심 / 비침습 프로토콜 가중치</p></button>
+            <button class="dg-opt" data-q="4" data-v="balanced"><p class="dg-opt-label">Approach B · 균형 있게</p><p class="dg-opt-text">효과와 안전 사이 균형 잡힌 프로그램을 원해요</p><p class="dg-opt-hint">→ 한약 + 새살침 복합 / 표준 프로토콜</p></button>
+            <button class="dg-opt" data-q="4" data-v="focused"><p class="dg-opt-label">Approach C · 집중적으로</p><p class="dg-opt-text">단기간 내 눈에 띄는 변화가 필요해요</p><p class="dg-opt-hint">→ 새살침 + 복합 시술 / 집중 회차</p></button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="dg-result" id="dgResult">
+          <div class="dg-result-head">
+            <p class="dg-result-label">Your Baseline · 회복 기준</p>
+            <h3 class="dg-result-title" id="dgResultTitle">분석 중...</h3>
+          </div>
+          <div class="dg-result-summary" id="dgResultSummary"></div>
+
+          <!-- UP-1: TWIN FINDER — 비슷한 상태에서 회복한 실제 사례 매칭 -->
+          <div class="dg-twin" id="dgTwin" hidden>
+            <div class="dg-twin-head">
+              <p class="dg-twin-eyebrow"><span class="seed-dot"></span><span>Your Twin · 가장 비슷한 케이스</span></p>
+              <h4 class="dg-twin-title" id="dgTwinTitle"></h4>
+              <p class="dg-twin-sub" id="dgTwinSub"></p>
+            </div>
+            <div class="dg-twin-card">
+              <div class="dg-twin-img-wrap">
+                <img class="dg-twin-img" id="dgTwinImg" alt="비슷한 케이스 Before/After" loading="lazy">
+                <div class="dg-twin-watermark">RECOVER · CASE MATCH</div>
+              </div>
+              <div class="dg-twin-meta">
+                <div class="dg-twin-meta-row">
+                  <span class="dg-twin-meta-label">유사도</span>
+                  <span class="dg-twin-meta-val"><span class="dg-twin-score" id="dgTwinScore">—</span><span class="dg-twin-score-unit">%</span></span>
+                </div>
+                <div class="dg-twin-meta-bar"><div class="dg-twin-meta-fill" id="dgTwinFill"></div></div>
+                <p class="dg-twin-meta-note" id="dgTwinNote"></p>
+                <a href="#gallery" class="dg-twin-cta" id="dgTwinJumpBA">
+                  <span>전체 갤러리에서 더 보기</span>
+                  <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 7h8M8 4l3 3-3 3"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dg-result-block">
+            <p class="dg-result-block-label">Recommended Path · 추천 시작점</p>
+            <div class="dg-result-recs" id="dgResultRecs"></div>
+          </div>
+
+          <div class="dg-result-block">
+            <p class="dg-result-block-label">Caution · 주의 사항</p>
+            <p id="dgResultCaution" style="font-size:13px;line-height:1.85;color:var(--charcoal);opacity:.85"></p>
+          </div>
+
+          <p class="dg-disclaimer-result">* 본 자가 체크는 방문 상담을 위한 가이드입니다. 정확한 판단과 치료 여부는 리커버 기준 상담 후 결정됩니다.</p>
+
+          <!-- Lead capture — 결과를 저장하고 회복 기준표를 받아보는 플로우 -->
+          <div class="dg-lead" id="dgLead">
+            <div class="dg-lead-head">
+              <div class="dg-lead-badge"><span class="dg-lead-dot"></span>BASELINE 저장 가능</div>
+              <h4 class="dg-lead-title">이 결과를 바탕으로 <em>회복 기준표</em>를 받아보시겠어요?</h4>
+              <p class="dg-lead-sub">상담 전 확인할 피부 신호와 우선순위를 정리해드립니다. 이후 내원 시 더 정확한 기준으로 이어집니다.</p>
+            </div>
+            <form class="dg-lead-form" id="dgLeadForm" novalidate>
+              <div class="dg-lead-row">
+                <label class="dg-lead-field">
+                  <span class="dg-lead-label">이름</span>
+                  <input type="text" name="name" required autocomplete="name" placeholder="홍길동" />
+                </label>
+                <label class="dg-lead-field">
+                  <span class="dg-lead-label">연락받을 번호</span>
+                  <input type="tel" name="phone" required autocomplete="tel" placeholder="010 0000 0000" inputmode="numeric" />
+                </label>
+              </div>
+              <div class="dg-lead-channels" role="radiogroup" aria-label="연락 방법">
+                <label class="dg-lead-ch"><input type="radio" name="channel" value="kakao" checked><span class="dg-lead-ch-mark"></span><span class="dg-lead-ch-txt">카톡</span></label>
+                <label class="dg-lead-ch"><input type="radio" name="channel" value="sms"><span class="dg-lead-ch-mark"></span><span class="dg-lead-ch-txt">문자</span></label>
+                <label class="dg-lead-ch"><input type="radio" name="channel" value="call"><span class="dg-lead-ch-mark"></span><span class="dg-lead-ch-txt">전화</span></label>
+              </div>
+              <label class="dg-lead-consent">
+                <input type="checkbox" name="consent" required>
+                <span class="dg-lead-consent-mark"></span>
+                <span class="dg-lead-consent-txt">개인정보 수집·이용에 동의합니다 <button type="button" class="dg-lead-consent-more" onclick="alert('수집 항목: 이름, 연락처, 자가 체크 결과 \\n목적: 상담 전 안내 회신 \\n보유기간: 상담 종료 후 3개월')">자세히</button></span>
+              </label>
+              <button type="submit" class="dg-lead-submit">
+                <span class="dg-lead-submit-label">회복 기준표 받기</span>
+                <span class="dg-lead-submit-meta">BASELINE · 상담 전 안내</span>
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+              </button>
+            </form>
+            <div class="dg-lead-done" id="dgLeadDone" hidden>
+              <div class="dg-lead-done-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="24" cy="24" r="20"/>
+                  <path d="M15 24l6 6 12-14"/>
+                </svg>
+              </div>
+              <h4 class="dg-lead-done-title">접수가 완료되었습니다</h4>
+              <p class="dg-lead-done-sub">입력하신 내용을 바탕으로<br>상담 전 확인할 회복 기준을 정리해드릴게요.</p>
+            </div>
+          </div>
+
+          <div class="dg-result-cta">
+            <button class="dg-btn" id="dgRestart">다시 체크하기</button>
+            <a href="#case-study" class="dg-btn" id="dgViewCase" data-case-id="">비슷한 케이스 보기 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M8 4l3 3-3 3" stroke-linecap="round"/></svg></a>
+            <a href="#consult" class="dg-btn primary">이 결과로 BASELINE 상담 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M8 4l3 3-3 3" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Nav -->
+        <div class="dg-nav" id="dgNav">
+          <button class="dg-btn" id="dgPrev" disabled>← 이전</button>
+          <button class="dg-btn primary" id="dgNext" disabled>다음 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M8 4l3 3-3 3" stroke-linecap="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAILED ELSEWHERE — 타 병원 실패 후 오신 분들 -->
+<section class="failed section-pad" id="failed">
+  <div class="inner">
+    <div class="fe-head rv">
+      <p class="label">For Those Who've Tried Everything</p>
+      <h2 class="fe-title">"이미 여러 곳을 다녀봤지만<br><em>달라지지 않았어요</em>"</h2>
+      <p class="fe-sub">리커버를 찾는 분들의 72%는 타 병원에서 이미 시술을 받아본 경험이 있습니다. 우리는 그 피로를 이해하고, 처음부터 다시 묻는 것에서 시작합니다.</p>
+    </div>
+
+    <!-- Before / After comparison -->
+    <div class="fe-journey">
+      <div class="fe-column before rv">
+        <p class="fe-column-label">Before Recover</p>
+        <h3 class="fe-column-title">그동안 겪으신 경험</h3>
+        <div class="fe-experiences">
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M2 8h12M11 5l3 3-3 3"/></svg></span><span>짧은 상담 후 곧바로 시술 권유</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M2 8h12M11 5l3 3-3 3"/></svg></span><span>모두에게 동일한 패키지 프로그램</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M2 8h12M11 5l3 3-3 3"/></svg></span><span>"왜 효과가 없는지" 설명 부족</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M2 8h12M11 5l3 3-3 3"/></svg></span><span>반복 시술에도 근본 문제 잔존</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M2 8h12M11 5l3 3-3 3"/></svg></span><span>추가 결제 유도에 대한 불신</span></div>
+        </div>
+      </div>
+
+      <div class="fe-arrow"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1"><path d="M10 22h24M28 16l6 6-6 6" stroke-linecap="round"/></svg></div>
+
+      <div class="fe-column after rv rv-d1">
+        <p class="fe-column-label">At Recover</p>
+        <h3 class="fe-column-title">저희가 하는 일</h3>
+        <div class="fe-experiences">
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M3 8l3.5 3.5L13 5"/></svg></span><span>첫 상담 60분, RECOVER AI 분석 포함 피부·생활 리듬 동시 확인</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M3 8l3.5 3.5L13 5"/></svg></span><span>처방은 전원 개인 맞춤, 동일 조합이 없음</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M3 8l3.5 3.5L13 5"/></svg></span><span>판단 근거와 예상 경과를 문서로 전달</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M3 8l3.5 3.5L13 5"/></svg></span><span>때로는 "시술하지 않을 것"을 권하는 판단도</span></div>
+          <div class="fe-exp"><span class="fe-exp-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.3"><path d="M3 8l3.5 3.5L13 5"/></svg></span><span>사전 고지된 총비용, 추가 권유 없음</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Common concerns -->
+    <div class="fe-concerns-wrap">
+      <div class="fe-concerns-intro rv">
+        <p class="fe-concerns-intro-label">Before You Decide</p>
+        <p class="fe-concerns-intro-text">오기 전에 가장 많이 물어보시는 <em>세 가지 질문</em>에<br>먼저 답해드립니다</p>
+      </div>
+
+      <div class="fe-concerns">
+        <div class="fe-concern rv">
+          <p class="fe-concern-num">Q · 01</p>
+          <p class="fe-concern-q">다른 곳에서 효과를 못 봤는데,<br>여기서는 다를까요?</p>
+          <div class="fe-concern-a">
+            <strong>Answer</strong>
+            같은 증상이라도 원인은 사람마다 다릅니다. 이전에 받으신 시술과 반응 기록을 먼저 확인하고, 그 데이터 위에서 다시 판단합니다. 같은 방법을 반복하지 않는 것이 출발점입니다.
+          </div>
+        </div>
+        <div class="fe-concern rv rv-d1">
+          <p class="fe-concern-num">Q · 02</p>
+          <p class="fe-concern-q">고가의 패키지를<br>또 결제해야 하나요?</p>
+          <div class="fe-concern-a">
+            <strong>Answer</strong>
+            아니요. 첫 진료 후 필요한 최소 회차만 제안드리며, 총비용은 사전에 서면으로 안내합니다. 중간에 추가 시술을 권하는 일은 없으며, 경과에 따라 회차를 줄이는 경우도 많습니다.
+          </div>
+        </div>
+        <div class="fe-concern rv rv-d2">
+          <p class="fe-concern-num">Q · 03</p>
+          <p class="fe-concern-q">이미 피부가 예민해졌는데<br>치료 받아도 괜찮나요?</p>
+          <div class="fe-concern-a">
+            <strong>Answer</strong>
+            예민해진 피부에는 먼저 "쉼"이 필요합니다. 저희는 장벽이 회복될 때까지 자극성 시술을 보류하고, 한약과 침 중심의 비침습 케어로 시작합니다. 안전이 우선입니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fe-reassure rv">
+      <p class="fe-reassure-quote">"잘못된 건 환자분이 아닙니다.<br>단지 <em>맞는 방법을 아직 만나지 못했을 뿐</em>이에요."</p>
+      <p class="fe-reassure-sign">— 리커버 강남 회복 기준</p>
+    </div>
+
+    <!-- UP-3: TRANSPARENT DISCLOSURE — 우리가 거절한 환자, 우리가 놓친 경우 -->
+    <div class="fe-transparency">
+      <div class="fe-tr-head rv">
+        <p class="fe-tr-eyebrow"><span class="seed-dot"></span><span>Radical Transparency</span><span class="seed-dot"></span></p>
+        <h3 class="fe-tr-title">모든 환자가 좋아지지는 않습니다.<br><em>그 사실부터 말씀드립니다.</em></h3>
+        <p class="fe-tr-lede">개원 전이지만, 원장이 지난 15년간 진료한 1만 2천여 건의 기록 중 <em>솔직하게 공유드리는 세 가지 유형</em>입니다. 이런 분들에게 저희는 도움이 되지 않거나, 다른 접근을 권해드립니다.</p>
+      </div>
+
+      <ol class="fe-tr-cases">
+        <li class="fe-tr-case rv">
+          <div class="fe-tr-case-head">
+            <span class="fe-tr-case-num">CASE · 01</span>
+            <span class="fe-tr-case-tag decline">정중히 거절</span>
+          </div>
+          <h4 class="fe-tr-case-h">"이번 주말까지 없애주세요"</h4>
+          <p class="fe-tr-case-body">중요한 행사를 앞두고 <em>3일·일주일 안의 극적 변화</em>를 요청하시는 경우, 저희는 시술을 받지 않습니다. 의학적 재생 치료는 최소한의 세포 리듬과 회복 시간이 필요합니다. 그 기대를 채울 수 없다면 먼저 거절드리는 것이 정직한 일이라고 믿습니다.</p>
+          <p class="fe-tr-case-foot">→ 빠른 변화를 우선하시는 경우 타원을 안내드립니다.</p>
+        </li>
+
+        <li class="fe-tr-case rv rv-d1">
+          <div class="fe-tr-case-head">
+            <span class="fe-tr-case-num">CASE · 02</span>
+            <span class="fe-tr-case-tag partial">결과 제한적</span>
+          </div>
+          <h4 class="fe-tr-case-h">15년 이상 묵은 심부 흉터</h4>
+          <p class="fe-tr-case-body">진피 하부까지 굳어진 <em>오래된 아이스픽·박스카 흉터</em>일수록 표면만 깎아내는 접근으론 재발하기 쉽습니다. 저희는 자체 보유한 레이저·고주파를 한약·새살침과 <em>순서대로 결합</em>해, 굳은 조직을 풀고 그 자리에 새살이 차오르도록 설계합니다. 오래된 흉터일수록 이 순서가 더 중요합니다.</p>
+          <p class="fe-tr-case-foot">→ 도구 결합 · 순서 설계</p>
+        </li>
+
+        <li class="fe-tr-case rv rv-d2">
+          <div class="fe-tr-case-head">
+            <span class="fe-tr-case-num">CASE · 03</span>
+            <span class="fe-tr-case-tag refer">타과 의뢰</span>
+          </div>
+          <h4 class="fe-tr-case-h">정밀 검사가 먼저 필요한 경우</h4>
+          <p class="fe-tr-case-body">갑작스러운 붉은 반점, 통증을 동반한 병변, 체중 급변, 전신 증상이 의심되는 경우 저희는 <em>시술을 보류하고 상급 종합병원 진료를 우선 권해드립니다</em>. 어떤 의학적 치료도 만능이 아니며, 순서를 지키는 것이 환자를 위한 판단입니다.</p>
+          <p class="fe-tr-case-foot">→ 협력 의료기관 소견서 발행</p>
+        </li>
+      </ol>
+
+      <div class="fe-tr-pledge rv">
+        <div class="fe-tr-pledge-seal" aria-hidden="true">誓</div>
+        <p class="fe-tr-pledge-text">"받지 않아야 할 시술을 <em>거절하는 것이</em>,<br>받을 시술을 제대로 하는 것보다 중요합니다."</p>
+        <p class="fe-tr-pledge-sign">— 리커버 강남 진료 원칙</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCIENCE — 한의학 기반 피부 회복의 원리 -->
+<section class="faq section-pad" id="faq">
+  <div class="inner">
+    <div class="rv" style="text-align:center"><p class="label" style="justify-content:center">Q&amp;A</p>
+      <h2 class="title" style="margin:0 auto 16px">자주 묻는 <em>질문</em></h2></div>
+    <div class="faq-list">
+      <div class="faq-item rv rv-d1">
+        <div class="faq-q"><h4>새살침은 리커버에서 어떤 역할인가요?</h4><svg class="faq-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v12M3 9h12"/></svg></div>
+        <div class="faq-a"><p>새살침은 리커버의 중요한 흉터 회복 기술입니다. 다만 첫 상담에서는 시술명을 먼저 정하지 않고, 흉터 아래 구조와 피부 회복 조건을 확인한 뒤 필요한 자극과 회복 간격을 설계합니다.</p></div>
+      </div>
+      <div class="faq-item rv rv-d2">
+        <div class="faq-q"><h4>시술 시 통증이 있나요?</h4><svg class="faq-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v12M3 9h12"/></svg></div>
+        <div class="faq-a"><p>매우 미세한 침을 사용하여 대부분의 환자분들이 경미한 따끔함 정도만 느끼십니다. 시술 직후 일상 활동이 바로 가능합니다.</p></div>
+      </div>
+      <div class="faq-item rv rv-d3">
+        <div class="faq-q"><h4>몇 회 정도 필요할까요?</h4><svg class="faq-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v12M3 9h12"/></svg></div>
+        <div class="faq-a"><p>흉터의 깊이, 유착 방향, 피부 장벽 상태, 회복 반응에 따라 달라집니다. 리커버는 첫 상담에서 필요한 것과 미뤄야 할 것을 구분하고, 회복 순서를 먼저 안내합니다.</p></div>
+      </div>
+      <div class="faq-item rv rv-d4">
+        <div class="faq-q"><h4>첫 방문 시 어떻게 진행되나요?</h4><svg class="faq-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v12M3 9h12"/></svg></div>
+        <div class="faq-a"><p>RECOVER BASELINE으로 시작합니다. AI 피부 분석과 리커버 기준 상담을 통해 피부 신호, 흉터 구조, 생활 리듬을 확인하고 지금 해도 되는 것과 미뤄야 할 것을 함께 정리합니다.</p></div>
+      </div>
+      <div class="faq-item rv rv-d5">
+        <div class="faq-q"><h4>보험 적용이 되나요?</h4><svg class="faq-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v12M3 9h12"/></svg></div>
+        <div class="faq-a"><p>미용 목적의 시술은 건강보험 적용이 되지 않습니다. 다만 화상·외상 흉터 등 일부 항목은 보험 적용이 가능하며, 상담 시 자세히 안내드립니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULT FORM -->
+<section class="consult" id="consult">
+  <div class="offer-strip rv">
+    <div class="offer-item">
+      <div class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+      <p class="offer-eyebrow">First Visit</p>
+      <p class="offer-title"><em>RECOVER BASELINE</em></p>
+      <p class="offer-sub"><span class="offer-hl">AI 피부 분석</span> + 원장 회복 상담</p>
+    </div>
+    <div class="offer-item">
+      <div class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <p class="offer-eyebrow">Direct Reply</p>
+      <p class="offer-title"><em>평일 24시간 내</em> 회신</p>
+      <p class="offer-sub"><span class="offer-hl">리커버 상담팀</span>에서 답변드립니다</p>
+    </div>
+    <div class="offer-item">
+      <div class="offer-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l2.4 6.9h7.1l-5.8 4.2 2.2 6.9L12 15.8l-5.9 4.2 2.2-6.9L2.5 8.9h7.1z"/></svg></div>
+      <p class="offer-eyebrow">Founding Patients</p>
+      <p class="offer-title"><em>프리오픈 상담</em></p>
+      <p class="offer-sub"><span class="offer-hl">선릉역 7번 출구 앞</span> · 5층</p>
+    </div>
+  </div>
+  <div class="consult-inner rv">
+    <h3 class="consult-title">시술을 정하기 전에,<br><em>내 피부의 기준</em>을 먼저 세웁니다</h3>
+    <p class="consult-sub">RECOVER BASELINE은 피부 신호, 흉터 구조, 생활 리듬, 이전 시술 경험을 함께 확인하고 지금 필요한 회복 순서를 정리하는 첫 상담입니다.</p>
+    <div class="consult-progress" id="consultProgress">
+      <div class="consult-stepper"><span class="cs-dot active" data-step="1">1</span><span class="cs-label active">고민</span></div>
+      <span class="cs-line"></span>
+      <div class="consult-stepper"><span class="cs-dot" data-step="2">2</span><span class="cs-label">연락처</span></div>
+      <span class="cs-line"></span>
+      <div class="consult-stepper"><span class="cs-dot" data-step="3">3</span><span class="cs-label">일정</span></div>
+    </div>
+    <form class="consult-form" id="consultForm" onsubmit="return false">
+      <div class="consult-steps" id="consultSteps">
+        <!-- STEP 1 · 고민 선택 -->
+        <div class="consult-step">
+          <div class="consult-step-fields">
+            <p class="cs-step-head">어떤 고민으로 <em>방문</em>하시나요?</p>
+            <p class="cs-step-sub">아래 중 가장 가까운 것을 선택해주세요.</p>
+            <div class="cs-pick-grid">
+              <button type="button" class="cs-pick" data-concern="흉터재생"><span class="cs-pick-k">Care A</span><span class="cs-pick-v">흉터 · 여드름 자국</span></button>
+              <button type="button" class="cs-pick" data-concern="안면비대칭"><span class="cs-pick-k">Care B</span><span class="cs-pick-v">안면 비대칭 교정</span></button>
+              <button type="button" class="cs-pick" data-concern="매선리프팅"><span class="cs-pick-k">Care C</span><span class="cs-pick-v">매선 리프팅</span></button>
+              <button type="button" class="cs-pick" data-concern="탄력회복"><span class="cs-pick-k">Care D</span><span class="cs-pick-v">탄력 · 주름 회복</span></button>
+              <button type="button" class="cs-pick" data-concern="피부톤"><span class="cs-pick-k">Care E</span><span class="cs-pick-v">피부 톤 · 홍조</span></button>
+              <button type="button" class="cs-pick" data-concern="기타"><span class="cs-pick-k">Care F</span><span class="cs-pick-v">기타 상담</span></button>
+            </div>
+            <input type="hidden" id="cConcern">
+            <button type="button" class="consult-next" id="consultNext1" disabled>다음 단계 &rarr;</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 · 연락처 -->
+        <div class="consult-step">
+          <div class="consult-step-fields">
+            <p class="cs-step-head">어디로 <em>연락</em>드릴까요?</p>
+            <p class="cs-step-sub">리커버 상담팀이 평일 24시간 내 회신드립니다.</p>
+            <div class="consult-row">
+              <input type="text" class="consult-input" id="cName" placeholder="이름" maxlength="10" required>
+              <input type="tel" class="consult-input" id="cPhone" placeholder="010-0000-0000" maxlength="13" required>
+            </div>
+            <input type="text" class="consult-input" id="cMemo" placeholder="한줄 메모 (선택)" maxlength="50">
+            <div class="consult-btn-row">
+              <button type="button" class="consult-back" id="consultBack2">&larr; 이전</button>
+              <button type="button" class="consult-next" id="consultNext2">다음 단계 &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 · 일정 & 동의 -->
+        <div class="consult-step">
+          <div class="consult-step-fields">
+            <p class="cs-step-head">언제, <em>어떻게</em> 연결드릴까요?</p>
+            <p class="cs-step-sub">편한 시간대와 방식을 선택해주세요.</p>
+            <select class="consult-select" id="cMethod">
+              <option value="" disabled selected>희망 상담 방식</option>
+              <option value="전화">전화 상담</option>
+              <option value="카카오톡">카카오톡 상담</option>
+              <option value="방문">직접 방문 상담</option>
+            </select>
+            <select class="consult-select" id="cTime">
+              <option value="" disabled selected>희망 시간대</option>
+              <option value="오전">오전 (10:00~12:00)</option>
+              <option value="오후초">오후 초 (12:00~15:00)</option>
+              <option value="오후말">오후 말 (15:00~19:00)</option>
+              <option value="무관">시간 무관</option>
+            </select>
+            <div class="cs-summary" id="cSummary">
+              <p class="cs-summary-k">입력 요약</p>
+              <ul class="cs-summary-list" id="cSummaryList"></ul>
+            </div>
+            <div class="consult-consent">
+              <input type="checkbox" id="cAgree" required>
+              <label for="cAgree"><span class="req">[필수]</span> 개인정보 수집·이용에 동의합니다. <a href="#" onclick="event.preventDefault();alert('수집 항목: 이름, 연락처, 고민 유형, 상담 방식, 희망 시간, 메모\\n수집 목적: 상담 예약 및 회신\\n보유 기간: 상담 완료 후 즉시 파기 (또는 환자 요청 시)\\n제3자 제공: 없음');">자세히</a></label>
+            </div>
+            <div class="consult-btn-row">
+              <button type="button" class="consult-back" id="consultBack3">&larr; 이전</button>
+              <button type="submit" class="consult-submit" id="consultSubmit">BASELINE 상담 신청</button>
+            </div>
+            <div class="consult-reply-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              평일 기준 <strong style="color:var(--gold-light);margin:0 4px">24시간 이내</strong> 리커버 상담팀에서 연락드립니다
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <p class="consult-note">수집된 개인정보는 상담 예약 및 회신 목적으로만 사용되며, 상담 완료 후 즉시 파기됩니다.</p>
+    <p class="whisper">서두르지 않으셔도 괜찮습니다. 저희가 먼저 연락드리겠습니다.</p>
+  </div>
+</section>
+
+<!-- BREATHE 3 — 제거됨 (P1-5 다이어트) -->
+
+<!-- CONTACT -->
+<section class="visit section-pad" id="visit">
+  <!-- Decorative vine (top-right) -->
+  <div class="visit-vine" aria-hidden="true">
+    <svg viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#A88B4A" stroke-width="1">
+      <path d="M60 0 Q58 30 65 55 Q72 80 58 105 Q48 125 55 155" stroke-linecap="round"/>
+      <g stroke-width=".9">
+        <path d="M60 18 Q48 14 38 22"/><path d="M60 18 Q72 14 82 22"/>
+        <path d="M64 45 Q54 42 46 50"/><path d="M64 45 Q74 42 82 50"/>
+        <path d="M62 75 Q50 72 40 80"/><path d="M62 75 Q74 72 84 80"/>
+        <path d="M58 105 Q48 102 38 110"/><path d="M58 105 Q68 102 78 110"/>
+      </g>
+      <g fill="#C4A265" fill-opacity=".45" stroke="none">
+        <ellipse cx="38" cy="22" rx="6" ry="2.4" transform="rotate(-18 38 22)"/>
+        <ellipse cx="82" cy="22" rx="6" ry="2.4" transform="rotate(18 82 22)"/>
+        <ellipse cx="46" cy="50" rx="6" ry="2.4" transform="rotate(-18 46 50)"/>
+        <ellipse cx="82" cy="50" rx="6" ry="2.4" transform="rotate(18 82 50)"/>
+        <ellipse cx="40" cy="80" rx="7" ry="2.6" transform="rotate(-18 40 80)"/>
+        <ellipse cx="84" cy="80" rx="7" ry="2.6" transform="rotate(18 84 80)"/>
+        <ellipse cx="38" cy="110" rx="6" ry="2.4" transform="rotate(-18 38 110)"/>
+        <ellipse cx="78" cy="110" rx="6" ry="2.4" transform="rotate(18 78 110)"/>
+      </g>
+    </svg>
+  </div>
+  <!-- Decorative branch (bottom-left) -->
+  <div class="visit-branch" aria-hidden="true">
+    <svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A8C5E" stroke-width=".9">
+      <path d="M0 70 Q40 60 80 55 Q120 50 160 38" stroke-linecap="round"/>
+      <g stroke-width=".7">
+        <path d="M30 64 Q28 54 20 50"/><path d="M30 64 Q34 56 42 54"/>
+        <path d="M70 57 Q66 48 58 46"/><path d="M70 57 Q74 50 82 48"/>
+        <path d="M110 50 Q106 42 98 40"/><path d="M110 50 Q114 44 122 42"/>
+      </g>
+      <g fill="#4A8C5E" fill-opacity=".3" stroke="none">
+        <ellipse cx="20" cy="50" rx="5" ry="2" transform="rotate(-20 20 50)"/>
+        <ellipse cx="42" cy="54" rx="5" ry="2" transform="rotate(15 42 54)"/>
+        <ellipse cx="58" cy="46" rx="5" ry="2" transform="rotate(-20 58 46)"/>
+        <ellipse cx="82" cy="48" rx="5" ry="2" transform="rotate(15 82 48)"/>
+        <ellipse cx="98" cy="40" rx="5" ry="2" transform="rotate(-20 98 40)"/>
+        <ellipse cx="122" cy="42" rx="5" ry="2" transform="rotate(15 122 42)"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="inner">
+    <div class="vg-head rv">
+      <p class="label">A Quiet Welcome</p>
+      <h2 class="vg-title">차 한 잔의 시간, <em>그 전에 전하는 안내</em></h2>
+      <p class="vg-quote">리커버에 처음 오시는 분들을 위한 짧은 준비 메모</p>
+      <p class="vg-sub">번호 매겨진 단계는 절차가 아니라 리듬입니다. 편안한 걸음으로 오시도록, 예약 이후의 다섯 순간을 먼저 나누어 드립니다.</p>
+    </div>
+
+    <!-- 5-step timeline — emotional, not logistic -->
+    <div class="vg-timeline rv">
+      <div class="vg-timeline-path" aria-hidden="true">
+        <svg viewBox="0 0 1200 20" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 10 Q150 2 300 10 T600 10 T900 10 T1200 10"/>
+        </svg>
+      </div>
+      <div class="vg-stage">
+        <p class="vg-stage-num">01<sup>ㅇ</sup></p>
+        <p class="vg-stage-when">Day 1 · 예약이 닿으면</p>
+        <h3 class="vg-stage-title">담당자의 <br>첫 연락</h3>
+        <p class="vg-stage-desc">하루 이내 전화 또는 문자로 원하시는 일정과 상담 주제를 여쭙습니다.</p>
+      </div>
+      <div class="vg-stage">
+        <p class="vg-stage-num">02<sup>이</sup></p>
+        <p class="vg-stage-when">D-1 · 하루 전 인사</p>
+        <h3 class="vg-stage-title">준비 메모 <br>도착</h3>
+        <p class="vg-stage-desc">방문 24시간 전, 약도·주차·복장 안내가 담긴 메시지를 보내드립니다.</p>
+      </div>
+      <div class="vg-stage">
+        <p class="vg-stage-num">03<sup>삼</sup></p>
+        <p class="vg-stage-when">D-Day · 문을 여시면</p>
+        <h3 class="vg-stage-title">차 한 잔과 <br>문진</h3>
+        <p class="vg-stage-desc">따뜻한 다시 한 잔과 함께 10분 정도 여유를 두고 문진표를 작성하실 수 있습니다.</p>
+      </div>
+      <div class="vg-stage">
+        <p class="vg-stage-num">04<sup>사</sup></p>
+        <p class="vg-stage-when">45 min · 마주 앉아</p>
+        <h3 class="vg-stage-title">기준 <br>상담</h3>
+        <p class="vg-stage-desc">AI 피부 분석과 체질 확인을 바탕으로, 서두르지 않는 상담 시간을 드립니다.</p>
+      </div>
+      <div class="vg-stage">
+        <p class="vg-stage-num">05<sup>오</sup></p>
+        <p class="vg-stage-when">After · 댁으로</p>
+        <h3 class="vg-stage-title">편지 한 통, <br>플랜</h3>
+        <p class="vg-stage-desc">상담 요약과 맞춤 회복 플랜이 24시간 이내 문서로 따라 보내집니다.</p>
+      </div>
+    </div>
+
+    <!-- 오시는 길 + 체크리스트 -->
+    <div class="vg-grid rv rv-d1">
+      <div class="vg-location">
+        <p class="vg-location-eyebrow">Directions · 오시는 길</p>
+        <h3 class="vg-location-title">선릉역 7번 출구, <em>걸어서 한 걸음</em></h3>
+
+        <div class="vg-map" aria-label="리커버 강남 약도 — 선릉역 7번 출구 바로 앞" role="link" tabindex="0" onclick="window.open('https://map.naver.com/p/search/리커버한의원%20강남','_blank')">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="vgPaper" width="6" height="6" patternUnits="userSpaceOnUse">
+                <rect width="6" height="6" fill="#F7F5F0"/>
+                <circle cx="1" cy="1" r=".3" fill="#E8E0CC" opacity=".5"/>
+              </pattern>
+              <filter id="vgInk"><feGaussianBlur stdDeviation=".3"/></filter>
+            </defs>
+            <rect width="400" height="225" fill="url(#vgPaper)"/>
+
+            <!-- ───── 도로 구조 ─────
+                 - 테헤란로(가로): 사거리 남쪽 (y=170)
+                 - 선릉로(세로): 화면 중앙 (x=210)
+                 - 부일타워: 선릉로 서변, 사거리 북쪽
+                 - 7번 출구: 부일타워와 사거리 사이 (도보 1분, 도로 횡단 없음)  -->
+
+            <!-- 블록 (옅은 건물 매스) — 4분면 -->
+            <g fill="#EFE9DD" opacity=".55">
+              <rect x="0" y="0" width="195" height="158" rx="1"/>
+              <rect x="225" y="0" width="175" height="158" rx="1"/>
+              <rect x="0" y="182" width="195" height="43" rx="1"/>
+              <rect x="225" y="182" width="175" height="43" rx="1"/>
+            </g>
+
+            <!-- 2호선 (테헤란로 지하 — 녹색 라인) -->
+            <g stroke="#2D5F3E" stroke-width=".7" opacity=".4" stroke-dasharray="4 3" fill="none">
+              <path d="M-10 178 L410 178"/>
+            </g>
+            <text x="14" y="216" font-family="Georgia,serif" font-size="7" fill="#2D5F3E" font-style="italic" letter-spacing=".3" opacity=".55">2호선</text>
+
+            <!-- 수인분당선 (선릉로 지하 — 노란색 라인) -->
+            <g stroke="#C4A265" stroke-width=".7" opacity=".5" stroke-dasharray="4 3" fill="none">
+              <path d="M210 -10 L210 235"/>
+            </g>
+
+            <!-- 테헤란로 (가로 대로) -->
+            <g stroke="#FAFAF5" fill="none" stroke-linecap="butt">
+              <path d="M-10 170 L410 170" stroke-width="22"/>
+            </g>
+            <text x="20" y="164" font-family="Georgia,serif" font-size="7.5" fill="#A88B4A" font-style="italic" letter-spacing=".5">테헤란로 · Teheran-ro</text>
+
+            <!-- 선릉로 (세로 대로) -->
+            <g stroke="#FAFAF5" fill="none" stroke-linecap="butt">
+              <path d="M210 -10 L210 235" stroke-width="16"/>
+            </g>
+            <text x="216" y="22" font-family="Georgia,serif" font-size="7" fill="#A88B4A" font-style="italic" letter-spacing=".5">선릉로</text>
+
+            <!-- 차선 -->
+            <g stroke="#E8E0CC" stroke-width=".8" fill="none" stroke-dasharray="4 5" opacity=".7">
+              <path d="M-10 170 L410 170"/>
+              <path d="M210 -10 L210 235"/>
+            </g>
+
+            <!-- 선릉역 사거리 라벨 -->
+            <text x="210" y="190" font-family="Georgia,serif" font-size="6" fill="#A88B4A" text-anchor="middle" font-style="italic" letter-spacing=".3" opacity=".7">2호선 ⇄ 수인분당선 · 환승</text>
+
+            <!-- 선릉역 본체 (환승역: 2호선 ⇄ 수인분당선) -->
+            <g>
+              <!-- 2호선 배지 (녹색) -->
+              <circle cx="200" cy="206" r="7" fill="#2D5F3E" stroke="#FAFAF5" stroke-width="1"/>
+              <text x="200" y="209" font-family="Georgia,serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">2</text>
+              <!-- 수인분당선 배지 (노랑) -->
+              <circle cx="220" cy="206" r="7" fill="#FFC93C" stroke="#A88B4A" stroke-width=".7"/>
+              <text x="220" y="209" font-family="'Noto Sans KR',sans-serif" font-size="6" fill="#7a5a2a" text-anchor="middle" font-weight="800" letter-spacing="-.5">분당</text>
+            </g>
+            <!-- 환승 표기 + 선릉역 라벨 -->
+            <g>
+              <text x="234" y="203" font-family="Georgia,serif" font-size="7" fill="#2D5F3E" font-weight="700" letter-spacing=".3">선릉역</text>
+              <text x="234" y="212" font-family="Georgia,serif" font-size="5.5" fill="#A88B4A" font-style="italic" letter-spacing=".3">2 ⇄ 수인·분당</text>
+            </g>
+
+            <!-- 부일타워 (선릉로 서변) -->
+            <g>
+              <!-- 핀 그림자 -->
+              <ellipse cx="170" cy="92" rx="22" ry="3" fill="#000" opacity=".15"/>
+              <!-- 핀 본체 -->
+              <path d="M170 36 C158 36, 148 46, 148 59 C148 74, 170 88, 170 88 C170 88, 192 74, 192 59 C192 46, 182 36, 170 36 Z" fill="#2D5F3E" stroke="#A88B4A" stroke-width="1.2"/>
+              <circle cx="170" cy="59" r="11" fill="#F5EFD8"/>
+              <text x="170" y="64" font-family="Georgia,serif" font-size="14" fill="#2D5F3E" text-anchor="middle" font-style="italic" font-weight="700">R</text>
+            </g>
+            <!-- 부일타워 라벨 박스 -->
+            <g>
+              <rect x="116" y="100" width="108" height="20" fill="white" stroke="#A88B4A" stroke-width=".7"/>
+              <text x="170" y="110" font-family="Georgia,serif" font-size="9" fill="#2D5F3E" text-anchor="middle" letter-spacing="1.4" font-weight="700">RECOVER</text>
+              <text x="170" y="117" font-family="Georgia,serif" font-size="6.5" fill="#A88B4A" text-anchor="middle" font-style="italic" letter-spacing=".3">부일타워 5F</text>
+            </g>
+
+            <!-- 7번 출구 (부일타워 바로 앞 — 입구 인접) -->
+            <g filter="url(#vgInk)">
+              <circle cx="186" cy="128" r="9" fill="#FFC93C" stroke="#A88B4A" stroke-width="1.2"/>
+              <text x="186" y="132" font-family="Georgia,serif" font-size="11" fill="#2D5F3E" text-anchor="middle" font-weight="700">7</text>
+            </g>
+            <text x="174" y="146" font-family="Georgia,serif" font-size="7.5" fill="#A88B4A" font-style="italic" letter-spacing=".3" text-anchor="end">7번 출구</text>
+
+            <!-- 도보 동선 — 7번 출구 → 부일타워 입구 (바로 앞, 짧은 점선) -->
+            <path d="M180 122 Q175 115 170 92" stroke="#C4A265" stroke-width="1.6" stroke-dasharray="2 3" fill="none" stroke-linecap="round"/>
+
+            <!-- 도보 라벨 -->
+            <g>
+              <rect x="218" y="120" width="78" height="14" rx="2" fill="white" stroke="#C4A265" stroke-width=".7"/>
+              <text x="257" y="130" font-family="Georgia,serif" font-size="8" fill="#A88B4A" text-anchor="middle" font-style="italic">출구 바로 앞 · 1분</text>
+              <line x1="218" y1="125" x2="200" y2="128" stroke="#C4A265" stroke-width=".5" stroke-dasharray="1 2" opacity=".6"/>
+            </g>
+
+            <!-- 컴퍼스 -->
+            <g opacity=".5">
+              <circle cx="376" cy="208" r="11" fill="white" stroke="#A88B4A" stroke-width=".7"/>
+              <path d="M376 200 L379 208 L376 206 L373 208 Z" fill="#2D5F3E"/>
+              <text x="376" y="198" font-family="Georgia,serif" font-size="6.5" fill="#A88B4A" text-anchor="middle" font-weight="700">N</text>
+            </g>
+          </svg>
+          <div class="vg-map-caption">
+            <span class="vg-map-caption-brand">RECOVER · 강남</span>
+            <span class="vg-map-caption-sub">클릭 시 네이버 지도에서 열림 ↗</span>
+          </div>
+        </div>
+
+        <div class="vg-addr">
+          <p class="vg-addr-k">Address · 주소</p>
+          <p class="vg-addr-v">서울특별시 강남구 역삼동 · 부일타워 5층</p>
+          <p class="vg-addr-sub">선릉역 7번 출구 도보 1분  ·  엘리베이터 이용</p>
+        </div>
+
+        <div class="vg-access">
+          <div class="vg-access-item">
+            <div class="vg-access-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="4" width="14" height="14" rx="2"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="20" r="2"/><path d="M5 10h14"/></svg></div>
+            <p class="vg-access-label">Subway</p>
+            <p class="vg-access-text">2호선·수인분당선 선릉역<br>7번 출구 · 도보 1분</p>
+          </div>
+          <div class="vg-access-item">
+            <div class="vg-access-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="10" rx="2"/><circle cx="7" cy="19" r="2"/><circle cx="17" cy="19" r="2"/><path d="M3 12h18"/></svg></div>
+            <p class="vg-access-label">Bus</p>
+            <p class="vg-access-text">선릉역 정류장<br>간선·지선 다수 정차</p>
+          </div>
+          <div class="vg-access-item">
+            <div class="vg-access-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 17h14v-5l-2-6H7l-2 6v5z"/><circle cx="8" cy="17" r="2"/><circle cx="16" cy="17" r="2"/></svg></div>
+            <p class="vg-access-label">Parking</p>
+            <p class="vg-access-text">건물 지하 · 2시간 무료<br>추가 30분 1,000원</p>
+          </div>
+        </div>
+
+        <div class="vg-hours">
+          <p class="vg-hours-lbl">Hours · 진료 시간</p>
+          <dl class="vg-hours-grid">
+            <dt>평일 (월–금)</dt><dd>10:00 — 19:30</dd>
+            <dt>토요일</dt><dd>10:00 — 16:00</dd>
+            <dt>점심시간</dt><dd>13:00 — 14:00</dd>
+            <dt>일요일 · 공휴일</dt><dd class="closed">휴진 · 응급 상담은 문자로</dd>
+          </dl>
+        </div>
+
+        <div class="vg-location-cta">
+          <a class="primary" href="tel:02-000-0000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h4l2 5-2 1a12 12 0 006 6l1-2 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>전화 문의</a>
+          <a class="ghost" href="https://map.naver.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 3h10v6l5 3v9h-6v-6h-8v6H2v-9l5-3V3z"/></svg>네이버 지도</a>
+          <a class="ghost" href="https://map.kakao.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="4"/><path d="M12 14c-4 4-6 6-6 9l12 0c0-3-2-5-6-9z"/></svg>카카오맵</a>
+        </div>
+      </div>
+
+      <div class="vg-checklist">
+        <p class="vg-check-eyebrow">Before Your Visit · 모시는 자세</p>
+        <h3 class="vg-check-title">오시기 전, <em>네 가지만</em></h3>
+        <p class="vg-check-sub">부담 갖지 마세요. 가볍게 읽어보시는 정도로 충분합니다.</p>
+
+        <ul class="vg-check-list">
+          <li class="vg-check-item">
+            <span class="vg-check-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="5"/><path d="M7 14c-1 2-1.5 4-1.5 6M17 14c1 2 1.5 4 1.5 6"/><path d="M10 9h4M9.5 11.5h5"/></svg>
+            </span>
+            <div>
+              <p class="vg-check-item-k">메이크업은 가볍게</p>
+              <p class="vg-check-item-v">AI 피부 분석의 정확도를 위해 기초 선크림 정도가 적당합니다. 원내에 편안히 사용하실 수 있는 클렌징 공간이 마련되어 있습니다.</p>
+            </div>
+          </li>
+          <li class="vg-check-item">
+            <span class="vg-check-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h8l3 3v15H7z"/><path d="M15 3v3h3"/><path d="M9 11h6M9 14h6M9 17h4"/></svg>
+            </span>
+            <div>
+              <p class="vg-check-item-k">최근 6개월의 기록, 있으시다면</p>
+              <p class="vg-check-item-v">레이저·필러·복용 중인 약물 등 최근 받으신 시술이나 의료 이력을 간단히 메모해 오시면, 상담이 한결 빨라집니다. 없으셔도 괜찮습니다.</p>
+            </div>
+          </li>
+          <li class="vg-check-item">
+            <span class="vg-check-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l-2 4v12a1 1 0 001 1h10a1 1 0 001-1V7l-2-4M8 3h8"/><path d="M6 9h12"/><path d="M10 13h4"/></svg>
+            </span>
+            <div>
+              <p class="vg-check-item-k">편안한 복장을 권해드립니다</p>
+              <p class="vg-check-item-v">목·어깨 진찰이 필요할 수 있어 라운드넥 계열이 편리합니다. 원하신다면 부드러운 린넨 진찰복으로 갈아입으셔도 좋습니다.</p>
+            </div>
+          </li>
+          <li class="vg-check-item">
+            <span class="vg-check-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M14 3v5h5"/><circle cx="12" cy="14" r="1"/><path d="M12 11v1M12 17v1"/></svg>
+            </span>
+            <div>
+              <p class="vg-check-item-k">궁금한 마음, 그대로 가져오세요</p>
+              <p class="vg-check-item-v">치료 기간·비용·기대되는 변화까지, 어떤 질문도 좋습니다. 평균 45–60분의 상담 시간에 충분히 듣고 답해드리겠습니다.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="vg-close">
+          좋은 진료는 듣는 것에서 시작됩니다. 서두르지 마시고, 편안한 마음으로 오세요.
+          <span class="vg-close-sig">— 리커버 강남 드림</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING — #14 잔향 -->
+</MainLayout>

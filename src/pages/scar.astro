@@ -1,0 +1,449 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ScarAnatomy from '../components/ScarAnatomy.astro';
+---
+<MainLayout
+  title="흉터 회복 | 리커버한의원 강남 — RECOVER NOTE & ANATOMY"
+  description="흉터의 표면보다 회복이 멈춘 이유를 봅니다. RECOVER NOTE 기준 상담과 RECOVER ANATOMY 시각화로 흉터 회복 조건을 설계합니다."
+  ogTitle="흉터 회복 | 리커버한의원 강남"
+  ogDescription="흉터의 구조를 시각화하고 회복의 순서를 설계합니다."
+  active="scar"
+  chapter="II"
+  chapterEyebrow="제 2 장 · Chapter II"
+  chapterTitle="흉터의 표면보다,<br><em>회복이 멈춘 이유</em>를 봅니다"
+  chapterTitleEn="Scar Recovery · RECOVER NOTE & ANATOMY"
+  chapterCategory="흉터 회복"
+>
+<!-- RECOVER ANATOMY 시각화 (Phase F #2) -->
+<div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+  <ScarAnatomy />
+</div>
+<section class="ba-preview" id="ba-preview" aria-label="시술 결과 미리보기">
+  <div class="inner">
+    <div class="bap-head rv">
+      <p class="label">Recovery Records</p>
+      <h2 class="bap-title">흉터 아래의 원리를 <em>기록합니다</em></h2>
+      <p class="bap-sub">피부 변화는 한 장의 전후 사진보다, 어떤 구조를 읽고 어떤 순서로 회복했는지에 더 가깝습니다. 리커버는 그 과정을 기록합니다.</p>
+    </div>
+    <div class="bap-grid">
+      <a href="#gallery" class="bap-card rv rv-d1">
+        <div class="bap-img"><img src="/assets/ba_skin_new_1.webp" alt="만성 여드름 & 붉은기 호전 사례" loading="lazy"></div>
+        <div class="bap-meta">
+          <span class="bap-tag">만성 여드름 · 붉은기</span>
+          <p class="bap-case">20대 여성 · 8주차</p>
+        </div>
+      </a>
+      <a href="#gallery" class="bap-card rv rv-d2">
+        <div class="bap-img"><img src="/assets/ba_skin_lifting_k.webp" alt="턱선·불독살 리프팅 사례" loading="lazy"></div>
+        <div class="bap-meta">
+          <span class="bap-tag">탄력 · 리프팅</span>
+          <p class="bap-case">50대 여성 · 12주차</p>
+        </div>
+      </a>
+      <a href="#gallery" class="bap-card rv rv-d3">
+        <div class="bap-img"><img src="/assets/ba_6.webp" alt="복합 흉터 치료 사례" loading="lazy"></div>
+        <div class="bap-meta">
+          <span class="bap-tag">흉터 재생</span>
+          <p class="bap-case">20대 여성 · 16주차</p>
+        </div>
+      </a>
+    </div>
+    <div class="bap-foot rv">
+      <a href="#gallery" class="bap-more">전체 12개 사례 보기<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <p class="bap-disclaimer">※ 본 사례는 동의를 받은 실제 환자로, 개인별 반응 차이가 있을 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY — 원장 해설 케이스 -->
+<section class="case-study section-pad" id="case-study">
+  <div class="inner">
+    <div class="cs-head rv">
+      <p class="label">Recovery Notes</p>
+      <h2 class="cs-title">원리가 보이면, <em>선택이 달라집니다</em></h2>
+      <p class="cs-sub">같은 흉터와 자국도 피부 아래 구조, 회복력, 이전 시술 이력에 따라 다른 순서가 필요합니다. 리커버가 상담에서 어떤 기준으로 읽고 설계하는지 보여드립니다.</p>
+    </div>
+
+    <!-- Case tabs -->
+    <div class="cs-tabs rv" role="tablist">
+      <button class="cs-tab active" role="tab" aria-selected="true" data-case="1">
+        <span class="cs-tab-n">01</span>
+        <span class="cs-tab-body">
+          <span class="cs-tab-label">42세 여성</span>
+          <span class="cs-tab-title">타 시술 후 장벽 손상 · 흉터</span>
+        </span>
+      </button>
+      <button class="cs-tab" role="tab" aria-selected="false" data-case="2">
+        <span class="cs-tab-n">02</span>
+        <span class="cs-tab-body">
+          <span class="cs-tab-label">27세 남성</span>
+          <span class="cs-tab-title">여드름 흉터 · 피지 과다</span>
+        </span>
+      </button>
+      <button class="cs-tab" role="tab" aria-selected="false" data-case="3">
+        <span class="cs-tab-n">03</span>
+        <span class="cs-tab-body">
+          <span class="cs-tab-label">51세 여성</span>
+          <span class="cs-tab-title">기미 · 안면 탄력 저하</span>
+        </span>
+      </button>
+    </div>
+
+    <!-- Case 01 -->
+    <div class="cs-panel active" data-case="1" role="tabpanel">
+    <div class="cs-wrap">
+      <!-- 환자 정보 (sticky) -->
+      <aside class="cs-patient rv">
+        <div class="cs-patient-card">
+          <p class="cs-patient-eyebrow">RECOVER RECORD · 상담 노트</p>
+          <div class="cs-patient-meta">
+            <div class="cs-meta-item"><p class="cs-meta-k">연령</p><p class="cs-meta-v">42세</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">성별</p><p class="cs-meta-v">여성</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">주호소</p><p class="cs-meta-v">뺨·이마 흉터</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">내원 경로</p><p class="cs-meta-v">타 시술 후 방문</p></div>
+          </div>
+          <p class="cs-patient-quote">레이저를 1년 넘게 받았는데<br>오히려 예민해지고 색소가 진해졌어요.</p>
+          <div class="cs-patient-concern">
+            <strong>First Signal</strong>
+            반복된 박피성 시술로 피부 장벽이 약해진 상태. 흉터는 일부 옅어졌으나 주변부 홍반·과색소침착이 새로 발생. 메이크업 후에도 결점이 도드라지는 게 가장 큰 고민.
+          </div>
+        </div>
+      </aside>
+
+      <!-- 원장 해설 스텝 -->
+      <div class="cs-steps">
+        <div class="cs-step rv" data-n="01">
+          <p class="cs-step-label">Observation · 관찰</p>
+          <h3 class="cs-step-title">먼저 <em>현재 상태</em>의 진짜 원인을 분리했습니다</h3>
+          <p class="cs-step-body">환자분은 "흉터"를 주호소로 오셨지만, 실제로는 흉터 하나의 문제가 아니었습니다. <em>박피성 시술 반복으로 약해진 장벽</em>과 염증 후 색소침착이 결점감을 더 키우고 있었고, 같은 증상이라도 원인이 다르면 먼저 해야 할 일이 달라집니다.</p>
+          <span class="cs-step-tag">피부 신호 분석</span>
+        </div>
+
+        <div class="cs-step rv rv-d1" data-n="02">
+          <p class="cs-step-label">Judgment · 판단</p>
+          <h3 class="cs-step-title">추가 시술보다 <em>'쉼'</em>이 먼저 필요했습니다</h3>
+          <p class="cs-step-body">많은 분들이 "더 강한 시술로 해결하자"는 기대를 갖고 오십니다. 하지만 이 환자분께는 정반대의 처방이 필요했습니다. 첫 한 달간은 <em>어떤 자극성 시술도 중단</em>하고, 한약과 침치료로 피부 안쪽에서 장벽을 복원하는 기간을 두었습니다. 환자분은 처음엔 의아해하셨지만, 2주 차부터 홍반이 눈에 띄게 가라앉기 시작했습니다.</p>
+          <span class="cs-step-tag">체질 기반 한약 처방</span>
+        </div>
+
+        <div class="cs-step rv rv-d2" data-n="03">
+          <p class="cs-step-label">Protocol · 프로토콜</p>
+          <h3 class="cs-step-title">장벽이 회복된 후에만 <em>새살침</em>을 적용했습니다</h3>
+          <p class="cs-step-body">한 달간의 내부 회복기 이후, 피부 두께와 탄력의 기준선을 다시 확인했습니다. 그때 비로소 <em>새살침을 2주 간격으로 6회</em> 진행했습니다. 흉터 조직에만 선택적으로 작용하도록 자극 강도를 조정했고, 중간 중간 한약 처방으로 재생 환경을 유지했습니다.</p>
+          <span class="cs-step-tag">새살침 · 맞춤 강도</span>
+        </div>
+
+        <div class="cs-step rv rv-d3" data-n="04">
+          <p class="cs-step-label">Why Not · 선택하지 않은 길</p>
+          <h3 class="cs-step-title">왜 <em>레이저를 추가하지 않았는가</em></h3>
+          <p class="cs-step-body">일반적으로 이 시점에 색소 제거 레이저를 병행하는 것이 업계 표준입니다. 하지만 환자분의 피부는 이미 레이저에 과반응하는 상태였고, <em>추가 열자극은 재발 위험</em>을 높일 수 있었습니다. 대신 체질 분석에서 도출한 맞춤 한약으로 색소 대사 경로를 자연스럽게 활성화하는 방향을 선택했습니다. 느리지만 안전한 길입니다.</p>
+          <span class="cs-step-tag">Non-invasive approach</span>
+        </div>
+
+        <!-- AI Skin Scan Visualization -->
+        <div class="cs-ai-scan rv rv-d3">
+          <p class="cs-ai-scan-eyebrow">RECOVER RECORD · <em>Baseline Sheet</em> · 회복 관찰지 No. 01</p>
+          <h3 class="cs-ai-scan-title">장벽이 돌아오면, <em>흔적을 다루는 순서</em>가 달라집니다</h3>
+          <div class="cs-ai-scan-grid">
+            <div class="cs-ai-col before">
+              <p class="cs-ai-col-label">Before<span>Day 0 · 초진</span></p>
+              <div class="cs-ai-face">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs><radialGradient id="heatR1a"><stop offset="0" stop-color="#d85a3a" stop-opacity=".78"/><stop offset=".55" stop-color="#d85a3a" stop-opacity=".28"/><stop offset="1" stop-color="#d85a3a" stop-opacity="0"/></radialGradient></defs>
+                  <path d="M50 10 Q70 10 75 28 Q82 40 82 58 Q82 78 70 96 Q60 108 50 110 Q40 108 30 96 Q18 78 18 58 Q18 40 25 28 Q30 10 50 10 Z" fill="none" stroke="#4A4A4A" stroke-width=".7" opacity=".55"/>
+                  <ellipse cx="36" cy="50" rx="3" ry="1.3" fill="#4A4A4A" opacity=".5"/><ellipse cx="64" cy="50" rx="3" ry="1.3" fill="#4A4A4A" opacity=".5"/>
+                  <path d="M50 54 Q48 64 50 72 Q52 70 54 72" stroke="#4A4A4A" stroke-width=".5" fill="none" opacity=".35"/>
+                  <path d="M42 85 Q50 88 58 85" stroke="#4A4A4A" stroke-width=".5" fill="none" opacity=".45"/>
+                  <circle cx="32" cy="66" r="11" fill="url(#heatR1a)"/><circle cx="68" cy="66" r="11" fill="url(#heatR1a)"/>
+                  <circle cx="50" cy="30" r="9" fill="url(#heatR1a)" opacity=".85"/>
+                  <circle cx="40" cy="78" r="5" fill="url(#heatR1a)" opacity=".7"/>
+                </svg>
+              </div>
+              <ul class="cs-ai-scores">
+                <li class="cs-ai-score"><span class="cs-ai-score-k">피부 장벽</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:32%"></div></div><span class="cs-ai-score-v">32</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">색소 균일도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:54%"></div></div><span class="cs-ai-score-v">54</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">염증 활성도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:78%"></div></div><span class="cs-ai-score-v">78</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">결점 가시성</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:82%"></div></div><span class="cs-ai-score-v">82</span></li>
+              </ul>
+            </div>
+            <div class="cs-ai-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <span class="cs-ai-arrow-dur">12주 회복</span>
+            </div>
+            <div class="cs-ai-col after">
+              <p class="cs-ai-col-label">After<span>Week 12 · 3개월</span></p>
+              <div class="cs-ai-face">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs><radialGradient id="heatG1a"><stop offset="0" stop-color="#4A8C5E" stop-opacity=".55"/><stop offset=".55" stop-color="#4A8C5E" stop-opacity=".2"/><stop offset="1" stop-color="#4A8C5E" stop-opacity="0"/></radialGradient></defs>
+                  <path d="M50 10 Q70 10 75 28 Q82 40 82 58 Q82 78 70 96 Q60 108 50 110 Q40 108 30 96 Q18 78 18 58 Q18 40 25 28 Q30 10 50 10 Z" fill="none" stroke="#2D5F3E" stroke-width=".7" opacity=".6"/>
+                  <ellipse cx="36" cy="50" rx="3" ry="1.3" fill="#2D5F3E" opacity=".55"/><ellipse cx="64" cy="50" rx="3" ry="1.3" fill="#2D5F3E" opacity=".55"/>
+                  <path d="M50 54 Q48 64 50 72 Q52 70 54 72" stroke="#2D5F3E" stroke-width=".5" fill="none" opacity=".4"/>
+                  <path d="M42 85 Q50 88 58 85" stroke="#2D5F3E" stroke-width=".5" fill="none" opacity=".5"/>
+                  <circle cx="32" cy="66" r="7" fill="url(#heatG1a)"/><circle cx="68" cy="66" r="7" fill="url(#heatG1a)"/>
+                  <circle cx="50" cy="30" r="5" fill="url(#heatG1a)" opacity=".6"/>
+                </svg>
+              </div>
+              <ul class="cs-ai-scores">
+                <li class="cs-ai-score"><span class="cs-ai-score-k">피부 장벽</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:81%"></div></div><span class="cs-ai-score-v">81<em>+49</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">색소 균일도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:86%"></div></div><span class="cs-ai-score-v">86<em>+32</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">염증 활성도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:18%"></div></div><span class="cs-ai-score-v">18<em>−60</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">결점 가시성</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:26%"></div></div><span class="cs-ai-score-v">26<em>−56</em></span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="cs-ai-scan-note">* 예시 시각화 / Illustrative Visualization. 동일 조명·각도에서 남긴 단일 사례의 RECOVER RECORD 내부 관찰 지표이며, 일반화되지 않습니다. 개인별 반응은 다를 수 있습니다.</p>
+        </div>
+
+        <!-- Outcome -->
+        <div class="cs-outcome rv rv-d4">
+          <p class="cs-outcome-label">3개월 후 결과</p>
+          <p class="cs-outcome-text">"메이크업 없이도 밖에 나갈 수 있게 됐어요." 환자분이 마지막 진료에서 해주신 말씀입니다. 흉터 가시성은 초진 대비 크게 줄었고, 피부 장벽 자체가 건강해져 이제는 <em>유지 관리만으로 충분한</em> 상태입니다.</p>
+          <div class="cs-outcome-metrics">
+            <div class="cs-metric"><p class="cs-metric-val">−68%</p><p class="cs-metric-lbl">흉터 가시성 변화</p></div>
+            <div class="cs-metric"><p class="cs-metric-val">+41%</p><p class="cs-metric-lbl">장벽 기능 변화</p></div>
+            <div class="cs-metric"><p class="cs-metric-val">관찰 중</p><p class="cs-metric-lbl">관찰 기간 내 재발 보고 없음</p></div>
+          </div>
+          <p class="cs-doctor-sign">— RECOVER NOTE<span>Reviewed by Dr. Han</span></p>
+        </div>
+      </div>
+    </div>
+    </div><!-- /cs-panel case 1 -->
+
+    <!-- Case 02 — 27세 남성 · 여드름 흉터 + 피지 과다 -->
+    <div class="cs-panel" data-case="2" role="tabpanel" aria-hidden="true">
+    <div class="cs-wrap">
+      <aside class="cs-patient rv">
+        <div class="cs-patient-card">
+          <p class="cs-patient-eyebrow">RECOVER RECORD · 상담 노트</p>
+          <div class="cs-patient-meta">
+            <div class="cs-meta-item"><p class="cs-meta-k">연령</p><p class="cs-meta-v">27세</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">성별</p><p class="cs-meta-v">남성</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">주호소</p><p class="cs-meta-v">여드름 흉터</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">내원 경로</p><p class="cs-meta-v">지인 소개</p></div>
+          </div>
+          <p class="cs-patient-quote">여드름은 멈췄는데<br>자국은 어쩌지를 못하겠어요.</p>
+          <div class="cs-patient-concern">
+            <strong>First Signal</strong>
+            고교 시절부터 이어진 중등도 여드름. 활동성은 진정됐으나 볼·턱선에 깊은 위축성 흉터(아이스픽·롤링)와 과피지 분비가 공존. 피지막이 두껍고 피지 분비가 왕성한 피부 타입이어서, 일반 레이저만으로는 깊이 닿지 않는 상태.
+          </div>
+        </div>
+      </aside>
+      <div class="cs-steps">
+        <div class="cs-step rv" data-n="01">
+          <p class="cs-step-label">Observation · 관찰</p>
+          <h3 class="cs-step-title">먼저 <em>활성 여드름 여부</em>를 재확인했습니다</h3>
+          <p class="cs-step-body">환자분은 이미 "여드름은 끝났다"고 판단하고 오셨지만, 피부 신호에는 <em>표면에 잘 보이지 않는 미세 염증 패턴</em>이 남아 있었습니다. 이 상태에서 흉터 치료에 들어가면 오히려 재발 위험이 높습니다. 첫 2주는 흉터가 아닌 <em>내부 염증 안정화</em>에 집중했습니다.</p>
+          <span class="cs-step-tag">RECOVER AI 신호 분석</span>
+        </div>
+        <div class="cs-step rv rv-d1" data-n="02">
+          <p class="cs-step-label">Judgment · 판단</p>
+          <h3 class="cs-step-title">두꺼운 피부 타입엔 <em>양방향 접근</em>이 필요했습니다</h3>
+          <p class="cs-step-body">이 환자분처럼 피지막이 두껍고 피지 분비가 왕성한 피부 타입은 새살침 자극만으로는 깊은 위축성 흉터까지 닿지 않습니다. 이에 <em>피지·염증 조절 한약(내부)</em>과 <em>새살침 고강도 프로토콜(외부)</em>을 동시 병행했습니다. 한쪽만 했다면 효과는 절반이었을 겁니다.</p>
+          <span class="cs-step-tag">한약+새살침 병행</span>
+        </div>
+        <div class="cs-step rv rv-d2" data-n="03">
+          <p class="cs-step-label">Protocol · 프로토콜</p>
+          <h3 class="cs-step-title"><em>위축성 흉터</em>는 깊이별로 강도를 나눴습니다</h3>
+          <p class="cs-step-body">아이스픽 흉터엔 1.5mm 깊이 집중 자극, 롤링 흉터엔 0.8mm 넓은 자극. 같은 "흉터"로 묶이지만 조직 구조가 달라 <em>같은 강도를 쓰면 한쪽은 과하고 한쪽은 부족</em>합니다. 3주 간격 총 8회, 각 회차마다 흉터 지도를 갱신했습니다.</p>
+          <span class="cs-step-tag">새살침 · 깊이별 맞춤</span>
+        </div>
+        <div class="cs-step rv rv-d3" data-n="04">
+          <p class="cs-step-label">Why Not · 선택하지 않은 길</p>
+          <h3 class="cs-step-title">왜 <em>CO2 프락셔널을 추천하지 않았는가</em></h3>
+          <p class="cs-step-body">20대 깊은 위축성 흉터엔 CO2 프락셔널이 표준처럼 제안됩니다. 하지만 이 환자분은 <em>켈로이드 체질 소견</em>이 있었습니다. 강한 열자극은 흉터를 없애는 대신 새 흉터를 만들 위험이 있었어요. 시간이 더 걸리더라도 <em>열을 쓰지 않는 재생 경로</em>로 설계했습니다.</p>
+          <span class="cs-step-tag">켈로이드 체질 고려</span>
+        </div>
+
+        <!-- AI Skin Scan Visualization -->
+        <div class="cs-ai-scan rv rv-d3">
+          <p class="cs-ai-scan-eyebrow">RECOVER ANATOMY · <em>Scar Map</em> · 흉터 구조 관찰지 No. 02</p>
+          <h3 class="cs-ai-scan-title">깊이가 다르면, <em>자극의 방향</em>도 달라져야 합니다</h3>
+          <div class="cs-ai-scan-grid">
+            <div class="cs-ai-col before">
+              <p class="cs-ai-col-label">Before<span>Day 0 · 초진</span></p>
+              <div class="cs-ai-face">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs><radialGradient id="heatR2a"><stop offset="0" stop-color="#d85a3a" stop-opacity=".8"/><stop offset=".55" stop-color="#d85a3a" stop-opacity=".3"/><stop offset="1" stop-color="#d85a3a" stop-opacity="0"/></radialGradient></defs>
+                  <path d="M50 10 Q70 10 75 28 Q82 40 82 58 Q82 78 70 96 Q60 108 50 110 Q40 108 30 96 Q18 78 18 58 Q18 40 25 28 Q30 10 50 10 Z" fill="none" stroke="#4A4A4A" stroke-width=".7" opacity=".55"/>
+                  <ellipse cx="36" cy="50" rx="3" ry="1.3" fill="#4A4A4A" opacity=".5"/><ellipse cx="64" cy="50" rx="3" ry="1.3" fill="#4A4A4A" opacity=".5"/>
+                  <path d="M50 54 Q48 64 50 72 Q52 70 54 72" stroke="#4A4A4A" stroke-width=".5" fill="none" opacity=".35"/>
+                  <path d="M42 85 Q50 88 58 85" stroke="#4A4A4A" stroke-width=".5" fill="none" opacity=".45"/>
+                  <circle cx="50" cy="28" r="9" fill="url(#heatR2a)" opacity=".85"/>
+                  <circle cx="30" cy="62" r="11" fill="url(#heatR2a)"/><circle cx="70" cy="62" r="11" fill="url(#heatR2a)"/>
+                  <circle cx="42" cy="82" r="7" fill="url(#heatR2a)" opacity=".9"/>
+                  <circle cx="58" cy="82" r="7" fill="url(#heatR2a)" opacity=".9"/>
+                </svg>
+              </div>
+              <ul class="cs-ai-scores">
+                <li class="cs-ai-score"><span class="cs-ai-score-k">흉터 밀도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:88%"></div></div><span class="cs-ai-score-v">88</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">피지 균형</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:41%"></div></div><span class="cs-ai-score-v">41</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">미세 염증</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:64%"></div></div><span class="cs-ai-score-v">64</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">모공 가시성</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:72%"></div></div><span class="cs-ai-score-v">72</span></li>
+              </ul>
+            </div>
+            <div class="cs-ai-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <span class="cs-ai-arrow-dur">24주 회복</span>
+            </div>
+            <div class="cs-ai-col after">
+              <p class="cs-ai-col-label">After<span>Week 24 · 6개월</span></p>
+              <div class="cs-ai-face">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs><radialGradient id="heatG2a"><stop offset="0" stop-color="#4A8C5E" stop-opacity=".55"/><stop offset=".55" stop-color="#4A8C5E" stop-opacity=".2"/><stop offset="1" stop-color="#4A8C5E" stop-opacity="0"/></radialGradient></defs>
+                  <path d="M50 10 Q70 10 75 28 Q82 40 82 58 Q82 78 70 96 Q60 108 50 110 Q40 108 30 96 Q18 78 18 58 Q18 40 25 28 Q30 10 50 10 Z" fill="none" stroke="#2D5F3E" stroke-width=".7" opacity=".6"/>
+                  <ellipse cx="36" cy="50" rx="3" ry="1.3" fill="#2D5F3E" opacity=".55"/><ellipse cx="64" cy="50" rx="3" ry="1.3" fill="#2D5F3E" opacity=".55"/>
+                  <path d="M50 54 Q48 64 50 72 Q52 70 54 72" stroke="#2D5F3E" stroke-width=".5" fill="none" opacity=".4"/>
+                  <path d="M42 85 Q50 88 58 85" stroke="#2D5F3E" stroke-width=".5" fill="none" opacity=".5"/>
+                  <circle cx="30" cy="62" r="6" fill="url(#heatG2a)"/><circle cx="70" cy="62" r="6" fill="url(#heatG2a)"/>
+                </svg>
+              </div>
+              <ul class="cs-ai-scores">
+                <li class="cs-ai-score"><span class="cs-ai-score-k">흉터 밀도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:34%"></div></div><span class="cs-ai-score-v">34<em>−54</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">피지 균형</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:76%"></div></div><span class="cs-ai-score-v">76<em>+35</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">미세 염증</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:22%"></div></div><span class="cs-ai-score-v">22<em>−42</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">모공 가시성</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:38%"></div></div><span class="cs-ai-score-v">38<em>−34</em></span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="cs-ai-scan-note">* 흉터의 깊이와 당기는 방향을 설명하기 위한 구조 기록 예시입니다. 실제 상담에서는 피부 상태와 회복 반응을 함께 확인합니다.</p>
+        </div>
+
+        <div class="cs-outcome rv rv-d4">
+          <p class="cs-outcome-label">6개월 후 결과</p>
+          <p class="cs-outcome-text">"출퇴근 길에 마스크를 벗을 수 있게 됐어요." 깊은 흉터 밀도가 절반 아래로 줄었고, 피지 분비도 체질 한약으로 함께 안정화됐습니다. 앞으로는 <em>3~6개월 1회의 유지 관리</em>만으로 충분한 상태입니다.</p>
+          <div class="cs-outcome-metrics">
+            <div class="cs-metric"><p class="cs-metric-val">−54%</p><p class="cs-metric-lbl">위축성 흉터 밀도 변화</p></div>
+            <div class="cs-metric"><p class="cs-metric-val">−38%</p><p class="cs-metric-lbl">피지 분비량 변화</p></div>
+            <div class="cs-metric"><p class="cs-metric-val">관찰 중</p><p class="cs-metric-lbl">관찰 기간 내 켈로이드 보고 없음</p></div>
+          </div>
+          <p class="cs-doctor-sign">— RECOVER NOTE<span>Reviewed by Dr. Han</span></p>
+        </div>
+      </div>
+    </div>
+    </div><!-- /cs-panel case 2 -->
+
+    <!-- Case 03 — 51세 여성 · 기미 + 안면 탄력 저하 -->
+    <div class="cs-panel" data-case="3" role="tabpanel" aria-hidden="true">
+    <div class="cs-wrap">
+      <aside class="cs-patient rv">
+        <div class="cs-patient-card">
+          <p class="cs-patient-eyebrow">RECOVER RECORD · 상담 노트</p>
+          <div class="cs-patient-meta">
+            <div class="cs-meta-item"><p class="cs-meta-k">연령</p><p class="cs-meta-v">51세</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">성별</p><p class="cs-meta-v">여성</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">주호소</p><p class="cs-meta-v">기미 · 탄력 저하</p></div>
+            <div class="cs-meta-item"><p class="cs-meta-k">내원 경로</p><p class="cs-meta-v">온라인 검색</p></div>
+          </div>
+          <p class="cs-patient-quote">리프팅은 부담스럽고<br>레이저는 잠깐 밝아질 뿐이었어요.</p>
+          <div class="cs-patient-concern">
+            <strong>First Signal</strong>
+            폐경 전후 호르몬 변화로 발생한 좌우 대칭 기미 + 광대·턱선 탄력 저하. 5년간 레이저를 반복했으나 기미는 몇 달 뒤 돌아오고, 탄력은 그대로. 수술적 리프팅엔 심리적 저항감.
+          </div>
+        </div>
+      </aside>
+      <div class="cs-steps">
+        <div class="cs-step rv" data-n="01">
+          <p class="cs-step-label">Observation · 관찰</p>
+          <h3 class="cs-step-title">기미와 탄력 저하는 <em>한 뿌리</em>에서 나왔습니다</h3>
+          <p class="cs-step-body">환자분은 둘을 별개 문제로 보셨지만, 맥진과 체질 분석 결과 <em>간울(肝鬱)과 기혈 순환 저하</em>라는 공통 원인이 있었습니다. 즉 기미 "제거"와 탄력 "회복"이 아니라, 같은 회복 경로에서 두 결과가 따라옵니다.</p>
+          <span class="cs-step-tag">체질·맥진 확인</span>
+        </div>
+        <div class="cs-step rv rv-d1" data-n="02">
+          <p class="cs-step-label">Judgment · 판단</p>
+          <h3 class="cs-step-title">증상을 <em>끄는 게 아니라</em> 원인을 다잡았습니다</h3>
+          <p class="cs-step-body">레이저만으로 부족했던 이유는 간단합니다. <em>색소를 만드는 몸의 상태</em>가 그대로이니, 지우는 족족 다시 만들어집니다. 이 환자분께는 한약으로 호르몬·순환 환경을 먼저 조율한 후에야 외부 치료에 들어갔습니다. 순서를 뒤집으면 반복 재발이 계속됩니다.</p>
+          <span class="cs-step-tag">호르몬·순환 조율 한약</span>
+        </div>
+        <div class="cs-step rv rv-d2" data-n="03">
+          <p class="cs-step-label">Protocol · 프로토콜</p>
+          <h3 class="cs-step-title"><em>약침 + 탄력 새살침</em>을 교차로 진행했습니다</h3>
+          <p class="cs-step-body">기미 지점엔 약침으로 국소 색소 대사를 촉진, 탄력 부위엔 중간 깊이 새살침으로 진피층 리모델링. <em>주 1회 교차, 총 12주</em>. 수술 없이, 그러나 기미와 탄력에 동시에 접근하는 방식입니다. 한 번에 둘을 본다는 것이 의학적 재생 설계의 강점입니다.</p>
+          <span class="cs-step-tag">약침 + 새살침 교차</span>
+        </div>
+        <div class="cs-step rv rv-d3" data-n="04">
+          <p class="cs-step-label">Why Not · 선택하지 않은 길</p>
+          <h3 class="cs-step-title">왜 <em>리프팅 시술을 권하지 않았는가</em></h3>
+          <p class="cs-step-body">50대 초반 탄력 저하엔 HIFU·실리프팅이 일반적입니다. 하지만 이 환자분의 피부는 <em>이미 얇아진 상태</em>였고, 추가 열·물리적 자극은 장기적으로 피부 두께를 더 얇게 만들 수 있었습니다. "빨리 되는 길"이 "오래 가는 길"이 아닌 경우가 있습니다. 50대는 그 차이가 특히 큽니다.</p>
+          <span class="cs-step-tag">장기 관점의 선택</span>
+        </div>
+
+        <!-- AI Skin Scan Visualization -->
+        <div class="cs-ai-scan rv rv-d3">
+          <p class="cs-ai-scan-eyebrow">RECOVER RECORD · <em>Skin Rhythm</em> · 회복 리듬 관찰지 No. 03</p>
+          <h3 class="cs-ai-scan-title">색소와 탄력은, <em>같은 리듬</em>에서 흔들릴 수 있습니다</h3>
+          <div class="cs-ai-scan-grid">
+            <div class="cs-ai-col before">
+              <p class="cs-ai-col-label">Before<span>Day 0 · 초진</span></p>
+              <div class="cs-ai-face">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs><radialGradient id="heatR3a"><stop offset="0" stop-color="#b86a3f" stop-opacity=".82"/><stop offset=".55" stop-color="#b86a3f" stop-opacity=".3"/><stop offset="1" stop-color="#b86a3f" stop-opacity="0"/></radialGradient></defs>
+                  <path d="M50 10 Q70 10 75 28 Q82 40 82 58 Q82 78 70 96 Q60 108 50 110 Q40 108 30 96 Q18 78 18 58 Q18 40 25 28 Q30 10 50 10 Z" fill="none" stroke="#4A4A4A" stroke-width=".7" opacity=".55"/>
+                  <ellipse cx="36" cy="50" rx="3" ry="1.3" fill="#4A4A4A" opacity=".5"/><ellipse cx="64" cy="50" rx="3" ry="1.3" fill="#4A4A4A" opacity=".5"/>
+                  <path d="M50 54 Q48 64 50 72 Q52 70 54 72" stroke="#4A4A4A" stroke-width=".5" fill="none" opacity=".35"/>
+                  <path d="M42 85 Q50 88 58 85" stroke="#4A4A4A" stroke-width=".5" fill="none" opacity=".45"/>
+                  <ellipse cx="30" cy="58" rx="10" ry="7" fill="url(#heatR3a)"/>
+                  <ellipse cx="70" cy="58" rx="10" ry="7" fill="url(#heatR3a)"/>
+                  <circle cx="40" cy="88" r="4" fill="url(#heatR3a)" opacity=".7"/>
+                  <circle cx="60" cy="88" r="4" fill="url(#heatR3a)" opacity=".7"/>
+                  <path d="M25 80 Q22 90 28 100" stroke="#b86a3f" stroke-width="1.2" fill="none" opacity=".5"/>
+                  <path d="M75 80 Q78 90 72 100" stroke="#b86a3f" stroke-width="1.2" fill="none" opacity=".5"/>
+                </svg>
+              </div>
+              <ul class="cs-ai-scores">
+                <li class="cs-ai-score"><span class="cs-ai-score-k">색소 균일도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:42%"></div></div><span class="cs-ai-score-v">42</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">탄력 지수</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:48%"></div></div><span class="cs-ai-score-v">48</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">혈색 균일도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:55%"></div></div><span class="cs-ai-score-v">55</span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">수분 보유력</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:38%"></div></div><span class="cs-ai-score-v">38</span></li>
+              </ul>
+            </div>
+            <div class="cs-ai-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <span class="cs-ai-arrow-dur">16주 회복</span>
+            </div>
+            <div class="cs-ai-col after">
+              <p class="cs-ai-col-label">After<span>Week 16 · 4개월</span></p>
+              <div class="cs-ai-face">
+                <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                  <defs><radialGradient id="heatG3a"><stop offset="0" stop-color="#4A8C5E" stop-opacity=".55"/><stop offset=".55" stop-color="#4A8C5E" stop-opacity=".2"/><stop offset="1" stop-color="#4A8C5E" stop-opacity="0"/></radialGradient></defs>
+                  <path d="M50 10 Q70 10 75 28 Q82 40 82 58 Q82 78 70 96 Q60 108 50 110 Q40 108 30 96 Q18 78 18 58 Q18 40 25 28 Q30 10 50 10 Z" fill="none" stroke="#2D5F3E" stroke-width=".7" opacity=".6"/>
+                  <ellipse cx="36" cy="50" rx="3" ry="1.3" fill="#2D5F3E" opacity=".55"/><ellipse cx="64" cy="50" rx="3" ry="1.3" fill="#2D5F3E" opacity=".55"/>
+                  <path d="M50 54 Q48 64 50 72 Q52 70 54 72" stroke="#2D5F3E" stroke-width=".5" fill="none" opacity=".4"/>
+                  <path d="M42 85 Q50 88 58 85" stroke="#2D5F3E" stroke-width=".5" fill="none" opacity=".5"/>
+                  <ellipse cx="30" cy="58" rx="6" ry="4" fill="url(#heatG3a)"/>
+                  <ellipse cx="70" cy="58" rx="6" ry="4" fill="url(#heatG3a)"/>
+                </svg>
+              </div>
+              <ul class="cs-ai-scores">
+                <li class="cs-ai-score"><span class="cs-ai-score-k">색소 균일도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:79%"></div></div><span class="cs-ai-score-v">79<em>+37</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">탄력 지수</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:72%"></div></div><span class="cs-ai-score-v">72<em>+24</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">혈색 균일도</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:84%"></div></div><span class="cs-ai-score-v">84<em>+29</em></span></li>
+                <li class="cs-ai-score"><span class="cs-ai-score-k">수분 보유력</span><div class="cs-ai-score-bar"><div class="cs-ai-score-fill" style="width:71%"></div></div><span class="cs-ai-score-v">71<em>+33</em></span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="cs-ai-scan-note">* 색소, 탄력, 혈색 변화를 같은 기준으로 비교하기 위한 회복 기록 예시입니다. 실제 계획은 상담 후 개별 상태에 따라 달라집니다.</p>
+        </div>
+
+        <div class="cs-outcome rv rv-d4">
+          <p class="cs-outcome-label">4개월 후 결과</p>
+          <p class="cs-outcome-text">"거울을 볼 때마다 놀라요. 예전 얼굴로 돌아간 것 같아요." 기미 면적이 절반 아래로 줄었고, 광대·턱선 탄력도 측정상 뚜렷하게 개선됐습니다. 무엇보다 <em>3개월이 지나도 유지되는</em> 결과입니다.</p>
+          <div class="cs-outcome-metrics">
+            <div class="cs-metric"><p class="cs-metric-val">−47%</p><p class="cs-metric-lbl">기미 면적 변화</p></div>
+            <div class="cs-metric"><p class="cs-metric-val">+33%</p><p class="cs-metric-lbl">피부 탄력도 변화</p></div>
+            <div class="cs-metric"><p class="cs-metric-val">관찰 중</p><p class="cs-metric-lbl">관찰 기간 내 재발 보고 없음</p></div>
+          </div>
+          <p class="cs-doctor-sign">— RECOVER NOTE<span>Reviewed by Dr. Han</span></p>
+        </div>
+      </div>
+    </div>
+    </div><!-- /cs-panel case 3 -->
+
+    <p class="cs-disclaimer">* 위 노트는 리커버의 판단 방식을 이해하기 위한 상담 예시입니다. 실제 계획과 회복 반응은 개인의 피부 상태와 생활 리듬에 따라 달라질 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- Emblem divider — Case Study → Origin Note -->
+<div class="emblem-div"><span class="emblem-div-line"></span><div class="emblem-div-icon"><img src="/logo/Gemini_Generated_Image_vofdy6vofdy6vofd.png" alt=""></div><span class="emblem-div-line"></span></div>
+
+<!-- FOUNDER'S STORY — 매거진 스프레드 (A4·B10) · 후반 배치 (P1-1) -->
+</MainLayout>

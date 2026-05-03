@@ -1,0 +1,35 @@
+{
+  "paper_id": "16_r15_chromanol_safety_triage",
+  "title": "R15 Chromanol Safety-First Fragment Triage: 14-Target Cofolding, ADMET/xTB Filtering, and 30 ns MD Separates Systemic-Safety and Topical-Lead Paths",
+  "title_ko": "크로마놀 안전성 우선 단편 트리아지 — 14-타겟 공동접힘·ADMET/xTB 필터링·30 ns 분자동력학으로 전신 안전 경로와 외용 리드 경로 분리",
+  "abstract": "R15 generated a compact chromanol fragment, OCC1COc2cc(O)ccc2C1, as a safety-first derivative of the broader pterocarpan-vinyl-polyphenol scaffold program. The central question is whether this fragment should be treated as a topical lead or as a systemic-safety fragment hypothesis. The answer is deliberately split. In ADMET/xTB triage, the R15 parent is predicted to be clean for AMES, DILI, and hERG liability, but its logP is 0.94, below the intended skin-window threshold, and it ranks 11 by the topical composite score. Conversely, the top-3 topical-score analogs satisfy the skin-window heuristic but retain hERG caution values around 0.58-0.70. Boltz-2 14-target cofolding identifies TGFB1, TYR, and DCT as the top three targets by affinity probability, and all three remain stable in 30 ns OpenMM MD with mean ligand RMSD values of 0.51, 0.92, and 0.47 Å. Raw-pose sanity gating found 9 pass, 5 review, and 0 fail rows across the R15 14-target panel. We therefore frame R15 chromanol as a safety-first comparator and SAR anchor, not as a ready topical efficacy candidate.",
+  "keywords": [
+    "chemistry",
+    "ADMET",
+    "topical drug discovery",
+    "molecular dynamics"
+  ],
+  "target_server": "ChemRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "0009-0004-4805-8815",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "chemistry",
+  "subcategory": "drug discovery",
+  "n_figures": 4,
+  "word_count_md": 4800,
+  "submission_status": "submitted",
+  "submission_date": "2026-05-02",
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending."
+}

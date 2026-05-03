@@ -1,0 +1,128 @@
+---
+// NeedleMicroflow — 새살침 작용 4단계 microflow SVG
+const steps = [
+  { n: '01', label: 'Insertion', ko: '진피 도달', desc: '새살침이 표피 통과 후 진피층(0.8–1.5 mm)에 정확히 도달' },
+  { n: '02', label: 'Adhesion Release', ko: '유착 해소', desc: '미세 손상으로 흉터 주변의 섬유 유착을 끊고 차오를 공간 형성' },
+  { n: '03', label: 'Collagen Cascade', ko: '콜라겐 활성화', desc: 'TGF-β1·CTGF·COL1A1 신호 활성화로 콜라겐 재구성 시작' },
+  { n: '04', label: 'Surface Recovery', ko: '표면 회복', desc: '진피 회복 환경 속에서 표피 함몰이 단계적으로 차오름' },
+];
+---
+<figure class="needle-flow" aria-label="새살침 작용 4단계 흐름도">
+  <div class="needle-flow-cap">
+    <span class="needle-flow-eye">Needle Microflow · Figure</span>
+    <h3 class="needle-flow-title">새살침이 일하는 <em>네 단계</em></h3>
+    <p class="needle-flow-sub">한 번의 시술이 아니라, 진피 안에서 일어나는 4단계 반응이 회복을 만듭니다. 표면이 아니라 구조의 변화입니다.</p>
+  </div>
+
+  <div class="needle-flow-list">
+    {steps.map((s, i) => (
+      <div class="needle-flow-step">
+        <div class="needle-flow-svg-wrap">
+          <svg class="needle-flow-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img">
+            {i === 0 && (
+              <g>
+                <line x1="10" y1="20" x2="90" y2="20" stroke="#1A1A1A" stroke-width="1.4"/>
+                <rect x="5" y="14" width="90" height="14" fill="#FBFAF6" stroke="none"/>
+                <line x1="10" y1="20" x2="90" y2="20" stroke="#1A1A1A" stroke-width="1.4"/>
+                <rect x="5" y="28" width="90" height="58" fill="none" stroke="#A88B4A" stroke-width=".5" stroke-dasharray="2 2"/>
+                <line x1="50" y1="6" x2="50" y2="64" stroke="#1A1A1A" stroke-width="1.6"/>
+                <polygon points="47,60 50,72 53,60" fill="#1A1A1A"/>
+                <rect x="46" y="0" width="8" height="8" fill="#A88B4A"/>
+              </g>
+            )}
+            {i === 1 && (
+              <g>
+                <line x1="10" y1="20" x2="90" y2="20" stroke="#1A1A1A" stroke-width="1.4"/>
+                <rect x="5" y="28" width="90" height="58" fill="none" stroke="#A88B4A" stroke-width=".5" stroke-dasharray="2 2"/>
+                <ellipse cx="50" cy="55" rx="18" ry="22" fill="none" stroke="#7a3a3a" stroke-width="1.2" stroke-dasharray="3 2"/>
+                <g stroke="#7a3a3a" stroke-width="1" fill="none">
+                  <path d="M40 50 L46 50"/>
+                  <path d="M54 50 L60 50"/>
+                  <path d="M40 60 L46 60"/>
+                  <path d="M54 60 L60 60"/>
+                </g>
+                <text x="50" y="58" text-anchor="middle" font-family="Noto Serif KR" font-size="10" font-weight="500" fill="#7a3a3a">×</text>
+              </g>
+            )}
+            {i === 2 && (
+              <g>
+                <line x1="10" y1="20" x2="90" y2="20" stroke="#1A1A1A" stroke-width="1.4"/>
+                <rect x="5" y="28" width="90" height="58" fill="none" stroke="#A88B4A" stroke-width=".5" stroke-dasharray="2 2"/>
+                <g stroke="#2D5F3E" stroke-width=".75" fill="none" opacity=".82">
+                  <path d="M14 42 Q34 36 54 42 T94 42"/>
+                  <path d="M14 56 Q34 50 54 56 T94 56"/>
+                  <path d="M14 70 Q34 64 54 70 T94 70"/>
+                </g>
+                <circle cx="36" cy="50" r="1.8" fill="#C4A265"/>
+                <circle cx="58" cy="64" r="1.8" fill="#C4A265"/>
+                <circle cx="74" cy="44" r="1.8" fill="#C4A265"/>
+                <text x="50" y="92" text-anchor="middle" font-family="IBM Plex Mono" font-size="6" fill="#2D5F3E" letter-spacing=".08em">TGF-β1 · CTGF</text>
+              </g>
+            )}
+            {i === 3 && (
+              <g>
+                <path d="M10 20 Q30 20 50 20 Q70 20 90 20" stroke="#1A1A1A" stroke-width="1.4" fill="none"/>
+                <rect x="5" y="28" width="90" height="58" fill="none" stroke="#A88B4A" stroke-width=".5" stroke-dasharray="2 2"/>
+                <g stroke="#2D5F3E" stroke-width=".75" fill="none" opacity=".7">
+                  <path d="M14 42 Q34 38 54 42 T94 42"/>
+                  <path d="M14 56 Q34 52 54 56 T94 56"/>
+                  <path d="M14 70 Q34 66 54 70 T94 70"/>
+                </g>
+                <circle cx="50" cy="20" r="3" fill="#A8C5A0" opacity=".7"/>
+                <circle cx="50" cy="20" r="6" fill="none" stroke="#2D5F3E" stroke-width=".5" opacity=".5" stroke-dasharray="2 1.5"/>
+              </g>
+            )}
+          </svg>
+        </div>
+        <div class="needle-flow-num">{s.n}</div>
+        <div class="needle-flow-text">
+          <p class="needle-flow-label">{s.label}</p>
+          <p class="needle-flow-ko">{s.ko}</p>
+          <p class="needle-flow-desc">{s.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- 시술 영상 -->
+  <div class="viz-video-card" style="margin-top:36px">
+    <video src="/video/saesalchim_graded.mp4" autoplay muted loop playsinline preload="metadata" poster="/logo/R_emblem_original.png" aria-label="새살침 시술 영상 — 무음 자동 재생"></video>
+    <span class="vc-corner tl"></span>
+    <span class="vc-corner tr"></span>
+    <span class="vc-corner bl"></span>
+    <span class="vc-corner br"></span>
+    <span class="vc-tag">NEEDLE · LIVE</span>
+    <span class="vc-counter">REEL 03 / 04</span>
+  </div>
+
+  <p class="needle-flow-foot">FIG. 3 · 새살침 microflow + 시술 영상 · 진피 0.8–1.5 mm 깊이 · 단계별 4-stage 반응</p>
+</figure>
+
+<style>
+.needle-flow{margin:48px 0;padding:40px clamp(20px,4vw,56px);background:linear-gradient(180deg,#FBFAF6 0%,white 100%);border:1px solid rgba(26,26,26,.16);position:relative;box-shadow:0 1px 0 rgba(196,162,101,.16),0 16px 48px rgba(45,95,62,.05)}
+.needle-flow::before{content:'';position:absolute;top:0;left:0;width:120px;height:2px;background:#A88B4A}
+.needle-flow-cap{margin-bottom:36px;max-width:680px}
+.needle-flow-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.32em;color:#A88B4A;text-transform:uppercase;font-weight:500;display:inline-block;margin-bottom:12px}
+.needle-flow-title{font-family:'Fraunces','Noto Serif KR',Georgia,serif;font-size:clamp(22px,3vw,30px);font-weight:300;color:#1A1A1A;line-height:1.28;margin-bottom:10px;letter-spacing:-.008em}
+.needle-flow-title em{font-style:italic;color:#2D5F3E;font-weight:500}
+.needle-flow-sub{font-family:'Noto Serif KR',Georgia,serif;font-size:14.5px;line-height:1.75;color:#3D3D3D;font-weight:300}
+.needle-flow-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:32px;border:1px solid rgba(26,26,26,.16);background:white}
+.needle-flow-step{padding:24px 22px;border-right:1px solid rgba(26,26,26,.12);position:relative;display:grid;grid-template-rows:auto auto 1fr;gap:14px}
+.needle-flow-step:last-child{border-right:none}
+.needle-flow-step::after{content:'→';position:absolute;right:-8px;top:50%;transform:translateY(-50%);font-family:'Fraunces',serif;color:#A88B4A;font-size:18px;background:white;padding:2px 4px;z-index:2}
+.needle-flow-step:last-child::after{display:none}
+.needle-flow-svg-wrap{width:78px;height:78px;border:1px solid rgba(196,162,101,.22);background:#FBFAF6;padding:6px}
+.needle-flow-svg{width:100%;height:100%;display:block}
+.needle-flow-num{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:#A88B4A;letter-spacing:-.02em;font-feature-settings:"onum","ss01"}
+.needle-flow-text{display:flex;flex-direction:column;gap:4px}
+.needle-flow-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:#A88B4A;text-transform:uppercase;font-weight:500}
+.needle-flow-ko{font-family:'Fraunces','Noto Serif KR',serif;font-size:16px;font-weight:500;color:#1A1A1A;line-height:1.4;letter-spacing:-.005em}
+.needle-flow-desc{font-family:'Noto Serif KR',serif;font-size:12.5px;line-height:1.62;color:#5A5A5A;font-weight:300;margin-top:4px}
+.needle-flow-foot{margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.18em;color:#5A5A5A;text-transform:uppercase;text-align:center;padding-top:18px;border-top:1px solid rgba(196,162,101,.16)}
+@media(max-width:768px){
+  .needle-flow-list{grid-template-columns:1fr}
+  .needle-flow-step{border-right:none;border-bottom:1px solid rgba(26,26,26,.12)}
+  .needle-flow-step:last-child{border-bottom:none}
+  .needle-flow-step::after{content:'↓';right:50%;top:auto;bottom:-12px;transform:translateX(50%)}
+}
+</style>

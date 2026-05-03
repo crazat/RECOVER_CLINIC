@@ -2,3 +2,36 @@
 로고후보/
 .firebase/
 firebase-debug.log
+
+# dependencies
+node_modules/
+
+# Astro build output + cache
+dist/
+.astro/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.production
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Working folders (not for git tracking)
+_check/
+scraps/
+screenshots/
+uploads/
+video_anatomy/
+original.html
+
+# Interior briefs (working drafts)
+recover_gangnam_interior_*.md

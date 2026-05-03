@@ -1,0 +1,25 @@
+---
+// VolumeBar — 학술지 매스헤드 (nav 직후 좁은 띠)
+const {
+  vol = 'I',
+  issue = '2026 · Q3',
+  category = '회복 조건',
+  series = 'Skin Recovery Design',
+} = Astro.props;
+---
+<div class="volume-bar" aria-hidden="true">
+  <div class="volume-bar-inner">
+    <div class="volume-bar-left">
+      <span>RECOVER · 강남</span>
+      <span class="vsep">·</span>
+      <span>Vol. <strong>{vol}</strong></span>
+      <span class="vsep">·</span>
+      <span>{issue}</span>
+    </div>
+    <div class="volume-bar-right">
+      <span>{series}</span>
+      <span class="vsep">·</span>
+      <span>{category}</span>
+    </div>
+  </div>
+</div>

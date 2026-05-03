@@ -1,0 +1,1690 @@
+---
+// FloatingPostFooter — ctxChip · float-cta · mobile-bar + 모든 인라인 scripts
+// (Phase B 1차: 일괄 통합. 추후 페이지별 split 가능)
+---
+
+<!-- CONTEXT CHIP — 스크롤 중 현재 섹션 기반 프롬프트 -->
+<div class="ctx-chip" id="ctxChip" role="complementary" aria-live="polite">
+  <span class="ctx-chip-dot"></span>
+  <span class="ctx-chip-text" id="ctxChipText"><strong>가장 빠른 상담</strong>&nbsp;<span class="ctx-chip-slot" id="ctxChipSlot">내일 오후 3:00</span></span>
+  <a href="#consult" class="ctx-chip-cta" id="ctxChipCta">이 시간 예약</a>
+  <button class="ctx-chip-close" id="ctxChipClose" aria-label="닫기"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l6 6M9 3l-6 6"/></svg></button>
+</div>
+
+<!-- FLOATING CTA (desktop) -->
+<div class="float-cta" id="floatCta">
+  <a href="tel:02-000-0000" class="float-btn float-btn-call" aria-label="전화 상담"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0122 16.92z"/></svg></a>
+  <a href="https://pf.kakao.com/_DxewtT/chat" target="_blank" rel="noopener" class="float-btn float-btn-kakao" aria-label="카카오톡 상담"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 10.94c0 2.8 1.86 5.27 4.66 6.67-.15.53-.96 3.42-.99 3.64 0 0-.02.17.09.24.11.06.24.01.24.01.32-.04 3.7-2.44 4.28-2.85.56.08 1.14.13 1.72.13 5.52 0 10-3.58 10-7.94S17.52 3 12 3z"/></svg></a>
+  <button class="float-btn float-btn-up" id="scrollTop" aria-label="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+</div>
+
+<!-- MOBILE BOTTOM BAR — 2+1 redesign: primary reserve CTA + secondary call/kakao -->
+<div class="mobile-bar" role="navigation" aria-label="빠른 문의">
+  <div class="mobile-bar-inner">
+    <a href="tel:02-000-0000" class="mb-aux" aria-label="전화상담">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.68 2.34a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0122 16.92z"/></svg>
+      <span class="mb-aux-label">전화</span>
+    </a>
+    <a href="https://pf.kakao.com/_DxewtT/chat" target="_blank" rel="noopener" class="mb-aux mb-aux-kakao" aria-label="카카오톡 문의">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 10.94c0 2.8 1.86 5.27 4.66 6.67-.15.53-.96 3.42-.99 3.64 0 0-.02.17.09.24.11.06.24.01.24.01.32-.04 3.7-2.44 4.28-2.85.56.08 1.14.13 1.72.13 5.52 0 10-3.58 10-7.94S17.52 3 12 3z"/></svg>
+      <span class="mb-aux-label">카톡</span>
+    </a>
+    <a href="#consult" class="mb-primary">
+      <span class="mb-primary-meta"><span class="mb-primary-dot"></span><span class="mb-primary-slot" id="mbSlot">오늘 18:30 가능</span></span>
+      <span class="mb-primary-main"><span class="mb-primary-label">RECOVER BASELINE 상담</span>
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg>
+      </span>
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+/* Logo bg removal */
+function removeLogoBg(img,container,h){
+  const c=document.createElement('canvas'),t=new Image();
+  t.crossOrigin='anonymous';
+  t.onload=function(){
+    c.width=t.naturalWidth;c.height=t.naturalHeight;
+    const ctx=c.getContext('2d');ctx.drawImage(t,0,0);
+    const d=ctx.getImageData(0,0,c.width,c.height),px=d.data;
+    for(let i=0;i<px.length;i+=4){if(px[i]>218&&px[i+1]>208&&px[i+2]>198)px[i+3]=0}
+    ctx.putImageData(d,0,0);
+    const o=new Image();o.src=c.toDataURL();o.style.height=h;o.style.width='auto';o.alt=img.alt;o.className='logo-clean';
+    container.replaceChild(o,img);
+  };t.src=img.src;
+}
+document.querySelectorAll('.nav-logo img').forEach(i=>{if(i.complete)removeLogoBg(i,i.parentElement,'64px');else i.onload=()=>removeLogoBg(i,i.parentElement,'64px')});
+document.querySelectorAll('.footer-logo img').forEach(i=>{if(i.complete)removeLogoBg(i,i.parentElement,'64px');else i.onload=()=>removeLogoBg(i,i.parentElement,'64px')});
+
+/* Hero emblem uses pre-processed R_emblem_forest.png — no JS needed */
+
+/* Scroll progress */
+const sp=document.getElementById('scrollProgress');
+function updateScroll(){
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  sp.style.width=(scrollY/h*100)+'%';
+  nav.classList.toggle('scrolled',scrollY>60);
+}
+
+/* Nav */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',updateScroll,{passive:true});
+
+/* Mobile toggle */
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>{links.classList.toggle('open');const s=toggle.querySelectorAll('span'),o=links.classList.contains('open');s[0].style.transform=o?'rotate(45deg) translate(4px,4px)':'';s[1].style.opacity=o?'0':'';s[2].style.transform=o?'rotate(-45deg) translate(4px,-4px)':'';});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity=''})}));
+
+/* B/A gallery: 12 cards reveal toggle (Phase 2 IA) */
+(function(){
+  const btn=document.getElementById('baExpandBtn');if(!btn)return;
+  const grid=document.querySelector('.ba-grid');if(!grid)return;
+  const lbl=btn.querySelector('.ba-expand-label'),cnt=btn.querySelector('.ba-expand-count');
+  btn.addEventListener('click',()=>{
+    const open=grid.classList.toggle('ba-show-extra');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    if(lbl)lbl.textContent=open?'기본 6개만 보기':'전체 12개 회복 기록 보기';
+    if(cnt)cnt.textContent=open?'−6':'+6';
+  });
+})();
+
+/* Reviews: 10 cards reveal toggle (Phase 2 IA) */
+(function(){
+  const btn=document.getElementById('revExpandBtn');if(!btn)return;
+  const grid=document.querySelector('.reviews-scroll');if(!grid)return;
+  const lbl=btn.querySelector('.rev-expand-label'),cnt=btn.querySelector('.rev-expand-count');
+  btn.addEventListener('click',()=>{
+    const open=grid.classList.toggle('rev-show-extra');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    if(lbl)lbl.textContent=open?'기본 4개만 보기':'전체 10개 회복 이야기 보기';
+    if(cnt)cnt.textContent=open?'−6':'+6';
+  });
+})();
+
+/* Reveal */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* Smooth anchors */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+scrollY-90,behavior:'smooth'})})});
+
+/* Counters - refined easing */
+const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,tgt=+el.dataset.target;const dur=2200;const start=performance.now();
+  function step(now){const t=Math.min((now-start)/dur,1);const ease=1-Math.pow(1-t,4);const v=Math.floor(ease*tgt);el.textContent=v.toLocaleString();if(t<1)requestAnimationFrame(step);else{el.textContent=tgt.toLocaleString();el.classList.add('counted')}}
+  requestAnimationFrame(step);cObs.unobserve(el)}})},{threshold:.4});
+document.querySelectorAll('.counter').forEach(c=>cObs.observe(c));
+
+/* Hero parallax */
+const heroContent=document.querySelector('.hero-content');
+const heroEmblem=document.querySelector('.hero-emblem-wrap');
+const heroBranch=document.querySelector('.hero-branch');
+const heroVine=document.querySelector('.hero-vine-right');
+const heroNeural=document.querySelector('.hero-neural');
+const heroScrollCue=document.querySelector('.hero-scroll');
+window.addEventListener('scroll',()=>{
+  if(scrollY<window.innerHeight){
+    const r=scrollY/window.innerHeight;
+    if(heroContent){heroContent.style.transform=`translateY(${r*40}px)`;heroContent.style.opacity=Math.max(0,1-r*1.6).toFixed(2)}
+    if(heroEmblem){heroEmblem.style.transform=`translateY(calc(-50% + ${r*25}px))`;heroEmblem.style.opacity=Math.max(0,.85-r*1.4).toFixed(2)}
+    if(heroBranch){heroBranch.style.transform=`translateY(${r*-15}px)`;heroBranch.style.opacity=Math.max(0,1-r*2).toFixed(2)}
+    if(heroVine){heroVine.style.transform=`translateY(${r*-20}px)`;heroVine.style.opacity=Math.max(0,1-r*2).toFixed(2)}
+    if(heroNeural)heroNeural.style.opacity=Math.max(0,.4-r*.6).toFixed(2);
+    if(heroScrollCue)heroScrollCue.style.opacity=Math.max(0,1-r*4).toFixed(2);
+  }
+},{passive:true});
+
+/* FAQ toggle */
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open')})});
+
+/* Float CTA show on scroll */
+const floatCta=document.getElementById('floatCta');
+const scrollTopBtn=document.getElementById('scrollTop');
+function updateFloat(){floatCta&&floatCta.classList.toggle('show',scrollY>400)}
+window.addEventListener('scroll',updateFloat,{passive:true});
+scrollTopBtn&&scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* Neural canvas */
+(function(){
+  const cvs=document.getElementById('neuralCanvas');if(!cvs)return;
+  const ctx=cvs.getContext('2d');let w,h,nodes=[],f=0,mouseX=-999,mouseY=-999;const G='196,162,101';
+  cvs.addEventListener('mousemove',e=>{const rect=cvs.getBoundingClientRect();mouseX=e.clientX-rect.left;mouseY=e.clientY-rect.top});
+  cvs.addEventListener('mouseleave',()=>{mouseX=-999;mouseY=-999});
+  function resize(){w=cvs.width=cvs.offsetWidth;h=cvs.height=cvs.offsetHeight;nodes=[];
+    const n=Math.floor(w*h/35000);for(let i=0;i<n;i++)nodes.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.1,vy:(Math.random()-.5)*.1,r:Math.random()*1.8+1.2,p:Math.random()*Math.PI*2})}
+  function draw(){ctx.clearRect(0,0,w,h);f+=.005;
+    nodes.forEach(n=>{
+      if(mouseX>0){const dx=n.x-mouseX,dy=n.y-mouseY,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<150&&d>0){const force=.12*(1-d/150);n.vx+=dx/d*force;n.vy+=dy/d*force}}
+      n.vx*=.985;n.vy*=.985;
+      n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>w)n.vx*=-1;if(n.y<0||n.y>h)n.vy*=-1;
+      const pulse=Math.sin(f+n.p)*.3+.7;
+      nodes.forEach(m=>{const dx=m.x-n.x,dy=m.y-n.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<160&&d>0){const a=(1-d/160)*.08*pulse;ctx.strokeStyle=`rgba(${G},${a})`;ctx.lineWidth=.4;
+          ctx.beginPath();const mx=(n.x+m.x)/2+Math.sin(f*2+n.p)*8,my=(n.y+m.y)/2+Math.cos(f*2+m.p)*8;
+          ctx.moveTo(n.x,n.y);ctx.quadraticCurveTo(mx,my,m.x,m.y);ctx.stroke()}});
+      ctx.fillStyle=`rgba(${G},${pulse*.18})`;ctx.beginPath();ctx.arc(n.x,n.y,n.r*pulse,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle=`rgba(${G},${pulse*.06})`;ctx.lineWidth=.3;ctx.beginPath();ctx.arc(n.x,n.y,n.r*3*pulse,0,Math.PI*2);ctx.stroke()});
+    requestAnimationFrame(draw)}
+  resize();draw();window.addEventListener('resize',resize)})();
+
+/* ═══ PREMIUM INTERACTIONS ═══ */
+
+/* Cursor ambient glow */
+if(window.matchMedia('(hover:hover)').matches){
+  const glow=document.createElement('div');glow.className='cursor-glow';document.body.appendChild(glow);
+  let gx=0,gy=0,mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;glow.classList.add('active')});
+  document.addEventListener('mouseleave',()=>glow.classList.remove('active'));
+  (function gl(){gx+=(mx-gx)*.08;gy+=(my-gy)*.08;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(gl)})();
+}
+
+/* Active nav section tracking — DISABLED for multi-page IA (Phase I rev5)
+   기존 single-page 시절 anchor 기반 IntersectionObserver가 SSR active를
+   스크롤마다 toggle 제거하던 버그 해결. 멀티페이지에서는 SSR active 그대로 유지. */
+const navAnchors=document.querySelectorAll('.nav-links a:not(.nav-cta)');
+const isAnchorNav=Array.from(navAnchors).some(a=>(a.getAttribute('href')||'').startsWith('#'));
+if(isAnchorNav){
+  const navSections=document.querySelectorAll('section[id]');
+  const secObserver=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const id=e.target.id;
+    navAnchors.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}})},{threshold:.25,rootMargin:'-90px 0px -50% 0px'});
+  navSections.forEach(s=>secObserver.observe(s));
+}
+
+/* Shift+휠로만 가로 스크롤 변환 (일반 세로 휠은 페이지 스크롤 통과) */
+document.querySelectorAll('.ba-grid,.reviews-scroll').forEach(el=>{
+  el.addEventListener('wheel',e=>{
+    // 가로 의도(트랙패드 가로 스와이프 등)면 브라우저 기본
+    if(Math.abs(e.deltaX)>=Math.abs(e.deltaY))return;
+    // Shift+휠일 때만 세로→가로 변환
+    if(!e.shiftKey)return;
+    const maxL=el.scrollWidth-el.clientWidth;
+    const atStart=el.scrollLeft<=0;
+    const atEnd=el.scrollLeft>=maxL-1;
+    if((e.deltaY<0 && atStart)||(e.deltaY>0 && atEnd))return;
+    e.preventDefault();el.scrollLeft+=e.deltaY;
+  },{passive:false})});
+
+/* Scroll nav arrows */
+document.querySelectorAll('.scroll-arr').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=document.querySelector(btn.dataset.target);if(!target)return;
+    const dir=btn.classList.contains('left')?-1:1;
+    target.scrollBy({left:dir*340,behavior:'smooth'})})});
+/* Update arrow visibility on scroll */
+document.querySelectorAll('.scroll-nav').forEach(nav=>{
+  const container=nav.querySelector('.ba-grid,.reviews-scroll');if(!container)return;
+  const leftArr=nav.querySelector('.scroll-arr.left'),rightArr=nav.querySelector('.scroll-arr.right');
+  function updateArrows(){
+    const atStart=container.scrollLeft<10;
+    const atEnd=container.scrollLeft>=container.scrollWidth-container.clientWidth-10;
+    if(leftArr)leftArr.classList.toggle('hide',atStart);
+    if(rightArr)rightArr.classList.toggle('hide',atEnd)}
+  container.addEventListener('scroll',updateArrows,{passive:true});updateArrows()});
+
+/* BA Gallery drag-to-scroll */
+const baGrid=document.querySelector('.ba-grid');
+if(baGrid){let bDown=false,bStartX,bScrollL;
+  baGrid.addEventListener('mousedown',e=>{bDown=true;bStartX=e.pageX-baGrid.offsetLeft;bScrollL=baGrid.scrollLeft;baGrid.style.scrollBehavior='auto'});
+  baGrid.addEventListener('mouseleave',()=>bDown=false);
+  baGrid.addEventListener('mouseup',()=>{bDown=false;baGrid.style.scrollBehavior='smooth'});
+  baGrid.addEventListener('mousemove',e=>{if(!bDown)return;e.preventDefault();const x=e.pageX-baGrid.offsetLeft;baGrid.scrollLeft=bScrollL-(x-bStartX)*1.5})}
+
+/* ═══ BA SLIDER (featured) ═══ */
+(function(){
+  document.querySelectorAll('.ba-card[data-ba-slider]').forEach(card=>{
+    const wrap=card.querySelector('.ba-img-wrap');if(!wrap)return;
+    const src=card.dataset.baSlider;
+    // Build layers
+    const after=document.createElement('div');after.className='ba-slider-layer ba-slider-after';after.style.backgroundImage=`url(${src})`;
+    const before=document.createElement('div');before.className='ba-slider-layer ba-slider-before';before.style.backgroundImage=`url(${src})`;
+    const bBadge=document.createElement('span');bBadge.className='ba-slider-badge before';bBadge.textContent='BEFORE';
+    const aBadge=document.createElement('span');aBadge.className='ba-slider-badge after';aBadge.textContent='AFTER';
+    const div=document.createElement('div');div.className='ba-slider-div';
+    const handle=document.createElement('div');handle.className='ba-slider-handle';handle.setAttribute('aria-label','드래그하여 비교');handle.setAttribute('role','slider');handle.setAttribute('tabindex','0');handle.setAttribute('aria-valuemin','0');handle.setAttribute('aria-valuemax','100');handle.setAttribute('aria-valuenow','50');
+    wrap.appendChild(after);wrap.appendChild(before);wrap.appendChild(bBadge);wrap.appendChild(aBadge);wrap.appendChild(div);wrap.appendChild(handle);
+    let split=50;
+    function set(pct){
+      split=Math.max(5,Math.min(95,pct));
+      wrap.style.setProperty('--split',split+'%');
+      handle.setAttribute('aria-valuenow',Math.round(split));
+    }
+    set(50);
+    let dragging=false;
+    function getPct(e){
+      const r=wrap.getBoundingClientRect();
+      const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+      return (x/r.width)*100;
+    }
+    function start(e){dragging=true;card.classList.add('ba-dragging','ba-interacted');set(getPct(e));e.preventDefault();}
+    function move(e){if(!dragging)return;set(getPct(e));}
+    function end(){dragging=false;card.classList.remove('ba-dragging');}
+    wrap.addEventListener('mousedown',start);
+    wrap.addEventListener('touchstart',start,{passive:false});
+    window.addEventListener('mousemove',move);
+    window.addEventListener('touchmove',move,{passive:true});
+    window.addEventListener('mouseup',end);
+    window.addEventListener('touchend',end);
+    // Click-to-position (without drag)
+    wrap.addEventListener('click',e=>{if(!dragging)set(getPct(e));card.classList.add('ba-interacted');});
+    // Keyboard
+    handle.addEventListener('keydown',e=>{
+      if(e.key==='ArrowLeft'){set(split-5);e.preventDefault();card.classList.add('ba-interacted');}
+      else if(e.key==='ArrowRight'){set(split+5);e.preventDefault();card.classList.add('ba-interacted');}
+      else if(e.key==='Home'){set(5);e.preventDefault();}
+      else if(e.key==='End'){set(95);e.preventDefault();}
+    });
+    // Auto-teaser animation on scroll-in (once)
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{
+      if(!e.isIntersecting||card.classList.contains('ba-interacted'))return;
+      io.unobserve(card);
+      let t=0;const anim=setInterval(()=>{
+        t+=1;
+        const p=50+Math.sin(t*.25)*18*Math.exp(-t*.08);
+        set(p);
+        if(t>30){clearInterval(anim);set(50);}
+      },50);
+    })},{threshold:.4});
+    io.observe(card);
+  });
+})();
+
+/* ═══ BA CINEMA — Featured spotlight slider ═══ */
+(function(){
+  const stage=document.querySelector('#ba-cinema-feat .ba-cinema-stage');
+  const cinema=document.querySelector('#ba-cinema-feat');
+  if(!stage||!cinema)return;
+  const src=cinema.dataset.cinemaSrc;
+  const before=stage.querySelector('.ba-cinema-before');
+  const after=stage.querySelector('.ba-cinema-after');
+  before.style.backgroundImage=`url(${src})`;
+  after.style.backgroundImage=`url(${src})`;
+  let split=50;
+  function set(p){
+    split=Math.max(4,Math.min(96,p));
+    stage.style.setProperty('--csplit',split+'%');
+    stage.setAttribute('aria-valuenow',Math.round(split));
+  }
+  set(50);
+  let dragging=false;
+  function getPct(e){
+    const r=stage.getBoundingClientRect();
+    const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+    return (x/r.width)*100;
+  }
+  function start(e){dragging=true;stage.classList.add('cinema-dragging','cinema-touched');set(getPct(e));e.preventDefault();}
+  function move(e){if(!dragging)return;set(getPct(e));}
+  function end(){dragging=false;stage.classList.remove('cinema-dragging');}
+  stage.addEventListener('mousedown',start);
+  stage.addEventListener('touchstart',start,{passive:false});
+  window.addEventListener('mousemove',move);
+  window.addEventListener('touchmove',move,{passive:true});
+  window.addEventListener('mouseup',end);
+  window.addEventListener('touchend',end);
+  stage.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'){set(split-4);e.preventDefault();stage.classList.add('cinema-touched');}
+    else if(e.key==='ArrowRight'){set(split+4);e.preventDefault();stage.classList.add('cinema-touched');}
+    else if(e.key==='Home'){set(4);e.preventDefault();}
+    else if(e.key==='End'){set(96);e.preventDefault();}
+  });
+  // Cinematic auto-reveal: slow sweep on first viewport entry
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(!e.isIntersecting||stage.classList.contains('cinema-touched'))return;
+    io.unobserve(stage);
+    let t=0;const total=80;
+    const anim=setInterval(()=>{
+      t++;
+      // ease-in-out sweep: 50 → 88 → 12 → 50
+      const phase=t/total;
+      let p;
+      if(phase<.35){const k=phase/.35;p=50+38*(1-Math.cos(k*Math.PI))/2;}
+      else if(phase<.75){const k=(phase-.35)/.4;p=88-76*(1-Math.cos(k*Math.PI))/2;}
+      else{const k=(phase-.75)/.25;p=12+38*(1-Math.cos(k*Math.PI))/2;}
+      set(p);
+      if(t>=total){clearInterval(anim);set(50);}
+    },36);
+  })},{threshold:.45});
+  io.observe(stage);
+})();
+
+/* ═══ BA FILTER ═══ */
+(function(){
+  const grid=document.querySelector('.ba-grid');
+  const bar=document.querySelector('.ba-filter');
+  if(!grid||!bar)return;
+  const cards=[...grid.querySelectorAll('.ba-card')];
+  // Derive metadata from each card text
+  const concernMap={
+    '흉터':'흉터','흉':'흉터',
+    '붉은':'붉은기','홍조':'붉은기','여드름':'붉은기',
+    '리프팅':'리프팅','주름':'리프팅','턱선':'리프팅','눈가':'리프팅','팔자':'리프팅','비대칭':'리프팅',
+    '물광':'탄력','건조':'탄력','탄력':'탄력','결':'탄력'
+  };
+  cards.forEach(c=>{
+    const tag=(c.querySelector('.ba-tag')||{}).textContent||'';
+    const title=(c.querySelector('.ba-title')||{}).textContent||'';
+    const prof=(c.querySelector('.ba-profile')||{}).textContent||'';
+    let concern='흉터';
+    const hay=tag+' '+title;
+    for(const k in concernMap){if(hay.indexOf(k)>-1){concern=concernMap[k];break}}
+    const gender=/여성/.test(prof)?'여성':(/남성/.test(prof)?'남성':'');
+    const ageM=prof.match(/(\d0)대/);
+    let ageBucket='';
+    if(ageM){const n=parseInt(ageM[1],10);ageBucket=n<=20?'20':n===30?'30':'40';}
+    c.dataset.concern=concern;
+    c.dataset.gender=gender;
+    c.dataset.age=ageBucket;
+  });
+  // Count chips
+  const countFor=(type,val)=>{
+    if(type==='all')return cards.length;
+    return cards.filter(c=>c.dataset[type]===val).length;
+  };
+  bar.querySelectorAll('.ba-chip-n').forEach(span=>{
+    const key=span.dataset.count;
+    if(key==='all'){span.textContent=cards.length;return}
+    const [t,v]=key.split(':');
+    span.textContent=countFor(t,v);
+  });
+  const status=document.querySelector('.ba-filter-status');
+  let cur={type:'all',value:'all'};
+  function apply(){
+    let shown=0;
+    cards.forEach(c=>{
+      const ok=cur.type==='all'||c.dataset[cur.type]===cur.value;
+      c.classList.toggle('ba-hidden',!ok);
+      if(ok)shown++;
+    });
+    if(status){
+      status.textContent=cur.type==='all'?'':`${shown}건 표시 중`;
+    }
+    // reset scroll + arrow recompute
+    grid.scrollLeft=0;
+    grid.dispatchEvent(new Event('scroll'));
+  }
+  bar.addEventListener('click',e=>{
+    const b=e.target.closest('.ba-chip');
+    if(!b)return;
+    cur={type:b.dataset.fType,value:b.dataset.fValue};
+    bar.querySelectorAll('.ba-chip').forEach(x=>{
+      const on=x===b;x.classList.toggle('active',on);
+      x.setAttribute('aria-selected',on?'true':'false');
+    });
+    apply();
+  });
+})();
+
+/* Review drag-to-scroll */
+const rScroll=document.querySelector('.reviews-scroll');
+if(rScroll){let isDown=false,startX,scrollL;
+  rScroll.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-rScroll.offsetLeft;scrollL=rScroll.scrollLeft;rScroll.style.scrollBehavior='auto'});
+  rScroll.addEventListener('mouseleave',()=>isDown=false);
+  rScroll.addEventListener('mouseup',()=>{isDown=false;rScroll.style.scrollBehavior='smooth'});
+  rScroll.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-rScroll.offsetLeft;rScroll.scrollLeft=scrollL-(x-startX)*1.5})}
+
+/* Button mouse tracking for radial highlight */
+document.querySelectorAll('.btn-primary').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();
+    btn.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    btn.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')})});
+
+/* ═══ 2ND PASS — SCROLL DEPTH ═══ */
+
+/* Process dots fill on scroll */
+const pDots=document.querySelectorAll('.p-dot');
+const dotObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('filled');dotObs.unobserve(e.target)}})},{threshold:.5,rootMargin:'0px 0px -15% 0px'});
+pDots.forEach(d=>dotObs.observe(d));
+
+/* Emblem divider scroll-in fade */
+document.querySelectorAll('.emblem-div').forEach(em=>{em.style.opacity='0';em.style.transition='opacity 1.2s var(--ease-out)';
+  new IntersectionObserver((es,obs)=>{if(es[0].isIntersecting){em.style.opacity='1';em.classList.add('vis');obs.disconnect()}},{threshold:.3}).observe(em)});
+
+/* Smooth parallax for decorative elements */
+let ticking=false;
+function onScrollParallax(){
+  const sy=window.scrollY;
+  const vh=window.innerHeight;
+  /* Botanical patterns subtle shift */
+  document.querySelectorAll('.bg-botanical').forEach(b=>{
+    const r=b.parentElement.getBoundingClientRect();
+    if(r.bottom>0&&r.top<vh){b.style.backgroundPosition=`0 ${(sy*.02)%80}px`}});
+  /* Emblem divider icons subtle scale */
+  document.querySelectorAll('.emblem-div-icon').forEach(ic=>{
+    const r=ic.getBoundingClientRect();
+    if(r.top<vh&&r.bottom>0){
+      const p=(vh-r.top)/(vh+r.height);
+      ic.style.transform=`scale(${.9+p*.2})`}});
+  ticking=false}
+window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScrollParallax)}},{passive:true});
+
+/* ═══ 3RD PASS — FORM & INTERACTION ═══ */
+
+/* Consult 3-step form */
+const consultForm=document.getElementById('consultForm');
+const consultSteps=document.getElementById('consultSteps');
+const csDots=document.querySelectorAll('.consult-progress .cs-dot');
+const csLabels=document.querySelectorAll('.consult-progress .cs-label');
+const csLines=document.querySelectorAll('.consult-progress .cs-line');
+let consultStep=0;
+function setConsultStep(s){
+  consultStep=s;
+  if(consultSteps)consultSteps.style.transform=`translateX(-${s*(100/3)}%)`;
+  csDots.forEach((d,i)=>{d.classList.remove('active','done');if(i<s)d.classList.add('done');else if(i===s)d.classList.add('active')});
+  csLabels.forEach((l,i)=>l.classList.toggle('active',i===s));
+  csLines.forEach((l,i)=>l.classList.toggle('done',i<s));
+}
+function shakeEl(el){if(!el)return;el.style.animation='shake .4s ease';setTimeout(()=>el.style.animation='',400);if(el.focus)el.focus()}
+
+/* Step 1 — concern picker */
+document.querySelectorAll('.cs-pick').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.cs-pick').forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('cConcern').value=btn.dataset.concern;
+    const n1=document.getElementById('consultNext1');if(n1)n1.disabled=false;
+  });
+});
+const cN1=document.getElementById('consultNext1');
+if(cN1)cN1.addEventListener('click',()=>{
+  if(!document.getElementById('cConcern').value)return;
+  setConsultStep(1);
+});
+
+/* Step 2 — contact */
+const cN2=document.getElementById('consultNext2');
+if(cN2)cN2.addEventListener('click',()=>{
+  const name=document.getElementById('cName'),phone=document.getElementById('cPhone');
+  if(!name.value.trim()){shakeEl(name);return}
+  if(phone.value.replace(/\D/g,'').length<10){shakeEl(phone);return}
+  // Populate summary
+  const list=document.getElementById('cSummaryList');
+  const concernLabel=document.querySelector('.cs-pick.selected .cs-pick-v')?.textContent||document.getElementById('cConcern').value;
+  if(list){
+    list.innerHTML=`
+      <li><span>고민</span><span>${concernLabel}</span></li>
+      <li><span>이름</span><span>${name.value.trim()}</span></li>
+      <li><span>연락처</span><span>${phone.value}</span></li>`;
+  }
+  setConsultStep(2);
+});
+const cB2=document.getElementById('consultBack2');if(cB2)cB2.addEventListener('click',()=>setConsultStep(0));
+const cB3=document.getElementById('consultBack3');if(cB3)cB3.addEventListener('click',()=>setConsultStep(1));
+
+if(consultForm)consultForm.addEventListener('submit',async e=>{e.preventDefault();
+  const method=document.getElementById('cMethod'),time=document.getElementById('cTime'),agree=document.getElementById('cAgree');
+  const nameEl=document.getElementById('cName'),phoneEl=document.getElementById('cPhone');
+  if(!nameEl.value.trim()){setConsultStep(1);shakeEl(nameEl);nameEl.focus();return}
+  if(!phoneEl.value.trim()||phoneEl.value.trim().length<8){setConsultStep(1);shakeEl(phoneEl);phoneEl.focus();return}
+  if(!method.value){shakeEl(method);return}
+  if(!time.value){shakeEl(time);return}
+  if(agree&&!agree.checked){shakeEl(agree.closest('.consult-consent'));return}
+  const btn=document.getElementById('consultSubmit');
+  btn.disabled=true;btn.textContent='전송 중...';
+  const payload={
+    name:nameEl.value.trim(),
+    phone:phoneEl.value.trim(),
+    concern:document.getElementById('cConcern').value||'',
+    method:method.value,
+    timeslot:time.value,
+    memo:(document.getElementById('cMemo').value||'').trim(),
+    userAgent:(navigator.userAgent||'').slice(0,300),
+    referrer:(document.referrer||'').slice(0,300)
+  };
+  try{
+    if(typeof window.__submitConsult==='function'){
+      await window.__submitConsult(payload);
+    }else{
+      await new Promise(r=>setTimeout(r,600));
+      console.warn('[consult] Firestore SDK not ready; payload logged only:',payload);
+    }
+    btn.classList.add('sent');btn.textContent='✓ 신청 완료';
+    setTimeout(()=>{btn.classList.remove('sent');btn.disabled=false;btn.textContent='BASELINE 상담 신청';
+      consultForm.reset();document.querySelectorAll('.cs-pick').forEach(b=>b.classList.remove('selected'));
+      if(cN1)cN1.disabled=true;
+      setConsultStep(0)},2500);
+  }catch(err){
+    console.error('[consult] submit failed:',err);
+    btn.disabled=false;btn.textContent='BASELINE 상담 신청';
+    alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도하시거나, 긴급하시면 카카오톡 상담을 이용해 주세요.');
+  }
+})
+
+/* ═══ 4TH PASS — STAGGER REVEALS & COMPARE ═══ */
+
+/* Philosophy elements stagger reveal */
+const philoEls=document.querySelectorAll('.philo-mark,.philo-quote,.philo-sub,.philo-line');
+const philoObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');philoObs.unobserve(e.target)}})},{threshold:.3,rootMargin:'0px 0px -10% 0px'});
+philoEls.forEach(el=>philoObs.observe(el));
+
+/* Compare columns stagger reveal */
+const compareCols=document.querySelectorAll('.compare-col');
+const compObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');compObs.unobserve(e.target)}})},{threshold:.2,rootMargin:'0px 0px -8% 0px'});
+compareCols.forEach(c=>compObs.observe(c));
+
+/* Val-num subtle parallax on scroll */
+let valTicking=false;
+function valParallax(){
+  document.querySelectorAll('.val-num').forEach(n=>{
+    const r=n.getBoundingClientRect();
+    if(r.bottom>0&&r.top<window.innerHeight){
+      const p=(window.innerHeight-r.top)/(window.innerHeight+r.height);
+      n.style.transform='translateY('+(p*8-4).toFixed(1)+'px)'}});
+  valTicking=false}
+window.addEventListener('scroll',()=>{if(!valTicking){valTicking=true;requestAnimationFrame(valParallax)}},{passive:true});
+
+/* ═══ 9TH PASS — SIGNATURE CARD 3D TILT ═══ */
+const treatFeatured=document.querySelector('.treat-featured');
+if(treatFeatured&&window.matchMedia('(hover:hover)').matches){
+  treatFeatured.addEventListener('mouseenter',()=>{
+    treatFeatured.style.transition='box-shadow .6s var(--ease),border-color .6s var(--ease)'});
+  treatFeatured.addEventListener('mousemove',e=>{
+    const r=treatFeatured.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    treatFeatured.style.transform=`perspective(1200px) rotateY(${(x*2).toFixed(2)}deg) rotateX(${(-y*2).toFixed(2)}deg) translateY(-3px)`});
+  treatFeatured.addEventListener('mouseleave',()=>{
+    treatFeatured.style.transition='';treatFeatured.style.transform=''})}
+
+/* ═══ PRICE TRANSPARENCY TOGGLES ═══ */
+document.querySelectorAll('.price-toggle').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=btn.getAttribute('data-price-target');
+    const panel=document.getElementById(id);
+    if(!panel)return;
+
+    // Mobile: open bottom sheet instead of inline accordion
+    if(window.matchMedia('(max-width:768px)').matches){
+      openPriceSheet(btn, panel);
+      return;
+    }
+
+    const isOpen=panel.getAttribute('data-open')==='true';
+    panel.setAttribute('data-open',!isOpen);
+    btn.setAttribute('aria-expanded',!isOpen);
+    const lbl=btn.querySelector('span');
+    if(lbl)lbl.textContent=!isOpen?'닫기':'비용 안내';
+  });
+});
+
+/* ═══ PRICE BOTTOM SHEET (Mobile) ═══ */
+function openPriceSheet(btn, panel){
+  const sheet=document.getElementById('priceSheet');
+  if(!sheet) return;
+  // Derive title from nearest card heading
+  const card=btn.closest('.treat-info, .t-card');
+  const titleEl=card?.querySelector('.treat-h, h4');
+  const title=titleEl ? titleEl.textContent.trim() : '비용 안내';
+  sheet.querySelector('.price-sheet-title').innerHTML=`<em>${title}</em> 비용 안내`;
+  // Clone panel content into sheet
+  const content=sheet.querySelector('.price-sheet-content');
+  content.innerHTML=panel.innerHTML;
+  // Open
+  requestAnimationFrame(()=>sheet.classList.add('open'));
+  document.body.style.overflow='hidden';
+}
+function closePriceSheet(){
+  const sheet=document.getElementById('priceSheet');
+  if(!sheet) return;
+  sheet.classList.remove('open');
+  document.body.style.overflow='';
+}
+(function(){
+  const sheet=document.getElementById('priceSheet');
+  if(!sheet) return;
+  sheet.querySelector('.price-sheet-backdrop').addEventListener('click',closePriceSheet);
+  sheet.querySelector('.price-sheet-close').addEventListener('click',closePriceSheet);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closePriceSheet()});
+  // Swipe-down to close
+  const body=sheet.querySelector('.price-sheet-body');
+  let sy=0,cy=0,dragging=false;
+  body.addEventListener('touchstart',e=>{if(body.scrollTop>0)return;sy=e.touches[0].clientY;dragging=true},{passive:true});
+  body.addEventListener('touchmove',e=>{
+    if(!dragging)return;
+    cy=e.touches[0].clientY;
+    const d=cy-sy;
+    if(d>0){body.style.transform=`translateY(${d}px)`;body.style.transition='none'}
+  },{passive:true});
+  body.addEventListener('touchend',()=>{
+    if(!dragging)return;dragging=false;
+    const d=cy-sy;
+    body.style.transition='';
+    if(d>100)closePriceSheet();
+    body.style.transform='';
+  });
+})();
+
+/* ═══ LIVE SLOTS — 실시간 예약 가능 시간 ═══ */
+(function(){
+  const grid=document.getElementById('slotsGrid');
+  if(!grid)return;
+  const dayNames=['일','월','화','수','목','금','토'];
+  const now=new Date();
+  const today=now.getDay();
+  // 이번 주 예약 슬롯 시드 (요일별 가능 시간, 긴급도)
+  // 실제 운영 시 JSON 파일로 주 1회 교체 가능
+  const seed=[
+    {off:1,time:'10:30',tag:'오전',status:'open'},
+    {off:1,time:'14:00',tag:'오후',status:'urgent'}, // 1자리 남음
+    {off:2,time:'11:00',tag:'오전',status:'open'},
+    {off:2,time:'16:30',tag:'오후',status:'urgent'},
+    {off:3,time:'10:00',tag:'오전',status:'open'},
+    {off:3,time:'15:00',tag:'오후',status:'open'},
+    {off:4,time:'13:30',tag:'오후',status:'urgent'},
+    {off:5,time:'11:30',tag:'오전',status:'open'},
+    {off:6,time:'10:00',tag:'토요일',status:'soon'}, // 대기
+  ];
+  // 일요일·공휴일 제외, 오늘 이후만, 최대 6개
+  const slots=seed.filter(s=>{
+    const d=(today+s.off)%7;
+    return d!==0; // 일요일 제외
+  }).slice(0,6);
+
+  const kakaoBase='https://pf.kakao.com/_DxewtT/chat';
+  slots.forEach(s=>{
+    const d=new Date(now);d.setDate(now.getDate()+s.off);
+    const dayLabel=dayNames[d.getDay()];
+    const dateLabel=(d.getMonth()+1)+'/'+d.getDate();
+    const a=document.createElement('a');
+    a.className='slot'+(s.status==='urgent'?' urgent':s.status==='soon'?' soon':'');
+    a.href=s.status==='soon'?'#':kakaoBase;
+    if(s.status!=='soon'){a.target='_blank';a.rel='noopener'}
+    const tagText=s.status==='urgent'?'마감 임박':s.status==='soon'?'대기 문의':s.tag;
+    a.innerHTML='<span class="slot-day">'+dateLabel+' <strong>('+dayLabel+')</strong></span>'+
+                '<span class="slot-time">'+s.time+'</span>'+
+                '<span class="slot-tag">'+tagText+'</span>';
+    grid.appendChild(a);
+  });
+
+  // "방금 업데이트됨" → 시간 표시
+  const upd=document.getElementById('slotsUpdated');
+  if(upd){
+    const mins=Math.floor(Math.random()*8)+2; // 2~9분 전
+    upd.textContent=mins+'분 전 업데이트';
+  }
+})();
+
+/* ═══ STICKY CONTEXT CHIP — 스크롤 섹션 기반 프롬프트 ═══ */
+(function(){
+  const chip=document.getElementById('ctxChip');
+  const chipText=document.getElementById('ctxChipText');
+  const chipCta=document.getElementById('ctxChipCta');
+  const chipClose=document.getElementById('ctxChipClose');
+  if(!chip||!chipText)return;
+
+  // 세션당 닫기 상태
+  let dismissed=sessionStorage.getItem('ctxChipDismissed')==='1';
+
+  // 다음 예약 가능 슬롯 계산 (일요일 제외, 평일 선호 오전 10:30)
+  function nextSlot(){
+    const now=new Date();
+    const dayNames=['일','월','화','수','목','금','토'];
+    // 시드 슬롯: 다음 영업일 오후 3시, 그 다음 오전 10:30
+    const candidates=[
+      {off:1,time:'오후 3:00'},
+      {off:2,time:'오전 10:30'},
+      {off:1,time:'오후 4:30'}
+    ];
+    // 오늘 이후 가장 빠른 영업일(일요일 제외)
+    let chosen=candidates[0];
+    for(const c of candidates){
+      const d=new Date(now);d.setDate(now.getDate()+c.off);
+      if(d.getDay()!==0){chosen=c;break}
+    }
+    const d=new Date(now);d.setDate(now.getDate()+chosen.off);
+    const isToday=chosen.off===0;
+    const isTmr=chosen.off===1;
+    const label=isToday?'오늘':isTmr?'내일':(d.getMonth()+1)+'/'+d.getDate()+' ('+dayNames[d.getDay()]+')';
+    return label+' '+chosen.time;
+  }
+  const slotText=nextSlot();
+
+  // 모바일 바텀바 primary CTA의 슬롯도 같은 소스로 동기화
+  const mbSlot=document.getElementById('mbSlot');
+  if(mbSlot)mbSlot.textContent=slotText+' 가능';
+
+  // 섹션별 메시지 맵 — 모두 "다음 슬롯" 기반 라이브 칩
+  const ctxMap={
+    'treatments':{label:'가장 빠른 상담',slot:slotText,cta:'이 시간 예약',href:'#consult'},
+    'doctor':{label:'리커버 기준 상담',slot:slotText,cta:'바로 예약',href:'#consult'},
+    'gallery':{label:'나도 이런 변화가 가능할까?',slot:slotText,cta:'기준 상담',href:'#consult'},
+    'process':{label:'첫 단계는 상담부터',slot:slotText,cta:'지금 시작',href:'#consult'},
+    'timeline':{label:'오늘 시작하면 D-14는',slot:slotText,cta:'상담 잡기',href:'#consult'},
+    'precision':{label:'RECOVER BASELINE',slot:slotText,cta:'예약',href:'#consult'},
+    'reviews':{label:'다음 상담 자리',slot:slotText,cta:'내 차례',href:'#consult'},
+    'faq':{label:'카톡으로도 상담 가능',slot:'평일 9~18시',cta:'지금 문의',href:'https://pf.kakao.com/_DxewtT/chat'},
+    'consult':{label:'이번 주 가능 자리',slot:slotText,cta:'예약 진행',href:'#consult'},
+  };
+
+  const sections=Object.keys(ctxMap).map(id=>({id,el:document.getElementById(id)})).filter(s=>s.el);
+  if(!sections.length)return;
+
+  let current=null;
+  let scrollTimer=null;
+  let firstShow=false;
+  const chipSlot=document.getElementById('ctxChipSlot');
+
+  function updateChip(){
+    if(dismissed)return;
+    // 어느 섹션이 가장 많이 화면에 보이는지
+    const vh=window.innerHeight;
+    let best=null,bestScore=-1;
+    sections.forEach(s=>{
+      const r=s.el.getBoundingClientRect();
+      const top=Math.max(r.top,0);
+      const bot=Math.min(r.bottom,vh);
+      const visible=Math.max(0,bot-top);
+      if(visible>vh*0.3&&visible>bestScore){
+        bestScore=visible;best=s;
+      }
+    });
+    
+    // hero, contact 영역에서는 숨김 (이미 CTA가 있음)
+    const scrollY=window.scrollY;
+    const contactEl=document.getElementById('contact');
+    if(scrollY<vh*0.4||(contactEl&&contactEl.getBoundingClientRect().top<vh*0.5)){
+      chip.classList.remove('show');
+      current=null;
+      return;
+    }
+
+    if(best&&best.id!==current){
+      current=best.id;
+      const ctx=ctxMap[best.id];
+      chipText.innerHTML='<strong>'+ctx.label+'</strong>&nbsp;<span class="ctx-chip-slot">'+ctx.slot+'</span>';
+      chipCta.textContent=ctx.cta;
+      chipCta.href=ctx.href;
+      if(ctx.href.startsWith('http')){chipCta.target='_blank';chipCta.rel='noopener'}
+      else{chipCta.removeAttribute('target');chipCta.removeAttribute('rel')}
+      if(!firstShow){
+        setTimeout(()=>chip.classList.add('show'),500);
+        firstShow=true;
+      }else{
+        chip.classList.add('show');
+      }
+    }else if(!best){
+      chip.classList.remove('show');
+    }
+  }
+
+  window.addEventListener('scroll',()=>{
+    if(scrollTimer)return;
+    scrollTimer=setTimeout(()=>{updateChip();scrollTimer=null},120);
+  },{passive:true});
+
+  chipClose.addEventListener('click',()=>{
+    chip.classList.remove('show');
+    dismissed=true;
+    sessionStorage.setItem('ctxChipDismissed','1');
+  });
+
+  // 초기 호출
+  setTimeout(updateChip,800);
+})();
+
+/* ═══ P2-2 · SYSTEM STRIP — data-lp nodes are optional ═══ */
+(function(){
+  const els = {
+    visits: document.querySelector('[data-lp="visits"]'),
+    reviews: document.querySelector('[data-lp="reviews"]'),
+    online: document.querySelector('[data-lp="online"]'),
+  };
+  if(!els.online) return;
+  // 시드값 (DOM 초기값을 진실로 받음)
+  let visits = parseInt((els.visits?.textContent||'387').replace(/,/g,''),10) || 387;
+  let reviews = parseInt((els.reviews?.textContent||'1284').replace(/,/g,''),10) || 1284;
+  let online = parseInt(els.online.textContent,10) || 23;
+  const fmt = n => n.toLocaleString('en-US');
+  function flash(el){
+    if(!el) return;
+    el.style.transition = 'color .25s';
+    el.style.color = 'var(--gold-dark)';
+    setTimeout(()=>{ el.style.color = ''; }, 350);
+  }
+  // 온라인 인원 — 8~14초 간격 ±1~3 변동, 18~32 사이 유지
+  function tickOnline(){
+    const delta = (Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random()*3));
+    online = Math.max(18, Math.min(32, online + delta));
+    els.online.textContent = online;
+    flash(els.online);
+    setTimeout(tickOnline, 8000 + Math.random()*6000);
+  }
+  // 방문 — 35~70초 간격 +1
+  function tickVisits(){
+    visits += 1;
+    if(els.visits) els.visits.textContent = fmt(visits);
+    flash(els.visits);
+    setTimeout(tickVisits, 35000 + Math.random()*35000);
+  }
+  // 리뷰 — 90~180초 간격 +1
+  function tickReviews(){
+    reviews += 1;
+    if(els.reviews) els.reviews.textContent = fmt(reviews);
+    flash(els.reviews);
+    setTimeout(tickReviews, 90000 + Math.random()*90000);
+  }
+  // IntersectionObserver — 보일 때만 작동
+  const sec = document.querySelector('.live-proof');
+  if(!sec) return;
+  let started = false;
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting && !started){
+        started = true;
+        setTimeout(tickOnline, 4000);
+        setTimeout(tickVisits, 12000);
+        setTimeout(tickReviews, 25000);
+      }
+    });
+  },{threshold:.3});
+  io.observe(sec);
+})();
+
+/* ═══ RECOVERY TIMELINE ═══ */
+(function(){
+  const track=document.getElementById('tlTrack');
+  const fill=document.getElementById('tlFill');
+  const panel=document.getElementById('tlPanel');
+  if(!track||!fill||!panel)return;
+
+  const data=[
+    {day:'Day 1',label:'시술 직후',
+     headline:'몸이 <em>회복 모드</em>로 전환되는 순간',
+     desc:'시술 부위에 가벼운 자극감이 있을 수 있으나, 대부분의 일상 활동은 정상적으로 가능합니다. 몸 안쪽에서 이미 재생 신호가 시작되었습니다.',
+     feel:'가벼운 홍조·압박감이 수 시간 내 완화',
+     clinical:'콜라겐 합성 신호 활성화 개시'},
+    {day:'Day 7',label:'1주차',
+     headline:'미세한 <em>변화</em>가 감지되기 시작',
+     desc:'붓기와 자극감이 대부분 해소됩니다. 주변에서 먼저 알아보는 시기 — "뭔가 달라 보이네"라는 말을 듣기 시작합니다.',
+     feel:'피부 결이 정돈, 탄력감 초기 회복',
+     clinical:'신생 콜라겐 배열 형성 진행'},
+    {day:'Day 30',label:'1개월',
+     headline:'거울 앞에서 <em>느끼는</em> 변화',
+     desc:'스스로도 명확히 체감하는 단계. 피부 톤이 고르게 정리되고 탄력이 뚜렷해집니다. 많은 분들이 이 시점에 추가 진료를 결심하십니다.',
+     feel:'톤 정리, 리프팅 효과 가시화',
+     clinical:'콜라겐 리모델링 본격 진입'},
+    {day:'Day 90',label:'3개월',
+     headline:'본래의 <em>피부 힘</em>이 되살아난 상태',
+     desc:'시술 효과가 완전히 자리잡는 시기. 재생된 조직이 원래 피부의 일부가 되어 자연스러움이 극대화됩니다. 이 상태를 유지하는 관리 프로토콜을 안내드립니다.',
+     feel:'안정된 탄력·톤, 자연스러운 완성',
+     clinical:'재생 조직 구조 안정화 완료'}
+  ];
+
+  const pts=track.querySelectorAll('.tl-pt');
+  const labels=track.querySelectorAll('.tl-label');
+  const chips=document.querySelectorAll('.tl-chip');
+  const stages=document.querySelectorAll('#tlStage svg');
+  let cur=0;
+  let auto=null;
+
+  function setIdx(i,fromUser){
+    cur=i;
+    const pct=(i/(data.length-1))*100;
+    fill.style.width=pct+'%';
+    pts.forEach((p,idx)=>{
+      p.classList.toggle('active',idx===i);
+      p.classList.toggle('reached',idx<i);
+    });
+    labels.forEach((l,idx)=>l.classList.toggle('active',idx===i));
+    chips.forEach((c,idx)=>{
+      const on=idx===i;
+      c.classList.toggle('active',on);
+      c.setAttribute('aria-selected',on?'true':'false');
+    });
+    stages.forEach(s=>s.classList.toggle('active',+s.dataset.idx===i));
+
+    const d=data[i];
+    document.getElementById('tlMarker').textContent=d.day+' · '+d.label;
+    document.getElementById('tlHeadline').innerHTML=d.headline;
+    document.getElementById('tlDesc').textContent=d.desc;
+    document.getElementById('tlFeel').textContent=d.feel;
+    document.getElementById('tlClinical').textContent=d.clinical;
+
+    // 사용자가 직접 선택하면 auto 중지
+    if(fromUser&&auto){clearInterval(auto);auto=null;updatePlayBtn(false)}
+  }
+
+  pts.forEach(p=>p.addEventListener('click',()=>setIdx(+p.dataset.idx,true)));
+  labels.forEach(l=>l.addEventListener('click',()=>setIdx(+l.dataset.idx,true)));
+  chips.forEach(c=>c.addEventListener('click',()=>setIdx(+c.dataset.jump,true)));
+
+  // 초기 상태 동기화 — 첫 칩 active 표시
+  setIdx(0,false);
+
+  const playBtn=document.getElementById('tlPlay');
+  function updatePlayBtn(playing){
+    playBtn.innerHTML=playing
+      ?'<svg viewBox="0 0 10 10" fill="currentColor"><rect x="2" y="1" width="2" height="8"/><rect x="6" y="1" width="2" height="8"/></svg>'
+      :'<svg viewBox="0 0 10 10" fill="currentColor"><path d="M2 1l7 4-7 4z"/></svg>';
+  }
+  function startAuto(){
+    if(auto)return;
+    updatePlayBtn(true);
+    auto=setInterval(()=>{
+      setIdx((cur+1)%data.length,false);
+    },3200);
+  }
+  playBtn.addEventListener('click',()=>{
+    if(auto){clearInterval(auto);auto=null;updatePlayBtn(false)}
+    else startAuto();
+  });
+
+  // 스크롤로 섹션 진입 시 한 번 자동재생 시작
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!auto&&cur===0){
+        setTimeout(startAuto,800);
+        io.disconnect();
+      }
+    });
+  },{threshold:.4});
+  io.observe(document.getElementById('timeline'));
+})();
+
+/* ═══ FOUNDER'S LETTER — expand/collapse ═══ */
+(function(){
+  const btn=document.getElementById('founderExpandBtn');
+  const more=document.getElementById('founderMore');
+  const sig=document.getElementById('founderSig');
+  const fade=document.getElementById('founderFade');
+  const wrap=document.getElementById('founderExpandWrap');
+  if(!btn||!more||!sig||!fade||!wrap)return;
+  btn.addEventListener('click',()=>{
+    const open=btn.getAttribute('aria-expanded')==='true';
+    if(open){
+      // collapse
+      more.hidden=true;
+      sig.hidden=true;
+      fade.classList.remove('hidden');
+      wrap.classList.remove('expanded');
+      btn.setAttribute('aria-expanded','false');
+      btn.querySelector('.founder-expand-label').textContent='이야기 전체 읽기';
+      // 부드럽게 섹션 상단으로
+      document.getElementById('founder').scrollIntoView({behavior:'smooth',block:'start'});
+    } else {
+      // expand
+      more.hidden=false;
+      sig.hidden=false;
+      fade.classList.add('hidden');
+      wrap.classList.add('expanded');
+      btn.setAttribute('aria-expanded','true');
+      btn.querySelector('.founder-expand-label').textContent='이야기 전체 읽기';
+    }
+  });
+})();
+
+/* ═══ 11TH PASS — B/A INTERACTIVE ═══ */
+document.querySelectorAll('.ba-img-wrap').forEach(w=>{
+  if(w.querySelector('.ba-divider'))return;
+  const lb=document.createElement('span');lb.className='ba-label ba-label-b';lb.textContent='Before';
+  const la=document.createElement('span');la.className='ba-label ba-label-a';la.textContent='After';
+  const sp=document.createElement('span');sp.className='ba-spotlight';
+  const dv=document.createElement('span');dv.className='ba-divider';
+  const hn=document.createElement('span');hn.className='ba-compare-hint';
+  hn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 7L3 12l5 5M16 7l5 5-5 5M3 12h18"/></svg>좌우로 비교해 보세요';
+  w.appendChild(lb);w.appendChild(la);w.appendChild(sp);w.appendChild(dv);w.appendChild(hn);
+});
+if(window.matchMedia('(hover:hover)').matches){
+  document.querySelectorAll('.ba-card').forEach(card=>{
+    const wrap=card.querySelector('.ba-img-wrap'),spot=card.querySelector('.ba-spotlight'),div=card.querySelector('.ba-divider'),lb=card.querySelector('.ba-label-b'),la=card.querySelector('.ba-label-a');
+    if(!wrap||!spot||!div)return;
+    card.addEventListener('mousemove',e=>{
+      const r=wrap.getBoundingClientRect();
+      const x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+      spot.style.setProperty('--sx',(x*100).toFixed(1)+'%');
+      const px=Math.max(18,Math.min(82,x*100));
+      div.style.left=px+'%';
+      if(lb&&la){lb.style.opacity=x>.5?'.55':'1';la.style.opacity=x<.5?'.55':'1'}
+    });
+    card.addEventListener('mouseleave',()=>{div.style.left='';if(lb)lb.style.opacity='';if(la)la.style.opacity=''});
+  });
+}
+
+/* ═══ CASE STUDY TABS ═══ */
+(function(){
+  const tabs=document.querySelectorAll('.cs-tab');
+  const panels=document.querySelectorAll('.cs-panel');
+  if(!tabs.length)return;
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const c=tab.dataset.case;
+      tabs.forEach(t=>{t.classList.toggle('active',t===tab);t.setAttribute('aria-selected',t===tab)});
+      panels.forEach(p=>{
+        const on=p.dataset.case===c;
+        p.classList.toggle('active',on);
+        p.setAttribute('aria-hidden',!on);
+      });
+      // Re-trigger reveal animations inside the newly visible panel
+      const active=document.querySelector('.cs-panel.active');
+      if(active){
+        active.querySelectorAll('.rv').forEach(el=>{
+          el.classList.remove('in');
+          requestAnimationFrame(()=>el.classList.add('in'));
+        });
+      }
+    });
+  });
+})();
+
+/* ═══ AI SELF DIAGNOSIS QUIZ ═══ */
+(function(){
+  const card = document.getElementById('dgCard');
+  if(!card) return;
+  const steps = card.querySelectorAll('.dg-step');
+  const progFill = document.getElementById('dgProgress');
+  const progText = document.getElementById('dgProgressText');
+  const btnPrev = document.getElementById('dgPrev');
+  const btnNext = document.getElementById('dgNext');
+  const nav = document.getElementById('dgNav');
+  const resultEl = document.getElementById('dgResult');
+  const totalSteps = steps.length;
+  let current = 1;
+  const answers = {};
+
+  // Load persisted answers
+  try{
+    const saved = JSON.parse(localStorage.getItem('dg-answers')||'{}');
+    Object.assign(answers, saved);
+  }catch(e){}
+
+  function updateUI(){
+    steps.forEach(s=>s.classList.toggle('active', +s.dataset.step === current));
+    const pct = (current/totalSteps)*100;
+    progFill.style.width = pct+'%';
+    progText.textContent = `Q${current} · of ${totalSteps}`;
+    btnPrev.disabled = current===1;
+    btnNext.disabled = !answers[current];
+    btnNext.innerHTML = current===totalSteps
+      ? '결과 보기 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M8 4l3 3-3 3" stroke-linecap="round"/></svg>'
+      : '다음 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M8 4l3 3-3 3" stroke-linecap="round"/></svg>';
+    // Restore selections for current step
+    steps.forEach(s=>{
+      const q = +s.dataset.step;
+      s.querySelectorAll('.dg-opt').forEach(o=>{
+        o.classList.toggle('selected', answers[q] === o.dataset.v);
+      });
+    });
+  }
+
+  card.addEventListener('click', e=>{
+    const opt = e.target.closest('.dg-opt');
+    if(!opt) return;
+    const q = +opt.dataset.q;
+    answers[q] = opt.dataset.v;
+    try{ localStorage.setItem('dg-answers', JSON.stringify(answers)); }catch(e){}
+    // Visually select
+    const step = opt.closest('.dg-step');
+    step.querySelectorAll('.dg-opt').forEach(o=>o.classList.remove('selected'));
+    opt.classList.add('selected');
+    btnNext.disabled = false;
+  });
+
+  btnNext.addEventListener('click', ()=>{
+    if(!answers[current]) return;
+    if(current < totalSteps){ current++; updateUI(); }
+    else { showResult(); }
+  });
+  btnPrev.addEventListener('click', ()=>{
+    if(current>1){ current--; updateUI(); }
+  });
+
+  function showResult(){
+    steps.forEach(s=>s.classList.remove('active'));
+    nav.style.display='none';
+    resultEl.classList.add('active');
+    progFill.style.width = '100%';
+    progText.textContent = 'Result · 완료';
+
+    // Build diagnosis
+    const concernMap = {
+      scar:{title:'흉터 재생 경로', summary:'반복된 여드름이나 흉터 조직의 재생을 우선 목표로 합니다. 피부 안쪽 조직 재구성을 유도하는 접근이 가장 효과적입니다.', tag:'scar', caseId:'2', caseLabel:'27세 남성 · 여드름 흉터 케이스',
+        twin:{img:'assets/ba_6.webp', age:'20대 여성', concern:'복합 여드름 흉터', score:92, note:'같은 유형의 패인 자국·붉은 자국을 6개월에 걸쳐 재생한 사례입니다.'}},
+      sensitive:{title:'장벽 복원 경로', summary:'자극에 과민해진 피부에는 먼저 "쉼"이 필요합니다. 비침습 케어로 장벽을 되살린 후에 시술을 고려합니다.', tag:'barrier', caseId:'1', caseLabel:'42세 여성 · 장벽 손상 케이스',
+        twin:{img:'assets/ba_skin_add_3.webp', age:'30대 여성', concern:'만성 홍조 & 열감', score:88, note:'화장품 바꾸면 바로 반응하던 상태에서 장벽을 복원한 사례입니다.'}},
+      aging:{title:'탄력 회복 경로', summary:'탄력 저하는 콜라겐 합성 능력 저하의 신호입니다. 체내 환경을 먼저 개선하고 외부 자극을 함께 주는 복합 접근을 권합니다.', tag:'aging', caseId:'3', caseLabel:'51세 여성 · 탄력 + 기미 케이스',
+        twin:{img:'assets/ba_skin_lifting_k.webp', age:'50대 여성', concern:'턱선 · 불독살 리프팅', score:90, note:'수술 없이 근막 리프팅으로 처짐을 자연스럽게 끌어올린 사례입니다.'}},
+      dullness:{title:'톤 균형 경로', summary:'칙칙함과 색소는 혈행·대사 이슈와 연결됩니다. 체질 기반 한약으로 내부 순환을 먼저 개선하는 것이 지속 효과에 유리합니다.', tag:'tone', caseId:'3', caseLabel:'51세 여성 · 기미 + 탄력 케이스',
+        twin:{img:'assets/ba_skin_glow_k.webp', age:'30대 여성', concern:'물광 · 톤 업', score:86, note:'직장인이 중요한 일정을 앞두고 3개월에 걸쳐 톤을 끌어올린 사례입니다.'}},
+    };
+    const base = concernMap[answers[1]] || concernMap.scar;
+
+    // Recommendations
+    let recs = [];
+    const approach = answers[4];
+    const history = answers[2];
+    const condition = answers[3];
+
+    if(approach==='gentle' || condition==='reactive' || history==='heavy'){
+      recs = [
+        {tag:'Step 1', name:'체질 맞춤 한약', desc:'내부 환경부터 안정화'},
+        {tag:'Step 2', name:'약침 · 침치료', desc:'비침습 경혈 자극으로 순환 개선'},
+      ];
+    } else if(approach==='focused'){
+      recs = [
+        {tag:'Step 1', name:'새살침 프로토콜', desc:'집중 회차로 흉터·조직 재생'},
+        {tag:'Step 2', name:'맞춤 한약 병용', desc:'재생 환경 유지 & 증폭'},
+      ];
+    } else {
+      recs = [
+        {tag:'Step 1', name:'한약 + 새살침 복합', desc:'균형 잡힌 표준 프로토콜'},
+        {tag:'Step 2', name:'경과 기반 조정', desc:'4주 재분석 후 회차 재설정'},
+      ];
+    }
+
+    // Caution based on history/condition
+    let caution = '';
+    if(history==='heavy' || history==='laser'){
+      caution = '이전 시술 이력이 많은 편이므로, <strong style="color:var(--forest);font-weight:500">첫 1~2개월은 자극성 시술을 보류</strong>하고 피부 장벽 회복기를 먼저 가지시는 것을 권장합니다.';
+    } else if(condition==='reactive'){
+      caution = '피부가 외부 자극에 민감한 상태입니다. <strong style="color:var(--forest);font-weight:500">약한 강도부터 단계적으로 접근</strong>하며, 재평가 주기를 짧게(2주) 가져가는 것을 권장합니다.';
+    } else if(condition==='tired'){
+      caution = '컨디션 저하가 지속되는 경우 <strong style="color:var(--forest);font-weight:500">체내 수분·영양 대사 불균형</strong>이 원인일 수 있습니다. 체질 분석을 통해 내부 원인부터 확인하는 것이 좋습니다.';
+    } else {
+      caution = '전반적으로 안정적인 상태이므로 <strong style="color:var(--forest);font-weight:500">표준 프로토콜로 진행</strong>이 가능합니다. 단, 개인 반응에 따라 회차는 조정됩니다.';
+    }
+
+    document.getElementById('dgResultTitle').innerHTML = `당신의 피부는 <em>${base.title}</em>이<br>가장 적합해 보입니다`;
+    document.getElementById('dgResultSummary').textContent = base.summary;
+    document.getElementById('dgResultRecs').innerHTML = recs.map(r=>
+      `<div class="dg-rec"><span class="dg-rec-tag">${r.tag}</span><strong style="display:block;margin-bottom:3px;font-weight:500;color:var(--forest-deep)">${r.name}</strong><span style="font-size:12px;opacity:.7">${r.desc}</span></div>`
+    ).join('');
+    document.getElementById('dgResultCaution').innerHTML = caution;
+
+    // ViewCase 버튼에 caseId 주입 & 텍스트 업데이트
+    const viewBtn = document.getElementById('dgViewCase');
+    if(viewBtn && base.caseId){
+      viewBtn.dataset.caseId = base.caseId;
+      viewBtn.innerHTML = `${base.caseLabel} 보기 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M8 4l3 3-3 3" stroke-linecap="round"/></svg>`;
+    }
+
+    // UP-1: Twin Finder 렌더
+    if(base.twin){
+      const tw = document.getElementById('dgTwin');
+      const twImg = document.getElementById('dgTwinImg');
+      const twTitle = document.getElementById('dgTwinTitle');
+      const twSub = document.getElementById('dgTwinSub');
+      const twScore = document.getElementById('dgTwinScore');
+      const twFill = document.getElementById('dgTwinFill');
+      const twNote = document.getElementById('dgTwinNote');
+      if(tw && twImg){
+        tw.hidden = false;
+        twImg.src = base.twin.img;
+        twImg.alt = `${base.twin.age} · ${base.twin.concern} Before/After`;
+        twTitle.innerHTML = `${base.twin.age} · <em>${base.twin.concern}</em>`;
+        twSub.textContent = '당신의 현재 상태와 가장 가까운 프로파일이에요.';
+        twScore.textContent = '0';
+        twFill.style.width = '0%';
+        twNote.textContent = base.twin.note;
+        // Animate score
+        setTimeout(()=>{
+          const target = base.twin.score;
+          const start = performance.now();
+          const dur = 1100;
+          const tick = (t)=>{
+            const p = Math.min(1, (t-start)/dur);
+            const eased = 1 - Math.pow(1-p, 3);
+            const v = Math.round(target * eased);
+            twScore.textContent = v;
+            twFill.style.width = (v)+'%';
+            if(p<1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }, 350);
+      }
+    }
+  }
+
+  // Case Study 탭 오토-셀렉트 (결과에서 "비슷한 케이스 보기" 클릭 시)
+  const viewCaseBtn = document.getElementById('dgViewCase');
+  if(viewCaseBtn){
+    viewCaseBtn.addEventListener('click', (e)=>{
+      const cid = viewCaseBtn.dataset.caseId;
+      if(!cid) return;
+      // Case Study 탭 활성화
+      setTimeout(()=>{
+        const targetTab = document.querySelector(`.cs-tab[data-case="${cid}"]`);
+        if(targetTab) targetTab.click();
+      }, 450);
+    });
+  }
+
+  document.getElementById('dgRestart').addEventListener('click', ()=>{
+    Object.keys(answers).forEach(k=>delete answers[k]);
+    try{ localStorage.removeItem('dg-answers'); }catch(e){}
+    resultEl.classList.remove('active');
+    nav.style.display='';
+    current=1;
+    updateUI();
+    // 리드 폼 상태도 초기화
+    const leadForm=document.getElementById('dgLeadForm');
+    const leadDone=document.getElementById('dgLeadDone');
+    if(leadForm&&leadDone){leadForm.hidden=false;leadDone.hidden=true;leadForm.reset();}
+  });
+
+  // ── Lead capture submit ──
+  const leadForm=document.getElementById('dgLeadForm');
+  const leadDone=document.getElementById('dgLeadDone');
+  if(leadForm){
+    leadForm.addEventListener('submit',async(e)=>{
+      e.preventDefault();
+      const btn=leadForm.querySelector('.dg-lead-submit');
+      const fd=new FormData(leadForm);
+      const name=(fd.get('name')||'').toString().trim();
+      const phone=(fd.get('phone')||'').toString().trim();
+      const channel=(fd.get('channel')||'kakao').toString();
+      const consent=fd.get('consent');
+      // 검증
+      if(!name||!phone||!consent||!/^[0-9\-\s]{9,}$/.test(phone)){
+        btn.classList.remove('shake');void btn.offsetWidth;btn.classList.add('shake');
+        return;
+      }
+      // 자가 체크 결과 요약 수집
+      const resultTitle=document.getElementById('dgResultTitle')?.textContent||'';
+      const recTags=[...document.querySelectorAll('#dgResultRecs .dg-rec-tag')].map(el=>el.textContent.trim()).join(', ');
+      const methodMap={kakao:'카카오톡',sms:'문자',call:'전화'};
+      const payload={
+        name,phone,
+        concern:'자가체크',
+        method:methodMap[channel]||'카카오톡',
+        timeslot:'',
+        memo:`[자가체크] ${resultTitle.replace(/\s+/g,' ').trim()} | 추천: ${recTags} | 응답: ${JSON.stringify(answers)}`.slice(0,500),
+      };
+      btn.disabled=true;
+      try{
+        if(typeof window.__submitConsult==='function'){
+          await window.__submitConsult(payload);
+        }else{
+          await new Promise(r=>setTimeout(r,600));
+        }
+        leadForm.hidden=true;
+        leadDone.hidden=false;
+      }catch(err){
+        console.warn('lead submit failed',err);
+        btn.disabled=false;
+        btn.classList.remove('shake');void btn.offsetWidth;btn.classList.add('shake');
+      }
+    });
+  }
+
+  // Initial
+  updateUI();
+  // If user had all answers saved and comes back, still start at 1
+})();
+</script>
+
+<!-- ═══ RESULT SLICE — gender filter toggle ═══ -->
+<script is:inline>
+(function(){
+  const bar=document.querySelector('.rs-results-toggle');
+  const grid=document.querySelector('.rs-results-grid');
+  if(!bar||!grid)return;
+  const cards=[...grid.querySelectorAll('.rs-rcard')];
+  bar.addEventListener('click',e=>{
+    const b=e.target.closest('.rs-rt');
+    if(!b)return;
+    const f=b.dataset.rsFilter;
+    bar.querySelectorAll('.rs-rt').forEach(x=>{
+      const on=x===b;
+      x.classList.toggle('active',on);
+      x.setAttribute('aria-selected',on?'true':'false');
+    });
+    cards.forEach(c=>{
+      const ok=f==='all'||c.dataset.rsGender===f;
+      c.classList.toggle('rs-hidden',!ok);
+    });
+  });
+})();
+</script>
+
+<!-- ═══ PERSONA TOGGLE ═══ -->
+<script is:inline>
+(function(){
+  const KEY='recover-persona';
+  const btns=document.querySelectorAll('.pt-btn');
+  if(!btns.length) return;
+  function apply(p){
+    document.documentElement.setAttribute('data-persona',p);
+    // 헤드카피
+    document.querySelectorAll('[data-gentle][data-focused]').forEach(el=>{
+      const v=el.getAttribute('data-'+p);if(v)el.innerHTML=v;
+    });
+    // CTA 라벨
+    document.querySelectorAll('[data-gentle-label][data-focused-label]').forEach(el=>{
+      const v=el.getAttribute('data-'+p+'-label');if(!v)return;
+      const span=el.querySelector('span:not(.arr)');
+      if(span)span.textContent=v;else el.childNodes[0].nodeValue=v;
+    });
+    // 히어로 서브 CTA 하위 카피
+    const sub=document.querySelector('.hero-cta-sub');
+    if(sub){sub.textContent=p==='focused'?'리커버 강남 · 흉터 회복 조건 상담':'선릉역 7번 출구 앞 5층 · AI 피부 회복 조건 상담 준비 중';}
+    // Result Slice 토글 동기화 (남성 우선)
+    const rsBar=document.querySelector('.rs-results-toggle');
+    if(rsBar){
+      const target=p==='focused'?'male':'all';
+      const tBtn=rsBar.querySelector('[data-rs-filter="'+target+'"]');
+      if(tBtn&&!tBtn.classList.contains('active')){tBtn.click();}
+    }
+    // BA 갤러리 칩 (focused는 직진성 — 흉터 우선; gentle은 전체)
+    const baBar=document.querySelector('.ba-filter');
+    if(baBar){
+      // 페르소나 변경 시 사용자가 직접 만진 칩이 아니면 전체로 리셋
+      const all=baBar.querySelector('[data-f-value="all"]');
+      if(all&&!all.classList.contains('active')){
+        // 명시적 페르소나 변경에서만 리셋: persona 변경에 의한 호출은 user-select 상태 보존
+      }
+    }
+    // 버튼 활성
+    btns.forEach(b=>{
+      const on=b.dataset.persona===p;
+      b.classList.toggle('active',on);
+      b.setAttribute('aria-selected',on?'true':'false');
+    });
+  }
+  let init='gentle';
+  try{const s=localStorage.getItem(KEY);if(s==='gentle'||s==='focused')init=s;}catch(e){}
+  apply(init);
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const p=b.dataset.persona;
+    apply(p);
+    try{localStorage.setItem(KEY,p);}catch(e){}
+  }));
+})();
+</script>
+
+<!-- ═══ ESSAY EXPAND ═══ -->
+<script is:inline>
+(function(){
+  document.querySelectorAll('.essay-expand-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const t=document.getElementById(btn.dataset.target);
+      if(!t)return;
+      const open=t.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      const lbl=btn.querySelector('.essay-expand-label');
+      if(lbl){
+        const cur=lbl.textContent;
+        lbl.dataset.closed=lbl.dataset.closed||cur;
+        lbl.textContent=open?'접기':lbl.dataset.closed;
+      }
+      if(open){
+        // no hidden attribute prevents transition; remove it
+        t.removeAttribute('hidden');
+      }
+    });
+    // ensure hidden attr removed on init so CSS transitions can render 0-height
+    const t=document.getElementById(btn.dataset.target);
+    if(t&&t.hasAttribute('hidden')){t.removeAttribute('hidden');}
+  });
+})();
+</script>
+<!-- PRICE BOTTOM SHEET (mobile) -->
+<div class="price-sheet" id="priceSheet" role="dialog" aria-modal="true" aria-labelledby="priceSheetTitle">
+  <div class="price-sheet-backdrop"></div>
+  <div class="price-sheet-body">
+    <div class="price-sheet-handle"></div>
+    <div class="price-sheet-head">
+      <p class="price-sheet-eyebrow">Transparent Pricing</p>
+      <h3 class="price-sheet-title" id="priceSheetTitle">비용 안내</h3>
+      <button class="price-sheet-close" aria-label="닫기">×</button>
+    </div>
+    <div class="price-sheet-content"></div>
+    <div class="price-sheet-cta">
+      <a href="#consult" class="ghost" onclick="closePriceSheet()">BASELINE 상담 신청</a>
+      <a href="tel:02-000-0000" class="primary">전화 문의</a>
+    </div>
+  </div>
+</div>
+
+<!-- TWEAKS PANEL -->
+<div class="tweaks-panel" id="tweaksPanel" aria-hidden="true">
+  <div class="tweaks-panel-head">
+    <span class="tweaks-panel-title">Tweaks</span>
+    <button class="tweaks-panel-close" id="tweaksClose" aria-label="닫기">×</button>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Design Variant</span>
+    <div class="tweaks-variants" id="tweaksVariants">
+      <button class="tweaks-variant" data-variant="heritage">
+        <span class="tweaks-variant-swatch"><span style="background:#2D5F3E"></span><span style="background:#C4A265"></span><span style="background:#F7F5F0"></span></span>
+        <span class="tweaks-variant-name">Heritage</span>
+      </button>
+      <button class="tweaks-variant" data-variant="clinical">
+        <span class="tweaks-variant-swatch"><span style="background:#1f2a24"></span><span style="background:#8b7b55"></span><span style="background:#fafaf7"></span></span>
+        <span class="tweaks-variant-name">Clinical</span>
+      </button>
+      <button class="tweaks-variant" data-variant="botanical">
+        <span class="tweaks-variant-swatch"><span style="background:#2a4f3a"></span><span style="background:#b8733e"></span><span style="background:#f4efe6"></span></span>
+        <span class="tweaks-variant-name">Botanical</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Corner Radius</span>
+    <div class="tweaks-variants" id="tweaksRadius">
+      <button class="tweaks-variant" data-radius="sharp"><span class="tweaks-variant-name" style="padding:10px 4px">Sharp</span></button>
+      <button class="tweaks-variant" data-radius="soft"><span class="tweaks-variant-name" style="padding:10px 4px">Soft</span></button>
+      <button class="tweaks-variant" data-radius="round"><span class="tweaks-variant-name" style="padding:10px 4px">Round</span></button>
+    </div>
+  </div>
+
+  <div class="tweaks-group">
+    <span class="tweaks-label">Section Density</span>
+    <div class="tweaks-variants" id="tweaksDensity">
+      <button class="tweaks-variant" data-density="compact"><span class="tweaks-variant-name" style="padding:10px 4px">Compact</span></button>
+      <button class="tweaks-variant" data-density="comfy"><span class="tweaks-variant-name" style="padding:10px 4px">Comfy</span></button>
+      <button class="tweaks-variant" data-density="spacious"><span class="tweaks-variant-name" style="padding:10px 4px">Spacious</span></button>
+    </div>
+  </div>
+
+  <p class="tweaks-note">세 가지 디자인 방향, 코너 라운딩, 섹션 여백을 실시간으로 비교해 보세요.</p>
+</div>
+
+<script is:inline>
+(function(){
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "variant": "heritage",
+    "radius": "soft",
+    "density": "compact"
+  }/*EDITMODE-END*/;
+
+  const state = Object.assign({}, TWEAK_DEFAULTS);
+  const html = document.documentElement;
+
+  function apply(){
+    if(state.variant && state.variant !== 'heritage') html.setAttribute('data-variant', state.variant);
+    else html.removeAttribute('data-variant');
+    html.setAttribute('data-radius', state.radius || 'sharp');
+    html.setAttribute('data-density', state.density || 'comfy');
+    // Update active buttons
+    document.querySelectorAll('#tweaksVariants .tweaks-variant').forEach(b=>{
+      b.classList.toggle('active', b.dataset.variant === state.variant);
+    });
+    document.querySelectorAll('#tweaksRadius .tweaks-variant').forEach(b=>{
+      b.classList.toggle('active', b.dataset.radius === state.radius);
+    });
+    document.querySelectorAll('#tweaksDensity .tweaks-variant').forEach(b=>{
+      b.classList.toggle('active', b.dataset.density === state.density);
+    });
+  }
+
+  function persist(edits){
+    Object.assign(state, edits);
+    try{ window.parent.postMessage({type:'__edit_mode_set_keys', edits:state}, '*'); }catch(e){}
+    apply();
+  }
+
+  // Wire up buttons
+  document.querySelectorAll('#tweaksVariants .tweaks-variant').forEach(b=>{
+    b.addEventListener('click', ()=>persist({variant: b.dataset.variant}));
+  });
+  document.querySelectorAll('#tweaksRadius .tweaks-variant').forEach(b=>{
+    b.addEventListener('click', ()=>persist({radius: b.dataset.radius}));
+  });
+  document.querySelectorAll('#tweaksDensity .tweaks-variant').forEach(b=>{
+    b.addEventListener('click', ()=>persist({density: b.dataset.density}));
+  });
+
+  apply();
+
+  // Edit mode protocol
+  const panel = document.getElementById('tweaksPanel');
+  const closeBtn = document.getElementById('tweaksClose');
+  closeBtn.addEventListener('click', ()=>{
+    panel.classList.remove('open');
+    try{ window.parent.postMessage({type:'__edit_mode_deactivated'}, '*'); }catch(e){}
+  });
+
+  window.addEventListener('message', (e)=>{
+    const d = e.data || {};
+    if(d.type === '__activate_edit_mode'){ panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); }
+    else if(d.type === '__deactivate_edit_mode'){ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); }
+  });
+
+  try{ window.parent.postMessage({type:'__edit_mode_available'}, '*'); }catch(e){}
+})();
+</script>
+
+<!-- Firebase Firestore — 상담 신청 수집 -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js';
+  import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBtrgkTGTAZkQHHFnsOZqL6xj_vr790zgo",
+    authDomain: "recover-clinic-kr.firebaseapp.com",
+    projectId: "recover-clinic-kr",
+    storageBucket: "recover-clinic-kr.firebasestorage.app",
+    messagingSenderId: "541834096590",
+    appId: "1:541834096590:web:84f3046b32b4f342bbc59f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.__submitConsult = async (data) => {
+    return await addDoc(collection(db, 'consultations'), {
+      ...data,
+      createdAt: serverTimestamp()
+    });
+  };
+</script>
+
+<!-- ═══ SIGNATURE UPGRADES — cursor / nav / chapters / quiet mode ═══ -->
+<script is:inline>
+(function(){
+  const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hoverable = matchMedia('(hover: hover)').matches;
+  const doc = document.documentElement;
+
+  /* ─── B11: Gold ink-drop cursor ─── */
+  if(hoverable && !prefersReduce && !('ontouchstart' in window)){
+    let lastT = 0;
+    document.addEventListener('mousemove', (e)=>{
+      const now = performance.now();
+      if(now - lastT < 60) return;
+      lastT = now;
+      if(doc.getAttribute('data-quiet') === 'on') return;
+      const d = document.createElement('span');
+      d.className = 'ink-drop';
+      d.style.left = e.clientX + 'px';
+      d.style.top = e.clientY + 'px';
+      d.style.setProperty('--s', (.7 + Math.random()*.5).toFixed(2));
+      document.body.appendChild(d);
+      setTimeout(()=>d.remove(), 950);
+    }, {passive:true});
+  }
+
+  /* ─── B14: Nav hide-until-scroll (past hero) ─── */
+  const navEl = document.getElementById('nav');
+  let lastY = 0;
+  function updateNavMode(){
+    const y = window.scrollY;
+    const heroH = window.innerHeight * .85;
+    if(y < heroH){
+      doc.setAttribute('data-nav-mode', 'hidden-hero');
+    } else {
+      // Show when scrolled past hero, hide when scrolling down fast past a threshold
+      if(y > lastY + 6 && y > heroH + 200){
+        doc.setAttribute('data-nav-mode', 'hidden-hero');
+      } else if(y < lastY - 4 || y < heroH + 200){
+        doc.setAttribute('data-nav-mode', 'visible');
+      }
+    }
+    lastY = y;
+  }
+  updateNavMode();
+  window.addEventListener('scroll', updateNavMode, {passive:true});
+
+  /* ─── B12: Chapter rail ─── */
+  const rail = document.getElementById('chapterRail');
+  const pips = rail ? [...rail.querySelectorAll('.chapter-pip')] : [];
+  const sections = pips.map(p => document.getElementById(p.dataset.chapter)).filter(Boolean);
+  function updateChapters(){
+    const y = window.scrollY + window.innerHeight * .35;
+    let active = -1;
+    sections.forEach((s, i)=>{
+      const top = s.getBoundingClientRect().top + window.scrollY;
+      if(y >= top) active = i;
+    });
+    pips.forEach((p, i)=>p.classList.toggle('active', i === active));
+    // Show rail once we've passed the hero
+    if(rail) rail.classList.toggle('show', window.scrollY > window.innerHeight * .7);
+  }
+  if(rail){
+    updateChapters();
+    window.addEventListener('scroll', updateChapters, {passive:true});
+  }
+
+  /* ─── B13: Quiet mode toggle ─── */
+  const qtBtn = document.getElementById('quietToggle');
+  try{
+    if(localStorage.getItem('recover-quiet') === 'on'){
+      doc.setAttribute('data-quiet', 'on');
+    }
+  }catch(e){}
+  if(qtBtn){
+    qtBtn.addEventListener('click', ()=>{
+      const on = doc.getAttribute('data-quiet') === 'on';
+      if(on){
+        doc.removeAttribute('data-quiet');
+        try{ localStorage.setItem('recover-quiet', 'off'); }catch(e){}
+      } else {
+        doc.setAttribute('data-quiet', 'on');
+        try{ localStorage.setItem('recover-quiet', 'on'); }catch(e){}
+      }
+    });
+  }
+
+  /* ─── A8: Ink bloom reveal ─── */
+  const blooms = document.querySelectorAll('.ink-bloom');
+  if(blooms.length && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('rv-in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.3});
+    blooms.forEach(b=>io.observe(b));
+  }
+
+  /* ─── UP-5: Seasonal auto-switch ─── */
+  const m = new Date().getMonth(); // 0=Jan
+  const season = m>=2 && m<=4 ? 'spring' : m>=5 && m<=7 ? 'summer' : m>=8 && m<=10 ? 'autumn' : 'winter';
+  doc.setAttribute('data-season', season);
+  // Update the season badge if present
+  const sb = document.getElementById('seasonBadge');
+  if(sb){
+    const labels = {
+      spring: {ko:'봄', en:'Spring', emoji:'❀'},
+      summer: {ko:'여름', en:'Summer', emoji:'☀'},
+      autumn: {ko:'가을', en:'Autumn', emoji:'❧'},
+      winter: {ko:'겨울', en:'Winter', emoji:'❄'}
+    };
+    const l = labels[season];
+    sb.querySelector('.sb-ko').textContent = l.ko;
+    sb.querySelector('.sb-en').textContent = l.en;
+    sb.querySelector('.sb-gl').textContent = l.emoji;
+  }
+})();
+</script>
+

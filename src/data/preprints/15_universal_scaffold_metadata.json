@@ -1,0 +1,35 @@
+{
+  "paper_id": "15_universal_scaffold",
+  "title": "A Universal Pterocarpan-Vinyl-Polyphenol Scaffold for Multi-Target Skin Therapeutics: Six-Cycle Bayesian Active Learning Identifies Six Multi-Target Leaders Across 14 Skin-Disease Targets",
+  "title_ko": "다중 타겟 피부 치료제를 위한 범용 프테로카르판-비닐-폴리페놀 스캐폴드 — 베이지안 능동학습으로 14개 피부질환 타겟 전반에서 식별된 6개의 다중 타겟 후보",
+  "abstract": "We report the discovery of a pterocarpan-vinyl-polyphenol scaffold family that acts as a universal molecular template across six independent skin-disease verticals (scar regeneration, pigmentation, alopecia, acne, photoaging, fibrosis cross-disease). Six members of this family were identified through six rounds of Bayesian active learning (R9–R14, 4,597 cofold predictions integrated, 14 protein targets, 200-candidate pool size). All six leaders satisfy the multi-target leadership criterion (top-5 in 8+ of 14 targets) and demonstrate paper-tier 10 ns molecular dynamics stability (RMSD < 2.0 Å) on RTX 5090 GPU. The expected-improvement (EI) acquisition function reached saturation at R12 (EI=0.0077), confirmed across three additional cycles. The R12_4/R12_11/R14_5 hydroxymethyl/methoxy variants, R12_23 methyl ester (TYR/TYRP1 selective), R13_13 prenyl variant, and R11_0 trihydroxy parent constitute a structure–activity relationship rich enough to support multi-vertical formulation strategies. R15/R16 chromanol follow-up separates a systemic-safety fragment path from a topical-optimized analog path. We discuss the six-leader family as in silico-validated lead candidates for Recover Korean Medicine Clinic's universal-skin-care vertical and define wet-lab follow-up via Tier 1 contract research organization.",
+  "keywords": [
+    "chemistry",
+    "drug discovery",
+    "natural products",
+    "molecular dynamics"
+  ],
+  "target_server": "ChemRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "0009-0004-4805-8815",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "chemistry",
+  "subcategory": "drug discovery",
+  "n_figures": 10,
+  "word_count_md": 12500,
+  "submission_status": "submitted",
+  "submission_date": "2026-05-01",
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending."
+}

@@ -1,0 +1,151 @@
+---
+// RRRFlow (Phase I) — Read · Restore · Record 3R 흐름 다이어그램
+// 거대 R 글자(Fraunces light italic) 강조 + 한국어 동사 + 닫힌 루프
+---
+<figure class="rrr-flow" aria-label="Read · Restore · Record 운영 흐름도">
+  <div class="rrr-flow-cap">
+    <span class="rrr-flow-eye">Operating Loop · Three R's</span>
+    <h3 class="rrr-flow-title">리커버는 세 개의 <em>R</em>을 반복합니다</h3>
+    <p class="rrr-flow-sub"><strong style="color:var(--gold-dark)">R</strong>ead → <strong style="color:var(--gold-dark)">R</strong>estore → <strong style="color:var(--gold-dark)">R</strong>ecord. 한 번의 시술이 아니라, 회복의 신호를 다시 읽고 다음 순서를 기록하는 <em>닫힌 루프</em>입니다. 리커버라는 이름의 첫 글자 <strong style="color:var(--forest)">R</strong>은 이 세 단계의 약속입니다.</p>
+  </div>
+
+  <svg class="rrr-flow-svg" viewBox="0 0 880 480" xmlns="http://www.w3.org/2000/svg" role="img">
+    <defs>
+      <radialGradient id="rrr-glow" cx=".5" cy=".5" r=".5">
+        <stop offset="0%" stop-color="#C4A265" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="#C4A265" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="rGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#C4A265"/>
+        <stop offset="50%" stop-color="#A88B4A"/>
+        <stop offset="100%" stop-color="#8A7438"/>
+      </linearGradient>
+      <linearGradient id="rGradActive" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#4A8C5E"/>
+        <stop offset="50%" stop-color="#2D5F3E"/>
+        <stop offset="100%" stop-color="#1E4A2D"/>
+      </linearGradient>
+      <filter id="rShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+        <feOffset dx="0" dy="3" result="offsetblur"/>
+        <feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer>
+        <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- Loop arc background -->
+    <ellipse cx="440" cy="240" rx="360" ry="140" fill="none" stroke="#A88B4A" stroke-width="1" stroke-dasharray="3 4" opacity=".42"/>
+    <ellipse cx="440" cy="240" rx="360" ry="140" fill="url(#rrr-glow)" opacity=".55"/>
+
+    <!-- Direction arrows on loop -->
+    <g fill="#A88B4A" opacity=".75">
+      <polygon points="240,108 252,104 250,116" transform="rotate(-12 246 110)"/>
+      <polygon points="552,108 564,104 562,116" transform="rotate(12 558 110)"/>
+      <polygon points="436,388 448,378 448,394"/>
+    </g>
+
+    <!-- ━━━ READ node ━━━ -->
+    <g transform="translate(140 240)">
+      <circle r="116" fill="#FBFAF6" stroke="#1A1A1A" stroke-width="1.4" filter="url(#rShadow)"/>
+      <circle r="100" fill="none" stroke="#A88B4A" stroke-width=".4" stroke-dasharray="2 2"/>
+      <circle r="124" fill="none" stroke="#C4A265" stroke-width=".4" opacity=".42"/>
+      <!-- giant R -->
+      <text y="20" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="148" font-weight="200" fill="url(#rGrad)" letter-spacing="-.04em">R</text>
+      <!-- top label 01 · READ -->
+      <text y="-78" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing=".32em" font-weight="500" fill="#A88B4A">01 · READ</text>
+      <!-- bottom Korean -->
+      <text y="58" text-anchor="middle" font-family="Noto Serif KR" font-style="italic" font-size="20" font-weight="500" fill="#2D5F3E">읽다</text>
+      <text y="80" text-anchor="middle" font-family="Noto Sans KR" font-size="10.5" font-weight="400" fill="#3D3D3D">피부 신호 · 결 · 흔적</text>
+      <text y="94" text-anchor="middle" font-family="Noto Sans KR" font-size="10.5" font-weight="400" fill="#3D3D3D">균형 · 생활 리듬</text>
+    </g>
+
+    <!-- ━━━ RESTORE node (center, larger, accent) ━━━ -->
+    <g transform="translate(440 240)">
+      <circle r="138" fill="#FBFAF6" stroke="#1A1A1A" stroke-width="1.6" filter="url(#rShadow)"/>
+      <circle r="120" fill="none" stroke="#A88B4A" stroke-width=".4" stroke-dasharray="2 2"/>
+      <circle r="148" fill="none" stroke="#C4A265" stroke-width=".5" opacity=".55"/>
+      <circle r="156" fill="none" stroke="#C4A265" stroke-width=".3" opacity=".32"/>
+      <!-- giant R (forest accent — 강조 중심) -->
+      <text y="24" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="180" font-weight="300" fill="url(#rGradActive)" letter-spacing="-.04em">R</text>
+      <!-- top label 02 · RESTORE -->
+      <text y="-90" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing=".32em" font-weight="500" fill="#2D5F3E">02 · RESTORE</text>
+      <!-- bottom Korean -->
+      <text y="64" text-anchor="middle" font-family="Noto Serif KR" font-style="italic" font-size="22" font-weight="500" fill="#2D5F3E">정돈하다</text>
+      <text y="86" text-anchor="middle" font-family="Noto Sans KR" font-size="11" font-weight="400" fill="#3D3D3D">회복 환경 · 자극 절제</text>
+      <text y="100" text-anchor="middle" font-family="Noto Sans KR" font-size="11" font-weight="400" fill="#3D3D3D">자극과 간격 설계</text>
+    </g>
+
+    <!-- ━━━ RECORD node ━━━ -->
+    <g transform="translate(740 240)">
+      <circle r="116" fill="#FBFAF6" stroke="#1A1A1A" stroke-width="1.4" filter="url(#rShadow)"/>
+      <circle r="100" fill="none" stroke="#A88B4A" stroke-width=".4" stroke-dasharray="2 2"/>
+      <circle r="124" fill="none" stroke="#C4A265" stroke-width=".4" opacity=".42"/>
+      <!-- giant R -->
+      <text y="20" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="148" font-weight="200" fill="url(#rGrad)" letter-spacing="-.04em">R</text>
+      <!-- top label 03 · RECORD -->
+      <text y="-78" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing=".32em" font-weight="500" fill="#A88B4A">03 · RECORD</text>
+      <!-- bottom Korean -->
+      <text y="58" text-anchor="middle" font-family="Noto Serif KR" font-style="italic" font-size="20" font-weight="500" fill="#2D5F3E">기록하다</text>
+      <text y="80" text-anchor="middle" font-family="Noto Sans KR" font-size="10.5" font-weight="400" fill="#3D3D3D">회복 단계 · 기준 갱신</text>
+      <text y="94" text-anchor="middle" font-family="Noto Sans KR" font-size="10.5" font-weight="400" fill="#3D3D3D">다음 회복의 순서</text>
+    </g>
+
+    <!-- Loop caption -->
+    <text x="440" y="465" text-anchor="middle" font-family="IBM Plex Mono" font-size="9.5" fill="#5A5A5A" letter-spacing=".26em">FIG. 5 · THREE R's · CONTINUOUS RECOVERY LOOP</text>
+  </svg>
+
+  <!-- 3R 키워드 strip — R 상징성을 글자로 다시 -->
+  <div class="rrr-r-strip">
+    <div class="rrr-r-cell">
+      <span class="rrr-r-letter">R</span>
+      <div class="rrr-r-text">
+        <span class="rrr-r-key">Read</span>
+        <span class="rrr-r-ko">읽다 · 피부 신호를 먼저</span>
+      </div>
+    </div>
+    <span class="rrr-r-arrow">→</span>
+    <div class="rrr-r-cell rrr-r-cell--mid">
+      <span class="rrr-r-letter rrr-r-letter--accent">R</span>
+      <div class="rrr-r-text">
+        <span class="rrr-r-key">Restore</span>
+        <span class="rrr-r-ko">정돈하다 · 회복 환경을</span>
+      </div>
+    </div>
+    <span class="rrr-r-arrow">→</span>
+    <div class="rrr-r-cell">
+      <span class="rrr-r-letter">R</span>
+      <div class="rrr-r-text">
+        <span class="rrr-r-key">Record</span>
+        <span class="rrr-r-ko">기록하다 · 다음 순서를</span>
+      </div>
+    </div>
+  </div>
+</figure>
+
+<style>
+.rrr-flow{margin:48px 0;padding:48px clamp(20px,4vw,56px);background:linear-gradient(180deg,#FBFAF6 0%,white 100%);border:1px solid rgba(26,26,26,.16);position:relative;box-shadow:0 1px 0 rgba(196,162,101,.16),0 16px 48px rgba(45,95,62,.05)}
+.rrr-flow::before{content:'';position:absolute;top:0;left:0;width:120px;height:2px;background:linear-gradient(90deg,#A88B4A,#C4A265,#A88B4A)}
+.rrr-flow-cap{margin-bottom:24px;max-width:760px}
+.rrr-flow-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.32em;color:#A88B4A;text-transform:uppercase;font-weight:500;display:inline-block;margin-bottom:12px;padding-left:24px;position:relative}
+.rrr-flow-eye::before{content:'';position:absolute;left:0;top:50%;width:16px;height:1px;background:linear-gradient(to right,transparent,#A88B4A);transform:translateY(-50%);opacity:.7}
+.rrr-flow-title{font-family:'Fraunces','Noto Serif KR',Georgia,serif;font-size:clamp(22px,3vw,32px);font-weight:300;color:#1A1A1A;line-height:1.28;letter-spacing:-.012em;margin-bottom:10px}
+.rrr-flow-title em{font-family:'Fraunces',serif;font-style:italic;color:#2D5F3E;font-weight:500;font-size:1.18em;letter-spacing:-.02em;margin:0 .04em}
+.rrr-flow-sub{font-family:'Noto Serif KR',Georgia,serif;font-size:14.5px;line-height:1.78;color:#3D3D3D;font-weight:300}
+.rrr-flow-sub em{font-style:italic;color:#2D5F3E;font-weight:400}
+.rrr-flow-svg{width:100%;max-width:980px;height:auto;display:block;margin:0 auto}
+
+/* 3R 키워드 strip */
+.rrr-r-strip{margin-top:36px;padding:24px clamp(16px,3vw,32px);background:white;border:1px solid rgba(196,162,101,.22);display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,28px);flex-wrap:wrap;box-shadow:0 1px 0 rgba(196,162,101,.16),0 6px 18px rgba(45,95,62,.04)}
+.rrr-r-cell{display:flex;align-items:center;gap:14px;padding:8px 14px;flex:0 1 220px}
+.rrr-r-cell--mid{background:rgba(196,162,101,.06);border:1px solid rgba(196,162,101,.18);border-radius:2px}
+.rrr-r-letter{font-family:'Fraunces',serif;font-style:italic;font-size:54px;font-weight:300;line-height:.85;color:#A88B4A;letter-spacing:-.04em;background:linear-gradient(180deg,#C4A265,#8A7438);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0}
+.rrr-r-letter--accent{background:linear-gradient(180deg,#4A8C5E,#1E4A2D);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:60px;font-weight:400}
+.rrr-r-text{display:flex;flex-direction:column;gap:2px;line-height:1.3}
+.rrr-r-key{font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:#1A1A1A;letter-spacing:-.005em}
+.rrr-r-ko{font-family:'Noto Serif KR',serif;font-size:12.5px;color:#5A5A5A;font-weight:300}
+.rrr-r-arrow{font-family:'Fraunces',serif;font-size:24px;color:#A88B4A;font-weight:300;opacity:.65}
+@media(max-width:760px){
+  .rrr-r-strip{flex-direction:column;gap:18px}
+  .rrr-r-arrow{transform:rotate(90deg)}
+}
+</style>

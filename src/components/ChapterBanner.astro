@@ -1,0 +1,31 @@
+---
+// ChapterBanner — 매거진 표지 톤 페이지 헤더
+// props: chapter (I-V), titleKo, titleEn, eyebrow, metaTop, metaMid, metaBottom
+const {
+  chapter = 'I',
+  titleKo = '리커버 방식',
+  titleEn = 'Recover Method',
+  eyebrow = '제 1 장 · Chapter I',
+  metaTop = 'Vol. I',
+  metaMid = '2026 Q3',
+  metaBottom = 'Editorial',
+  ornament = '·',
+} = Astro.props;
+---
+<header class="chapter-banner" aria-label="페이지 표지">
+  <div class="chapter-banner-inner">
+    <div class="chapter-banner-num">{chapter}</div>
+    <div class="chapter-banner-mid">
+      <p class="chapter-banner-eye">{eyebrow}</p>
+      <h1 class="chapter-banner-title" set:html={titleKo} />
+      <p class="chapter-banner-title-en">{titleEn}</p>
+    </div>
+    <div class="chapter-banner-meta">
+      <strong>{metaTop}</strong>
+      {metaMid}
+      <span class="chapter-banner-meta-rule"></span>
+      {metaBottom}
+    </div>
+  </div>
+  <div class="chapter-banner-ornament" aria-hidden="true"><span>{ornament}</span></div>
+</header>

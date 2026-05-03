@@ -6,7 +6,11 @@
 **RECOVER 강남의 브랜드 부서(Brand Department)로서, 의학적 피부재생 시장에서 세계 최고 수준의 브랜딩을 설계하고 실행하는 프로젝트다.**
 모든 의사결정은 "예쁜 화면"이 아니라 "강남 미용 시장 안에서 리커버 강남이 어떤 카테고리를 만들고, 어떤 언어를 소유하며, 어떤 고객 경험으로 기억될 것인가"를 기준으로 판단한다.
 
-강남구 역삼동 부일타워(선릉역 7번 출구 도보 1분) 소재 의학적 피부재생 브랜드 "리커버 강남 / 리커버한의원"의 브랜드 전략, 홈페이지, 콘텐츠, 상담 경험, 채널 운영을 통합 관리한다.
+강남구 역삼동 부일타워(선릉역 7번 출구 도보 1분) 소재 의학적 피부재생 브랜드 "리커버 강남 / 리커버한의원 강남"의 브랜드 전략, 홈페이지, 콘텐츠, 상담 경험, 채널 운영을 통합 관리한다.
+
+**공식 강남 개원일: 2026-08-17 (월)** — 사이트 라이브(2026-04-20)와 분리. 14절 launch 일정·캠페인·재무 가드레일은 모두 2026-08-17 D-day 기준으로 동기화한다.
+
+**3-Pillar 통합 사업 구조** (전략 v1.5 §3-8): 한정우 원장은 동일 founder로 **HAN PREDICT, Inc.**(AI 헬스케어 플랫폼, hanpredict.com) + **리커버한의원 강남**(임상 vertical) + **Genesis_Medicine Lab**(R&D Lab, 12편 preprint 자체 수행) 세 사업체를 통합 운영한다. 자매 코드베이스는 `\\wsl.localhost\Ubuntu-Genesis\home\crazat\genesis_medicine\` (D-backed WSL2 ext4) 및 `C:\Projects\facial_dx\`. 외부 노출 위계는 한의원 본체 카피 흐림 방지 위해 Authority Layer로만 제한 — 자세한 운영 원칙은 전략 문서 §3-8, §8-7, §10-5, §13-1a, §14-7 참조.
 
 핵심 브랜드 정의:
 
@@ -39,15 +43,17 @@
 4. 단기 전환보다 장기 브랜드 자산, 검색 인지도, 고객 언어, 상담 경험의 일관성을 우선한다.
 5. 글로벌 대기업 수준의 브랜드 전략 문서, 메시지 체계, 디자인 일관성, 운영 거버넌스를 목표로 한다.
 
-현재 사이트는 "자연 재생 × 절제된 정밀함" 컨셉의 단일 HTML 파일 기반 프로덕션 사이트다. **20대~50대 남성·여성 균형 타겟** — 감성형(Gentle) / 데이터형(Focused) 듀얼 페르소나로 전 연령·성별 결정자 모두에 대응.
+현재 사이트는 "자연 재생 × 절제된 정밀함" 컨셉. **20대~50대 남성·여성 균형 타겟** — 감성형(Gentle) / 데이터형(Focused) 듀얼 페르소나로 전 연령·성별 결정자 모두에 대응.
+
+**구조 (Phase A-I, 2026-05-03 완료)**: 단일 HTML(7,985라인)에서 **Astro 5 정적 사이트 + 6 페이지 분리** 구조로 전환. 빌드 결과물은 `dist/`. Firebase Hosting public 디렉토리는 `dist`로 운영.
 
 ## 작업 운영 원칙
 이 프로젝트는 실제 개원 전 브랜드 자산을 만드는 프로덕션 프로젝트다. 따라서 코드 수정은 "멋있어 보이는 구조 변경"보다 현재 브랜드 경험, 운영 도메인, 배포 안정성, 사용자의 의사결정 흐름을 우선한다.
 
-- **현재 홈페이지 구조는 단일 HTML 기반의 원페이지 프로덕션 사이트다.** 상단 네비게이션은 현재 각 섹션으로 이동하는 앵커 네비게이션이다.
-- 네비게이션을 실제 페이지로 분리하는 작업은 사용자 승인 없이 진행하지 않는다. 필요할 경우 먼저 정보구조(IA), 섹션 재배치표, 중복 제거 방식, URL 정책, 배포 영향, 디자인 영향까지 제안한 뒤 승인 후 구현한다.
-- 임시로 `index.html`을 여러 HTML 파일로 복제하거나, Firebase rewrite만으로 페이지가 분리된 것처럼 보이게 만드는 방식은 피한다. 이런 방식은 중복 콘텐츠와 유지보수 리스크를 만든다.
-- 향후 실제 멀티페이지 구조가 필요하면, 먼저 콘텐츠를 페이지별로 재편집하고 공통 헤더/푸터/스크립트 관리를 위한 빌드 구조 또는 템플릿 구조를 검토한다.
+- **현재 홈페이지 구조는 Astro 정적 사이트 6페이지 (옵션 C 하이브리드).** 상단 네비게이션은 5개 메뉴 + RESEARCH(우측 분리) + BASELINE CTA로 페이지 라우팅.
+- IA 변경(페이지 추가·삭제·재배치)은 사용자 승인 없이 진행하지 않는다. 정보구조(IA), 섹션 재배치, URL 정책, 배포 영향, 디자인 영향까지 제안한 뒤 승인 후 구현한다.
+- index.html을 여러 HTML로 복제하거나 Firebase rewrite만으로 페이지를 분리한 척하는 방식은 피한다 (Astro 빌드 시스템이 정합 처리).
+- 빌드 도구는 **Astro**. `npm run build` → `dist/` 출력. `npm run preview --port 4322` 또는 `python -m http.server 4323 --directory dist`로 검증.
 - 큰 구조 변경은 한 번에 배포하지 않는다. 계획 → 로컬 검증 → 화면 캡처 → 사용자 확인 → 커밋 → 배포 순서로 진행한다.
 - 배포 확인의 1차 기준은 Firebase 기본 주소가 아니라 **커스텀 운영 도메인 `https://recover-clinic.kr/`** 이다. `https://recover-clinic-kr.web.app/`는 보조 확인 주소로만 본다.
 - 배포 후에는 최소한 운영 도메인 `/`, 주요 CTA, 네비게이션, 모바일/데스크톱 표시를 확인한다.
@@ -60,8 +66,31 @@
 - `recover_gangnam_brand_strategy.md` — 리커버 강남 브랜드 전략 OS. 시장 창출, 포지셔닝, 오퍼 구조, 채널 전략, 운영 거버넌스의 기준 문서.
 - `recover_brand_identity.docx` — 브랜드 아이덴티티 가이드. 단, `.gitignore`에서 `*.docx`는 제외되어 있으므로 Git 기준 원본 전략은 Markdown 문서를 우선한다.
 
+## 영상 자산 (Phase H · 2026-05-03)
+- `public/video/saesalchim_graded.mp4` (5.8MB, 1280px h264) — Hero film 섹션 + Method NeedleMicroflow
+- `public/video/saesalchim_anatomy.mp4` (3.6MB, 1280px h264) — Scar ScarAnatomy 컴포넌트
+- 원본은 `video_anatomy/` (86MB + 58MB, deploy 제외)
+- `<video preload="metadata" autoplay muted loop playsinline>` 패턴
+
+## Astro 빌드 시스템
+```bash
+npm install                  # Astro 5 + 의존성
+npm run dev                  # dev server (port 4321)
+npm run build                # → dist/ (정적 출력)
+npm run preview              # preview server (port 4322)
+```
+- `astro.config.mjs`: outDir `dist`, publicDir `public`, trailingSlash `always`
+- `src/pages/*.astro` → 자동 라우팅
+- `src/data/preprints/*.json` → RESEARCH 페이지 자동 import.meta.glob
+
+## Firebase Hosting (Astro 전환 후)
+- `firebase.json` `public: "dist"` (Phase C)
+- `firebase deploy --only hosting` — dist 자동 호스팅
+- 빌드 후 deploy 순서: `npm run build && firebase deploy --only hosting`
+
 ## 기술 스택
-- 단일 HTML 파일 (`index.html`, 약 8,500 라인) — 순수 CSS + Vanilla JS (프레임워크 없음)
+- **Astro 5** 정적 사이트 생성 + Vanilla JS (프레임워크 없음)
+- 6 `.astro` 페이지 + 14 `.astro` 컴포넌트 + 단일 `global.css` (3,800+ lines)
 - Google Fonts CDN: **Fraunces**(디스플레이 주서체), Playfair Display, Noto Serif KR, Noto Sans KR, **IBM Plex Mono**(데이터/측정 라벨용 모노스페이스)
 - Canvas 기반 골드 뉴런 네트워크 애니메이션
 - IntersectionObserver 스크롤 reveal + 카운터 애니메이션
@@ -102,7 +131,7 @@
 
 1. Hero — RE:COVER 브랜드, **페르소나 토글**(Gentle/Focused 듀얼 모드), CTA, Canvas 뉴런 네트워크, **Hero Data Strip**(RECOVER BASELINE · RECOVER AI · RECOVER ANATOMY · RECORD 중심의 4칩 브랜드 시스템)
 2. **Guarantee Strip** — 4항목 리스크 해소 배너(기준 상담·상담 전 안내·위치 확인·프로토콜 투명성)
-3. **Result Slice (At a Glance)** — 0.5스크롤 결정 패널: 결과 4카드(20대 여대생/30대 남직장인/40대 여교사/50대 여주부, **남/여/전체 토글 필터**) + 가격 3카드(A 60만~/B 90만~/C 220만~) + 시간 3배지(40~60분·당일 복귀·평균 12주) + **Data Pickup Zone**(5지표 모노스페이스 데이터 카드)
+3. **Result Slice (At a Glance)** — 0.5스크롤 결정 패널: 결과 4카드(20대 여대생/30대 남직장인/40대 여교사/50대 여주부, **남/여/전체 토글 필터**) + 가격 3카드(A 15만~/B 30만~/C 25만~ /회차당) + 시간 3배지(40~60분·당일 복귀·평균 12주) + **Data Pickup Zone**(5지표 모노스페이스 데이터 카드)
 4. Values — 핵심가치 3개 (Recover, Natural, Precision)
 5. Method Architect — 한정우 원장을 리커버 회복 기준의 설계자로 소개 (다크그린 배경, clip-path 커튼 리빌), 영문 서명(Founder & Method Architect)
 6. **Recovery Records Preview** — Method Architect 신뢰 전이 직후 회복 기록 미리보기 (연령 라벨 케이스)
@@ -229,12 +258,44 @@
 - 주요 블록: PERSONA TOGGLE, HERO DATA STRIP, RESULT SLICE, DATA PICKUP ZONE, LIVE PROOF STRIP, GUARANTEE STRIP, BA SLIDER, NEEDLE VITRINE, CHAPTER RAIL, FILM GRAIN, QUIET MODE, ESSAY EXPAND, Tweaks Panel, NAV, HERO, BUTTONS, UTILITIES, VALUES, PHILOSOPHY, TREATMENTS, PRICE TRANSPARENCY, PRICE BOTTOM SHEET, LIVE SLOTS, RECOVERY TIMELINE, DOCTOR CASE STUDY, SCIENCE, FAILED-ELSEWHERE, AI SELF DIAGNOSIS, STICKY CONTEXT CHIP, PROCESS, PRECISION 등
 - `/* Print */` 블록을 파일 말미 배치로 유지
 
-## 네비게이션
-리커버 방식 | 흉터 회복 | 회복 기록 | 메소드·기술 | BASELINE 상담(CTA)
+## 네비게이션 (Phase I rev5 — 2026-05-03)
+리커버 방식 | 메소드·기술 | 흉터 회복 | 회복 기록 | **RESEARCH ↗** (Genesis_Medicine Lab) | **BASELINE 상담** (CTA)
+
+- 메뉴 5개는 페이지 라우팅 (`/`, `/method/`, `/scar/`, `/record/`, `/baseline/`)
+- **RESEARCH는 메뉴 우측 끝 vertical hairline divider로 분리** + `↗` arrow + "Genesis_Medicine Lab" sub. 협력 기관 톤. URL `/research/`.
+- 모바일 (760px 이하): 햄버거 + BASELINE CTA 골드 보더 항상 노출
+- 태블릿 (761~1100px): 6개 모두 가로 노출 (폰트·간격 자동 축소)
+- **Active 표시 (Phase I rev5)**: italic Fraunces forest + 좌측 골드 점(7px) + 두꺼운 골드 그라디언트 underline + 골드 배경 highlight. 스크롤 후에도 그대로 유지.
+- **중요 버그 fix**: `FloatingPostFooter.astro`의 단일 페이지 시절 IntersectionObserver active toggle 코드가 멀티페이지에서 SSR active를 제거하던 버그 — `isAnchorNav` 가드로 anchor 기반 nav일 때만 작동하도록 수정.
+
+## 정보구조(IA) 정책 (Phase A-I 옵션 C 하이브리드 → 6 페이지 분리 완료)
+**6 페이지 IA**:
+| URL | 이름 | 파일 |
+|---|---|---|
+| `/` | Home | `src/pages/index.astro` |
+| `/method/` | 메소드·기술 | `src/pages/method.astro` |
+| `/scar/` | 흉터 회복 | `src/pages/scar.astro` |
+| `/record/` | 회복 기록 | `src/pages/record.astro` |
+| `/research/` | RESEARCH (학술) | `src/pages/research/index.astro` |
+| `/baseline/` | BASELINE 상담 | `src/pages/baseline.astro` |
+
+- **Astro 빌드** — `npm run build` → `dist/` 생성. 페이지당 평균 130~180KB.
+- **공통 컴포넌트**: `Nav` · `Footer` · `FloatingPreNav` · `FloatingPostFooter` · `VolumeBar` · `ChapterBanner` · `MainLayout`
+- **시각화 컴포넌트 (8)**: `SkinCrossSection` · `ScarAnatomy` · `NeedleMicroflow` · `RecoveryTimelineFigure` · `RRRFlow` · `StatsCharts` · `CompareDiagram` · `TargetMap`
+- **횡스크롤 카드 정책**: B/A 12카드 → 6+6 펼치기, Reviews 10카드 → 4+6 펼치기.
+- **Chapter Banner**: /scar (II), /record (III), /method (IV), /baseline (V)에 매거진 표지 자동 노출.
+
+## RESEARCH 페이지 (`/research/index.html`) 운영 원칙 (v1.5 §8-7)
+- **학술 출판물 게재 형태**의 페이지로 운영. 의료광고 아님. 한방의료광고 사전심의 대상 아님.
+- 4중 disclaimer 의무 노출: in silico stage / IRB pending / Apache-2.0 transparency / 연구 활동 frame.
+- preprint 5편 abstract는 학술 출판 절차(ChemRxiv/bioRxiv/medRxiv) 통과 후 DOI가 부여될 때까지 placeholder 형태로 유지.
+- footer affiliation 한 줄: "Research affiliations: Genesis_Medicine Lab · HAN PREDICT, Inc. · Recover Korean Medicine Clinic" — index.html footer에도 동일 라인 추가됨.
+- 외부 매체가 RESEARCH 페이지 내용을 인용하여 광고화할 경우 리커버는 그 광고에 책임이 있다 (전략 v1.5 §10-5 운영 원칙).
+- DOI 미부여 placeholder는 "게재 후 부여 예정"으로 명시. 효능 함의 절대 금지.
 
 ## 콘텐츠 상태
 - 원장명: 한정우 (실제 — 규림한의원 청주점 대표원장)
-- 원장 프로필: 경희대학교 대학원 석사, RECOVER AI 분석 엔진 설계, HAN PREDICT 운영, 리커버 회복 기준 설계자(Founder & Method Architect)
+- 원장 프로필: 경희대학교 대학원 석사, RECOVER AI 시스템 설계, HAN PREDICT 운영, 리커버 회복 기준 설계자(Founder, RECOVER METHOD · HAN PREDICT)
 - 원장 이미지: `logo/profile.webp` / `logo/profile.gif` (규림한의원에서 가져옴)
 - 확장 원칙: 고객이 "한정우 원장에게만 받아야 한다"가 아니라 "리커버 기준으로 상담받고 싶다"고 기억하도록, 개인 서사는 Origin Note와 Method Architect 맥락으로 제한하고 브랜드 중심 언어는 RECOVER METHOD로 통일한다.
 - 전화번호: 02-000-0000 (플레이스홀더)
@@ -259,7 +320,7 @@ python -m http.server 8094 --bind 0.0.0.0
 ```
 
 ## 배포 (Firebase Hosting)
-- 상태: **라이브** — https://recover-clinic.kr/ (HTTPS, SSL 발급 완료, 2026-04-20 서비스 개시)
+- 상태: **사이트 라이브** — https://recover-clinic.kr/ (HTTPS, SSL 발급 완료, 2026-04-20 사이트 라이브). **공식 강남 개원일: 2026-08-17 (월)** — 사이트 라이브와 개원일은 분리 관리.
 - 플랫폼: **Firebase Hosting** (Google Cloud Spark 무료 플랜)
 - Google 계정: `crazat8911@gmail.com`
 - 프로젝트 ID: `recover-clinic-kr`

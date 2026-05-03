@@ -1,0 +1,35 @@
+{
+  "paper_id": "18_active_learning_multifidelity",
+  "title": "Cost-Aware Multi-Fidelity Bayesian Optimization with Runtime-Gated Cascading Tiers for Autonomous in silico Dermatology Discovery",
+  "title_ko": "자율 in silico 피부질환 신약 발굴을 위한 비용 인지형 다중 충실도 베이지안 최적화 — 런타임 게이트 기반 계층 캐스케이딩 스케줄러",
+  "abstract": "Autonomous virtual-screening pipelines suffer a recurring failure mode: cheap predictors (Boltz-2 affinity, ADMET, xTB conformer scoring) accumulate thousands of candidate scores, yet expensive validation tiers (long molecular dynamics, absolute binding free energy, wet-lab) advance unevenly because the scheduler cannot reason simultaneously about cost, information value, gate-policy, and runtime availability of each tier. We describe a cost-aware multi-fidelity Bayesian optimization scheduler that operates over a unified evidence ledger (789 compound–target rows, 136 columns) and a 7-tier cascade ranging from Boltz-2 cofold (~minutes/pair, GPU) through OpenFold3 + AQAffinity (~minutes/pair, GPU) to wet-lab IC₅₀ / IVRT / IVPT (~₩100k+/sample, CRO). The acquisition score blends expected-improvement on missing axes against a tier-specific cost prior; scientific gates and curator directives veto advance for compounds failing safety, novelty, or applicability-domain criteria. We report the scheduler's behavior on a current dermatology workload: 752 compound–target pairs queued for the OpenFold3 advance, top acquisition score 0.937, distributed across 8 protein targets (TYR, DCT, MMP1, TYRP1, LOX, CTGF, TGFB1, PTGS2). The runtime-gate distinction proved decisive: when AQAffinity calibration was incomplete, 124 work-items were correctly held under mmp1_zinc_pending rather than spuriously advanced.",
+  "keywords": [
+    "chemistry",
+    "Bayesian optimization",
+    "drug discovery",
+    "autonomous systems"
+  ],
+  "target_server": "ChemRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "0009-0004-4805-8815",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "chemistry",
+  "subcategory": "methodology",
+  "n_figures": 2,
+  "word_count_md": 7500,
+  "submission_status": "submitted",
+  "submission_date": "2026-05-03",
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending."
+}
