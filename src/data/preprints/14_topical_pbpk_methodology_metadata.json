@@ -39,5 +39,8 @@
     "icmje_compliant": true,
     "note": "Author verified all claims; AI not used for data or hypotheses."
   },
-  "title_ko": "천연물 기반 외용 치료제를 위한 외용 피부 PBPK 파이프라인 — Dancik 4층 ODE, SkinPiX 학습 LGBM logKp, NPASS 2026 ADME 통합"
+  "title_ko": "천연물 기반 외용 치료제를 위한 외용 피부 PBPK 파이프라인 — Dancik 4층 ODE, SkinPiX 학습 LGBM logKp, NPASS 2026 ADME 통합",
+  "doi": "10.5281/zenodo.20018345",
+  "status": "published",
+  "publication_date": "2026-05-04"
 }

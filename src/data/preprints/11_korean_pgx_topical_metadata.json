@@ -38,5 +38,6 @@
     "icmje_compliant": true,
     "note": "Author verified all claims; AI not used for data or hypotheses."
   },
-  "title_ko": "외용 한약 개인화를 위한 한국인 약물유전체 패널 — CYP · UGT · HLA · 피부 장벽 변이를 통합한 프레임워크 설계"
+  "title_ko": "외용 한약 개인화를 위한 한국인 약물유전체 패널 — CYP · UGT · HLA · 피부 장벽 변이를 통합한 프레임워크 설계",
+  "status": "draft"
 }

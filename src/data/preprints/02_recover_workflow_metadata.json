@@ -39,5 +39,6 @@
     "icmje_compliant": true,
     "note": "Author verified all claims; AI not used for data or hypotheses."
   },
-  "title_ko": "한의원을 위한 통합 AI 워크플로 — 3D 안면 진단, RAG 기반 전자 의무기록, 분자 처방 시뮬레이션의 결합"
+  "title_ko": "한의원을 위한 통합 AI 워크플로 — 3D 안면 진단, RAG 기반 전자 의무기록, 분자 처방 시뮬레이션의 결합",
+  "status": "draft"
 }

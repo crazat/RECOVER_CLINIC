@@ -35,3 +35,9 @@ original.html
 
 # Interior briefs (working drafts)
 recover_gangnam_interior_*.md
+
+# Interior RFP working folder (vendor contacts + 견적 envelope, 사이트 배포 무관)
+RFP_2026/
+
+# Real-world measurement photos (현장 실측)
+부일5층실측.jpg

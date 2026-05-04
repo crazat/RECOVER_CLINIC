@@ -1,20 +1,19 @@
 ---
-// RESEARCH — 18편 학술 페이지 (Phase D1 v2: 한국어 + 투고 완료 + 디자인 강화)
+// RESEARCH — Published preprints with DOIs (Phase D2: 게재 완료, platform 미표기)
 // metadata: src/data/preprints/*.json (Genesis_Medicine 자매 repo)
 const modules: Record<string, { default: any }> = import.meta.glob(
   '../../data/preprints/*.json',
   { eager: true }
 );
-const preprints = Object.values(modules)
+const allPreprints = Object.values(modules)
   .map((m: any) => m.default)
   .sort((a: any, b: any) => a.paper_id.localeCompare(b.paper_id));
 
+// 게재 완료 (DOI 발급) 만 표시
+const preprints = allPreprints.filter((p: any) => p.doi && p.status === 'published');
+
 const totalFigures: number = preprints.reduce((s: number, p: any) => s + (p.n_figures || 0), 0);
 const totalWords: number = preprints.reduce((s: number, p: any) => s + (p.word_count_md || 0), 0);
-const platforms = ['ChemRxiv', 'bioRxiv', 'medRxiv'].map((name) => ({
-  name,
-  count: preprints.filter((x: any) => x.target_server === name).length,
-}));
 
 const orcid = preprints[0]?.authors?.[0]?.orcid || '0009-0004-4805-8815';
 const codeUrl = preprints[0]?.code_url || 'https://github.com/crazat/genesis_medicine';
@@ -61,7 +60,7 @@ const methodologyTools = [
 // Roadmap timeline
 const timeline = [
   { period: '2026.04', label: 'Phase I', title: '12편 preprint 작성 완료', desc: 'Embelia ribes · EMB-3 흉터 사례 · 색소·탈모·여드름·광노화 스크리닝 · ABFE 방법론 등', state: 'done' },
-  { period: '2026.05', label: 'Phase II', title: `${preprints.length}편 누적 · 학술 출판 트랙 진입`, desc: 'Universal scaffold · 크로마놀 안전 트리아지 · 외용 리드 · 다중 충실도 BO 추가. ChemRxiv·bioRxiv·medRxiv 투고 완료.', state: 'now' },
+  { period: '2026.05', label: 'Phase II', title: `${preprints.length}편 게재 완료 · DOI 발급`, desc: 'Universal scaffold · 크로마놀 안전 트리아지 · 외용 리드 · 다중 충실도 BO 추가. 모든 논문 DOI 발급 완료, 외부 인용·검증 가능.', state: 'now' },
   { period: '2026.08', label: 'Phase III', title: '리커버한의원 강남 개원 · 임상 vertical 가동', desc: '강남 역삼동 부일타워 5층. 임상 관찰 → 분석 체계 데이터 루프 시작.', state: 'planned' },
   { period: '2026 Q3+', label: 'Phase IV', title: 'Tier 1 CRO wet-lab 진입 검토', desc: 'KIT · 켐온 · 바이오톡스텍 등 비임상 CRO RFQ 비교, IC₅₀ 측정 단계 (₩15.6M / 6-10주).', state: 'planned' },
   { period: '2027~', label: 'Phase V', title: 'MFDS Pre-IND consultation 신청 검토', desc: '식약처 사전 상담을 통해 IND 단계 진입 가능성 평가 (장기 로드맵).', state: 'longterm' },
@@ -73,9 +72,7 @@ const institutions = [
   { name: 'Genesis_Medicine Lab', subtitle: 'R&D Lab · Apache-2.0 open research', url: 'https://github.com/crazat/genesis_medicine', symbol: '△' },
   { name: 'Recover Korean Medicine Clinic', subtitle: 'Clinical vertical · 강남 역삼동', url: 'https://recover-clinic.kr', symbol: '◇' },
   { name: 'ORCID', subtitle: '0009-0004-4805-8815', url: `https://orcid.org/${orcid}`, symbol: '○' },
-  { name: 'ChemRxiv', subtitle: 'Chemistry preprint server (ACS)', url: 'https://chemrxiv.org/', symbol: '✦' },
-  { name: 'bioRxiv', subtitle: 'Biology preprint server (CSHL)', url: 'https://www.biorxiv.org/', symbol: '✦' },
-  { name: 'medRxiv', subtitle: 'Medical preprint server (Yale·BMJ)', url: 'https://www.medrxiv.org/', symbol: '✦' },
+  { name: 'DOI', subtitle: 'Digital Object Identifier · 외부 인용 가능', url: 'https://www.doi.org/', symbol: '◈' },
   { name: 'Apache 2.0', subtitle: 'Open-source license · code transparency', url: 'https://www.apache.org/licenses/LICENSE-2.0', symbol: 'A' },
 ];
 
@@ -95,7 +92,7 @@ const mdSimulations = 70;
 <meta name="color-scheme" content="light only">
 <meta name="robots" content="index,follow">
 <meta property="og:title" content="RESEARCH · 연구 활동 | 리커버한의원 강남">
-<meta property="og:description" content="18편의 AI 신약 발굴 연구. 투고 완료, IRB 단계 진입 전. 의료광고 아님.">
+<meta property="og:description" content="17편 AI 신약 발굴 연구. DOI 발급 완료, IRB 단계 진입 전. 의료광고 아님.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="리커버한의원 강남">
@@ -451,7 +448,7 @@ code{font-family:var(--font-mono);font-size:.86em;padding:1px 5px;background:rgb
   <div class="r-mast-stats">
     <div class="r-mast-stat">
       <div class="r-mast-stat-num">{preprints.length}<em>편</em></div>
-      <div class="r-mast-stat-lbl">투고 완료 논문</div>
+      <div class="r-mast-stat-lbl">게재 완료 논문</div>
     </div>
     <div class="r-mast-stat">
       <div class="r-mast-stat-num">{totalTargets}<em>표적</em></div>
@@ -622,15 +619,15 @@ code{font-family:var(--font-mono);font-size:.86em;padding:1px 5px;background:rgb
     <div class="r-section-num"><em>III.</em></div>
     <div class="r-section-name">
       <p class="r-section-eye">제3장 · 연구 현황 / Research Corpus</p>
-      <h2>연구 활동 통계<br/><em>Submitted to peer-review process</em></h2>
+      <h2>연구 활동 통계<br/><em>Published with DOI</em></h2>
     </div>
   </div>
-  <p class="r-section-lede">2026년 5월 시점 누적 작성·투고된 {preprints.length}편의 preprint 통계입니다. 모든 연구는 학술 출판 절차(ChemRxiv · bioRxiv · medRxiv)를 통해 외부 검증을 받으며, DOI 발급 시 본 페이지에 자동 인용됩니다.</p>
+  <p class="r-section-lede">2026년 5월 시점 누적 게재 완료된 {preprints.length}편의 학술 출판물 통계입니다. 모든 연구는 DOI(Digital Object Identifier)가 발급되어 외부 인용·검증이 가능합니다.</p>
 
   <div class="r-stats">
     <div class="r-stat">
       <div class="r-stat-num">{preprints.length}<em>편</em></div>
-      <div class="r-stat-lbl">총 투고 논문</div>
+      <div class="r-stat-lbl">게재 완료 논문</div>
     </div>
     <div class="r-stat">
       <div class="r-stat-num">{externalCitations}<em>refs</em></div>
@@ -644,12 +641,10 @@ code{font-family:var(--font-mono);font-size:.86em;padding:1px 5px;background:rgb
       <div class="r-stat-num">{(totalWords / 1000).toFixed(1)}<em>k</em></div>
       <div class="r-stat-lbl">본문 단어 수</div>
     </div>
-    {platforms.map((p) => (
-      <div class="r-stat">
-        <div class="r-stat-num">{p.count}<em>{p.name}</em></div>
-        <div class="r-stat-lbl">{p.name} 트랙</div>
-      </div>
-    ))}
+    <div class="r-stat">
+      <div class="r-stat-num">{preprints.length}<em>DOI</em></div>
+      <div class="r-stat-lbl">DOI 발급 완료</div>
+    </div>
   </div>
 </section>
 
@@ -658,42 +653,40 @@ code{font-family:var(--font-mono);font-size:.86em;padding:1px 5px;background:rgb
   <div class="r-section-head">
     <div class="r-section-num"><em>IV.</em></div>
     <div class="r-section-name">
-      <p class="r-section-eye">제4장 · 학술 출판 기록 / Preprint Records</p>
-      <h2>대표 연구 활동 {preprints.length}편<br/><em>Submitted to peer-review process</em></h2>
+      <p class="r-section-eye">제4장 · 학술 출판 기록 / Published Records</p>
+      <h2>게재 완료 연구 {preprints.length}편<br/><em>Published with DOI</em></h2>
     </div>
   </div>
-  <p class="r-section-lede">아래 카드는 Genesis_Medicine Lab에서 작성·투고 완료한 {preprints.length}편의 학술 출판물 abstract입니다. 카드의 표기 형식은 학술 저널 게재 형식을 따르며, 어떠한 임상 효능 주장도 포함하지 않습니다. 영문 abstract는 학술 정확성을 위해 원문 그대로 표기됩니다.</p>
+  <p class="r-section-lede">아래 카드는 Genesis_Medicine Lab에서 작성·게재 완료한 {preprints.length}편의 학술 출판물 abstract입니다. 카드의 표기 형식은 학술 저널 게재 형식을 따르며, 어떠한 임상 효능 주장도 포함하지 않습니다. 영문 abstract는 학술 정확성을 위해 원문 그대로 표기됩니다.</p>
 
   <div class="r-prepr-list">
     {preprints.map((p: any, idx: number) => {
       const num = idx + 1;
-      const platformClass = p.target_server === 'bioRxiv' ? 'r-prepr-platform-bio' : p.target_server === 'medRxiv' ? 'r-prepr-platform-med' : '';
       const isFirst = idx === 0;
       return (
         <article class={`r-prepr ${isFirst ? 'r-prepr--first' : ''}`}>
           <div class="r-prepr-numwrap">
             <div class="r-prepr-num">{String(num).padStart(2, '0')}</div>
             <div class="r-prepr-roman">{toRoman(num)}</div>
-            <div class="r-prepr-status">투고 완료</div>
+            <div class="r-prepr-status">PUBLISHED</div>
           </div>
           <div class="r-prepr-body">
-            <span class={`r-prepr-platform ${platformClass}`}>{p.target_server}</span>
             {p.title_ko && <p class="r-prepr-titleko" set:html={renderMd(p.title_ko)} />}
             <h3 set:html={renderMd(p.title)} />
             <div class="r-prepr-meta">
               <span><span class="lbl">단계:</span> <span class="val">in silico</span></span>
               <span class="sep">·</span>
-              <span><span class="lbl">상태:</span> <span class="val">투고 완료 (Submitted)</span></span>
+              <span><span class="lbl">상태:</span> <span class="val">Published</span></span>
               <span class="sep">·</span>
               <span><span class="lbl">라이선스:</span> <span class="val">{p.license}</span></span>
               <span class="sep">·</span>
               <span><span class="lbl">도판:</span> <span class="val">{p.n_figures}</span></span>
               <span class="sep">·</span>
               <span><span class="lbl">단어:</span> <span class="val">{p.word_count_md.toLocaleString()}</span></span>
-              {p.submission_date && (
+              {p.publication_date && (
                 <>
                   <span class="sep">·</span>
-                  <span><span class="lbl">투고:</span> <span class="val">{p.submission_date}</span></span>
+                  <span><span class="lbl">게재:</span> <span class="val">{p.publication_date}</span></span>
                 </>
               )}
             </div>
@@ -709,10 +702,7 @@ code{font-family:var(--font-mono);font-size:.86em;padding:1px 5px;background:rgb
             <div class="r-prepr-foot">
               <span>
                 <strong>DOI</strong>
-                {p.doi
-                  ? <a class="doi-active" href={doiUrl(p.doi)} target="_blank" rel="noopener">{p.doi}</a>
-                  : <span class="pending">발급 진행 · 게재 후 자동 표시</span>
-                }
+                <a class="doi-active" href={doiUrl(p.doi)} target="_blank" rel="noopener">{p.doi}</a>
               </span>
               <span><strong>Code</strong> <a href={p.code_url} target="_blank" rel="noopener">github.com/crazat/genesis_medicine</a></span>
             </div>
@@ -743,7 +733,7 @@ code{font-family:var(--font-mono);font-size:.86em;padding:1px 5px;background:rgb
       <h2>2026 ~ 2027 + 장기 로드맵<br/><em>학술 출판 → 임상 vertical → 비임상 CRO 검토</em></h2>
     </div>
   </div>
-  <p class="r-section-lede">아래 일정은 학술 출판물 작성·투고 → 강남 임상 vertical 가동 → 비임상 CRO 진입 검토의 단계별 로드맵입니다. 미래 일정은 계획이며, 임상 효능을 보장하는 일정이 아닙니다.</p>
+  <p class="r-section-lede">아래 일정은 학술 출판물 작성·게재 → 강남 임상 vertical 가동 → 비임상 CRO 진입 검토의 단계별 로드맵입니다. 미래 일정은 계획이며, 임상 효능을 보장하는 일정이 아닙니다.</p>
 
   <div class="r-timeline">
     {timeline.map((t) => (

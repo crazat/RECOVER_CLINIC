@@ -39,5 +39,8 @@
     "icmje_compliant": true,
     "note": "Author verified all claims; AI not used for data or hypotheses."
   },
-  "title_ko": "천연물 스캐폴드 호핑을 위한 절대 결합 자유에너지 보정 파이프라인 — OpenMM 8 / openmmtools 0.26 환경의 평탄 중심 구속 및 표준 상태 분석 보정"
+  "title_ko": "천연물 스캐폴드 호핑을 위한 절대 결합 자유에너지 보정 파이프라인 — OpenMM 8 / openmmtools 0.26 환경의 평탄 중심 구속 및 표준 상태 분석 보정",
+  "doi": "10.5281/zenodo.20018254",
+  "status": "published",
+  "publication_date": "2026-05-04"
 }

@@ -39,5 +39,8 @@
     "icmje_compliant": true,
     "note": "Author verified all claims; AI not used for data or hypotheses."
   },
-  "title_ko": "Genesis_Medicine — 한의학 신약 발굴을 위한 오픈소스 AI 파이프라인 (활성 모듈 약 25개와 어댑터 스캐폴드 카탈로그 약 25개의 설계 철학)"
+  "title_ko": "Genesis_Medicine — 한의학 신약 발굴을 위한 오픈소스 AI 파이프라인 (활성 모듈 약 25개와 어댑터 스캐폴드 카탈로그 약 25개의 설계 철학)",
+  "doi": "10.5281/zenodo.20018343",
+  "status": "published",
+  "publication_date": "2026-05-04"
 }

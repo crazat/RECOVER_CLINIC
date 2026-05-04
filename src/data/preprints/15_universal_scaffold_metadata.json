@@ -31,5 +31,8 @@
   "word_count_md": 12500,
   "submission_status": "submitted",
   "submission_date": "2026-05-01",
-  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending."
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "doi": "10.5281/zenodo.20018349",
+  "status": "published",
+  "publication_date": "2026-05-04"
 }

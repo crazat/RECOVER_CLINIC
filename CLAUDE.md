@@ -81,7 +81,7 @@ npm run preview              # preview server (port 4322)
 ```
 - `astro.config.mjs`: outDir `dist`, publicDir `public`, trailingSlash `always`
 - `src/pages/*.astro` → 자동 라우팅
-- `src/data/preprints/*.json` → RESEARCH 페이지 자동 import.meta.glob
+- `src/data/preprints/*.json` → RESEARCH 페이지 자동 import.meta.glob (`status: "published"` 필터링 — `draft`는 페이지 미노출)
 
 ## Firebase Hosting (Astro 전환 후)
 - `firebase.json` `public: "dist"` (Phase C)
@@ -285,13 +285,15 @@ npm run preview              # preview server (port 4322)
 - **횡스크롤 카드 정책**: B/A 12카드 → 6+6 펼치기, Reviews 10카드 → 4+6 펼치기.
 - **Chapter Banner**: /scar (II), /record (III), /method (IV), /baseline (V)에 매거진 표지 자동 노출.
 
-## RESEARCH 페이지 (`/research/index.html`) 운영 원칙 (v1.5 §8-7)
+## RESEARCH 페이지 (`/research/`) 운영 원칙 (v1.5 §8-7)
 - **학술 출판물 게재 형태**의 페이지로 운영. 의료광고 아님. 한방의료광고 사전심의 대상 아님.
 - 4중 disclaimer 의무 노출: in silico stage / IRB pending / Apache-2.0 transparency / 연구 활동 frame.
-- preprint 5편 abstract는 학술 출판 절차(ChemRxiv/bioRxiv/medRxiv) 통과 후 DOI가 부여될 때까지 placeholder 형태로 유지.
-- footer affiliation 한 줄: "Research affiliations: Genesis_Medicine Lab · HAN PREDICT, Inc. · Recover Korean Medicine Clinic" — index.html footer에도 동일 라인 추가됨.
+- **DOI 게재 상태 (2026-05-04)**: 17편 preprint Zenodo DOI 발급 완료(`status: published`). draft 상태 1편(R17 #43) 미노출. 페이지 카운트는 published만 노출. Phase D2.
+- **Platform 비표기 원칙**: Zenodo 등 출판 플랫폼명은 공개 페이지에서 노출하지 않음. DOI URL(`https://doi.org/10.5281/zenodo.<id>`)만 노출하여 플랫폼 변경 또는 cross-deposit 시 일관성 유지.
+- footer affiliation 한 줄: "Research affiliations: Genesis_Medicine Lab · HAN PREDICT, Inc. · Recover Korean Medicine Clinic".
 - 외부 매체가 RESEARCH 페이지 내용을 인용하여 광고화할 경우 리커버는 그 광고에 책임이 있다 (전략 v1.5 §10-5 운영 원칙).
-- DOI 미부여 placeholder는 "게재 후 부여 예정"으로 명시. 효능 함의 절대 금지.
+- 효능 함의 절대 금지. *in silico* 단계임을 모든 abstract에 명시.
+- DOI 일괄 부여 스크립트: `scripts/update_preprints_doi.py` (DOI_MAP 17건 + 미배정 draft 자동 마킹).
 
 ## 콘텐츠 상태
 - 원장명: 한정우 (실제 — 규림한의원 청주점 대표원장)
@@ -313,6 +315,28 @@ npm run preview              # preview server (port 4322)
 - B/A 이미지 원본: `C:\Projects\kyurim-webpage-main\assets\` (ba_*.webp)
 - 스토리 데이터 원본: `C:\Projects\kyurim-webpage-main\script.js` (storyData 객체, line 894+)
 
+## 인테리어 RFP 작업 폴더 (`RFP_2026/`)
+부일타워 5층 인테리어 vendor RFP·1차 미팅·견적 수령용 작업 폴더. **사이트 배포와 무관 — Astro 빌드 외 dist 미포함이므로 호스팅 자동 제외.** 담당자 연락처·견적 envelope 등 민감 정보 포함하므로 git tracked 시점은 사용자 판단에 따라 조정.
+
+핵심 산출물:
+- `00_RFP_email_template.md` — vendor 발송용 한국어 RFP 메일 초안
+- `02_floor_plan_planA.svg` / `.pdf` — 부일타워 5층 11 zone 배치 (A3 portrait)
+- `02_spatial_mapping.md` — zone-by-zone 공간 운영 설명 (v3)
+- `07_vendor_contact_matrix.md` · `08_inquiries_ready_to_send.md` — 7 vendor 컨택 정보·인콰이어리 발송 상태
+- `09_concept_1pager.pdf` — 컨셉 1페이지 (1차 미팅용)
+- `10_reference_imageboard.pdf` — 12장 reference 이미지 보드 (9 톤 anchor + 3 안티-클리셰)
+- `11_non_negotiables_1pager.pdf` — ★ 5 비양보 spec 1장 (Method 콘솔·CRI 95+ 조명·STC 50 demising·BF Silver·Honed 천연석)
+- `12_vendor_qualifying_questions.pdf` — V1-V8 vendor 검증 질문지 (5/16 회신 마감)
+- `_md_to_pdf.py` — markdown→PDF 변환 (markdown-it-py + Playwright Chromium, Malgun Gothic Korean font)
+
+운영 일정 (2026-05-04 시점):
+- **2026-05-07 (목)** — KJK·By Seog Be Seog 1차 미팅 (부일타워 5층 현장)
+- **2026-05-16 (금)** — V1-V8 + 가견적서 회신 마감
+- **2026-05-25 (월)** — 시공자 1곳 선정 → **2026-05-29 (금)** 본계약
+- **2026-06-22 (월)** — 시공 시작 → **2026-08-13 (목)** 시공 완료 → **2026-08-17 (월)** 개원
+
+Tier B v2.1 envelope: 2.4-2.55억 VAT 별도 (★ 비양보 5개 합계 5,200~5,700만원 ≈ 21%).
+
 ## 로컬 개발
 ```
 python -m http.server 8094 --bind 0.0.0.0
@@ -327,7 +351,7 @@ python -m http.server 8094 --bind 0.0.0.0
 - Firebase 콘솔: https://console.firebase.google.com/project/recover-clinic-kr/overview
 - 배포 URL (기본): https://recover-clinic-kr.web.app · https://recover-clinic-kr.firebaseapp.com
 - 커스텀 도메인: **recover-clinic.kr** (가비아 등록, 한정우 명의, HTTP→HTTPS 자동 리다이렉트)
-- 설정 파일: `firebase.json` (hosting + firestore 섹션, public=`.`, CLAUDE.md/README.md/전략 문서/docx/구 `로고 이미지/` 폴더/scraps/_check/screenshots/uploads/original.html/memory/firestore.rules/firestore.indexes.json 제외, 이미지 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr), `firestore.rules`(consultations create-only + field validation), `firestore.indexes.json`(현재 인덱스 불필요)
+- 설정 파일: `firebase.json` (hosting + firestore 섹션, public=`dist`, ignore=`firebase.json`/dotfiles/`node_modules`만 — Astro 빌드 산출물만 호스팅하므로 별도 제외 목록 불필요. 이미지·영상·CSS·JS 1년 immutable 캐싱 + HTML 5분 TTL), `.firebaserc`(default→recover-clinic-kr), `firestore.rules`(consultations create-only + field validation), `firestore.indexes.json`(현재 인덱스 불필요)
 - Firebase Web App: `1:541834096590:web:84f3046b32b4f342bbc59f` (RECOVER Clinic Web)
 - Firestore: **Standard 버전**, Location `asia-northeast3` (Seoul), DB ID `(default)`
 - 상담 데이터 조회: https://console.firebase.google.com/project/recover-clinic-kr/firestore/data/~2Fconsultations — 원장이 콘솔에서 직접 열람 (웹에서는 read 불가)
